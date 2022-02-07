@@ -2,20 +2,38 @@
   "name": "demo",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
+    "@bbc/react-transcript-editor": "^1.4.4",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@semantic-ui-react/css-patch": "^1.0.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "classnames": "^2.3.1",
     "react": "^17.0.2",
+    "react-bootstrap": "^2.1.2",
+    "react-clickable": "^1.1.0",
     "react-dom": "^17.0.2",
+    "react-keyboard-event-handler": "^1.5.4",
+    "react-player": "^2.9.0",
+    "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "react-simple-timefield": "^3.2.5",
+    "react-sound": "^1.2.0",
+    "react-spinners": "^0.11.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.1.1",
+    "speak-tts": "^2.0.8",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "semantic-ui-css-patch"
   },
   "eslintConfig": {
     "extends": [
