@@ -50,7 +50,7 @@
   margin: -4% 0% 0% 0%;
 }
 
-.header-bar{
+.header-bar {
   justify-content: right;
   display: grid;
   margin: 1% 2% 0% 0%;
@@ -58,19 +58,18 @@
 }
 
 .drawerPaper {
-  align-items: 'left';
-  white-space: 'nowrap';
+  align-items: "left";
+  white-space: "nowrap";
   width: 280px;
 }
 
 .drawerPaperClose {
-  overflow-x: 'hidden';
+  overflow-x: "hidden";
 }
 
 .drawer {
   font-size: 300%;
 }
-
 
 .upper-page {
   width: 100%;
@@ -80,10 +79,22 @@
 
 .lower-page {
   width: 100%;
-  height: 45vh;
+  height: 10vh;
   display: block;
   align-items: center;
   justify-content: center;
+  /* overflow-y: auto; */
+}
+
+.script-page {
+  width: 100%;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  height: 100%;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
 }
 
 .split-left {
@@ -126,12 +137,11 @@
 .main-video {
   height: 30vh;
   margin-bottom: 25px;
-  
 }
-.preview{
+.preview {
   position: absolute;
   margin-left: 2%;
-  margin-top: -15vh; 
+  margin-top: -15vh;
   z-index: 100;
 }
 
@@ -148,12 +158,12 @@
   width: 100%;
 }
 
-.time-progress{
-  font-weight: 600; 
+.time-progress {
+  font-weight: 600;
   font-size: 1.5em;
   color: black;
   margin-top: -57px;
-  margin-left: 95%; 
+  margin-left: 95%;
   position: relative;
   z-index: 10;
 }
@@ -171,10 +181,10 @@
   text-align: center;
 }
 
-.voice-button{
+.voice-button {
   font-size: large;
   display: inline-block;
-  font-weight: 500; 
+  font-weight: 500;
   border: solid dodgerblue;
   color: dodgerblue;
   border-width: 2px;
@@ -189,7 +199,7 @@
   width: 100%;
 }
 
-.search-bar{
+.search-bar {
   /* padding-right: 500px; */
   width: 100%;
   display: inline-block;
@@ -197,14 +207,13 @@
   outline: 0;
   border-bottom: 1px solid;
   font-size: x-large;
-  font-weight: 500; 
+  font-weight: 500;
   text-align: right;
   margin-bottom: 10px;
   width: 100%;
 }
 
 .segments-container {
-  
   display: inline-block;
   display: flex;
   justify-content: center;
@@ -236,15 +245,15 @@
   overflow-y: hidden;
   border-style: solid;
   border-width: 1px;
-  border: 1.5px solid ;
+  border: 1.5px solid;
   border-radius: 20px;
 }
 
 .text-option-text {
   display: block;
   text-align: left;
-  margin: 1.0vh;
-  margin-left: 1.0vw;
+  margin: 1vh;
+  margin-left: 1vw;
   width: 100%;
   font-size: 23px;
   line-height: 1.5;
@@ -256,12 +265,17 @@
   width: 100%;
 }
 
-.scene-number{
+.scene-number {
   display: flex;
   justify-content: space-evenly;
   font-weight: bold;
 }
 
-.scene-number{
+.scene-number {
   text-align: right;
+}
+
+.word:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 128, 0.5);
 }
