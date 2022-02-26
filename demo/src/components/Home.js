@@ -440,10 +440,12 @@ class Home extends Component {
             ))}
           </Drawer>
         </div>
-        <Container className="upper-page">
-          <div className="split-left" tabIndex="1"></div>
-          <div className="split-right" tabIndex="1">
-            <Row className="main-video">
+        <Container className="main-page">
+        <Container className="script-page">
+          <Scripts jumpVideo={this.jumpVideo} player={this.player}></Scripts>
+        </Container>
+        <Container className="right-page">
+          <Container className="video-container">
               <ReactPlayer
                 ref={this.ref}
                 playing={this.state.playing}
@@ -460,22 +462,12 @@ class Home extends Component {
                 onDuration={this.handleDuration}
                 onSeek={this._onSeek}
               ></ReactPlayer>
-            </Row>
-          </div>
+            </Container>
+              <Timeline
+                  videoTime={this.state.playedSeconds}
+                  duration={this.state.duration}>
+              </Timeline>
         </Container>
-        <Container className="lower-page">
-          <Timeline
-            videoTime={this.state.playedSeconds}
-            duration={this.state.duration}
-          ></Timeline>
-          {/* <Segments videoID={this.state.videoID} scene_starts =  {this.state.scene_starts} scene_labels = {this.state.scene_labels} current_idx = {current_idx} current_mid_idx={current_mid_idx} mid_indexes = {this.state.mid_indexes} mid_contents = {this.state.mid_contents} entered_time = {this.state.entered_time} dynamic = {this.state.dynamic}></Segments> */}
-        </Container>
-        {/* <Sound
-                    url={soundUrl}
-                    playStatus={this.soundPlaying(current_idx)}
-                /> */}
-        <Container className="script-page">
-          <Scripts jumpVideo={this.jumpVideo} player={this.player}></Scripts>
         </Container>
       </div>
     );

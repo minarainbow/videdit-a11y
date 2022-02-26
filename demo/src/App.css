@@ -71,72 +71,34 @@
   font-size: 300%;
 }
 
-.upper-page {
-  width: 100%;
-  height: 40vh;
+.main-page {
+  display: inline-block;
   display: flex;
-}
-
-.lower-page {
-  width: 100%;
-  height: 10vh;
-  display: block;
-  align-items: center;
   justify-content: center;
-  /* overflow-y: auto; */
+  margin: 2%;
 }
 
 .script-page {
-  width: 100%;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  height: 100%;
-  display: block;
-  align-items: center;
-  justify-content: center;
+  width: 50vw;
+  height: 80vh;
+  overflow-x: hidden;
   overflow-y: auto;
+  font-size: 1.3rem;
+  line-height: 2rem;
+  align-items: center;
+  display: block;
 }
 
-.split-left {
+.right-page {
+  display: table-cell;
+  vertical-align: middle;
   width: 50vw;
-  height: 45vh;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  right: 0;
-  border-width: 1px;
-  margin: 1vw 2vw 2vw 5vw;
-  /* border: 0.5px solid gray; */
-  border-radius: 5px;
-  display: block;
-  z-index: 1;
 }
-.split-center {
-  width: 40vw;
-  height: 45vh;
-  margin-top: 1%;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  left: 0;
-  display: inline-block;
-  outline: 0;
-  outline: none;
-}
-.split-right {
-  width: 30vw;
-  height: 45vh;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  right: 0;
-  border-width: 1px;
-  margin: 1vw 5vw 2vw 2vw;
-  /* border: 1.5px solid gray; */
-  border-radius: 25px;
-  display: block;
-  z-index: 1;
-}
-.main-video {
-  height: 30vh;
-  margin-bottom: 25px;
+
+.video-container {
+  width: 90%;
+  height: 50%;
+  margin-left: 5%;
 }
 .preview {
   position: absolute;
@@ -146,10 +108,11 @@
 }
 
 .progressBar-container {
+  margin-top: 2%;
   top: 0px;
   height: 5vh;
-  width: 90vw;
-  display: inline-block;
+  width: 90%;
+  margin-left: 5%;
 }
 
 .progressBar {
