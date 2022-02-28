@@ -1,0 +1,3 @@
+[submodule "deact/Detic"]
+	path = deact/Detic
+	url = https://github.com/facebookresearch/Detic
