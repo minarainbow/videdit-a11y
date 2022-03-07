@@ -15,13 +15,12 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import Divider from "@material-ui/core/Divider";
 import { clips } from "../scripts";
-import TimeField from "react-simple-timefield";
-import TranscriptEditor from "@bbc/react-transcript-editor";
 import KeyboardEventHandler from "react-keyboard-event-handler";
 import Speech from "speak-tts";
 import Sound from "react-sound";
 import Scripts from "./Scripts";
-// import soundUrl from '../sound.mp3';
+import ScriptEditor from "./ScriptEditor/ScriptEditor";
+import scriptData from "./../scripts/ZaQtx54N6iU-aligned.js";
 
 function formatTime(time) {
   time = Math.round(time);
@@ -61,6 +60,7 @@ class Home extends Component {
       current_idx: 0,
       current_mid_idx: 0,
       last_sound_idx: 0,
+      transcriptData: scriptData,
     };
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
@@ -93,7 +93,7 @@ class Home extends Component {
         },
       },
     });
-    this.setState({ speech: speech });
+    this.setState({ speech: speech, transcriptData: scriptData, });
     this.handleSubmit("ZaQtx54N6iU");
   }
 
@@ -443,6 +443,7 @@ class Home extends Component {
         <Container className="main-page">
         <Container className="script-page">
           <Scripts jumpVideo={this.jumpVideo} player={this.player}></Scripts>
+          {/* <ScriptEditor transcriptData={this.state.transcriptData}></ScriptEditor> */}
         </Container>
         <Container className="right-page">
           <Container className="video-container">
