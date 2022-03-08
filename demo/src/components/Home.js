@@ -19,7 +19,6 @@ import KeyboardEventHandler from "react-keyboard-event-handler";
 import Speech from "speak-tts";
 import Sound from "react-sound";
 import Scripts from "./Scripts";
-import ScriptEditor from "./ScriptEditor/ScriptEditor";
 import scriptData from "./../scripts/ZaQtx54N6iU-aligned.js";
 
 function formatTime(time) {
@@ -53,14 +52,8 @@ class Home extends Component {
       listening: false,
       transcript: "",
       time: "00:00",
-      scene_starts: [],
-      mid_indexes: [],
-      scene_sounds: [],
-      current_level: 0,
-      current_idx: 0,
-      current_mid_idx: 0,
-      last_sound_idx: 0,
       transcriptData: scriptData,
+      playedSeconds: 0,
     };
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
@@ -69,9 +62,9 @@ class Home extends Component {
     this.onTimeChange = this.onTimeChange.bind(this);
     this.onPause = this._onPause.bind(this);
     this.handleKey = this.handleKey.bind(this);
-    this.align_segment = this.align_segment.bind(this);
     this.inspectFrame = this.inspectFrame.bind(this);
     this.soundPlaying = this.soundPlaying.bind(this);
+    this.player = React.createRef();
   }
 
   componentDidMount() {
@@ -97,6 +90,7 @@ class Home extends Component {
     this.handleSubmit("ZaQtx54N6iU");
   }
 
+
   handleProgress = (state) => {
     // We only want to update time slider if we are not currently seeking
     this.setState(state);
@@ -121,29 +115,9 @@ class Home extends Component {
     this.setState({ start: 0, videoID: videoID, playing: true });
     console.log("changed the video", videoID);
     this.handleDrawerClose();
-    // axios.post('http://ec2-52-79-233-144.ap-northeast-2.compute.amazonaws.com:8000/backend/sessions/', {
-    //     videoID: videoID,
-    // }).then((response) => {
-    //     sessionStorage.setItem('sessionID', response.data.id)
-    //     sessionStorage.setItem('sessionCreated', true)
-    // });
-
-    // var json = require('../' +  videoID + '.json');
-    // var scene_starts = [];
-    // var scene_labels = [];
-    // var scene_sounds = [];
-    // for (var i = 0, l = json.length; i < l; i++) {
-    //     var node = json[i];
-    //     scene_starts.push(node['Start Time (seconds)']);
-    //     scene_labels.push(node['Scene Number']);
-    //     if(node['sound']){
-    //         scene_sounds.push(node['Scene Number'])
-    //     }
-    // }
   }
 
   jumpVideo(time, abs = false) {
-    console.log("here");
     console.log(this.player);
     if (abs) {
       this.player.seekTo(time);
@@ -162,12 +136,6 @@ class Home extends Component {
 
   _onPause = () => {
     console.log(sessionStorage.getItem("sessionID"));
-    // axios.post('http://ec2-52-79-233-144.ap-northeast-2.compute.amazonaws.com:8000/backend/sessions/'+sessionStorage.getItem('sessionID')+'/add_pause/', {
-    //     time: formatTime(this.state.playedSeconds)
-    // }).then((response) => {
-
-    //     console.log('pause edded' + sessionStorage.getItem('sessionID'), response)
-    //   });
   };
 
   handleKey = (key) => {
@@ -283,28 +251,7 @@ class Home extends Component {
     }
   };
 
-  align_segment() {
-    var { playedSeconds, scene_starts, mid_indexes } = this.state;
-    var time = Math.round(playedSeconds);
-    time = !time ? 0 : time;
-    var closest_past = Math.max.apply(
-      Math,
-      scene_starts.filter(function (x, index) {
-        return x <= time;
-      })
-    );
-    var closest_index = scene_starts.findIndex((x) => x == closest_past);
-    var closest_mid_past = Math.max.apply(
-      Math,
-      mid_indexes.filter(function (x) {
-        return x <= closest_index + 1;
-      })
-    );
-    var closest_mid_index = mid_indexes.findIndex((x) => x == closest_mid_past);
-    closest_index = closest_index < 0 ? 0 : closest_index;
-    closest_mid_index = closest_mid_index < 0 ? 0 : closest_mid_index;
-    return [closest_index, closest_mid_index];
-  }
+  
 
   inspectFrame() {
     const { videoID, current_idx, speech } = this.state;
@@ -390,9 +337,7 @@ class Home extends Component {
   }
 
   render() {
-    const { videoID, playing, playbackRate, listening, transcript } =
-      this.state;
-    const [current_idx, current_mid_idx] = this.align_segment();
+    const { videoID, playing, playbackRate, playedSeconds } = this.state;
     return (
       <div className="Home">
         <KeyboardEventHandler
@@ -442,13 +387,13 @@ class Home extends Component {
         </div>
         <Container className="main-page">
         <Container className="script-page">
-          <Scripts jumpVideo={this.jumpVideo} player={this.player}></Scripts>
+          <Scripts jumpVideo={this.jumpVideo} player={this.player} videoTime={this.state.playedSeconds}></Scripts>
           {/* <ScriptEditor transcriptData={this.state.transcriptData}></ScriptEditor> */}
         </Container>
         <Container className="right-page">
           <Container className="video-container">
               <ReactPlayer
-                ref={this.ref}
+                ref={this.player}
                 playing={this.state.playing}
                 playbackRate={playbackRate}
                 id="video"
@@ -462,6 +407,7 @@ class Home extends Component {
                 onProgress={this.handleProgress}
                 onDuration={this.handleDuration}
                 onSeek={this._onSeek}
+                progressInterval={100}
               ></ReactPlayer>
             </Container>
               <Timeline
