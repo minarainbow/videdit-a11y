@@ -17,7 +17,7 @@ import Divider from "@material-ui/core/Divider";
 import { clips } from "../scripts";
 import KeyboardEventHandler from "react-keyboard-event-handler";
 import Speech from "speak-tts";
-import Sound from "react-sound";
+import SearchBar from "./SearchBar";
 import Scripts from "./Scripts";
 import scriptData from "./../scripts/ZaQtx54N6iU-aligned.js";
 
@@ -63,7 +63,6 @@ class Home extends Component {
     this.onPause = this._onPause.bind(this);
     this.handleKey = this.handleKey.bind(this);
     this.inspectFrame = this.inspectFrame.bind(this);
-    this.soundPlaying = this.soundPlaying.bind(this);
     this.player = React.createRef();
   }
 
@@ -317,24 +316,6 @@ class Home extends Component {
     }
   }
 
-  soundPlaying(current_idx) {
-    var scene_number = current_idx + 1;
-    console.log(current_idx, this.state.last_sound_idx);
-    if (this.state.scene_sounds.includes(scene_number)) {
-      if (current_idx !== this.state.last_sound_idx) {
-        setTimeout(
-          function () {
-            //Start the timer
-            console.log("timer up");
-            this.setState({ last_sound_idx: current_idx }); //After 1 second, set render to true
-          }.bind(this),
-          600
-        );
-        return Sound.status.PLAYING;
-      }
-    }
-    return Sound.status.STOPPED;
-  }
 
   render() {
     const { videoID, playing, playbackRate, playedSeconds } = this.state;
@@ -387,6 +368,7 @@ class Home extends Component {
         </div>
         <Container className="main-page">
         <Container className="script-page">
+          <SearchBar></SearchBar>
           <Scripts jumpVideo={this.jumpVideo} player={this.player} videoTime={this.state.playedSeconds}></Scripts>
           {/* <ScriptEditor transcriptData={this.state.transcriptData}></ScriptEditor> */}
         </Container>

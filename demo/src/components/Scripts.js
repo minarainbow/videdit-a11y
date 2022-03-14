@@ -138,7 +138,7 @@ class Scripts extends React.Component {
     const correctionBorder = "1px dotted blue";
     return (
       <section
-        onDoubleClick={this.handleDoubleClick}>
+        onDoubleClick={this.handleDoubleClick} className="script">
         <style scoped>
           {`span.Word[data-start="${ currentWord.start }"] { background-color: ${ highlightColour }; text-shadow: 0 0 0.01px black }`}
           {`span.Word[data-start="${ currentWord.start }"]+span { background-color: ${ highlightColour } }`}

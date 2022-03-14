@@ -89,6 +89,11 @@
   display: block;
 }
 
+.script {
+  display: inline-block;
+  text-align: left;
+}
+
 .right-page {
   display: table-cell;
   vertical-align: middle;
@@ -156,24 +161,11 @@
   margin: 0px 5px 0px 5px;
 }
 
-.search-bar-top {
-  display: inline-flex;
-  position: relative;
-  width: 100%;
-}
-
 .search-bar {
-  /* padding-right: 500px; */
+  padding-right: 3%;
   width: 100%;
   display: inline-block;
-  border: 0;
-  outline: 0;
-  border-bottom: 1px solid;
-  font-size: x-large;
-  font-weight: 500;
   text-align: right;
-  margin-bottom: 10px;
-  width: 100%;
 }
 
 .segments-container {
