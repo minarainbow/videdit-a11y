@@ -1,7 +1,7 @@
 import React from "react";
-import _ from "lodash";
+import _ from 'lodash'
 // import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
-import { Search, Grid, Header, Segment } from "semantic-ui-react";
+import { Search, Grid, Header, Segment } from 'semantic-ui-react'
 
 const results = [
   {
