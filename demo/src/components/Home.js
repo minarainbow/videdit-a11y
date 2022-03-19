@@ -54,6 +54,7 @@ class Home extends Component {
       time: "00:00",
       transcriptData: scriptData,
       playedSeconds: 0,
+      snippetIndex: 0,
     };
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
@@ -64,6 +65,7 @@ class Home extends Component {
     this.handleKey = this.handleKey.bind(this);
     this.inspectFrame = this.inspectFrame.bind(this);
     this.player = React.createRef();
+    this.onEnded = this._onEnded.bind(this);
   }
 
   componentDidMount() {
@@ -85,10 +87,9 @@ class Home extends Component {
         },
       },
     });
-    this.setState({ speech: speech, transcriptData: scriptData, });
+    this.setState({ speech: speech, transcriptData: scriptData });
     this.handleSubmit("ZaQtx54N6iU");
   }
-
 
   handleProgress = (state) => {
     // We only want to update time slider if we are not currently seeking
@@ -135,6 +136,15 @@ class Home extends Component {
 
   _onPause = () => {
     console.log(sessionStorage.getItem("sessionID"));
+  };
+
+  _onEnded = () => {
+    this.setState({ snippetIndex: this.state.snippetIndex + 1 }, function () {
+      console.log(this.state.snippetIndex);
+    });
+    // console.log(this.snippetIndex);
+    // this.setState({ snippetIndex: this.snippetIndex + 1, playing: true });
+    // console.log(this.snippetIndex);
   };
 
   handleKey = (key) => {
@@ -250,8 +260,6 @@ class Home extends Component {
     }
   };
 
-  
-
   inspectFrame() {
     const { videoID, current_idx, speech } = this.state;
     var json = require("../" + videoID + ".json");
@@ -316,9 +324,9 @@ class Home extends Component {
     }
   }
 
-
   render() {
-    const { videoID, playing, playbackRate, playedSeconds } = this.state;
+    const { videoID, playing, playbackRate, playedSeconds, snippetIndex } =
+      this.state;
     return (
       <div className="Home">
         <KeyboardEventHandler
@@ -367,13 +375,17 @@ class Home extends Component {
           </Drawer>
         </div>
         <Container className="main-page">
-        <Container className="script-page">
-          <SearchBar></SearchBar>
-          <Scripts jumpVideo={this.jumpVideo} player={this.player} videoTime={this.state.playedSeconds}></Scripts>
-          {/* <ScriptEditor transcriptData={this.state.transcriptData}></ScriptEditor> */}
-        </Container>
-        <Container className="right-page">
-          <Container className="video-container">
+          <Container className="script-page">
+            <SearchBar></SearchBar>
+            <Scripts
+              jumpVideo={this.jumpVideo}
+              player={this.player}
+              videoTime={this.state.playedSeconds}
+            ></Scripts>
+            {/* <ScriptEditor transcriptData={this.state.transcriptData}></ScriptEditor> */}
+          </Container>
+          <Container className="right-page">
+            <Container className="video-container">
               <ReactPlayer
                 ref={this.player}
                 playing={this.state.playing}
@@ -381,22 +393,23 @@ class Home extends Component {
                 id="video"
                 width="100%"
                 height="100%"
-                controls
-                url={`https://www.youtube.com/watch?v=${videoID}`}
+                controls={true}
+                url={`videos/mov_${snippetIndex}.mp4`}
                 onPause={this._onPause}
                 onPlay={this._onPlay}
                 onReady={this._onReady}
                 onProgress={this.handleProgress}
                 onDuration={this.handleDuration}
                 onSeek={this._onSeek}
+                onEnded={this._onEnded}
                 progressInterval={100}
               ></ReactPlayer>
             </Container>
-              <Timeline
-                  videoTime={this.state.playedSeconds}
-                  duration={this.state.duration}>
-              </Timeline>
-        </Container>
+            <Timeline
+              videoTime={this.state.playedSeconds}
+              duration={this.state.duration}
+            ></Timeline>
+          </Container>
         </Container>
       </div>
     );

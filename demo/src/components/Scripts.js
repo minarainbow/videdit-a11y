@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "semantic-ui-react";
 import scriptData from "./../scripts/ZaQtx54N6iU-aligned.jsx";
 import Words from "./Words.js";
-import Word from "./Word.js"
+import Word from "./Word.js";
 import {
   Editor,
   EditorState,
@@ -10,38 +10,33 @@ import {
   convertFromRaw,
   convertToRaw,
   getDefaultKeyBinding,
-  Modifier
+  Modifier,
 } from "draft-js";
 import stt2Draft from "../packages/stt2draft";
-import createEntityMap from "../packages/createEntityMap"
-
+import createEntityMap from "../packages/createEntityMap";
 
 // DraftJs decorator to recognize which entity is which
 // and know what to apply to what component
-const getEntityStrategy = mutability => (
-  contentBlock,
-  callback,
-  contentState
-) => {
-  contentBlock.findEntityRanges(character => {
-    const entityKey = character.getEntity();
-    if (entityKey === null) {
-      return false;
-    }
+const getEntityStrategy =
+  (mutability) => (contentBlock, callback, contentState) => {
+    contentBlock.findEntityRanges((character) => {
+      const entityKey = character.getEntity();
+      if (entityKey === null) {
+        return false;
+      }
 
-    return contentState.getEntity(entityKey).getMutability() === mutability;
-  }, callback);
-};
+      return contentState.getEntity(entityKey).getMutability() === mutability;
+    }, callback);
+  };
 
 // decorator definition - Draftjs
 // defines what to use to render the entity
 const decorator = new CompositeDecorator([
   {
-    strategy: getEntityStrategy('MUTABLE'),
-    component: Word
-  }
+    strategy: getEntityStrategy("MUTABLE"),
+    component: Word,
+  },
 ]);
-
 
 class Scripts extends React.Component {
   constructor(props) {
@@ -50,7 +45,7 @@ class Scripts extends React.Component {
       video_script: scriptData["words"],
       editorState: EditorState.createEmpty(),
     };
-    this.onChange = editorState => this.setState({editorState});
+    this.onChange = (editorState) => this.setState({ editorState });
   }
 
   componentDidMount() {
@@ -66,7 +61,7 @@ class Scripts extends React.Component {
 
   sttJsonAdapter(scriptData) {
     let blocks = stt2Draft(scriptData);
-    return { blocks, entityMap: createEntityMap(blocks) }; 
+    return { blocks, entityMap: createEntityMap(blocks) };
   }
 
   loadData() {
@@ -85,7 +80,8 @@ class Scripts extends React.Component {
   getCurrentWord = () => {
     const currentWord = {
       start: "NA",
-      end: "NA"
+      end: "NA",
+      index: "NA",
     };
     if (scriptData) {
       const contentState = this.state.editorState.getCurrentContent();
@@ -102,17 +98,18 @@ class Scripts extends React.Component {
         ) {
           currentWord.start = word.start;
           currentWord.end = word.end;
+          currentWord.index = word.index;
         }
       }
     }
     if (currentWord.start !== "NA") {
       if (this.props.isScrollIntoViewOn) {
         const currentWordElement = document.querySelector(
-          `span.Word[data-start="${ currentWord.start }"]`
+          `span.Word[data-start="${currentWord.start}"]`
         );
         currentWordElement.scrollIntoView({
-          block: 'nearest',
-          inline: 'center'
+          block: "nearest",
+          inline: "center",
         });
       }
     }
@@ -137,16 +134,16 @@ class Scripts extends React.Component {
     const time = Math.round(this.props.videoTime * 4.0) / 4.0;
     const correctionBorder = "1px dotted blue";
     return (
-      <section
-        onDoubleClick={this.handleDoubleClick} className="script">
+      <section onDoubleClick={this.handleDoubleClick} className="script">
         <style scoped>
-          {`span.Word[data-start="${ currentWord.start }"] { background-color: ${ highlightColour }; text-shadow: 0 0 0.01px black }`}
-          {`span.Word[data-start="${ currentWord.start }"]+span { background-color: ${ highlightColour } }`}
-          {`span.Word[data-prev-times~="${ Math.floor(
+          {`span.Word[data-start="${currentWord.start}"] { background-color: ${highlightColour}; text-shadow: 0 0 0.01px black }`}
+          {`span.Word[data-start="${currentWord.start}"]+span { background-color: ${highlightColour} }`}
+          {`span.Word[data-prev-times~="${Math.floor(
             time
-          ) }"] { color: ${ unplayedColor } }`}
-          {`span.Word[data-prev-times~="${ time }"] { color: ${ unplayedColor } }`}
-          {`span.Word[data-confidence="low"] { border-bottom: ${ correctionBorder } }`}
+          )}"] { color: ${unplayedColor} }`}
+          {`span.Word[data-prev-times~="${time}"] { color: ${unplayedColor} }`}
+          {`span.Word[data-confidence="low"] { border-bottom: ${correctionBorder} }`}
+          {`span.Word[data-index="${currentWord.index}"]`}
         </style>
         <Editor editorState={this.state.editorState} onChange={this.onChange} />
       </section>

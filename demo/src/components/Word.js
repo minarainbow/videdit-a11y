@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Word extends Component {
-
   shouldComponentUpdate(nextProps) {
-    if ( nextProps.decoratedText !== this.props.decoratedText) {
+    if (nextProps.decoratedText !== this.props.decoratedText) {
       return true;
     }
 
@@ -14,27 +13,31 @@ class Word extends Component {
   generateConfidence = (data) => {
     // handling edge case where confidence score not present
     if (data.confidence) {
-      return data.confidence > 0.6 ? 'high' : 'low';
+      return data.confidence > 0.6 ? "high" : "low";
     }
 
-    return 'high';
-  }
+    return "high";
+  };
 
   generatePreviousTimes = (data) => {
-    let prevTimes = '';
+    let prevTimes = "";
 
     for (let i = 0; i < data.start; i++) {
-      prevTimes += `${ i } `;
+      prevTimes += `${i} `;
     }
 
     if (data.start % 1 > 0) {
       // Find the closest quarter-second to the current time, for more dynamic results
       const dec = Math.floor((data.start % 1) * 4.0) / 4.0;
-      prevTimes += ` ${ Math.floor(data.start) + dec }`;
+      prevTimes += ` ${Math.floor(data.start) + dec}`;
     }
 
     return prevTimes;
-  }
+  };
+
+  handleClick = (index) => {
+    console.log(index);
+  };
 
   render() {
     const data = this.props.entityKey
@@ -43,12 +46,14 @@ class Word extends Component {
 
     return (
       <span
-        data-start={ data.start }
-        data-end={ data.end }
-        data-confidence = { this.generateConfidence(data) }
-        data-prev-times = { this.generatePreviousTimes(data) }
-        data-entity-key={ data.key }
-        className="Word">
+        data-start={data.start}
+        data-end={data.end}
+        data-index={data.index}
+        data-confidence={this.generateConfidence(data)}
+        data-prev-times={this.generatePreviousTimes(data)}
+        data-entity-key={data.key}
+        className="Word"
+      >
         {this.props.children}
       </span>
     );
@@ -58,7 +63,7 @@ class Word extends Component {
 Word.propTypes = {
   contentState: PropTypes.object,
   entityKey: PropTypes.string,
-  children: PropTypes.array
+  children: PropTypes.array,
 };
 
 export default Word;
