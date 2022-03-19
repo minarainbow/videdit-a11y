@@ -43,7 +43,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      playing: true,
+      playing: false,
       playbackRate: 1.0,
       modalOpen: true,
       hover: false,
@@ -55,11 +55,15 @@ class Home extends Component {
       transcriptData: scriptData,
       playedSeconds: 0,
       snippetIndex: 0,
+      currSpan: "",
+      started: false,
     };
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.jumpVideo = this.jumpVideo.bind(this);
+    this.updateSnippetIndex = this.updateSnippetIndex.bind(this);
+    this.updateCurrSpan = this.updateCurrSpan.bind(this);
     this.onTimeChange = this.onTimeChange.bind(this);
     this.onPause = this._onPause.bind(this);
     this.handleKey = this.handleKey.bind(this);
@@ -110,7 +114,7 @@ class Home extends Component {
   };
 
   handleSubmit(videoID) {
-    this.setState({ start: 0, videoID: videoID, playing: true });
+    this.setState({ start: 0, videoID: videoID, playing: false });
     console.log("changed the video", videoID);
     this.handleDrawerClose();
   }
@@ -125,6 +129,14 @@ class Home extends Component {
     // this.setState({playing: tru  e});
   }
 
+  updateSnippetIndex(index) {
+    this.setState({ snippetIndex: index });
+  }
+
+  updateCurrSpan(element) {
+    this.setState({ currSpan: element });
+  }
+
   onTimeChange(event, value) {
     const newTime = value.replace(/-/g, ":");
     const time = newTime.substr(0, 5);
@@ -132,17 +144,35 @@ class Home extends Component {
     this.setState({ time });
   }
 
+  onClickPlay = () => {
+    this.setState({ playing: true });
+    if (!this.state.started) {
+      const currentWordElement = document.querySelector(
+        `span.Word[data-index="0"]`
+      );
+      this.setState({ started: true, currSpan: currentWordElement });
+    }
+  };
+
+  onClickPause = () => {
+    this.setState({ playing: false });
+  };
+
   _onPause = () => {
     console.log(sessionStorage.getItem("sessionID"));
   };
 
   _onEnded = () => {
-    this.setState({ snippetIndex: this.state.snippetIndex + 1 }, function () {
-      console.log(this.state.snippetIndex);
-    });
-    // console.log(this.snippetIndex);
-    // this.setState({ snippetIndex: this.snippetIndex + 1, playing: true });
-    // console.log(this.snippetIndex);
+    // pick the next span's data-index and set it as snippetIndex
+    const nextSpan = this.state.currSpan.nextSibling.nextSibling;
+    console.log(nextSpan);
+    const nextIndex = parseInt(nextSpan.getAttribute("data-index"));
+    this.setState(
+      { snippetIndex: nextIndex, currSpan: nextSpan, playing: true },
+      function () {
+        console.log(this.state.snippetIndex);
+      }
+    );
   };
 
   handleKey = (key) => {
@@ -379,19 +409,21 @@ class Home extends Component {
               jumpVideo={this.jumpVideo}
               player={this.player}
               videoTime={this.state.playedSeconds}
+              updateSnippetIndex={this.updateSnippetIndex}
+              updateCurrSpan={this.updateCurrSpan}
             ></Scripts>
             {/* <ScriptEditor transcriptData={this.state.transcriptData}></ScriptEditor> */}
           </Container>
           <Container className="right-page">
             <Container className="video-container">
-              {/* <ReactPlayer
+              <ReactPlayer
                 ref={this.ref}
                 playing={this.state.playing}
                 playbackRate={playbackRate}
                 id="video"
                 width="100%"
                 height="100%"
-                controls={true}
+                controls={false}
                 url={`videos/mov_${snippetIndex}.mp4`}
                 onPause={this._onPause}
                 onPlay={this._onPlay}
@@ -401,25 +433,11 @@ class Home extends Component {
                 onSeek={this._onSeek}
                 onEnded={this._onEnded}
                 progressInterval={100}
-              ></ReactPlayer> */}
-              <ReactPlayer
-                ref={this.ref}
-                playing={this.state.playing}
-                playbackRate={playbackRate}
-                id="video"
-                width="100%"
-                height="100%"
-                controls
-                url={`https://www.youtube.com/watch?v=${videoID}`}
-                onPause={this._onPause}
-                onPlay={this._onPlay}
-                onReady={this._onReady}
-                onProgress={this.handleProgress}
-                onDuration={this.handleDuration}
-                onSeek={this._onSeek}
-                progressInterval={100}
               ></ReactPlayer>
             </Container>
+
+            <Button onClick={this.onClickPlay}>play</Button>
+            <Button onClick={this.onClickPause}>pause</Button>
             <Timeline
               videoTime={this.state.playedSeconds}
               duration={this.state.duration}

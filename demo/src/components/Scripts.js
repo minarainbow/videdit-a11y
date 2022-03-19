@@ -45,7 +45,10 @@ class Scripts extends React.Component {
       video_script: scriptData["words"],
       editorState: EditorState.createEmpty(),
     };
-    this.onChange = (editorState) => this.setState({ editorState });
+    this.onChange = (editorState) => {
+      // console.log(editorState);
+      this.setState({ editorState });
+    };
   }
 
   componentDidMount() {
@@ -82,6 +85,7 @@ class Scripts extends React.Component {
       start: "NA",
       end: "NA",
       index: "NA",
+      now: "NA",
     };
     if (scriptData) {
       const contentState = this.state.editorState.getCurrentContent();
@@ -99,6 +103,7 @@ class Scripts extends React.Component {
           currentWord.start = word.start;
           currentWord.end = word.end;
           currentWord.index = word.index;
+          currentWord.now = "true";
         }
       }
     }
@@ -116,17 +121,27 @@ class Scripts extends React.Component {
     return currentWord;
   };
 
-  handleDoubleClick = event => {
+  handleDoubleClick = (event) => {
     // nativeEvent --> React giving you the DOM event
     let element = event.nativeEvent.target;
     // find the parent in Word that contains span with time-code start attribute
-    while (!element.hasAttribute("data-start") && element.parentElement) {
+    // while (!element.hasAttribute("data-start") && element.parentElement) {
+    //   element = element.parentElement;
+    // }
+
+    // if (element.hasAttribute("data-start")) {
+    //   const t = parseFloat(element.getAttribute("data-start"));
+    //   this.props.jumpVideo(t, true);
+    // }
+
+    while (!element.hasAttribute("data-index") && element.parentElement) {
       element = element.parentElement;
     }
 
-    if (element.hasAttribute("data-start")) {
-      const t = parseFloat(element.getAttribute("data-start"));
-      this.props.jumpVideo(t, true);
+    if (element.hasAttribute("data-index")) {
+      const index = parseInt(element.getAttribute("data-index"));
+      this.props.updateSnippetIndex(index);
+      this.props.updateCurrSpan(element);
     }
   };
 

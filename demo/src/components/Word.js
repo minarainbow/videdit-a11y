@@ -52,6 +52,7 @@ class Word extends Component {
         data-confidence={this.generateConfidence(data)}
         data-prev-times={this.generatePreviousTimes(data)}
         data-entity-key={data.key}
+        now={"false"}
         className="Word"
       >
         {this.props.children}
