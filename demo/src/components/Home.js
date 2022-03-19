@@ -384,7 +384,7 @@ class Home extends Component {
           </Container>
           <Container className="right-page">
             <Container className="video-container">
-              <ReactPlayer
+              {/* <ReactPlayer
                 ref={this.ref}
                 playing={this.state.playing}
                 playbackRate={playbackRate}
@@ -400,6 +400,23 @@ class Home extends Component {
                 onDuration={this.handleDuration}
                 onSeek={this._onSeek}
                 onEnded={this._onEnded}
+                progressInterval={100}
+              ></ReactPlayer> */}
+              <ReactPlayer
+                ref={this.ref}
+                playing={this.state.playing}
+                playbackRate={playbackRate}
+                id="video"
+                width="100%"
+                height="100%"
+                controls
+                url={`https://www.youtube.com/watch?v=${videoID}`}
+                onPause={this._onPause}
+                onPlay={this._onPlay}
+                onReady={this._onReady}
+                onProgress={this.handleProgress}
+                onDuration={this.handleDuration}
+                onSeek={this._onSeek}
                 progressInterval={100}
               ></ReactPlayer>
             </Container>
