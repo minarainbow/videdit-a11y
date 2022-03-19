@@ -64,8 +64,6 @@ class Home extends Component {
     this.onPause = this._onPause.bind(this);
     this.handleKey = this.handleKey.bind(this);
     this.inspectFrame = this.inspectFrame.bind(this);
-    this.player = React.createRef();
-    this.onEnded = this._onEnded.bind(this);
   }
 
   componentDidMount() {
@@ -387,7 +385,7 @@ class Home extends Component {
           <Container className="right-page">
             <Container className="video-container">
               <ReactPlayer
-                ref={this.player}
+                ref={this.ref}
                 playing={this.state.playing}
                 playbackRate={playbackRate}
                 id="video"

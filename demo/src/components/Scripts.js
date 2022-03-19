@@ -116,6 +116,20 @@ class Scripts extends React.Component {
     return currentWord;
   };
 
+  handleDoubleClick = event => {
+    // nativeEvent --> React giving you the DOM event
+    let element = event.nativeEvent.target;
+    // find the parent in Word that contains span with time-code start attribute
+    while (!element.hasAttribute("data-start") && element.parentElement) {
+      element = element.parentElement;
+    }
+
+    if (element.hasAttribute("data-start")) {
+      const t = parseFloat(element.getAttribute("data-start"));
+      this.props.jumpVideo(t, true);
+    }
+  };
+
   // Helper function to re-render this component
   // used to re-render WrapperBlock on timecode offset change
   // or when show / hide preferences for speaker labels and timecodes change
