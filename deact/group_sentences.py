@@ -5,7 +5,7 @@ videoID = 'ZaQtx54N6iU'
 def group_sentences(json):
     # initialize variables
     json_list = []
-    sent = ""
+    sent = "{"
     sent_start = 0
     sent_end = 0
     sent_index = 0
@@ -17,10 +17,10 @@ def group_sentences(json):
     for word in json["words"]:
         # splitter 
         if re.search(punct_pattern, word["word"]):
-            sent = sent + word["word"]
+            sent = sent + word["word"] + "}"
             sent_end = word["end"]
             json_list.append(
-                {"index": sent_index, "start": sent_start, "end": sent_end, "sent": sent}
+                {"index": sent_index, "start": sent_start, "end": sent_end, "sent": sent, "type": "narration"}
             )
             # reset
             grouped_words = []
@@ -29,10 +29,10 @@ def group_sentences(json):
 
         # long phrase followed by comma
         elif "," in word["word"] and len(grouped_words) >= 3:
-            sent = sent + word["word"]
+            sent = sent + word["word"] + "}"
             sent_end = word["end"]
             json_list.append(
-                {"index": sent_index, "start": sent_start, "end": sent_end, "sent": sent}
+                {"index": sent_index, "start": sent_start, "end": sent_end, "sent": sent, "type": "narration"}
             )
             # reset
             grouped_words = []
@@ -42,13 +42,15 @@ def group_sentences(json):
         # long pause: push piled words and new pause separately
         elif word["word"] == "{p}" and word["end"]-word["start"] >= 3:
             if not new_sent:
+                sent = sent + "}"
                 json_list.append(
-                    {"index": sent_index, "start": sent_start, "end": sent_end, "sent": sent}
+                    {"index": sent_index, "start": sent_start, "end": sent_end, "sent": sent, "type": "narration"}
                 )
 
             sent_index = sent_index+1
+            sent = "{P: " + str(round(word["end"] - word["start"], 2)) + "sec}"
             json_list.append(
-                {"index": sent_index, "start": word["start"], "end": word["end"], "sent": word["word"]}
+                {"index": sent_index, "start": word["start"], "end": word["end"], "sent": sent, "type": "pause"}
             )
             # reset
             grouped_words = []
@@ -61,9 +63,9 @@ def group_sentences(json):
             sent_index = sent_index+1
             grouped_words.append(word["word"])
             if word["word"] == "{p}":
-                pass
+                sent = "{"
             else:
-                sent = sent + word["word"].replace("{p}", "") + " "
+                sent = "{" + word["word"].replace("{p}", "") + " "
             new_sent = False
 
         else:
