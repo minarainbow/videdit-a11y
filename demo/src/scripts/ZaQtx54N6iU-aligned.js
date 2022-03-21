@@ -3,33 +3,171 @@ export const scriptData = [
     words: [
       {
         start: 0.01247,
-        end: 2.36712,
-        word: "{p} Hello, everybody",
-        alignedWord: "sp",
-        index: 0,
+        end: 1.49909,
+        word: "{p}",
+        alignedWord: "sp"
       },
       {
-        start: 2.36712,
-        end: 5.36032,
-        word: "{p} So, as some of you know,",
-        alignedWord: "sp",
-        index: 1,
+          end: 1.79841,
+          alignedWord: "HELLO",
+          start: 1.49909,
+          line_idx: 0,
+          speaker: "Narrator",
+          word: "Hello,"
       },
       {
-        end: 6.71723,
-        alignedWord: "MY",
-        start: 5.36032,
-        line_idx: 0,
-        speaker: "Narrator",
-        word: "my name is Ashley",
-        index: 2,
+          end: 2.36712,
+          alignedWord: "EVERYBODY",
+          start: 1.79841,
+          line_idx: 0,
+          speaker: "Narrator",
+          word: "everybody."
       },
       {
-        start: 6.71723,
-        end: 7.88458,
-        word: "{p} if you're new to the channel",
-        alignedWord: "sp",
-        index: 3,
+          start: 2.36712,
+          end: 2.63651,
+          word: "{p}",
+          alignedWord: "sp"
+      },
+      {
+          end: 3.06553,
+          alignedWord: "SO",
+          start: 2.63651,
+          line_idx: 0,
+          speaker: "Narrator",
+          word: "So,"
+      },
+      {
+          start: 3.06553,
+          end: 3.97347,
+          word: "{p}",
+          alignedWord: "sp"
+      },
+      {
+          end: 4.54218,
+          alignedWord: "AS",
+          start: 3.97347,
+          line_idx: 0,
+          speaker: "Narrator",
+          word: "as"
+      },
+      {
+          end: 4.73175,
+          alignedWord: "SOME",
+          start: 4.54218,
+          line_idx: 0,
+          speaker: "Narrator",
+          word: "some"
+      },
+      {
+          end: 4.82154,
+          alignedWord: "OF",
+          start: 4.73175,
+          line_idx: 0,
+          speaker: "Narrator",
+          word: "of"
+      },
+      {
+          end: 4.95125,
+          alignedWord: "YOU",
+          start: 4.82154,
+          line_idx: 0,
+          speaker: "Narrator",
+          word: "you"
+      },
+      {
+          end: 5.36032,
+          alignedWord: "KNOW",
+          start: 4.95125,
+          line_idx: 0,
+          speaker: "Narrator",
+          word: "know,"
+      },
+      {
+          end: 5.59977,
+          alignedWord: "MY",
+          start: 5.36032,
+          line_idx: 0,
+          speaker: "Narrator",
+          word: "my"
+      },
+      {
+          end: 5.939,
+          alignedWord: "NAME",
+          start: 5.59977,
+          line_idx: 0,
+          speaker: "Narrator",
+          word: "name"
+      },
+      {
+          end: 6.05873,
+          alignedWord: "IS",
+          start: 5.939,
+          line_idx: 0,
+          speaker: "Narrator",
+          word: "is"
+      },
+      {
+          end: 6.71723,
+          alignedWord: "ASHLEY",
+          start: 6.05873,
+          line_idx: 0,
+          speaker: "Narrator",
+          word: "Ashley,"
+      },
+      {
+          start: 6.71723,
+          end: 6.76712,
+          word: "{p}",
+          alignedWord: "sp"
+      },
+      {
+          end: 6.91678,
+          alignedWord: "IF",
+          start: 6.76712,
+          line_idx: 0,
+          speaker: "Narrator",
+          word: "if"
+      },
+      {
+          end: 7.06644,
+          alignedWord: "YOU'RE",
+          start: 6.91678,
+          line_idx: 0,
+          speaker: "Narrator",
+          word: "you're"
+      },
+      {
+          end: 7.27596,
+          alignedWord: "NEW",
+          start: 7.06644,
+          line_idx: 0,
+          speaker: "Narrator",
+          word: "new"
+      },
+      {
+          end: 7.38571,
+          alignedWord: "TO",
+          start: 7.27596,
+          line_idx: 0,
+          speaker: "Narrator",
+          word: "to"
+      },
+      {
+          end: 7.50544,
+          alignedWord: "THE",
+          start: 7.38571,
+          line_idx: 0,
+          speaker: "Narrator",
+          word: "the"
+      },
+      {
+          end: 7.88458,
+          alignedWord: "CHANNEL",
+          start: 7.50544,
+          line_idx: 0,
+          speaker: "Narrator",
+          word: "channel,"
       },
       {
         end: 8.22381,

@@ -15,23 +15,26 @@ const groupWordsInParagraphs = (scriptData) => {
     // `start` `end` to `start` `end`
     // for word object
     const tmpWord = {
-      text: word.word,
+      text: word.sent,
       start: word.start,
       end: word.end,
       index: word.index,
     };
     //  if word contains punctuation
-    if (/[.?!]/.test(word.word)) {
-      paragraph.words.push(tmpWord);
-      paragraph.text.push(word.word);
-      results.push(paragraph);
-      // reset paragraph
-      paragraph = { words: [], text: [] };
-    } else {
-      paragraph.words.push(tmpWord);
-      paragraph.text.push(word.word);
-    }
+    // if (/[.?!]/.test(word.sent)) {
+    //   paragraph.words.push(tmpWord);
+    //   paragraph.text.push(word.sent);
+    //   results.push(paragraph);
+    //   // reset paragraph
+    //   paragraph = { words: [], text: [] };
+    // } else {
+    //   paragraph.words.push(tmpWord);
+    //   paragraph.text.push(word.sent);
+    // }
+    paragraph.words.push(tmpWord);
+    paragraph.text.push(word.sent);
   });
+  results.push(paragraph);
 
   return results;
 };

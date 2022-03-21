@@ -19,7 +19,6 @@ import KeyboardEventHandler from "react-keyboard-event-handler";
 import Speech from "speak-tts";
 import SearchBar from "./SearchBar";
 import Scripts from "./Scripts";
-import scriptData from "./../scripts/ZaQtx54N6iU-aligned.js";
 
 function formatTime(time) {
   time = Math.round(time);
@@ -52,7 +51,6 @@ class Home extends Component {
       listening: false,
       transcript: "",
       time: "00:00",
-      transcriptData: scriptData,
       playedSeconds: 0,
       snippetIndex: 0,
       currSpan: "",
@@ -89,7 +87,6 @@ class Home extends Component {
         },
       },
     });
-    this.setState({ speech: speech, transcriptData: scriptData });
     this.handleSubmit("ZaQtx54N6iU");
   }
 
@@ -119,8 +116,18 @@ class Home extends Component {
     this.handleDrawerClose();
   }
 
+  playVideo = () => {
+    console.log("play video", this.state.playing)
+    if (!this.state.playing){
+      this.onClickPlay()
+    }
+    else{
+      this.onClickPause()
+    }
+  }
+
   jumpVideo(time, abs = false) {
-    console.log(this.player);
+    console.log(time);
     if (abs) {
       this.player.seekTo(time);
     } else {
@@ -406,6 +413,7 @@ class Home extends Component {
           <Container className="script-page">
             <SearchBar></SearchBar>
             <Scripts
+              playVideo={this.playVideo}
               jumpVideo={this.jumpVideo}
               player={this.player}
               videoTime={this.state.playedSeconds}
@@ -416,7 +424,7 @@ class Home extends Component {
           </Container>
           <Container className="right-page">
             <Container className="video-container">
-              <ReactPlayer
+              {/* <ReactPlayer
                 ref={this.ref}
                 playing={this.state.playing}
                 playbackRate={playbackRate}
@@ -432,6 +440,23 @@ class Home extends Component {
                 onDuration={this.handleDuration}
                 onSeek={this._onSeek}
                 onEnded={this._onEnded}
+                progressInterval={100}
+              ></ReactPlayer> */}
+              <ReactPlayer
+                ref={this.ref}
+                playing={this.state.playing}
+                playbackRate={playbackRate}
+                id="video"
+                width="100%"
+                height="100%"
+                controls
+                url={`https://www.youtube.com/watch?v=${videoID}`}
+                onPause={this._onPause}
+                onPlay={this._onPlay}
+                onReady={this._onReady}
+                onProgress={this.handleProgress}
+                onDuration={this.handleDuration}
+                onSeek={this._onSeek}
                 progressInterval={100}
               ></ReactPlayer>
             </Container>
