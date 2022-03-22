@@ -19,6 +19,8 @@ import KeyboardEventHandler from "react-keyboard-event-handler";
 import Speech from "speak-tts";
 import SearchBar from "./SearchBar";
 import Scripts from "./Scripts";
+import scriptData from "./../scripts/ZaQtx54N6iU-aligned-sents.jsx";
+import { convertToRaw } from "draft-js";
 
 function formatTime(time) {
   time = Math.round(time);
@@ -55,6 +57,9 @@ class Home extends Component {
       snippetIndex: 0,
       currSpan: "",
       started: false,
+      currWordStart: 0,
+      currWordEnd: 0,
+      isJumping: false,
     };
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
@@ -66,6 +71,7 @@ class Home extends Component {
     this.onPause = this._onPause.bind(this);
     this.handleKey = this.handleKey.bind(this);
     this.inspectFrame = this.inspectFrame.bind(this);
+    this.updateCurrWordEnd = this.updateCurrWordEnd.bind(this);
   }
 
   componentDidMount() {
@@ -93,6 +99,96 @@ class Home extends Component {
   handleProgress = (state) => {
     // We only want to update time slider if we are not currently seeking
     this.setState(state);
+    const currTime = this.state.playedSeconds;
+    if (this.state.currSpan && !this.state.isJumping) {
+      // console.log(this.state.currWordEnd);
+      // console.log(currTime);
+      if (
+        this.state.currWordEnd - 0.2 <= currTime &&
+        currTime <= this.state.currWordEnd
+      ) {
+        console.log("here");
+        console.log(this.state.currWordEnd);
+        console.log(currTime);
+        this.setState({ isJumping: true });
+        // console.log(this.state.currSpan.nextSibling.nextSibling);
+        var nextSpan;
+        if (this.state.currSpan.nextSibling.hasAttribute("data-satrt")) {
+          nextSpan = this.state.currSpan.nextSibling;
+        } else {
+          nextSpan = this.state.currSpan.nextSibling.nextSibling;
+        }
+        const nextStart = parseFloat(nextSpan.getAttribute("data-start"));
+        const nextEnd = parseFloat(nextSpan.getAttribute("data-end"));
+        console.log("next: ", nextStart);
+        this.setState(
+          {
+            currSpan: nextSpan,
+            currWordStart: nextStart,
+            currWordEnd: nextEnd,
+            playing: true,
+            isJumping: false,
+          },
+          () => this.jumpVideo(nextStart, true)
+        );
+      } else if (
+        this.state.currWordEnd < currTime ||
+        currTime < this.state.currWordStart
+      ) {
+        this.setState({ isJumping: true });
+        const children = document.querySelectorAll("span.Word");
+        // console.log(children);
+        var i = 0;
+        const theFirstWordElement = document.querySelector(
+          `span.Word[data-start="0"]`
+        );
+        if (
+          currTime < parseFloat(theFirstWordElement.getAttribute("data-end"))
+        ) {
+          this.setState({
+            currSpan: theFirstWordElement,
+            currWordEnd: parseFloat(
+              theFirstWordElement.getAttribute("data-end")
+            ),
+            isJumping: false,
+          });
+        } else {
+          for (i = 0; i < children.length - 1; i++) {
+            if (
+              parseFloat(children[i].getAttribute("data-start")) < currTime &&
+              currTime < parseFloat(children[i + 1].getAttribute("data-start"))
+            ) {
+              console.log("found in the middle");
+              const newEnd = parseFloat(children[i].getAttribute("data-end"));
+              console.log(newEnd);
+              this.setState({
+                currSpan: children[i],
+                currWordEnd: newEnd,
+                isJumping: false,
+              });
+              break;
+            }
+          }
+          if (i === children.length - 1) {
+            console.log("the end?");
+            const newEnd = parseFloat(children[i].getAttribute("data-end"));
+            this.setState({
+              currSpan: children[i],
+              currWordStart: parseFloat(children[i].getAttribute("data-start")),
+              currWordEnd: newEnd,
+            });
+          }
+        }
+      }
+    }
+  };
+
+  updateIsJumping = () => {
+    this.setState({ isJumping: false });
+  };
+
+  updateCurrWordEnd = (time) => {
+    this.setState({ currWordEnd: time });
   };
 
   handleDuration = (duration) => {
@@ -117,23 +213,23 @@ class Home extends Component {
   }
 
   playVideo = () => {
-    console.log("play video", this.state.playing)
-    if (!this.state.playing){
-      this.onClickPlay()
+    console.log("play video", this.state.playing);
+    if (!this.state.playing) {
+      this.onClickPlay();
+    } else {
+      this.onClickPause();
     }
-    else{
-      this.onClickPause()
-    }
-  }
+  };
 
   jumpVideo(time, abs = false) {
+    console.log("jump");
     console.log(time);
     if (abs) {
       this.player.seekTo(time);
     } else {
       this.player.seekTo(this.state.playedSeconds + time);
     }
-    // this.setState({playing: tru  e});
+    // this.setState({playing: true});
   }
 
   updateSnippetIndex(index) {
@@ -153,11 +249,49 @@ class Home extends Component {
 
   onClickPlay = () => {
     this.setState({ playing: true });
-    if (!this.state.started) {
-      const currentWordElement = document.querySelector(
-        `span.Word[data-index="0"]`
-      );
-      this.setState({ started: true, currSpan: currentWordElement });
+    // if (!this.state.started) {
+    //   const currentWordElement = document.querySelector(
+    //     `span.Word[data-start="0"]`
+    //   );
+    //   const startTime = parseFloat(
+    //     currentWordElement.getAttribute("data-start")
+    //   );
+    //   const endTime = parseFloat(currentWordElement.getAttribute("data-end"));
+    //   this.setState({
+    //     started: true,
+    //     currSpan: currentWordElement,
+    //     currWordStart: startTime,
+    //     currWordEnd: endTime,
+    //   });
+    // }
+
+    const children = document.querySelectorAll("span.Word");
+    var i = 0;
+    for (i = 0; i < children.length - 1; i++) {
+      if (
+        parseFloat(children[i].getAttribute("data-start")) <
+          this.state.playedSeconds &&
+        this.state.playedSeconds <
+          parseFloat(children[i + 1].getAttribute("data-start"))
+      ) {
+        console.log("set up - in the middle");
+        const newEnd = parseFloat(children[i].getAttribute("data-end"));
+        this.setState({
+          currSpan: children[i],
+          currWordStart: parseFloat(children[i].getAttribute("data-start")),
+          currWordEnd: newEnd,
+        });
+        break;
+      }
+    }
+    if (i === children.length - 1) {
+      console.log("set up - at the end");
+      const newEnd = parseFloat(children[i].getAttribute("data-end"));
+      this.setState({
+        currSpan: children[i],
+        currWordStart: parseFloat(children[i].getAttribute("data-start")),
+        currWordEnd: newEnd,
+      });
     }
   };
 
@@ -419,6 +553,7 @@ class Home extends Component {
               videoTime={this.state.playedSeconds}
               updateSnippetIndex={this.updateSnippetIndex}
               updateCurrSpan={this.updateCurrSpan}
+              updateCurrWordEnd={this.updateCurrWordEnd}
             ></Scripts>
             {/* <ScriptEditor transcriptData={this.state.transcriptData}></ScriptEditor> */}
           </Container>

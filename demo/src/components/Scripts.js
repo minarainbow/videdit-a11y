@@ -79,33 +79,29 @@ class Scripts extends React.Component {
   /**
    * Listen for draftJs custom key bindings
    */
-   customKeyBindingFn = e => {
+  customKeyBindingFn = (e) => {
     const enterKey = 13;
     const spaceKey = 32;
     const leftArrow = 37;
-    const rightArrow =39;
+    const rightArrow = 39;
 
     if (e.keyCode === spaceKey) {
-      console.log('customKeyBindingFn');
+      console.log("customKeyBindingFn");
 
       return "play/pause";
     }
     if (e.keyCode === rightArrow) {
-      console.log('customKeyBindingFn');
+      console.log("customKeyBindingFn");
 
       return "next-sentence";
     }
     if (e.keyCode === leftArrow) {
-      console.log('customKeyBindingFn');
+      console.log("customKeyBindingFn");
 
       return "prev-sentence";
     }
     // if alt key is pressed in combination with these other keys
-    if (
-      e.altKey &&
-      (e.keyCode === spaceKey ||
-        e.keyCode === spaceKey )
-    ) {
+    if (e.altKey && (e.keyCode === spaceKey || e.keyCode === spaceKey)) {
       e.preventDefault();
 
       return "keyboard-shortcuts";
@@ -114,23 +110,18 @@ class Scripts extends React.Component {
     return getDefaultKeyBinding(e);
   };
 
-  handleKeyCommand = command => {
-    if (command === 'play/pause') {
+  handleKeyCommand = (command) => {
+    if (command === "play/pause") {
       this.props.playVideo();
-    }
-
-    else if (command === 'next-sentence') {
+    } else if (command === "next-sentence") {
       const currentSentenceEnd = this.getCurrentWord().end;
       this.props.jumpVideo(currentSentenceEnd, true);
-    }
-
-    else if (command === 'prev-sentence') {
+    } else if (command === "prev-sentence") {
       const currentSentenceStart = this.getCurrentWord().start;
-      if (this.props.videoTime < currentSentenceStart+ 2){
+      if (this.props.videoTime < currentSentenceStart + 2) {
         const prevSentenceStart = this.getCurrentWord().prevStart;
         this.props.jumpVideo(prevSentenceStart, true);
-      }
-      else{
+      } else {
         this.props.jumpVideo(currentSentenceStart, true);
       }
     }
@@ -138,9 +129,8 @@ class Scripts extends React.Component {
     if (command === "keyboard-shortcuts") {
       return "handled";
     }
-    return 'not-handled';
+    return "not-handled";
   };
-
 
   // change to getcurrentsentence
   getCurrentWord = () => {
@@ -160,35 +150,30 @@ class Scripts extends React.Component {
         const entity = entityMap[entityKey];
         const word = entity.data;
 
-        if (
-          word.start <= this.props.videoTime
-        ) {
-        
-          if (
-            word.end >= this.props.videoTime
-          ) {
+        if (word.start <= this.props.videoTime) {
+          if (word.end >= this.props.videoTime) {
             currentWord.start = word.start;
             currentWord.end = word.end;
             currentWord.index = word.index;
             currentWord.now = "true";
-          }
-          else {
+          } else {
             currentWord.prevStart = word.start;
           }
-          }
+        }
       }
     }
     if (currentWord.start !== "NA") {
+      const currentWordElement = document.querySelector(
+        `span.Word[data-start="${currentWord.start}"]`
+      );
       if (this.props.isScrollIntoViewOn) {
-        const currentWordElement = document.querySelector(
-          `span.Word[data-start="${currentWord.start}"]`
-        );
         currentWordElement.scrollIntoView({
           block: "nearest",
           inline: "center",
         });
       }
     }
+
     return currentWord;
   };
 
@@ -245,9 +230,9 @@ class Scripts extends React.Component {
           {`span.Word[data-confidence="low"] { border-bottom: ${correctionBorder} }`}
           {`span.Word[data-index="${currentWord.index}"]`}
         </style>
-        <Editor 
-          editorState={this.state.editorState} 
-          onChange={this.onChange} 
+        <Editor
+          editorState={this.state.editorState}
+          onChange={this.onChange}
           handleKeyCommand={this.handleKeyCommand}
           keyBindingFn={this.customKeyBindingFn}
         />
