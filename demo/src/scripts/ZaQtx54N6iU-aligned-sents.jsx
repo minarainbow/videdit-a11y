@@ -645,7 +645,7 @@ export const scriptData = {
       "type": "narration"
     },
     {
-      "end": 309.63878,
+      "end": 324.69456,
       "index": 92,
       "sent": "{it's you know, normal as everything else and in my pantry }",
       "start": 309.63878,
@@ -904,771 +904,750 @@ export const scriptData = {
       "type": "narration"
     },
     {
-      "end": 455.7068,
+      "end": 477,
       "index": 129,
       "sent": "{Okay, so I'm just gonna grab the things that I need and bring it back I already have the ground beef in here thought out so }",
       "start": 455.7068,
       "type": "narration"
     },
     {
-      "end": 467.79932,
+      "end": 477,
       "index": 130,
-      "sent": "{P: 5.67sec}",
+      "sent": "{P: 14.87sec}",
       "start": 462.1322,
       "type": "pause"
     },
     {
-      "end": 455.7068,
+      "end": 480.2,
       "index": 131,
-      "sent": "{onion, }",
-      "start": 467.79932,
+      "sent": "{Onion, bread, crumb, soup.}",
+      "start": 477,
       "type": "narration"
     },
     {
-      "end": 475.36213,
+      "end": 482.1,
       "index": 132,
-      "sent": "{P: 7.34sec}",
-      "start": 468.01882,
-      "type": "pause"
+      "sent": "{Mix and I just got those out of the pantry.}",
+      "start": 480.2,
+      "type": "narration"
     },
     {
-      "end": 455.7068,
+      "end": 482.5,
+      "index": 132,
+      "sent": "{Again.}",
+      "start": 482.2,
+      "type": "narration"
+    },
+    {
+      "end": 483.5,
       "index": 133,
-      "sent": "{bread crumbs, onion soup mix and I just got those out of the countries }",
-      "start": 475.36213,
+      "sent": "{I know where everything is.}",
+      "start": 482.5,
       "type": "narration"
     },
     {
-      "end": 493.38118,
+      "end": 583.8,
       "index": 134,
-      "sent": "{P: 10.11sec}",
-      "start": 483.27415,
+      "sent": "{P: 100.3sec}",
+      "start": 483.5,
       "type": "pause"
     },
     {
-      "end": 455.7068,
+      "end": 585,
       "index": 135,
-      "sent": "{again }",
-      "start": 493.38118,
+      "sent": "{Put the egg in here.}",
+      "start": 583.8,
       "type": "narration"
     },
     {
-      "end": 500.74444,
+      "end": 614.9,
       "index": 136,
-      "sent": "{P: 6.96sec}",
-      "start": 493.78027,
+      "sent": "{P: 29.9sec}",
+      "start": 585,
       "type": "pause"
     },
     {
-      "end": 455.7068,
+      "end": 620.4,
       "index": 137,
-      "sent": "{I }",
-      "start": 500.74444,
+      "sent": "{Okay, so Cut up these onions here.}",
+      "start": 614.9,
       "type": "narration"
     },
     {
-      "end": 513.79478,
+      "end": 621.6,
       "index": 138,
-      "sent": "{P: 12.77sec}",
-      "start": 501.02381,
-      "type": "pause"
+      "sent": "{Cut it up.}",
+      "start": 621.2,
+      "type": "narration"
     },
     {
-      "end": 455.7068,
+      "end": 621.9,
+      "index": 138,
+      "sent": "{Small.}",
+      "start": 621.6,
+      "type": "narration"
+    },
+    {
+      "end": 623.2,
       "index": 139,
-      "sent": "{know everything }",
-      "start": 513.79478,
+      "sent": "{Some kids don't know what's in there.}",
+      "start": 621.9,
       "type": "narration"
     },
     {
-      "end": 535.78481,
+      "end": 629,
       "index": 140,
-      "sent": "{P: 18.74sec}",
-      "start": 517.04739,
-      "type": "pause"
-    },
-    {
-      "end": 536.51315,
-      "index": 140,
-      "sent": "is.}",
-      "start": 513.79478,
+      "sent": "{So hopefully they're not listening to me film.}",
+      "start": 626.6,
       "type": "narration"
     },
     {
-      "end": 536.51315,
+      "end": 631.8,
       "index": 141,
-      "sent": "{NASA }",
-      "start": 536.51315,
+      "sent": "{What?}",
+      "start": 629,
       "type": "narration"
     },
     {
-      "end": 544.37528,
+      "end": 634.1,
       "index": 142,
-      "sent": "{P: 4.93sec}",
-      "start": 539.44649,
-      "type": "pause"
+      "sent": "{Did you hear me?}",
+      "start": 631.5771,
+      "type": "narration"
     },
     {
-      "end": 536.51315,
+      "end": 635.9,
       "index": 143,
-      "sent": "{was rolling }",
-      "start": 544.37528,
+      "sent": "{My son hurt me.}",
+      "start": 635.1,
       "type": "narration"
     },
     {
-      "end": 553.75397,
+      "end": 640.9,
       "index": 144,
-      "sent": "{P: 7.85sec}",
-      "start": 545.90181,
-      "type": "pause"
+      "sent": "{So extra small, okay?}",
+      "start": 635.9,
+      "type": "narration"
     },
     {
-      "end": 536.51315,
+      "end": 659.1,
       "index": 145,
-      "sent": "{in }",
-      "start": 553.75397,
-      "type": "narration"
-    },
-    {
-      "end": 567.9517,
-      "index": 146,
-      "sent": "{P: 13.51sec}",
-      "start": 554.4424,
-      "type": "pause"
-    },
-    {
-      "end": 536.51315,
-      "index": 147,
-      "sent": "{here Okay }",
-      "start": 567.9517,
-      "type": "narration"
-    },
-    {
-      "end": 582.16939,
-      "index": 148,
-      "sent": "{P: 10.2sec}",
-      "start": 571.97256,
-      "type": "pause"
-    },
-    {
-      "end": 536.51315,
-      "index": 149,
-      "sent": "{so this onion here cut }",
-      "start": 582.16939,
-      "type": "narration"
-    },
-    {
-      "end": 588.40522,
-      "index": 150,
-      "sent": "{P: 3.16sec}",
-      "start": 585.2424,
-      "type": "pause"
-    },
-    {
-      "end": 536.51315,
-      "index": 151,
-      "sent": "{it }",
-      "start": 588.40522,
-      "type": "narration"
-    },
-    {
-      "end": 591.60794,
-      "index": 152,
-      "sent": "{P: 3.1sec}",
-      "start": 588.50499,
-      "type": "pause"
-    },
-    {
-      "end": 536.51315,
-      "index": 153,
-      "sent": "{up small so }",
-      "start": 591.60794,
-      "type": "narration"
-    },
-    {
-      "end": 607.20249,
-      "index": 154,
-      "sent": "{P: 10.86sec}",
-      "start": 596.34717,
-      "type": "pause"
-    },
-    {
-      "end": 536.51315,
-      "index": 155,
-      "sent": "{the }",
-      "start": 607.20249,
-      "type": "narration"
-    },
-    {
-      "end": 614.66553,
-      "index": 156,
-      "sent": "{P: 7.07sec}",
-      "start": 607.59161,
-      "type": "pause"
-    },
-    {
-      "end": 536.51315,
-      "index": 157,
-      "sent": "{kids don't know it's at night so hopefully }",
-      "start": 614.66553,
-      "type": "narration"
-    },
-    {
-      "end": 627.24694,
-      "index": 158,
-      "sent": "{P: 4.12sec}",
-      "start": 623.1263,
-      "type": "pause"
-    },
-    {
-      "end": 536.51315,
-      "index": 159,
-      "sent": "{they're not listening to me feel what did you hear me my son hurt me okay }",
-      "start": 627.24694,
-      "type": "narration"
-    },
-    {
-      "end": 647.64059,
-      "index": 160,
-      "sent": "{P: 6.93sec}",
+      "sent": "{P: 18.39sec}",
       "start": 640.70635,
       "type": "pause"
     },
     {
-      "end": 536.51315,
+      "end": 662.5,
+      "index": 146,
+      "sent": "{Make sure of it.}",
+      "start": 659.1,
+      "type": "narration"
+    },
+    {
+      "end": 668.9,
+      "index": 147,
+      "sent": "{P: 6.4sec}",
+      "start": 662.5,
+      "type": "pause"
+    },
+    {
+      "end": 670.2,
+      "index": 148,
+      "sent": "{Piece over here.}",
+      "start": 668.9,
+      "type": "narration"
+    },
+    {
+      "end": 675,
+      "index": 149,
+      "sent": "{So I think a lot of people think that you know,}",
+      "start": 670.2,
+      "type": "narration"
+    },
+    {
+      "end": 678.8,
+      "index": 150,
+      "sent": "{just because we can't see that we don't you know,}",
+      "start": 675,
+      "type": "narration"
+    },
+    {
+      "end": 698.1,
+      "index": 151,
+      "sent": "{like use knives or anything like that and I don't think that that's necessarily true because we have to eat and so having the skills to cook and do all those things are just you know life skills that people need to have.}",
+      "start": 678.8,
+      "type": "narration"
+    },
+    {
+      "end": 700.5,
+      "index": 152,
+      "sent": "{And it can be done.}",
+      "start": 698.21565,
+      "type": "narration"
+    },
+    {
+      "end": 706.3,
+      "index": 153,
+      "sent": "{I mean, obviously, if you use common sense to keep your fingers out of the way and I mean I've cut myself but I think,}",
+      "start": 700.5,
+      "type": "narration"
+    },
+    {
+      "end": 707.4,
+      "index": 154,
+      "sent": "{you know, I've cited friends,}",
+      "start": 706.3,
+      "type": "narration"
+    },
+    {
+      "end": 709,
+      "index": 155,
+      "sent": "{who have have caught themselves.}",
+      "start": 707.4,
+      "type": "narration"
+    },
+    {
+      "end": 710.6,
+      "index": 156,
+      "sent": "{My husband has cut himself.}",
+      "start": 709,
+      "type": "narration"
+    },
+    {
+      "end": 713.3,
+      "index": 157,
+      "sent": "{So his onions in this bowl here.}",
+      "start": 710.6,
+      "type": "narration"
+    },
+    {
+      "end": 717.1,
+      "index": 158,
+      "sent": "{Whoops, just drops on the floor.}",
+      "start": 713.12177,
+      "type": "narration"
+    },
+    {
+      "end": 720,
+      "index": 159,
+      "sent": "{We will clean up dog here.}",
+      "start": 718.5,
+      "type": "narration"
+    },
+    {
+      "end": 721.5,
+      "index": 160,
+      "sent": "{On my feet, our pet dog.}",
+      "start": 720,
+      "type": "narration"
+    },
+    {
+      "end": 724.3,
       "index": 161,
-      "sent": "{here picture }",
-      "start": 647.64059,
+      "sent": "{Is, she always sits right?}",
+      "start": 721.5,
       "type": "narration"
     },
     {
-      "end": 659.08458,
+      "end": 725.1,
       "index": 162,
-      "sent": "{P: 9.27sec}",
-      "start": 649.81565,
-      "type": "pause"
+      "sent": "{Beside me.}",
+      "start": 724.3,
+      "type": "narration"
     },
     {
-      "end": 536.51315,
+      "end": 726.8,
       "index": 163,
-      "sent": "{piece over here so I }",
-      "start": 659.08458,
+      "sent": "{She knows I drop things.}",
+      "start": 725.3,
       "type": "narration"
     },
     {
-      "end": 669.55079,
+      "end": 742.6,
       "index": 164,
-      "sent": "{P: 3.59sec}",
-      "start": 665.95896,
+      "sent": "{P: 15.8sec}",
+      "start": 726.8,
       "type": "pause"
     },
     {
-      "end": 536.51315,
+      "end": 743.2,
+      "index": 164,
+      "sent": "{Okay.}",
+      "start": 742.6,
+      "type": "narration"
+    },
+    {
+      "end": 749,
       "index": 165,
-      "sent": "{think a lot of people think that you know just because we can't see that we don't you know like use knives or anything like that and I don't think that that's necessarily true because we have to eat and so having the skills to cook and do all those things are just you know life skills that people need to have and it can be done I mean obviously if you use common sense keep your fingers on the leg and I mean I've cut myself but I think you know I've cited friends who have cut themselves my husband does cut himself so in this bowl here whoops and straps on the floor we will clean up dog here on my feet our pet dog is just she always sits right beside me she knows I drop }",
-      "start": 669.55079,
+      "sent": "{All this stuff.}",
+      "start": 741.54717,
       "type": "narration"
     },
     {
-      "end": 731.94898,
+      "end": 777.5,
       "index": 166,
-      "sent": "{P: 5.53sec}",
-      "start": 726.42154,
+      "sent": "{P: 27.87sec}",
+      "start": 749.6288,
       "type": "pause"
     },
     {
-      "end": 536.51315,
+      "end": 778.6,
       "index": 167,
-      "sent": "{things }",
-      "start": 731.94898,
+      "sent": "{I don't mind cooking.}",
+      "start": 777.5,
       "type": "narration"
     },
     {
-      "end": 740.64921,
+      "end": 779.2,
       "index": 168,
-      "sent": "{P: 7.35sec}",
-      "start": 733.29592,
-      "type": "pause"
+      "sent": "{I like it.}",
+      "start": 778.6,
+      "type": "narration"
     },
     {
-      "end": 536.51315,
+      "end": 785.5,
       "index": 169,
-      "sent": "{okay this }",
-      "start": 740.64921,
+      "sent": "{I, you know, I lots of times for Christmas and Easter and Thanksgiving and all those things.}",
+      "start": 779.2,
       "type": "narration"
     },
     {
-      "end": 747.85283,
+      "end": 790.1,
       "index": 170,
-      "sent": "{P: 4.76sec}",
-      "start": 743.09365,
-      "type": "pause"
+      "sent": "{I cook the meals and for,}",
+      "start": 785.7,
+      "type": "narration"
     },
     {
-      "end": 536.51315,
+      "end": 794.7,
       "index": 171,
-      "sent": "{stuff I don't }",
-      "start": 747.85283,
+      "sent": "{you know, the whole families who had both sides of the family and I enjoy it.}",
+      "start": 790.1,
       "type": "narration"
     },
     {
-      "end": 758.46871,
+      "end": 796.5,
       "index": 172,
-      "sent": "{P: 5.66sec}",
-      "start": 752.81156,
-      "type": "pause"
+      "sent": "{I think, you know,}",
+      "start": 794.7,
+      "type": "narration"
     },
     {
-      "end": 536.51315,
+      "end": 800.1,
       "index": 173,
-      "sent": "{mind }",
-      "start": 758.46871,
+      "sent": "{I like having people over and cooking for them and,}",
+      "start": 796.7,
       "type": "narration"
     },
     {
-      "end": 767.08912,
+      "end": 804.1,
       "index": 174,
-      "sent": "{P: 7.99sec}",
-      "start": 759.09728,
-      "type": "pause"
+      "sent": "{you know, hopefully face good,}",
+      "start": 801.3,
+      "type": "narration"
     },
     {
-      "end": 536.51315,
+      "end": 805.1,
       "index": 175,
-      "sent": "{cooking }",
-      "start": 767.08912,
-      "type": "narration"
-    },
-    {
-      "end": 770.95034,
-      "index": 176,
-      "sent": "{P: 3.52sec}",
-      "start": 767.42834,
-      "type": "pause"
-    },
-    {
-      "end": 536.51315,
-      "index": 177,
-      "sent": "{I }",
-      "start": 770.95034,
-      "type": "narration"
-    },
-    {
-      "end": 777.63515,
-      "index": 178,
-      "sent": "{P: 6.11sec}",
-      "start": 771.52902,
-      "type": "pause"
-    },
-    {
-      "end": 790.24649,
-      "index": 179,
-      "sent": "{like it I utilize it lots of times for Christmas and Easter and Thanksgiving and all those things I cook the meals and for you know,}",
-      "start": 777.63515,
-      "type": "narration"
-    },
-    {
-      "end": 796.32268,
-      "index": 180,
-      "sent": "{the whole family sometimes both sides of the family and I enjoy it I think you know,}",
-      "start": 790.24649,
-      "type": "narration"
-    },
-    {
-      "end": 799.67506,
-      "index": 181,
-      "sent": "{I like having people over cooking for them and you know,}",
-      "start": 796.32268,
+      "sent": "{but I enjoy it.}",
+      "start": 804.1,
       "type": "narration"
     },
     {
       "end": 812.4161,
-      "index": 182,
-      "sent": "{hopefully taste good but I enjoy it so I don't mind I don't mind doing it and I'm glad that I'm able to do it.}",
-      "start": 799.67506,
+      "index": 176,
+      "sent": "{So, I don't mind I don't mind doing it and I'm glad that I'm able to do it.}",
+      "start": 805.1,
       "type": "narration"
     },
     {
       "end": 829.37755,
-      "index": 183,
+      "index": 177,
       "sent": "{You know I wouldn't would not like if I had to rely on my husband to do all the cooking I don't think that that's fair to him and I don't I wouldn't like that I'm not that type of person.}",
       "start": 812.4161,
       "type": "narration"
     },
     {
-      "end": 829.37755,
-      "index": 184,
+      "end": 846.4,
+      "index": 178,
       "sent": "{I like to be independent and I want to do things that everybody else does and I don't think there's any reason why I shouldn't be able to }",
-      "start": 829.37755,
+      "start": 829.4,
       "type": "narration"
     },
     {
-      "end": 844.46327,
-      "index": 185,
-      "sent": "{P: 8.37sec}",
-      "start": 836.09229,
+      "end": 846.4,
+      "index": 179,
+      "sent": "{P: 10.2sec}",
+      "start": 836.2,
       "type": "pause"
     },
     {
-      "end": 850.34989,
-      "index": 186,
-      "sent": "{so you know how smell it makes sure that it smells the way that it's supposed to.}",
-      "start": 844.46327,
+      "end": 847.7,
+      "index": 180,
+      "sent": "{I'll smell it.}",
+      "start": 846.4,
       "type": "narration"
     },
     {
-      "end": 852.63469,
-      "index": 187,
+      "end": 850.7,
+      "index": 181,
+      "sent": "{Make sure that it smells the way that it's supposed to.}",
+      "start": 847.7,
+      "type": "narration"
+    },
+    {
+      "end": 852.4,
+      "index": 182,
       "sent": "{It's kind of how I go about it.}",
-      "start": 850.34989,
+      "start": 851.1,
       "type": "narration"
     },
     {
       "end": 854.66009,
-      "index": 188,
+      "index": 183,
       "sent": "{Okay.}",
       "start": 852.63469,
       "type": "narration"
     },
     {
       "end": 861.54444,
-      "index": 189,
+      "index": 184,
       "sent": "{Oh, I forgot to take my rings off.}",
       "start": 854.66009,
       "type": "narration"
     },
     {
       "end": 866.08413,
-      "index": 190,
+      "index": 185,
       "sent": "{P: 4.54sec}",
       "start": 861.54444,
       "type": "pause"
     },
     {
-      "end": 861.54444,
-      "index": 191,
+      "end": 871.74127,
+      "index": 186,
       "sent": "{Can bowling }",
       "start": 866.08413,
       "type": "narration"
     },
     {
       "end": 871.74127,
-      "index": 192,
+      "index": 187,
       "sent": "{P: 4.13sec}",
       "start": 867.61066,
       "type": "pause"
     },
     {
       "end": 876.59025,
-      "index": 193,
+      "index": 188,
       "sent": "{make many open little ones because it cooks faster.}",
       "start": 871.74127,
       "type": "narration"
     },
     {
-      "end": 880.03243,
-      "index": 194,
-      "sent": "{P: 3.44sec}",
+      "end": 880,
+      "index": 189,
+      "sent": "{P: 3.41sec}",
       "start": 876.59025,
       "type": "pause"
     },
     {
-      "end": 876.59025,
-      "index": 195,
-      "sent": "{One }",
-      "start": 880.03243,
+      "end": 881.2,
+      "index": 190,
+      "sent": "{Little bit too much.}",
+      "start": 880,
       "type": "narration"
     },
     {
       "end": 909.82472,
-      "index": 196,
-      "sent": "{P: 28.99sec}",
-      "start": 880.83061,
+      "index": 191,
+      "sent": "{P: 28.62sec}",
+      "start": 881.2,
       "type": "pause"
     },
     {
       "end": 911.07188,
-      "index": 197,
+      "index": 192,
       "sent": "{more so is.}",
       "start": 909.82472,
       "type": "narration"
     },
     {
       "end": 918.64467,
-      "index": 198,
+      "index": 193,
       "sent": "{So these up here I'm just gonna grab some potatoes.}",
       "start": 911.07188,
       "type": "narration"
     },
     {
       "end": 930.50771,
-      "index": 199,
+      "index": 194,
       "sent": "{So after I've cleaned up my mess from dropping a bag of potatoes from the garden with dirt everywhere I'm just going to peel up my potatoes,}",
       "start": 918.64467,
       "type": "narration"
     },
     {
       "end": 932.46327,
-      "index": 200,
+      "index": 195,
       "sent": "{cut them up in pots,}",
       "start": 930.50771,
       "type": "narration"
     },
     {
       "end": 933.9,
-      "index": 201,
+      "index": 196,
       "sent": "{yes, again,}",
       "start": 932.46327,
       "type": "narration"
     },
     {
       "end": 934.91769,
-      "index": 202,
+      "index": 197,
       "sent": "{I can feel potatoes,}",
       "start": 933.9,
       "type": "narration"
     },
     {
       "end": 944.82517,
-      "index": 203,
+      "index": 198,
       "sent": "{I like to just put your towel here and then my public pot over here and then I can just kind of pick this up with all of the potato peels really not a blind thing.}",
       "start": 934.91769,
       "type": "narration"
     },
     {
       "end": 948.31723,
-      "index": 204,
+      "index": 199,
       "sent": "{It's just a clean free thing.}",
       "start": 944.82517,
       "type": "narration"
     },
     {
       "end": 970.43696,
-      "index": 205,
+      "index": 200,
       "sent": "{So penalized potatoes just like everybody else I just feel for the skin and where it is keep my hand out of the way and if I take more potatoes I shared with the appeal then whatever happens not big deal.}",
       "start": 948.31723,
       "type": "narration"
     },
     {
-      "end": 970.43696,
-      "index": 206,
+      "end": 981.35215,
+      "index": 201,
       "sent": "{Just peel these all up here }",
       "start": 970.43696,
       "type": "narration"
     },
     {
       "end": 981.35215,
-      "index": 207,
+      "index": 202,
       "sent": "{P: 7.03sec}",
       "start": 974.31814,
       "type": "pause"
     },
     {
       "end": 986.64014,
-      "index": 208,
+      "index": 203,
       "sent": "{I prefer to use a knife I just find it faster than a potato peeler.}",
       "start": 981.35215,
       "type": "narration"
     },
     {
       "end": 990.02245,
-      "index": 209,
+      "index": 204,
       "sent": "{And yeah, so I just find it easier.}",
       "start": 986.64014,
       "type": "narration"
     },
     {
       "end": 998.38345,
-      "index": 210,
+      "index": 205,
       "sent": "{So make sure we get most of the peel off there's someone there still that's fine.}",
       "start": 990.02245,
       "type": "narration"
     },
     {
       "end": 999.57075,
-      "index": 211,
+      "index": 206,
       "sent": "{It is what it is.}",
       "start": 998.38345,
       "type": "narration"
     },
     {
       "end": 1011.24422,
-      "index": 212,
+      "index": 207,
       "sent": "{Okay I have three growing kids so we go through a lot of potatoes so cut these up here Okay,}",
       "start": 999.57075,
       "type": "narration"
     },
     {
       "end": 1043.32132,
-      "index": 213,
+      "index": 208,
       "sent": "{so I'm just gonna appeal to these potatoes and then I'll be right back.}",
       "start": 1011.24422,
       "type": "narration"
     },
     {
       "end": 1052.69002,
-      "index": 214,
+      "index": 209,
       "sent": "{Okay, so now that I've gotten all the potatoes peeled,}",
       "start": 1043.32132,
       "type": "narration"
     },
     {
       "end": 1087.18163,
-      "index": 215,
+      "index": 210,
       "sent": "{I'm just gonna cut them all been put them in the box here so figure nine here so it's definitely not an exact science.}",
       "start": 1052.69002,
       "type": "narration"
     },
     {
       "end": 1125.20522,
-      "index": 216,
+      "index": 211,
       "sent": "{You're cutting them up for mashed potatoes very exciting stuff.}",
       "start": 1087.18163,
       "type": "narration"
     },
     {
       "end": 1129.92449,
-      "index": 217,
+      "index": 212,
       "sent": "{Watching me cut potatoes.}",
       "start": 1125.20522,
       "type": "narration"
     },
     {
       "end": 1138.42517,
-      "index": 218,
+      "index": 213,
       "sent": "{So I'll finish cutting these potatoes and then I'll be right back.}",
       "start": 1129.92449,
       "type": "narration"
     },
     {
       "end": 1144.53129,
-      "index": 219,
+      "index": 214,
       "sent": "{Okay, so now I've got my potatoes all cut up here.}",
       "start": 1138.42517,
       "type": "narration"
     },
     {
       "end": 1150.03878,
-      "index": 220,
+      "index": 215,
       "sent": "{Just going to fill up the foreign firm stove.}",
       "start": 1144.53129,
       "type": "narration"
     },
     {
       "end": 1158.14036,
-      "index": 221,
+      "index": 216,
       "sent": "{Okay, got the water in there so what I do,}",
       "start": 1150.03878,
       "type": "narration"
     },
     {
       "end": 1162.45057,
-      "index": 222,
+      "index": 217,
       "sent": "{since this is a glass top stove and it's hard to tell where the burners are,}",
       "start": 1158.14036,
       "type": "narration"
     },
     {
       "end": 1164.77528,
-      "index": 223,
+      "index": 218,
       "sent": "{I will turn the burner on.}",
       "start": 1162.45057,
       "type": "narration"
     },
     {
       "end": 1191.10544,
-      "index": 224,
+      "index": 219,
       "sent": "{And then I'll place the pot on are just going to tuck this meatloaf just gonna put this neat little fan so to turn this on to some fun contests and here Okay,}",
       "start": 1164.77528,
       "type": "narration"
     },
     {
       "end": 1195.08639,
-      "index": 225,
+      "index": 220,
       "sent": "{so good do this pot is going to suffer.}",
       "start": 1191.10544,
       "type": "narration"
     },
     {
       "end": 1198.69819,
-      "index": 226,
+      "index": 221,
       "sent": "{Turn it on,}",
       "start": 1195.08639,
       "type": "narration"
     },
     {
       "end": 1207.34853,
-      "index": 227,
+      "index": 222,
       "sent": "{and then when it gets hot I can kind of feel where the burner is and then I'll check around the pot,}",
       "start": 1198.69819,
       "type": "narration"
     },
     {
       "end": 1208.77528,
-      "index": 228,
+      "index": 223,
       "sent": "{make sure that it's on there.}",
       "start": 1207.34853,
       "type": "narration"
     },
     {
       "end": 1211.89819,
-      "index": 229,
+      "index": 224,
       "sent": "{And that's it.}",
       "start": 1208.77528,
       "type": "narration"
     },
     {
       "end": 1219.76032,
-      "index": 230,
+      "index": 225,
       "sent": "{So that's how I could suffer in no respect of not having this will be a 30 minute video.}",
       "start": 1211.89819,
       "type": "narration"
     },
     {
       "end": 1222.91315,
-      "index": 231,
+      "index": 226,
       "sent": "{I'm going to end it here,}",
       "start": 1219.76032,
       "type": "narration"
     },
     {
       "end": 1227.61247,
-      "index": 232,
+      "index": 227,
       "sent": "{but it kind of gives you a little bit of a glimpse into how I cook supper and how I go about it.}",
       "start": 1222.91315,
       "type": "narration"
     },
     {
       "end": 1230.02698,
-      "index": 233,
+      "index": 228,
       "sent": "{And yes, I do cook supper.}",
       "start": 1227.61247,
       "type": "narration"
     },
     {
       "end": 1231.92268,
-      "index": 234,
+      "index": 229,
       "sent": "{So if you have any other questions,}",
       "start": 1230.02698,
       "type": "narration"
     },
     {
       "end": 1234.38707,
-      "index": 235,
+      "index": 230,
       "sent": "{please leave them in the comments below.}",
       "start": 1231.92268,
       "type": "narration"
     },
     {
       "end": 1236.81156,
-      "index": 236,
+      "index": 231,
       "sent": "{And I will try my hardest to answer them.}",
       "start": 1234.38707,
       "type": "narration"
     },
     {
       "end": 1238.42789,
-      "index": 237,
+      "index": 232,
       "sent": "{So thanks for watching.}",
       "start": 1236.81156,
       "type": "narration"

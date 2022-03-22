@@ -17,6 +17,9 @@ def group_sentences(json):
     for word in json["words"]:
         # splitter 
         if re.search(punct_pattern, word["word"]):
+            if new_sent:
+                sent = "{"
+                sent_start = word["start"]
             sent = sent + word["word"] + "}"
             sent_end = word["end"]
             json_list.append(
@@ -43,6 +46,7 @@ def group_sentences(json):
         elif word["word"] == "{p}" and word["end"]-word["start"] >= 3:
             if not new_sent:
                 sent = sent + "}"
+                sent_end = word["end"]
                 json_list.append(
                     {"index": sent_index, "start": sent_start, "end": sent_end, "sent": sent, "type": "narration"}
                 )
