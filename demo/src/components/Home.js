@@ -105,15 +105,15 @@ class Home extends Component {
       // console.log(currTime);
       console.log("diff: ", this.state.currWordEnd - currTime);
       if (
-        this.state.currWordEnd - 0.2 <= currTime &&
+        this.state.currWordEnd - 0.5 <= currTime &&
         currTime <= this.state.currWordEnd
       ) {
-        console.log("skip");
+        console.log(this.state.currWordEnd);
+        console.log(currTime);
+        this.setState({ isJumping: true });
         // console.log(this.state.currSpan.nextSibling.nextSibling);
         var nextSpan;
-        if (!this.state.currSpan.nextSibling) {
-          this.onClickPause();
-        } else if (this.state.currSpan.nextSibling.hasAttribute("data-satrt")) {
+        if (this.state.currSpan.nextSibling.hasAttribute("data-start")) {
           nextSpan = this.state.currSpan.nextSibling;
         } else if (this.state.currSpan.nextSibling.nextSibling) {
           nextSpan = this.state.currSpan.nextSibling.nextSibling;
