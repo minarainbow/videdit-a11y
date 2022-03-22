@@ -111,33 +111,37 @@ class Home extends Component {
         console.log("skip");
         // console.log(this.state.currSpan.nextSibling.nextSibling);
         var nextSpan;
-        if (this.state.currSpan.nextSibling.hasAttribute("data-satrt")) {
+        if (!this.state.currSpan.nextSibling) {
+          this.onClickPause();
+        } else if (this.state.currSpan.nextSibling.hasAttribute("data-satrt")) {
           nextSpan = this.state.currSpan.nextSibling;
-        } else {
+        } else if (this.state.currSpan.nextSibling.nextSibling) {
           nextSpan = this.state.currSpan.nextSibling.nextSibling;
         }
 
-        const nextIndex = parseInt(nextSpan.getAttribute("data-index"));
-        const currIndex = parseInt(
-          this.state.currSpan.getAttribute("data-index")
-        );
-
-        console.log("curr", currIndex);
-        console.log("next", nextIndex);
-
-        if (nextIndex > currIndex + 1) {
-          const nextStart = parseFloat(nextSpan.getAttribute("data-start"));
-          const nextEnd = parseFloat(nextSpan.getAttribute("data-end"));
-          console.log("next: ", nextStart);
-          this.setState(
-            {
-              currSpan: nextSpan,
-              currWordStart: nextStart,
-              currWordEnd: nextEnd,
-              playing: true,
-            },
-            () => this.jumpVideo(nextStart, true)
+        if (nextSpan) {
+          const nextIndex = parseInt(nextSpan.getAttribute("data-index"));
+          const currIndex = parseInt(
+            this.state.currSpan.getAttribute("data-index")
           );
+
+          console.log("curr", currIndex);
+          console.log("next", nextIndex);
+
+          if (nextIndex > currIndex + 1) {
+            const nextStart = parseFloat(nextSpan.getAttribute("data-start"));
+            const nextEnd = parseFloat(nextSpan.getAttribute("data-end"));
+            console.log("next: ", nextStart);
+            this.setState(
+              {
+                currSpan: nextSpan,
+                currWordStart: nextStart,
+                currWordEnd: nextEnd,
+                playing: true,
+              },
+              () => this.jumpVideo(nextStart, true)
+            );
+          }
         }
       } else if (
         this.state.currWordEnd < currTime ||
