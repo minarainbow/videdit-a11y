@@ -40,9 +40,8 @@ const groupWordsInParagraphs = (scriptData) => {
 };
 
 const stt2Draft = (autoEdit2Json) => {
-  console.log(autoEdit2Json);
   const results = [];
-  const tmpWords = autoEdit2Json.words;
+  const tmpWords = autoEdit2Json
   const wordsByParagraphs = groupWordsInParagraphs(tmpWords);
   wordsByParagraphs.forEach((paragraph, i) => {
     const draftJsContentBlockParagraph = {

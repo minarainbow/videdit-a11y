@@ -47,9 +47,9 @@ class Scripts extends React.Component {
       editorState: EditorState.createEmpty(),
       current_heading: 0,
       current_sentence: 0,
+      deleted_index: []
     };
     this.onChange = (editorState) => {
-      // console.log(editorState);
       this.setState({ editorState });
     };
   }
@@ -71,10 +71,10 @@ class Scripts extends React.Component {
   }
 
   loadData() {
-    const blocks = this.sttJsonAdapter(scriptData);
+    const blocks = this.sttJsonAdapter(scriptData["words"]);
     const contentState = convertFromRaw(blocks);
     const editorState = EditorState.createWithContent(contentState, decorator);
-    this.setState({ editorState: editorState });
+    this.setState({ editorState: editorState});
   }
 
   /**
@@ -85,6 +85,7 @@ class Scripts extends React.Component {
     const spaceKey = 32;
     const leftArrow = 37;
     const rightArrow = 39;
+    const deleteKey = 8;
 
     if (e.keyCode === spaceKey) {
       console.log("customKeyBindingFn");
@@ -101,6 +102,12 @@ class Scripts extends React.Component {
 
       return "prev-sentence";
     }
+    if (e.keyCode === deleteKey) {
+      console.log("customKeyBindingFn");
+
+      return "delete-sentence";
+    }
+
     // if alt key is pressed in combination with these other keys
     if (e.altKey && (e.keyCode === spaceKey || e.keyCode === spaceKey)) {
       e.preventDefault();
@@ -112,12 +119,15 @@ class Scripts extends React.Component {
   };
 
   handleKeyCommand = (command) => {
+    console.log(this.state.editorState)
     if (command === "play/pause") {
       this.props.playVideo();
-    } else if (command === "next-sentence") {
+    } 
+    else if (command === "next-sentence") {
       const currentSentenceEnd = this.getCurrentWord().end;
       this.props.jumpVideo(currentSentenceEnd, true);
-    } else if (command === "prev-sentence") {
+    } 
+    else if (command === "prev-sentence") {
       const currentSentenceStart = this.getCurrentWord().start;
       if (this.props.videoTime < currentSentenceStart + 2) {
         const prevSentenceStart = this.getCurrentWord().prevStart;
@@ -125,6 +135,25 @@ class Scripts extends React.Component {
       } else {
         this.props.jumpVideo(currentSentenceStart, true);
       }
+    }
+    else if (command === "delete-sentence") {
+      const current_index = this.getCurrentWord().index;
+      console.log(this.state.video_script, current_index)
+      const video_script = this.state.video_script;
+      video_script.splice(current_index, 1);
+      console.log(this.state.video_script, current_index)
+      const blocks = this.sttJsonAdapter(video_script);
+      const contentState = convertFromRaw(blocks);
+      const editorState = EditorState.createWithContent(contentState, decorator);
+
+      this.setState(prevState => ({
+        deleted_index: [...prevState.deleted_index, current_index],
+        video_script: video_script,
+        editorState: editorState,
+      }))
+      
+      const currentSentenceEnd = this.getCurrentWord().end;
+      this.props.jumpVideo(currentSentenceEnd, true);
     }
 
     if (command === "keyboard-shortcuts") {
@@ -238,18 +267,6 @@ class Scripts extends React.Component {
           keyBindingFn={this.customKeyBindingFn}
         />
       </section>
-
-      // <div>
-      //   {Object.keys(this.state.video_script).map((key, idx) => (
-      //     // console.log(video_script[key]["word"])
-      //     <Words
-      //       word={this.state.video_script[key]["word"]}
-      //       start={this.state.video_script[key]["start"]}
-      //       end={this.state.video_script[key]["end"]}
-      //       handle={this.handle}
-      //     ></Words>
-      //   ))}
-      // </div>
     );
   }
 }
