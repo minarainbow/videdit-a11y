@@ -11412,616 +11412,299 @@
         },
         {
             "start": 462.1322,
-            "end": 467.79932,
+            "end": 477,
             "word": "{p}",
             "alignedWord": "sp"
         },
         {
-            "end": 468.01882,
-            "alignedWord": "ONION",
-            "start": 467.79932,
-            "line_idx": 20,
-            "speaker": "Narrator",
-            "word": "onion,"
-        },
-        {
-            "start": 468.01882,
-            "end": 475.36213,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 476.25011,
-            "alignedWord": "BREAD",
-            "start": 475.36213,
-            "line_idx": 20,
-            "speaker": "Narrator",
-            "word": "bread"
-        },
-        {
-            "start": 476.25011,
-            "end": 476.52948,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 476.87868,
-            "alignedWord": "CRUMBS",
-            "start": 476.52948,
-            "line_idx": 20,
-            "speaker": "Narrator",
-            "word": "crumbs,"
-        },
-        {
-            "start": 476.87868,
-            "end": 477.03832,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 477.64694,
-            "alignedWord": "ONION",
-            "start": 477.03832,
-            "line_idx": 20,
-            "speaker": "Narrator",
-            "word": "onion"
-        },
-        {
-            "start": 477.64694,
-            "end": 478.22562,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 478.44512,
-            "alignedWord": "SOUP",
-            "start": 478.22562,
-            "line_idx": 20,
-            "speaker": "Narrator",
-            "word": "soup"
-        },
-        {
-            "end": 478.63469,
-            "alignedWord": "MIX",
-            "start": 478.44512,
-            "line_idx": 20,
-            "speaker": "Narrator",
-            "word": "mix"
-        },
-        {
-            "end": 478.78435,
-            "alignedWord": "AND",
-            "start": 478.63469,
-            "line_idx": 20,
-            "speaker": "Narrator",
+            "confidence": 0.91283858,
+            "end": 477.900,
+            "start": 477,
+            "word": "Onion,"
+          }, {
+            "confidence": 0.91283858,
+            "end": 478.800,
+            "start": 478.500,
+            "word": "bread,"
+          }, {
+            "confidence": 0.37054917,
+            "end": 479.400,
+            "start": 478.800,
+            "word": "crumb,"
+          }, {
+            "confidence": 0.91283858,
+            "end": 480.200,
+            "start": 479.900,
+            "word": "soup."
+          }, {
+            "confidence": 0.85232943,
+            "end": 480.600,
+            "start": 480.200,
+            "word": "Mix"
+          }, {
+            "confidence": 0.91283858,
+            "end": 480.700,
+            "start": 480.600,
             "word": "and"
-        },
-        {
-            "start": 478.78435,
-            "end": 478.8542,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 479.2932,
-            "alignedWord": "I",
-            "start": 478.8542,
-            "line_idx": 20,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.62949234,
+            "end": 480.800,
+            "start": 480.700,
             "word": "I"
-        },
-        {
-            "end": 480.49048,
-            "alignedWord": "JUST",
-            "start": 479.2932,
-            "line_idx": 20,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.74156034,
+            "end": 480.900,
+            "start": 480.800,
             "word": "just"
-        },
-        {
-            "start": 480.49048,
-            "end": 480.56032,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 480.94943,
-            "alignedWord": "GOT",
-            "start": 480.56032,
-            "line_idx": 20,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.74156034,
+            "end": 481.100,
+            "start": 480.900,
             "word": "got"
-        },
-        {
-            "end": 481.59796,
-            "alignedWord": "THOSE",
-            "start": 480.94943,
-            "line_idx": 20,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.71271765,
+            "end": 481.300,
+            "start": 481.100,
             "word": "those"
-        },
-        {
-            "end": 481.9771,
-            "alignedWord": "OUT",
-            "start": 481.59796,
-            "line_idx": 20,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 481.400,
+            "start": 481.300,
             "word": "out"
-        },
-        {
-            "end": 482.04694,
-            "alignedWord": "OF",
-            "start": 481.9771,
-            "line_idx": 20,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 481.500,
+            "start": 481.400,
             "word": "of"
-        },
-        {
-            "start": 482.04694,
-            "end": 482.21655,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 482.3263,
-            "alignedWord": "THE",
-            "start": 482.21655,
-            "line_idx": 20,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.62949234,
+            "end": 481.500,
+            "start": 481.500,
             "word": "the"
-        },
-        {
-            "end": 483.27415,
-            "alignedWord": "COUNTRIES",
-            "start": 482.3263,
-            "line_idx": 20,
-            "speaker": "Narrator",
-            "word": "countries"
-        },
-        {
-            "start": 483.27415,
-            "end": 493.38118,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 493.78027,
-            "alignedWord": "AGAIN",
-            "start": 493.38118,
-            "line_idx": 20,
-            "speaker": "Narrator",
-            "word": "again"
-        },
-        {
-            "start": 493.78027,
-            "end": 500.74444,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 501.02381,
-            "alignedWord": "I",
-            "start": 500.74444,
-            "line_idx": 20,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.6725924,
+            "end": 482.100,
+            "start": 481.500,
+            "word": "pantry."
+          }, {
+            "confidence": 0.91283858,
+            "end": 482.500,
+            "start": 482.200,
+            "word": "Again."
+          }, {
+            "confidence": 0.91283858,
+            "end": 482.600,
+            "start": 482.500,
             "word": "I"
-        },
-        {
-            "start": 501.02381,
-            "end": 513.79478,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 514.04422,
-            "alignedWord": "KNOW",
-            "start": 513.79478,
-            "line_idx": 20,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.62949234,
+            "end": 482.700,
+            "start": 482.600,
             "word": "know"
-        },
-        {
-            "start": 514.04422,
-            "end": 516.13946,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 517.04739,
-            "alignedWord": "EVERYTHING",
-            "start": 516.13946,
-            "line_idx": 20,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.62949234,
+            "end": 482.800,
+            "start": 482.700,
+            "word": "where"
+          }, {
+            "confidence": 0.72431135,
+            "end": 483.100,
+            "start": 482.800,
             "word": "everything"
-        },
-        {
-            "start": 517.04739,
-            "end": 535.78481,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 536.51315,
-            "alignedWord": "IS",
-            "start": 535.78481,
-            "line_idx": 20,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.45663533,
+            "end": 483.500,
+            "start": 483.100,
             "word": "is."
-        },
+          },
         {
-            "start": 536.51315,
-            "end": 539.03741,
+            "start": 483.500,
+            "end": 583.800,
             "word": "{p}",
             "alignedWord": "sp"
         },
         {
-            "end": 539.44649,
-            "alignedWord": "NASA",
-            "start": 539.03741,
-            "line_idx": 21,
-            "speaker": "Narrator",
-            "word": "NASA"
-        },
-        {
-            "start": 539.44649,
-            "end": 544.37528,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 545.04376,
-            "alignedWord": "WAS",
-            "start": 544.37528,
-            "line_idx": 21,
-            "speaker": "Narrator",
-            "word": "was"
-        },
-        {
-            "start": 545.04376,
-            "end": 545.39297,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 545.90181,
-            "alignedWord": "ROLLING",
-            "start": 545.39297,
-            "line_idx": 21,
-            "speaker": "Narrator",
-            "word": "rolling"
-        },
-        {
-            "start": 545.90181,
-            "end": 553.75397,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 554.4424,
-            "alignedWord": "IN",
-            "start": 553.75397,
-            "line_idx": 22,
-            "speaker": "Narrator",
-            "word": "in"
-        },
-        {
-            "start": 554.4424,
-            "end": 567.9517,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 570.61565,
-            "alignedWord": "HERE",
-            "start": 567.9517,
-            "line_idx": 22,
-            "speaker": "Narrator",
-            "word": "here"
-        },
-        {
-            "start": 570.61565,
-            "end": 571.63333,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 571.97256,
-            "alignedWord": "OKAY",
-            "start": 571.63333,
-            "line_idx": 23,
-            "speaker": "Narrator",
-            "word": "Okay"
-        },
-        {
-            "start": 571.97256,
-            "end": 582.16939,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 582.39887,
-            "alignedWord": "SO",
-            "start": 582.16939,
-            "line_idx": 23,
-            "speaker": "Narrator",
-            "word": "so"
-        },
-        {
-            "start": 582.39887,
-            "end": 582.46871,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 582.70816,
-            "alignedWord": "THIS",
-            "start": 582.46871,
-            "line_idx": 24,
-            "speaker": "Narrator",
-            "word": "this"
-        },
-        {
-            "start": 582.70816,
-            "end": 583.81565,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 584.68367,
-            "alignedWord": "ONION",
-            "start": 583.81565,
-            "line_idx": 24,
-            "speaker": "Narrator",
-            "word": "onion"
-        },
-        {
-            "end": 584.78345,
-            "alignedWord": "HERE",
-            "start": 584.68367,
-            "line_idx": 24,
-            "speaker": "Narrator",
-            "word": "here"
-        },
-        {
-            "end": 585.2424,
-            "alignedWord": "CUT",
-            "start": 584.78345,
-            "line_idx": 24,
-            "speaker": "Narrator",
-            "word": "cut"
-        },
-        {
-            "start": 585.2424,
-            "end": 588.40522,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 588.50499,
-            "alignedWord": "IT",
-            "start": 588.40522,
-            "line_idx": 24,
-            "speaker": "Narrator",
-            "word": "it"
-        },
-        {
-            "start": 588.50499,
-            "end": 591.60794,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 591.73764,
-            "alignedWord": "UP",
-            "start": 591.60794,
-            "line_idx": 24,
-            "speaker": "Narrator",
-            "word": "up"
-        },
-        {
-            "start": 591.73764,
-            "end": 591.7576,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 591.9771,
-            "alignedWord": "SMALL",
-            "start": 591.7576,
-            "line_idx": 24,
-            "speaker": "Narrator",
-            "word": "small"
-        },
-        {
-            "start": 591.9771,
-            "end": 594.32177,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 596.34717,
-            "alignedWord": "SO",
-            "start": 594.32177,
-            "line_idx": 24,
-            "speaker": "Narrator",
-            "word": "so"
-        },
-        {
-            "start": 596.34717,
-            "end": 607.20249,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 607.59161,
-            "alignedWord": "THE",
-            "start": 607.20249,
-            "line_idx": 24,
-            "speaker": "Narrator",
+            "confidence": 0.89558166,
+            "end": 584,
+            "start": 583.800,
+            "word": "Put"
+          }, {
+            "confidence": 0.90246284,
+            "end": 584.100,
+            "start": 584,
             "word": "the"
-        },
-        {
-            "start": 607.59161,
-            "end": 614.66553,
+          }, {
+            "confidence": 0.90246284,
+            "end": 584.400,
+            "start": 584.100,
+            "word": "egg"
+          }, {
+            "confidence": 0.91283858,
+            "end": 584.500,
+            "start": 584.400,
+            "word": "in"
+          }, {
+            "confidence": 0.91283858,
+            "end": 585,
+            "start": 584.500,
+            "word": "here."
+          },
+          {
+            "start": 585,
+            "end": 614.900,
             "word": "{p}",
             "alignedWord": "sp"
         },
         {
-            "end": 615.21429,
-            "alignedWord": "KIDS",
-            "start": 614.66553,
-            "line_idx": 24,
-            "speaker": "Narrator",
-            "word": "kids"
-        },
-        {
-            "start": 615.21429,
-            "end": 616.45147,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 616.86054,
-            "alignedWord": "DON'T",
-            "start": 616.45147,
-            "line_idx": 24,
-            "speaker": "Narrator",
-            "word": "don't"
-        },
-        {
-            "end": 616.93039,
-            "alignedWord": "KNOW",
-            "start": 616.86054,
-            "line_idx": 24,
-            "speaker": "Narrator",
-            "word": "know"
-        },
-        {
-            "start": 616.93039,
-            "end": 617.22971,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 619.11542,
-            "alignedWord": "IT'S",
-            "start": 617.22971,
-            "line_idx": 24,
-            "speaker": "Narrator",
-            "word": "it's"
-        },
-        {
-            "end": 620.34263,
-            "alignedWord": "AT",
-            "start": 619.11542,
-            "line_idx": 24,
-            "speaker": "Narrator",
-            "word": "at"
-        },
-        {
-            "start": 620.34263,
-            "end": 621.20068,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 621.53991,
-            "alignedWord": "NIGHT",
-            "start": 621.20068,
-            "line_idx": 24,
-            "speaker": "Narrator",
-            "word": "night"
-        },
-        {
-            "end": 621.74943,
-            "alignedWord": "SO",
-            "start": 621.53991,
-            "line_idx": 25,
-            "speaker": "Narrator",
+            "confidence": 0.91283858,
+            "end": 615.300,
+            "start": 614.900,
+            "word": "Okay,"
+          }, {
+            "confidence": 0.91283858,
+            "end": 617,
+            "start": 616.400,
             "word": "so"
+          },
+        {
+            "start": 617,
+            "end": 619,
+            "word": "{p}",
+            "alignedWord": "sp"
         },
         {
-            "end": 623.1263,
-            "alignedWord": "HOPEFULLY",
-            "start": 621.74943,
-            "line_idx": 25,
-            "speaker": "Narrator",
+            "confidence": 0.35684976,
+            "end": 619.200,
+            "start": 619,
+            "word": "Cut"
+          }, {
+            "confidence": 0.52577108,
+            "end": 619.400,
+            "start": 619.200,
+            "word": "up"
+          }, {
+            "confidence": 0.3612819,
+            "end": 619.600,
+            "start": 619.400,
+            "word": "these"
+          }, {
+            "confidence": 0.36817807,
+            "end": 619.900,
+            "start": 619.600,
+            "word": "onions"
+          }, {
+            "confidence": 0.71827704,
+            "end": 620.400,
+            "start": 619.900,
+            "word": "here."
+          }, {
+            "confidence": 0.91283858,
+            "end": 621.400,
+            "start": 621.200,
+            "word": "Cut"
+          }, {
+            "confidence": 0.48840851,
+            "end": 621.500,
+            "start": 621.400,
+            "word": "it"
+          }, {
+            "confidence": 0.76645792,
+            "end": 621.600,
+            "start": 621.500,
+            "word": "up."
+          }, {
+            "confidence": 0.50347018,
+            "end": 621.900,
+            "start": 621.600,
+            "word": "Small."
+          }, {
+            "confidence": 0.91283858,
+            "end": 622.100,
+            "start": 621.900,
+            "word": "Some"
+          }, {
+            "confidence": 0.91283858,
+            "end": 622.300,
+            "start": 622.100,
+            "word": "kids"
+          }, {
+            "confidence": 0.72474259,
+            "end": 622.500,
+            "start": 622.300,
+            "word": "don't"
+          }, {
+            "confidence": 0.65986389,
+            "end": 622.600,
+            "start": 622.500,
+            "word": "know"
+          }, {
+            "confidence": 0.65986377,
+            "end": 622.800,
+            "start": 622.600,
+            "word": "what's"
+          }, {
+            "confidence": 0.71827704,
+            "end": 622.900,
+            "start": 622.800,
+            "word": "in"
+          }, {
+            "confidence": 0.68070835,
+            "end": 623.200,
+            "start": 622.900,
+            "word": "there."
+          }, {
+            "confidence": 0.57660401,
+            "end": 627,
+            "start": 626.600,
+            "word": "So"
+          }, {
+            "confidence": 0.72922784,
+            "end": 627.300,
+            "start": 627.100,
             "word": "hopefully"
-        },
-        {
-            "start": 623.1263,
-            "end": 627.24694,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 627.48639,
-            "alignedWord": "THEY'RE",
-            "start": 627.24694,
-            "line_idx": 25,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 627.500,
+            "start": 627.300,
             "word": "they're"
-        },
-        {
-            "end": 627.79569,
-            "alignedWord": "NOT",
-            "start": 627.48639,
-            "line_idx": 25,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.35360274,
+            "end": 627.900,
+            "start": 627.500,
             "word": "not"
-        },
-        {
-            "start": 627.79569,
-            "end": 627.89546,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 628.31451,
-            "alignedWord": "LISTENING",
-            "start": 627.89546,
-            "line_idx": 25,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.68943119,
+            "end": 628.300,
+            "start": 627.900,
             "word": "listening"
-        },
-        {
-            "end": 628.4542,
-            "alignedWord": "TO",
-            "start": 628.31451,
-            "line_idx": 25,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.70199251,
+            "end": 628.500,
+            "start": 628.300,
             "word": "to"
-        },
-        {
-            "end": 628.59388,
-            "alignedWord": "ME",
-            "start": 628.4542,
-            "line_idx": 25,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 628.600,
+            "start": 628.500,
             "word": "me"
-        },
+          }, {
+            "confidence": 0.55010396,
+            "end": 629,
+            "start": 628.600,
+            "word": "film."
+          },
         {
-            "end": 628.81338,
-            "alignedWord": "FEEL",
-            "start": 628.59388,
-            "line_idx": 25,
-            "speaker": "Narrator",
-            "word": "feel"
-        },
-        {
-            "start": 628.81338,
+            "start": 629,
             "end": 631.19796,
             "word": "{p}",
             "alignedWord": "sp"
         },
         {
-            "end": 631.5771,
-            "alignedWord": "WHAT",
-            "start": 631.19796,
-            "line_idx": 26,
-            "speaker": "Narrator",
-            "word": "what"
-        },
+            "confidence": 0.91283858,
+            "end": 631.800,
+            "start": 631.200,
+            "word": "What?"
+          },
         {
             "start": 631.5771,
             "end": 633.19342,
@@ -12029,779 +11712,442 @@
             "alignedWord": "sp"
         },
         {
-            "end": 633.88186,
-            "alignedWord": "DID",
-            "start": 633.19342,
-            "line_idx": 27,
-            "speaker": "Narrator",
-            "word": "did"
-        },
-        {
-            "end": 634.15125,
-            "alignedWord": "YOU",
-            "start": 633.88186,
-            "line_idx": 27,
-            "speaker": "Narrator",
-            "word": "you"
-        },
-        {
-            "start": 634.15125,
-            "end": 634.83968,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 635.73764,
-            "alignedWord": "HEAR",
-            "start": 634.83968,
-            "line_idx": 27,
-            "speaker": "Narrator",
-            "word": "hear"
-        },
-        {
-            "end": 635.94717,
-            "alignedWord": "ME",
-            "start": 635.73764,
-            "line_idx": 27,
-            "speaker": "Narrator",
-            "word": "me"
-        },
-        {
-            "start": 635.94717,
-            "end": 636.16667,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 636.57574,
-            "alignedWord": "MY",
-            "start": 636.16667,
-            "line_idx": 27,
-            "speaker": "Narrator",
-            "word": "my"
-        },
-        {
-            "start": 636.57574,
-            "end": 637.44376,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 638.19206,
-            "alignedWord": "SON",
-            "start": 637.44376,
-            "line_idx": 27,
-            "speaker": "Narrator",
-            "word": "son"
-        },
-        {
-            "start": 638.19206,
-            "end": 638.76077,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 639.15986,
-            "alignedWord": "HURT",
-            "start": 638.76077,
-            "line_idx": 27,
-            "speaker": "Narrator",
-            "word": "hurt"
-        },
-        {
-            "start": 639.15986,
-            "end": 640.14762,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 640.27732,
-            "alignedWord": "ME",
-            "start": 640.14762,
-            "line_idx": 27,
-            "speaker": "Narrator",
-            "word": "me"
-        },
-        {
-            "start": 640.27732,
-            "end": 640.43696,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 640.70635,
-            "alignedWord": "OKAY",
-            "start": 640.43696,
-            "line_idx": 28,
-            "speaker": "Narrator",
-            "word": "okay"
+          "confidence": 0.91283858,
+          "end": 633.600,
+          "start": 633.400,
+          "word": "Did"
+        }, {
+          "confidence": 0.91283858,
+          "end": 633.600,
+          "start": 633.600,
+          "word": "you"
+        }, {
+          "confidence": 0.91283858,
+          "end": 633.800,
+          "start": 633.600,
+          "word": "hear"
+        }, {
+          "confidence": 0.91283858,
+          "end": 634.100,
+          "start": 633.800,
+          "word": "me?"
+        }, {
+          "confidence": 0.91283858,
+          "end": 635.200,
+          "start": 635.100,
+          "word": "My"
+        }, {
+          "confidence": 0.91283858,
+          "end": 635.500,
+          "start": 635.200,
+          "word": "son"
+        }, {
+          "confidence": 0.91283858,
+          "end": 635.700,
+          "start": 635.500,
+          "word": "hurt"
+        }, {
+          "confidence": 0.91283858,
+          "end": 635.900,
+          "start": 635.700,
+          "word": "me."
+        }, {
+          "confidence": 0.91283858,
+          "end": 636.300,
+          "start": 635.900,
+          "word": "So"
+        }, {
+          "confidence": 0.91283858,
+          "end": 638.400,
+          "start": 638.100,
+          "word": "extra"
+        }, {
+          "confidence": 0.91283858,
+          "end": 638.700,
+          "start": 638.400,
+          "word": "small,"
+        }, {
+          "confidence": 0.90828043,
+          "end": 640.900,
+          "start": 640.300,
+          "word": "okay?"
         },
         {
             "start": 640.70635,
-            "end": 647.64059,
+            "end": 659.100,
             "word": "{p}",
             "alignedWord": "sp"
         },
         {
-            "end": 648.05964,
-            "alignedWord": "HERE",
-            "start": 647.64059,
-            "line_idx": 29,
-            "speaker": "Narrator",
-            "word": "here"
-        },
-        {
-            "start": 648.05964,
-            "end": 648.16939,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 649.81565,
-            "alignedWord": "PICTURE",
-            "start": 648.16939,
-            "line_idx": 30,
-            "speaker": "Narrator",
-            "word": "picture"
-        },
-        {
-            "start": 649.81565,
-            "end": 659.08458,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 659.31406,
-            "alignedWord": "PIECE",
-            "start": 659.08458,
-            "line_idx": 31,
-            "speaker": "Narrator",
-            "word": "piece"
-        },
-        {
-            "end": 659.61338,
-            "alignedWord": "OVER",
-            "start": 659.31406,
-            "line_idx": 31,
-            "speaker": "Narrator",
-            "word": "over"
-        },
-        {
-            "start": 659.61338,
-            "end": 661.99796,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 663.19524,
-            "alignedWord": "HERE",
-            "start": 661.99796,
-            "line_idx": 31,
-            "speaker": "Narrator",
-            "word": "here"
-        },
-        {
-            "end": 663.3449,
-            "alignedWord": "SO",
-            "start": 663.19524,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "so"
-        },
-        {
-            "start": 663.3449,
-            "end": 665.63968,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 665.95896,
-            "alignedWord": "I",
-            "start": 665.63968,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "I"
-        },
-        {
-            "start": 665.95896,
-            "end": 669.55079,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 669.9898,
-            "alignedWord": "THINK",
-            "start": 669.55079,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "think"
-        },
-        {
-            "start": 669.9898,
-            "end": 670.69819,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 670.83787,
-            "alignedWord": "A",
-            "start": 670.69819,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "a"
-        },
-        {
-            "start": 670.83787,
-            "end": 672.26463,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 673.01293,
-            "alignedWord": "LOT",
-            "start": 672.26463,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "lot"
-        },
-        {
-            "end": 673.23243,
-            "alignedWord": "OF",
-            "start": 673.01293,
-            "line_idx": 32,
-            "speaker": "Narrator",
+            "confidence": 0.91283858,
+            "end": 659.300,
+            "start": 659.100,
+            "word": "Make"
+          }, {
+            "confidence": 0.91283858,
+            "end": 659.700,
+            "start": 659.300,
+            "word": "sure"
+          }, {
+            "confidence": 0.3671034,
+            "end": 662.400,
+            "start": 662.200,
             "word": "of"
-        },
+          }, {
+            "confidence": 0.3671034,
+            "end": 662.500,
+            "start": 662.400,
+            "word": "it."
+          },
         {
-            "end": 673.49184,
-            "alignedWord": "PEOPLE",
-            "start": 673.23243,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "people"
-        },
-        {
-            "end": 673.78118,
-            "alignedWord": "THINK",
-            "start": 673.49184,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "think"
-        },
-        {
-            "end": 674.19025,
-            "alignedWord": "THAT",
-            "start": 673.78118,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "that"
-        },
-        {
-            "start": 674.19025,
-            "end": 674.58934,
+            "start": 662.500,
+            "end": 668.900,
             "word": "{p}",
             "alignedWord": "sp"
         },
         {
-            "end": 674.74898,
-            "alignedWord": "YOU",
-            "start": 674.58934,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "you"
-        },
+            "confidence": 0.75959915,
+            "end": 669.200,
+            "start": 668.900,
+            "word": "Piece"
+          }, {
+            "confidence": 0.91283858,
+            "end": 669.400,
+            "start": 669.200,
+            "word": "over"
+          }, {
+            "confidence": 0.90903223,
+            "end": 670.200,
+            "start": 669.400,
+            "word": "here."
+          }, 
         {
-            "end": 675.00839,
-            "alignedWord": "KNOW",
-            "start": 674.74898,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "know"
-        },
-        {
-            "end": 675.29773,
-            "alignedWord": "JUST",
-            "start": 675.00839,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "just"
-        },
-        {
-            "end": 676.09592,
-            "alignedWord": "BECAUSE",
-            "start": 675.29773,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "because"
-        },
-        {
-            "start": 676.09592,
-            "end": 676.81429,
+            "start": 670.200,
+            "end": 672.200,
             "word": "{p}",
             "alignedWord": "sp"
         },
         {
-            "end": 676.95397,
-            "alignedWord": "WE",
-            "start": 676.81429,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "we"
-        },
-        {
-            "end": 677.30317,
-            "alignedWord": "CAN'T",
-            "start": 676.95397,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "can't"
-        },
-        {
-            "end": 677.75215,
-            "alignedWord": "SEE",
-            "start": 677.30317,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "see"
-        },
-        {
-            "end": 677.92177,
-            "alignedWord": "THAT",
-            "start": 677.75215,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "that"
-        },
-        {
-            "end": 678.02154,
-            "alignedWord": "WE",
-            "start": 677.92177,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "we"
-        },
-        {
-            "end": 678.43061,
-            "alignedWord": "DON'T",
-            "start": 678.02154,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "don't"
-        },
-        {
-            "end": 678.59025,
-            "alignedWord": "YOU",
-            "start": 678.43061,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "you"
-        },
-        {
-            "end": 678.81973,
-            "alignedWord": "KNOW",
-            "start": 678.59025,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "know"
-        },
-        {
-            "end": 679.11905,
-            "alignedWord": "LIKE",
-            "start": 678.81973,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "like"
-        },
-        {
-            "start": 679.11905,
-            "end": 679.67778,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 680.16667,
-            "alignedWord": "USE",
-            "start": 679.67778,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "use"
-        },
-        {
-            "end": 680.93492,
-            "alignedWord": "KNIVES",
-            "start": 680.16667,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "knives"
-        },
-        {
-            "end": 681.37392,
-            "alignedWord": "OR",
-            "start": 680.93492,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "or"
-        },
-        {
-            "start": 681.37392,
-            "end": 682.08231,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 682.43152,
-            "alignedWord": "ANYTHING",
-            "start": 682.08231,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "anything"
-        },
-        {
-            "end": 682.661,
-            "alignedWord": "LIKE",
-            "start": 682.43152,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "like"
-        },
-        {
-            "end": 683.30952,
-            "alignedWord": "THAT",
-            "start": 682.661,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "that"
-        },
-        {
-            "start": 683.30952,
-            "end": 683.82834,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 684.66644,
-            "alignedWord": "AND",
-            "start": 683.82834,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "and"
-        },
-        {
-            "start": 684.66644,
-            "end": 685.19524,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 685.39478,
-            "alignedWord": "I",
-            "start": 685.19524,
-            "line_idx": 32,
-            "speaker": "Narrator",
+            "confidence": 0.87575012,
+            "end": 672.600,
+            "start": 672.200,
+            "word": "So"
+          }, {
+            "confidence": 0.76813024,
+            "end": 672.700,
+            "start": 672.700,
             "word": "I"
-        },
-        {
-            "end": 685.52449,
-            "alignedWord": "DON'T",
-            "start": 685.39478,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "don't"
-        },
-        {
-            "end": 686.07324,
-            "alignedWord": "THINK",
-            "start": 685.52449,
-            "line_idx": 32,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.8583945,
+            "end": 672.900,
+            "start": 672.700,
             "word": "think"
-        },
-        {
-            "end": 686.87143,
-            "alignedWord": "THAT",
-            "start": 686.07324,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "that"
-        },
-        {
-            "start": 686.87143,
-            "end": 687.17075,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 687.61973,
-            "alignedWord": "THAT'S",
-            "start": 687.17075,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "that's"
-        },
-        {
-            "end": 688.5576,
-            "alignedWord": "NECESSARILY",
-            "start": 687.61973,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "necessarily"
-        },
-        {
-            "end": 688.83696,
-            "alignedWord": "TRUE",
-            "start": 688.5576,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "true"
-        },
-        {
-            "end": 689.11633,
-            "alignedWord": "BECAUSE",
-            "start": 688.83696,
-            "line_idx": 32,
-            "speaker": "Narrator",
-            "word": "because"
-        },
-        {
-            "start": 689.11633,
-            "end": 689.89456,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 690.03424,
-            "alignedWord": "WE",
-            "start": 689.89456,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "we"
-        },
-        {
-            "end": 690.42336,
-            "alignedWord": "HAVE",
-            "start": 690.03424,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "have"
-        },
-        {
-            "end": 690.48322,
-            "alignedWord": "TO",
-            "start": 690.42336,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "to"
-        },
-        {
-            "end": 690.85238,
-            "alignedWord": "EAT",
-            "start": 690.48322,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "eat"
-        },
-        {
-            "end": 691.01202,
-            "alignedWord": "AND",
-            "start": 690.85238,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "and"
-        },
-        {
-            "end": 691.61066,
-            "alignedWord": "SO",
-            "start": 691.01202,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "so"
-        },
-        {
-            "end": 691.96984,
-            "alignedWord": "HAVING",
-            "start": 691.61066,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "having"
-        },
-        {
-            "end": 692.04966,
-            "alignedWord": "THE",
-            "start": 691.96984,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "the"
-        },
-        {
-            "end": 692.56848,
-            "alignedWord": "SKILLS",
-            "start": 692.04966,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "skills"
-        },
-        {
-            "end": 692.68821,
-            "alignedWord": "TO",
-            "start": 692.56848,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "to"
-        },
-        {
-            "end": 693.00748,
-            "alignedWord": "COOK",
-            "start": 692.68821,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "cook"
-        },
-        {
-            "start": 693.00748,
-            "end": 693.28685,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 693.67596,
-            "alignedWord": "AND",
-            "start": 693.28685,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "and"
-        },
-        {
-            "end": 693.87551,
-            "alignedWord": "DO",
-            "start": 693.67596,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "do"
-        },
-        {
-            "end": 694.04512,
-            "alignedWord": "ALL",
-            "start": 693.87551,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "all"
-        },
-        {
-            "end": 694.24467,
-            "alignedWord": "THOSE",
-            "start": 694.04512,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "those"
-        },
-        {
-            "end": 694.4542,
-            "alignedWord": "THINGS",
-            "start": 694.24467,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "things"
-        },
-        {
-            "end": 694.54399,
-            "alignedWord": "ARE",
-            "start": 694.4542,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "are"
-        },
-        {
-            "end": 694.8932,
-            "alignedWord": "JUST",
-            "start": 694.54399,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "just"
-        },
-        {
-            "end": 694.96304,
-            "alignedWord": "YOU",
-            "start": 694.8932,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "you"
-        },
-        {
-            "end": 695.27234,
-            "alignedWord": "KNOW",
-            "start": 694.96304,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "know"
-        },
-        {
-            "start": 695.27234,
-            "end": 695.84104,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 696.10045,
-            "alignedWord": "LIFE",
-            "start": 695.84104,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "life"
-        },
-        {
-            "end": 696.47959,
-            "alignedWord": "SKILLS",
-            "start": 696.10045,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "skills"
-        },
-        {
-            "end": 696.62925,
-            "alignedWord": "THAT",
-            "start": 696.47959,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "that"
-        },
-        {
-            "end": 697.25782,
-            "alignedWord": "PEOPLE",
-            "start": 696.62925,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 673,
+            "start": 672.900,
+            "word": "a"
+          }, {
+            "confidence": 0.75355464,
+            "end": 673.200,
+            "start": 673,
+            "word": "lot"
+          }, {
+            "confidence": 0.91283858,
+            "end": 673.200,
+            "start": 673.200,
+            "word": "of"
+          }, {
+            "confidence": 0.91283858,
+            "end": 673.500,
+            "start": 673.200,
             "word": "people"
-        },
-        {
-            "start": 697.25782,
-            "end": 697.52721,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 697.76667,
-            "alignedWord": "NEED",
-            "start": 697.52721,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "need"
-        },
-        {
-            "end": 697.83651,
-            "alignedWord": "TO",
-            "start": 697.76667,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "to"
-        },
-        {
-            "end": 698.21565,
-            "alignedWord": "HAVE",
-            "start": 697.83651,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 673.800,
+            "start": 673.500,
+            "word": "think"
+          }, {
+            "confidence": 0.73558772,
+            "end": 674.300,
+            "start": 673.800,
+            "word": "that"
+          }, {
+            "confidence": 0.91283858,
+            "end": 674.700,
+            "start": 674.600,
+            "word": "you"
+          }, {
+            "confidence": 0.77200454,
+            "end": 675,
+            "start": 674.700,
+            "word": "know,"
+          }, {
+            "confidence": 0.73837483,
+            "end": 675.200,
+            "start": 675,
+            "word": "just"
+          }, {
+            "confidence": 0.72258353,
+            "end": 676.200,
+            "start": 675.200,
+            "word": "because"
+          }, {
+            "confidence": 0.91283858,
+            "end": 676.900,
+            "start": 676.800,
+            "word": "we"
+          }, {
+            "confidence": 0.91283858,
+            "end": 677.300,
+            "start": 676.900,
+            "word": "can't"
+          }, {
+            "confidence": 0.7276907,
+            "end": 677.700,
+            "start": 677.300,
+            "word": "see"
+          }, {
+            "confidence": 0.91283858,
+            "end": 677.900,
+            "start": 677.700,
+            "word": "that"
+          }, {
+            "confidence": 0.91283858,
+            "end": 678,
+            "start": 677.900,
+            "word": "we"
+          }, {
+            "confidence": 0.77300471,
+            "end": 678.500,
+            "start": 678,
+            "word": "don't"
+          }, {
+            "confidence": 0.91283858,
+            "end": 678.600,
+            "start": 678.500,
+            "word": "you"
+          }, {
+            "confidence": 0.72383386,
+            "end": 678.800,
+            "start": 678.600,
+            "word": "know,"
+          }, {
+            "confidence": 0.75452811,
+            "end": 679.300,
+            "start": 678.800,
+            "word": "like"
+          }, {
+            "confidence": 0.91283858,
+            "end": 680.100,
+            "start": 679.700,
+            "word": "use"
+          }, {
+            "confidence": 0.88574642,
+            "end": 680.900,
+            "start": 680.100,
+            "word": "knives"
+          }, {
+            "confidence": 0.79563475,
+            "end": 681.400,
+            "start": 680.900,
+            "word": "or"
+          }, {
+            "confidence": 0.72921133,
+            "end": 682.400,
+            "start": 682.100,
+            "word": "anything"
+          }, {
+            "confidence": 0.85839421,
+            "end": 682.600,
+            "start": 682.400,
+            "word": "like"
+          }, {
+            "confidence": 0.7276907,
+            "end": 683,
+            "start": 682.600,
+            "word": "that"
+          }, {
+            "confidence": 0.76952916,
+            "end": 683.400,
+            "start": 683,
+            "word": "and"
+          }, {
+            "confidence": 0.7452938,
+            "end": 683.900,
+            "start": 683.800,
+            "word": "I"
+          }, {
+            "confidence": 0.72909755,
+            "end": 684.100,
+            "start": 683.900,
+            "word": "don't"
+          }, {
+            "confidence": 0.726161,
+            "end": 684.300,
+            "start": 684.100,
+            "word": "think"
+          }, {
+            "confidence": 0.741157,
+            "end": 684.400,
+            "start": 684.300,
+            "word": "that"
+          }, {
+            "confidence": 0.71928746,
+            "end": 684.800,
+            "start": 684.400,
+            "word": "that's"
+          }, {
+            "confidence": 0.74748379,
+            "end": 686.300,
+            "start": 685.400,
+            "word": "necessarily"
+          }, {
+            "confidence": 0.69374561,
+            "end": 687,
+            "start": 686.300,
+            "word": "true"
+          }, {
+            "confidence": 0.69640517,
+            "end": 688.400,
+            "start": 687.400,
+            "word": "because"
+          }, {
+            "confidence": 0.91283858,
+            "end": 690,
+            "start": 689.900,
+            "word": "we"
+          }, {
+            "confidence": 0.71439844,
+            "end": 690.300,
+            "start": 690,
             "word": "have"
-        },
+          }, {
+            "confidence": 0.83911818,
+            "end": 690.500,
+            "start": 690.300,
+            "word": "to"
+          }, {
+            "confidence": 0.70576292,
+            "end": 690.800,
+            "start": 690.500,
+            "word": "eat"
+          }, {
+            "confidence": 0.80892253,
+            "end": 691.100,
+            "start": 690.900,
+            "word": "and"
+          }, {
+            "confidence": 0.71610707,
+            "end": 691.700,
+            "start": 691.100,
+            "word": "so"
+          }, {
+            "confidence": 0.90118694,
+            "end": 692,
+            "start": 691.700,
+            "word": "having"
+          }, {
+            "confidence": 0.91283858,
+            "end": 692.100,
+            "start": 692,
+            "word": "the"
+          }, {
+            "confidence": 0.91283858,
+            "end": 692.500,
+            "start": 692.100,
+            "word": "skills"
+          }, {
+            "confidence": 0.91283858,
+            "end": 692.700,
+            "start": 692.500,
+            "word": "to"
+          }, {
+            "confidence": 0.741157,
+            "end": 693.300,
+            "start": 692.700,
+            "word": "cook"
+          }, {
+            "confidence": 0.91283858,
+            "end": 693.700,
+            "start": 693.300,
+            "word": "and"
+          }, {
+            "confidence": 0.91283858,
+            "end": 693.900,
+            "start": 693.700,
+            "word": "do"
+          }, {
+            "confidence": 0.91283858,
+            "end": 694,
+            "start": 693.900,
+            "word": "all"
+          }, {
+            "confidence": 0.76923019,
+            "end": 694.200,
+            "start": 694,
+            "word": "those"
+          }, {
+            "confidence": 0.71865869,
+            "end": 694.500,
+            "start": 694.200,
+            "word": "things"
+          }, {
+            "confidence": 0.91283858,
+            "end": 694.500,
+            "start": 694.500,
+            "word": "are"
+          }, {
+            "confidence": 0.6858626,
+            "end": 694.900,
+            "start": 694.500,
+            "word": "just"
+          }, {
+            "confidence": 0.91283858,
+            "end": 695,
+            "start": 694.900,
+            "word": "you"
+          }, {
+            "confidence": 0.69697708,
+            "end": 695.300,
+            "start": 695,
+            "word": "know"
+          }, {
+            "confidence": 0.90723509,
+            "end": 696.100,
+            "start": 695.800,
+            "word": "life"
+          }, {
+            "confidence": 0.91283858,
+            "end": 696.500,
+            "start": 696.100,
+            "word": "skills"
+          }, {
+            "confidence": 0.83911818,
+            "end": 696.600,
+            "start": 696.500,
+            "word": "that"
+          }, {
+            "confidence": 0.70451683,
+            "end": 697.200,
+            "start": 696.600,
+            "word": "people"
+          }, {
+            "confidence": 0.66947764,
+            "end": 697.800,
+            "start": 697.500,
+            "word": "need"
+          }, {
+            "confidence": 0.91283858,
+            "end": 697.900,
+            "start": 697.800,
+            "word": "to"
+          }, {
+            "confidence": 0.91283858,
+            "end": 698.100,
+            "start": 697.900,
+            "word": "have."
+          },
         {
             "start": 698.21565,
             "end": 699.00385,
@@ -12809,435 +12155,266 @@
             "alignedWord": "sp"
         },
         {
-            "end": 699.27324,
-            "alignedWord": "AND",
-            "start": 699.00385,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "and"
-        },
-        {
-            "start": 699.27324,
-            "end": 699.37302,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 699.8619,
-            "alignedWord": "IT",
-            "start": 699.37302,
-            "line_idx": 33,
-            "speaker": "Narrator",
+            "confidence": 0.91283858,
+            "end": 699.800,
+            "start": 699.400,
+            "word": "And"
+          }, {
+            "confidence": 0.91283858,
+            "end": 699.900,
+            "start": 699.800,
             "word": "it"
-        },
-        {
-            "end": 700.09138,
-            "alignedWord": "CAN",
-            "start": 699.8619,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 700.100,
+            "start": 699.900,
             "word": "can"
-        },
-        {
-            "end": 700.1712,
-            "alignedWord": "BE",
-            "start": 700.09138,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 700.200,
+            "start": 700.100,
             "word": "be"
-        },
-        {
-            "end": 700.43061,
-            "alignedWord": "DONE",
-            "start": 700.1712,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "done"
-        },
-        {
-            "end": 700.56032,
-            "alignedWord": "I",
-            "start": 700.43061,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 700.500,
+            "start": 700.200,
+            "word": "done."
+          }, {
+            "confidence": 0.91283858,
+            "end": 700.500,
+            "start": 700.500,
             "word": "I"
-        },
-        {
-            "end": 700.69002,
-            "alignedWord": "MEAN",
-            "start": 700.56032,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "mean"
-        },
-        {
-            "start": 700.69002,
-            "end": 700.87959,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 701.26871,
-            "alignedWord": "OBVIOUSLY",
-            "start": 700.87959,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "obviously"
-        },
-        {
-            "end": 701.32857,
-            "alignedWord": "IF",
-            "start": 701.26871,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 700.900,
+            "start": 700.500,
+            "word": "mean,"
+          }, {
+            "confidence": 0.91283858,
+            "end": 701.300,
+            "start": 700.900,
+            "word": "obviously,"
+          }, {
+            "confidence": 0.91283858,
+            "end": 701.400,
+            "start": 701.300,
             "word": "if"
-        },
-        {
-            "end": 701.38844,
-            "alignedWord": "YOU",
-            "start": 701.32857,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.6365242,
+            "end": 701.500,
+            "start": 701.400,
             "word": "you"
-        },
-        {
-            "end": 701.52812,
-            "alignedWord": "USE",
-            "start": 701.38844,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.64210802,
+            "end": 701.600,
+            "start": 701.500,
             "word": "use"
-        },
-        {
-            "end": 701.86735,
-            "alignedWord": "COMMON",
-            "start": 701.52812,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.64210802,
+            "end": 701.900,
+            "start": 701.600,
             "word": "common"
-        },
-        {
-            "end": 702.25646,
-            "alignedWord": "SENSE",
-            "start": 701.86735,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.6372242,
+            "end": 702.100,
+            "start": 701.900,
             "word": "sense"
-        },
-        {
-            "start": 702.25646,
-            "end": 702.30635,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 702.49592,
-            "alignedWord": "KEEP",
-            "start": 702.30635,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.43818122,
+            "end": 702.300,
+            "start": 702.100,
+            "word": "to"
+          }, {
+            "confidence": 0.87702471,
+            "end": 702.500,
+            "start": 702.300,
             "word": "keep"
-        },
-        {
-            "end": 702.66553,
-            "alignedWord": "YOUR",
-            "start": 702.49592,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.76062405,
+            "end": 702.600,
+            "start": 702.500,
             "word": "your"
-        },
-        {
-            "end": 702.9449,
-            "alignedWord": "FINGERS",
-            "start": 702.66553,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.74577498,
+            "end": 702.900,
+            "start": 702.600,
             "word": "fingers"
-        },
-        {
-            "end": 703.03469,
-            "alignedWord": "ON",
-            "start": 702.9449,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "on"
-        },
-        {
-            "end": 703.18435,
-            "alignedWord": "THE",
-            "start": 703.03469,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.6577574,
+            "end": 703.100,
+            "start": 702.900,
+            "word": "out"
+          }, {
+            "confidence": 0.91283858,
+            "end": 703.100,
+            "start": 703.100,
+            "word": "of"
+          }, {
+            "confidence": 0.91283858,
+            "end": 703.200,
+            "start": 703.100,
             "word": "the"
-        },
-        {
-            "end": 703.63333,
-            "alignedWord": "LEG",
-            "start": 703.18435,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "leg"
-        },
-        {
-            "start": 703.63333,
-            "end": 704.32177,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 704.55125,
-            "alignedWord": "AND",
-            "start": 704.32177,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.53827435,
+            "end": 703.600,
+            "start": 703.200,
+            "word": "way"
+          }, {
+            "confidence": 0.7765559,
+            "end": 704.600,
+            "start": 704.300,
             "word": "and"
-        },
-        {
-            "end": 704.63107,
-            "alignedWord": "I",
-            "start": 704.55125,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 704.600,
+            "start": 704.600,
             "word": "I"
-        },
-        {
-            "end": 704.83061,
-            "alignedWord": "MEAN",
-            "start": 704.63107,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.49782434,
+            "end": 704.800,
+            "start": 704.600,
             "word": "mean"
-        },
-        {
-            "end": 705.03016,
-            "alignedWord": "I'VE",
-            "start": 704.83061,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 705,
+            "start": 704.800,
             "word": "I've"
-        },
-        {
-            "end": 705.16984,
-            "alignedWord": "CUT",
-            "start": 705.03016,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 705.100,
+            "start": 705,
             "word": "cut"
-        },
-        {
-            "end": 705.6288,
-            "alignedWord": "MYSELF",
-            "start": 705.16984,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.6304661,
+            "end": 705.600,
+            "start": 705.100,
             "word": "myself"
-        },
-        {
-            "end": 705.74853,
-            "alignedWord": "BUT",
-            "start": 705.6288,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 705.800,
+            "start": 705.600,
             "word": "but"
-        },
-        {
-            "end": 705.87823,
-            "alignedWord": "I",
-            "start": 705.74853,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.6577574,
+            "end": 705.800,
+            "start": 705.800,
             "word": "I"
-        },
-        {
-            "end": 706.21746,
-            "alignedWord": "THINK",
-            "start": 705.87823,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "think"
-        },
-        {
-            "start": 706.21746,
-            "end": 706.29728,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 706.42698,
-            "alignedWord": "YOU",
-            "start": 706.29728,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.50209248,
+            "end": 706.300,
+            "start": 705.800,
+            "word": "think,"
+          }, {
+            "confidence": 0.91283858,
+            "end": 706.400,
+            "start": 706.300,
             "word": "you"
-        },
-        {
-            "end": 706.48685,
-            "alignedWord": "KNOW",
-            "start": 706.42698,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "know"
-        },
-        {
-            "end": 706.64649,
-            "alignedWord": "I'VE",
-            "start": 706.48685,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.69555861,
+            "end": 706.600,
+            "start": 706.400,
+            "word": "know,"
+          }, {
+            "confidence": 0.7351613,
+            "end": 706.700,
+            "start": 706.600,
             "word": "I've"
-        },
-        {
-            "end": 707.01565,
-            "alignedWord": "CITED",
-            "start": 706.64649,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.72156984,
+            "end": 707,
+            "start": 706.700,
             "word": "cited"
-        },
-        {
-            "end": 707.53447,
-            "alignedWord": "FRIENDS",
-            "start": 707.01565,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "friends"
-        },
-        {
-            "end": 707.63424,
-            "alignedWord": "WHO",
-            "start": 707.53447,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 707.400,
+            "start": 707,
+            "word": "friends,"
+          }, {
+            "confidence": 0.7351613,
+            "end": 707.500,
+            "start": 707.400,
             "word": "who"
-        },
-        {
-            "start": 707.63424,
-            "end": 708.02336,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 708.23288,
-            "alignedWord": "HAVE",
-            "start": 708.02336,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 707.900,
+            "start": 707.500,
             "word": "have"
-        },
-        {
-            "end": 708.51224,
-            "alignedWord": "CUT",
-            "start": 708.23288,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "cut"
-        },
-        {
-            "end": 708.9712,
-            "alignedWord": "THEMSELVES",
-            "start": 708.51224,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "themselves"
-        },
-        {
-            "end": 709.09093,
-            "alignedWord": "MY",
-            "start": 708.9712,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "my"
-        },
-        {
-            "end": 709.56984,
-            "alignedWord": "HUSBAND",
-            "start": 709.09093,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.80698174,
+            "end": 708.300,
+            "start": 708,
+            "word": "have"
+          }, {
+            "confidence": 0.91283858,
+            "end": 708.500,
+            "start": 708.300,
+            "word": "caught"
+          }, {
+            "confidence": 0.6304661,
+            "end": 709,
+            "start": 708.500,
+            "word": "themselves."
+          }, {
+            "confidence": 0.91283858,
+            "end": 709.100,
+            "start": 709,
+            "word": "My"
+          }, {
+            "confidence": 0.89343023,
+            "end": 709.600,
+            "start": 709.100,
             "word": "husband"
-        },
-        {
-            "end": 709.77937,
-            "alignedWord": "DOES",
-            "start": 709.56984,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "does"
-        },
-        {
-            "end": 709.98889,
-            "alignedWord": "CUT",
-            "start": 709.77937,
-            "line_idx": 33,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 709.800,
+            "start": 709.600,
+            "word": "has"
+          }, {
+            "confidence": 0.91283858,
+            "end": 710,
+            "start": 709.800,
             "word": "cut"
-        },
-        {
-            "end": 710.42789,
-            "alignedWord": "HIMSELF",
-            "start": 709.98889,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "himself"
-        },
-        {
-            "start": 710.42789,
-            "end": 710.54762,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 710.95669,
-            "alignedWord": "SO",
-            "start": 710.54762,
-            "line_idx": 33,
-            "speaker": "Narrator",
-            "word": "so"
-        },
-        {
-            "start": 710.95669,
-            "end": 712.06417,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 712.34354,
-            "alignedWord": "IN",
-            "start": 712.06417,
-            "line_idx": 34,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.57373095,
+            "end": 710.600,
+            "start": 710,
+            "word": "himself."
+          }, {
+            "confidence": 0.67111117,
+            "end": 711,
+            "start": 710.600,
+            "word": "So"
+          }, {
+            "confidence": 0.5475238,
+            "end": 712.100,
+            "start": 711.900,
+            "word": "his"
+          }, {
+            "confidence": 0.91283858,
+            "end": 712.400,
+            "start": 712.100,
+            "word": "onions"
+          }, {
+            "confidence": 0.67284417,
+            "end": 712.500,
+            "start": 712.400,
             "word": "in"
-        },
-        {
-            "end": 712.70272,
-            "alignedWord": "THIS",
-            "start": 712.34354,
-            "line_idx": 34,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.57514995,
+            "end": 712.700,
+            "start": 712.500,
             "word": "this"
-        },
-        {
-            "end": 712.95215,
-            "alignedWord": "BOWL",
-            "start": 712.70272,
-            "line_idx": 34,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 713,
+            "start": 712.700,
             "word": "bowl"
-        },
-        {
-            "start": 712.95215,
-            "end": 713.00204,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 713.12177,
-            "alignedWord": "HERE",
-            "start": 713.00204,
-            "line_idx": 34,
-            "speaker": "Narrator",
-            "word": "here"
-        },
+          }, {
+            "confidence": 0.6008994,
+            "end": 713.300,
+            "start": 713,
+            "word": "here."
+          },
         {
             "start": 713.12177,
             "end": 715.60612,
@@ -13245,303 +12422,168 @@
             "alignedWord": "sp"
         },
         {
-            "end": 716.03515,
-            "alignedWord": "WHOOPS",
-            "start": 715.60612,
-            "line_idx": 35,
-            "speaker": "Narrator",
-            "word": "whoops"
-        },
-        {
-            "end": 716.12494,
-            "alignedWord": "AND",
-            "start": 716.03515,
-            "line_idx": 35,
-            "speaker": "Narrator",
-            "word": "and"
-        },
-        {
-            "end": 716.53401,
-            "alignedWord": "STRAPS",
-            "start": 716.12494,
-            "line_idx": 35,
-            "speaker": "Narrator",
-            "word": "straps"
-        },
-        {
-            "end": 716.66372,
-            "alignedWord": "ON",
-            "start": 716.53401,
-            "line_idx": 35,
-            "speaker": "Narrator",
-            "word": "on"
-        },
-        {
-            "end": 716.72358,
-            "alignedWord": "THE",
-            "start": 716.66372,
-            "line_idx": 35,
-            "speaker": "Narrator",
-            "word": "the"
-        },
-        {
-            "start": 716.72358,
-            "end": 716.76349,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 717.01293,
-            "alignedWord": "FLOOR",
-            "start": 716.76349,
-            "line_idx": 35,
-            "speaker": "Narrator",
-            "word": "floor"
-        },
-        {
-            "start": 717.01293,
-            "end": 718.53946,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 718.6093,
-            "alignedWord": "WE",
-            "start": 718.53946,
-            "line_idx": 36,
-            "speaker": "Narrator",
-            "word": "we"
-        },
-        {
-            "end": 718.93855,
-            "alignedWord": "WILL",
-            "start": 718.6093,
-            "line_idx": 36,
-            "speaker": "Narrator",
-            "word": "will"
-        },
-        {
-            "end": 719.18798,
-            "alignedWord": "CLEAN",
-            "start": 718.93855,
-            "line_idx": 36,
-            "speaker": "Narrator",
-            "word": "clean"
-        },
-        {
-            "end": 719.27778,
-            "alignedWord": "UP",
-            "start": 719.18798,
-            "line_idx": 36,
-            "speaker": "Narrator",
-            "word": "up"
-        },
-        {
-            "end": 719.63696,
-            "alignedWord": "DOG",
-            "start": 719.27778,
-            "line_idx": 36,
-            "speaker": "Narrator",
-            "word": "dog"
-        },
-        {
-            "end": 719.94626,
-            "alignedWord": "HERE",
-            "start": 719.63696,
-            "line_idx": 36,
-            "speaker": "Narrator",
-            "word": "here"
-        },
-        {
-            "end": 720.11587,
-            "alignedWord": "ON",
-            "start": 719.94626,
-            "line_idx": 36,
-            "speaker": "Narrator",
-            "word": "on"
-        },
-        {
-            "end": 720.3254,
-            "alignedWord": "MY",
-            "start": 720.11587,
-            "line_idx": 36,
-            "speaker": "Narrator",
-            "word": "my"
-        },
-        {
-            "end": 720.71451,
-            "alignedWord": "FEET",
-            "start": 720.3254,
-            "line_idx": 36,
-            "speaker": "Narrator",
-            "word": "feet"
-        },
-        {
-            "end": 720.90408,
-            "alignedWord": "OUR",
-            "start": 720.71451,
-            "line_idx": 36,
-            "speaker": "Narrator",
-            "word": "our"
-        },
-        {
-            "end": 721.13356,
-            "alignedWord": "PET",
-            "start": 720.90408,
-            "line_idx": 36,
-            "speaker": "Narrator",
-            "word": "pet"
-        },
-        {
-            "end": 721.46281,
-            "alignedWord": "DOG",
-            "start": 721.13356,
-            "line_idx": 36,
-            "speaker": "Narrator",
-            "word": "dog"
-        },
-        {
-            "end": 721.81202,
-            "alignedWord": "IS",
-            "start": 721.46281,
-            "line_idx": 36,
-            "speaker": "Narrator",
-            "word": "is"
-        },
-        {
-            "start": 721.81202,
-            "end": 722.0415,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 722.31088,
-            "alignedWord": "JUST",
-            "start": 722.0415,
-            "line_idx": 36,
-            "speaker": "Narrator",
+            "confidence": 0.91283858,
+            "end": 716,
+            "start": 715.600,
+            "word": "Whoops,"
+          }, {
+            "confidence": 0.91283858,
+            "end": 716.200,
+            "start": 716,
             "word": "just"
-        },
-        {
-            "end": 722.55034,
-            "alignedWord": "SHE",
-            "start": 722.31088,
-            "line_idx": 36,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 716.500,
+            "start": 716.200,
+            "word": "drops"
+          }, {
+            "confidence": 0.91283858,
+            "end": 716.700,
+            "start": 716.500,
+            "word": "on"
+          }, {
+            "confidence": 0.60324109,
+            "end": 716.800,
+            "start": 716.700,
+            "word": "the"
+          }, {
+            "confidence": 0.69867277,
+            "end": 717.100,
+            "start": 716.800,
+            "word": "floor."
+          }, {
+            "confidence": 0.91283858,
+            "end": 718.600,
+            "start": 718.500,
+            "word": "We"
+          }, {
+            "confidence": 0.77018648,
+            "end": 718.900,
+            "start": 718.600,
+            "word": "will"
+          }, {
+            "confidence": 0.91283858,
+            "end": 719.200,
+            "start": 718.900,
+            "word": "clean"
+          }, {
+            "confidence": 0.72430789,
+            "end": 719.300,
+            "start": 719.200,
+            "word": "up"
+          }, {
+            "confidence": 0.71998644,
+            "end": 719.700,
+            "start": 719.300,
+            "word": "dog"
+          }, {
+            "confidence": 0.91283858,
+            "end": 720,
+            "start": 719.700,
+            "word": "here."
+          }, {
+            "confidence": 0.91283858,
+            "end": 720.100,
+            "start": 720,
+            "word": "On"
+          }, {
+            "confidence": 0.74635553,
+            "end": 720.300,
+            "start": 720.100,
+            "word": "my"
+          }, {
+            "confidence": 0.91283858,
+            "end": 720.700,
+            "start": 720.300,
+            "word": "feet,"
+          }, {
+            "confidence": 0.3658067,
+            "end": 720.900,
+            "start": 720.700,
+            "word": "our"
+          }, {
+            "confidence": 0.91283858,
+            "end": 721.100,
+            "start": 720.900,
+            "word": "pet"
+          }, {
+            "confidence": 0.72192556,
+            "end": 721.500,
+            "start": 721.100,
+            "word": "dog."
+          }, {
+            "confidence": 0.54387367,
+            "end": 721.900,
+            "start": 721.500,
+            "word": "Is,"
+          }, {
+            "confidence": 0.34878844,
+            "end": 722.600,
+            "start": 722.300,
             "word": "she"
-        },
-        {
-            "end": 722.97937,
-            "alignedWord": "ALWAYS",
-            "start": 722.55034,
-            "line_idx": 36,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.45169917,
+            "end": 723,
+            "start": 722.600,
             "word": "always"
-        },
-        {
-            "start": 722.97937,
-            "end": 723.56803,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 723.99705,
-            "alignedWord": "SITS",
-            "start": 723.56803,
-            "line_idx": 36,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.72692466,
+            "end": 724,
+            "start": 723.600,
             "word": "sits"
-        },
-        {
-            "end": 724.26644,
-            "alignedWord": "RIGHT",
-            "start": 723.99705,
-            "line_idx": 36,
-            "speaker": "Narrator",
-            "word": "right"
-        },
-        {
-            "end": 724.77528,
-            "alignedWord": "BESIDE",
-            "start": 724.26644,
-            "line_idx": 36,
-            "speaker": "Narrator",
-            "word": "beside"
-        },
-        {
-            "end": 725.0746,
-            "alignedWord": "ME",
-            "start": 724.77528,
-            "line_idx": 36,
-            "speaker": "Narrator",
-            "word": "me"
-        },
-        {
-            "start": 725.0746,
-            "end": 725.35397,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 725.57347,
-            "alignedWord": "SHE",
-            "start": 725.35397,
-            "line_idx": 36,
-            "speaker": "Narrator",
-            "word": "she"
-        },
-        {
-            "end": 725.77302,
-            "alignedWord": "KNOWS",
-            "start": 725.57347,
-            "line_idx": 36,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.63907599,
+            "end": 724.300,
+            "start": 724,
+            "word": "right?"
+          }, {
+            "confidence": 0.91283858,
+            "end": 724.800,
+            "start": 724.300,
+            "word": "Beside"
+          }, {
+            "confidence": 0.61290699,
+            "end": 725.100,
+            "start": 724.800,
+            "word": "me."
+          }, {
+            "confidence": 0.91283858,
+            "end": 725.500,
+            "start": 725.300,
+            "word": "She"
+          }, {
+            "confidence": 0.75603205,
+            "end": 725.800,
+            "start": 725.500,
             "word": "knows"
-        },
-        {
-            "end": 725.90272,
-            "alignedWord": "I",
-            "start": 725.77302,
-            "line_idx": 36,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 725.800,
+            "start": 725.800,
             "word": "I"
-        },
-        {
-            "end": 726.42154,
-            "alignedWord": "DROP",
-            "start": 725.90272,
-            "line_idx": 36,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.72784066,
+            "end": 726.200,
+            "start": 725.800,
             "word": "drop"
-        },
+          }, {
+            "confidence": 0.42734447,
+            "end": 726.800,
+            "start": 726.200,
+            "word": "things."
+          },
         {
-            "start": 726.42154,
-            "end": 731.94898,
+            "start": 726.800,
+            "end": 742.600,
             "word": "{p}",
             "alignedWord": "sp"
         },
         {
-            "end": 733.29592,
-            "alignedWord": "THINGS",
-            "start": 731.94898,
-            "line_idx": 36,
-            "speaker": "Narrator",
-            "word": "things"
-        },
-        {
-            "start": 733.29592,
-            "end": 740.64921,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 741.54717,
-            "alignedWord": "OKAY",
-            "start": 740.64921,
-            "line_idx": 37,
-            "speaker": "Narrator",
-            "word": "okay"
-        },
+            "confidence": 0.91283858,
+            "end": 743.200,
+            "start": 742.600,
+            "word": "Okay."
+          },
         {
             "start": 741.54717,
             "end": 742.74444,
@@ -13549,695 +12591,378 @@
             "alignedWord": "sp"
         },
         {
-            "end": 743.09365,
-            "alignedWord": "THIS",
-            "start": 742.74444,
-            "line_idx": 38,
-            "speaker": "Narrator",
+            "confidence": 0.71810967,
+            "end": 747.700,
+            "start": 747.600,
+            "word": "All"
+          }, {
+            "confidence": 0.76213169,
+            "end": 748.300,
+            "start": 747.700,
             "word": "this"
-        },
-        {
-            "start": 743.09365,
-            "end": 747.85283,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 749.6288,
-            "alignedWord": "STUFF",
-            "start": 747.85283,
-            "line_idx": 38,
-            "speaker": "Narrator",
-            "word": "stuff"
-        },
+          }, {
+            "confidence": 0.91283858,
+            "end": 749,
+            "start": 748.300,
+            "word": "stuff."
+          },
         {
             "start": 749.6288,
-            "end": 750.16757,
+            "end": 777.500,
             "word": "{p}",
             "alignedWord": "sp"
         },
         {
-            "end": 750.40703,
-            "alignedWord": "I",
-            "start": 750.16757,
-            "line_idx": 39,
-            "speaker": "Narrator",
+            "confidence": 0.91283858,
+            "end": 777.500,
+            "start": 777.500,
             "word": "I"
-        },
-        {
-            "start": 750.40703,
-            "end": 751.85374,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 752.81156,
-            "alignedWord": "DON'T",
-            "start": 751.85374,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 777.800,
+            "start": 777.500,
             "word": "don't"
-        },
-        {
-            "start": 752.81156,
-            "end": 758.46871,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 759.09728,
-            "alignedWord": "MIND",
-            "start": 758.46871,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 778.200,
+            "start": 777.800,
             "word": "mind"
-        },
-        {
-            "start": 759.09728,
-            "end": 767.08912,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 767.42834,
-            "alignedWord": "COOKING",
-            "start": 767.08912,
-            "line_idx": 39,
-            "speaker": "Narrator",
-            "word": "cooking"
-        },
-        {
-            "start": 767.42834,
-            "end": 770.95034,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 771.52902,
-            "alignedWord": "I",
-            "start": 770.95034,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 778.600,
+            "start": 778.200,
+            "word": "cooking."
+          }, {
+            "confidence": 0.91283858,
+            "end": 778.600,
+            "start": 778.600,
             "word": "I"
-        },
-        {
-            "start": 771.52902,
-            "end": 777.63515,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 778.1839,
-            "alignedWord": "LIKE",
-            "start": 777.63515,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 778.900,
+            "start": 778.600,
             "word": "like"
-        },
-        {
-            "end": 778.68277,
-            "alignedWord": "IT",
-            "start": 778.1839,
-            "line_idx": 39,
-            "speaker": "Narrator",
-            "word": "it"
-        },
-        {
-            "end": 779.39116,
-            "alignedWord": "I",
-            "start": 778.68277,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 779.200,
+            "start": 778.900,
+            "word": "it."
+          }, {
+            "confidence": 0.91283858,
+            "end": 779.400,
+            "start": 779.200,
+            "word": "I,"
+          }, {
+            "confidence": 0.91283858,
+            "end": 779.600,
+            "start": 779.400,
+            "word": "you"
+          }, {
+            "confidence": 0.91283858,
+            "end": 779.800,
+            "start": 779.600,
+            "word": "know,"
+          }, {
+            "confidence": 0.91283858,
+            "end": 780,
+            "start": 779.800,
             "word": "I"
-        },
-        {
-            "end": 779.85011,
-            "alignedWord": "UTILIZE",
-            "start": 779.39116,
-            "line_idx": 39,
-            "speaker": "Narrator",
-            "word": "utilize"
-        },
-        {
-            "end": 780.07959,
-            "alignedWord": "IT",
-            "start": 779.85011,
-            "line_idx": 39,
-            "speaker": "Narrator",
-            "word": "it"
-        },
-        {
-            "end": 780.28912,
-            "alignedWord": "LOTS",
-            "start": 780.07959,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 780.300,
+            "start": 780,
             "word": "lots"
-        },
-        {
-            "end": 780.36893,
-            "alignedWord": "OF",
-            "start": 780.28912,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 780.300,
+            "start": 780.300,
             "word": "of"
-        },
-        {
-            "end": 780.79796,
-            "alignedWord": "TIMES",
-            "start": 780.36893,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 780.800,
+            "start": 780.300,
             "word": "times"
-        },
-        {
-            "end": 781.11723,
-            "alignedWord": "FOR",
-            "start": 780.79796,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 781,
+            "start": 780.800,
             "word": "for"
-        },
-        {
-            "end": 781.90544,
-            "alignedWord": "CHRISTMAS",
-            "start": 781.11723,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 781.700,
+            "start": 781,
             "word": "Christmas"
-        },
-        {
-            "start": 781.90544,
-            "end": 782.30454,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 782.66372,
-            "alignedWord": "AND",
-            "start": 782.30454,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 782.100,
+            "start": 781.700,
             "word": "and"
-        },
-        {
-            "end": 783.13265,
-            "alignedWord": "EASTER",
-            "start": 782.66372,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 783.100,
+            "start": 782.600,
             "word": "Easter"
-        },
-        {
-            "end": 783.22245,
-            "alignedWord": "AND",
-            "start": 783.13265,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 783.200,
+            "start": 783.100,
             "word": "and"
-        },
-        {
-            "end": 783.96077,
-            "alignedWord": "THANKSGIVING",
-            "start": 783.22245,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 783.900,
+            "start": 783.200,
             "word": "Thanksgiving"
-        },
-        {
-            "end": 784.22018,
-            "alignedWord": "AND",
-            "start": 783.96077,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 784.200,
+            "start": 783.900,
             "word": "and"
-        },
-        {
-            "start": 784.22018,
-            "end": 784.26009,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 784.58934,
-            "alignedWord": "ALL",
-            "start": 784.26009,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 784.600,
+            "start": 784.200,
             "word": "all"
-        },
-        {
-            "end": 784.86871,
-            "alignedWord": "THOSE",
-            "start": 784.58934,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 784.900,
+            "start": 784.600,
             "word": "those"
-        },
-        {
-            "end": 785.53719,
-            "alignedWord": "THINGS",
-            "start": 784.86871,
-            "line_idx": 39,
-            "speaker": "Narrator",
-            "word": "things"
-        },
-        {
-            "start": 785.53719,
-            "end": 785.65692,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 785.98617,
-            "alignedWord": "I",
-            "start": 785.65692,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 785.500,
+            "start": 784.900,
+            "word": "things."
+          }, {
+            "confidence": 0.91283858,
+            "end": 786,
+            "start": 785.700,
             "word": "I"
-        },
-        {
-            "end": 786.37528,
-            "alignedWord": "COOK",
-            "start": 785.98617,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 786.500,
+            "start": 786,
             "word": "cook"
-        },
-        {
-            "start": 786.37528,
-            "end": 786.46508,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 786.58481,
-            "alignedWord": "THE",
-            "start": 786.46508,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 786.600,
+            "start": 786.500,
             "word": "the"
-        },
-        {
-            "end": 787.50272,
-            "alignedWord": "MEALS",
-            "start": 786.58481,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 787.200,
+            "start": 786.600,
             "word": "meals"
-        },
-        {
-            "start": 787.50272,
-            "end": 788.10136,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 788.60023,
-            "alignedWord": "AND",
-            "start": 788.10136,
-            "line_idx": 39,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 787.600,
+            "start": 787.200,
             "word": "and"
-        },
-        {
-            "start": 788.60023,
-            "end": 789.65782,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 790.09683,
-            "alignedWord": "FOR",
-            "start": 789.65782,
-            "line_idx": 40,
-            "speaker": "Narrator",
-            "word": "for"
-        },
-        {
-            "end": 790.16667,
-            "alignedWord": "YOU",
-            "start": 790.09683,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 790.100,
+            "start": 789.700,
+            "word": "for,"
+          }, {
+            "confidence": 0.91283858,
+            "end": 790.200,
+            "start": 790.100,
             "word": "you"
-        },
-        {
-            "end": 790.24649,
-            "alignedWord": "KNOW",
-            "start": 790.16667,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 790.500,
+            "start": 790.200,
             "word": "know,"
-        },
-        {
-            "end": 790.45601,
-            "alignedWord": "THE",
-            "start": 790.24649,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 791,
+            "start": 790.800,
             "word": "the"
-        },
-        {
-            "start": 790.45601,
-            "end": 790.80522,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 791.24422,
-            "alignedWord": "WHOLE",
-            "start": 790.80522,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 791.100,
+            "start": 791,
             "word": "whole"
-        },
-        {
-            "end": 791.65329,
-            "alignedWord": "FAMILY",
-            "start": 791.24422,
-            "line_idx": 40,
-            "speaker": "Narrator",
-            "word": "family"
-        },
-        {
-            "end": 791.98254,
-            "alignedWord": "SOMETIMES",
-            "start": 791.65329,
-            "line_idx": 40,
-            "speaker": "Narrator",
-            "word": "sometimes"
-        },
-        {
-            "end": 792.12222,
-            "alignedWord": "BOTH",
-            "start": 791.98254,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 791.700,
+            "start": 791.100,
+            "word": "families"
+          }, {
+            "confidence": 0.91283858,
+            "end": 791.800,
+            "start": 791.700,
+            "word": "who"
+          }, {
+            "confidence": 0.91283858,
+            "end": 792,
+            "start": 791.800,
+            "word": "had"
+          }, {
+            "confidence": 0.91283858,
+            "end": 792.200,
+            "start": 792,
             "word": "both"
-        },
-        {
-            "start": 792.12222,
-            "end": 792.17211,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 792.43152,
-            "alignedWord": "SIDES",
-            "start": 792.17211,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 792.400,
+            "start": 792.200,
             "word": "sides"
-        },
-        {
-            "end": 792.49138,
-            "alignedWord": "OF",
-            "start": 792.43152,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 792.500,
+            "start": 792.400,
             "word": "of"
-        },
-        {
-            "end": 792.55125,
-            "alignedWord": "THE",
-            "start": 792.49138,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 792.600,
+            "start": 792.500,
             "word": "the"
-        },
-        {
-            "end": 793.04014,
-            "alignedWord": "FAMILY",
-            "start": 792.55125,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 793,
+            "start": 792.600,
             "word": "family"
-        },
-        {
-            "start": 793.04014,
-            "end": 793.07007,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 793.17982,
-            "alignedWord": "AND",
-            "start": 793.07007,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 793.200,
+            "start": 793,
             "word": "and"
-        },
-        {
-            "start": 793.17982,
-            "end": 793.81837,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 794.00794,
-            "alignedWord": "I",
-            "start": 793.81837,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 794,
+            "start": 793.800,
             "word": "I"
-        },
-        {
-            "end": 794.2873,
-            "alignedWord": "ENJOY",
-            "start": 794.00794,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 794.400,
+            "start": 794,
             "word": "enjoy"
-        },
-        {
-            "end": 794.53673,
-            "alignedWord": "IT",
-            "start": 794.2873,
-            "line_idx": 40,
-            "speaker": "Narrator",
-            "word": "it"
-        },
-        {
-            "end": 794.68639,
-            "alignedWord": "I",
-            "start": 794.53673,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 794.700,
+            "start": 794.400,
+            "word": "it."
+          }, {
+            "confidence": 0.91283858,
+            "end": 794.700,
+            "start": 794.700,
             "word": "I"
-        },
-        {
-            "end": 795.1254,
-            "alignedWord": "THINK",
-            "start": 794.68639,
-            "line_idx": 40,
-            "speaker": "Narrator",
-            "word": "think"
-        },
-        {
-            "start": 795.1254,
-            "end": 795.98345,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 796.06327,
-            "alignedWord": "YOU",
-            "start": 795.98345,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 795.300,
+            "start": 794.700,
+            "word": "think,"
+          }, {
+            "confidence": 0.91283858,
+            "end": 796.100,
+            "start": 796,
             "word": "you"
-        },
-        {
-            "end": 796.32268,
-            "alignedWord": "KNOW",
-            "start": 796.06327,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 796.500,
+            "start": 796.100,
             "word": "know,"
-        },
-        {
-            "start": 796.32268,
-            "end": 796.74172,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 796.82154,
-            "alignedWord": "I",
-            "start": 796.74172,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 796.800,
+            "start": 796.700,
             "word": "I"
-        },
-        {
-            "end": 797.01111,
-            "alignedWord": "LIKE",
-            "start": 796.82154,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 797.100,
+            "start": 796.800,
             "word": "like"
-        },
-        {
-            "end": 797.33039,
-            "alignedWord": "HAVING",
-            "start": 797.01111,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 797.300,
+            "start": 797.100,
             "word": "having"
-        },
-        {
-            "end": 797.62971,
-            "alignedWord": "PEOPLE",
-            "start": 797.33039,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 797.600,
+            "start": 797.300,
             "word": "people"
-        },
-        {
-            "end": 798.35805,
-            "alignedWord": "OVER",
-            "start": 797.62971,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 798.100,
+            "start": 797.600,
             "word": "over"
-        },
-        {
-            "start": 798.35805,
-            "end": 798.6873,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 799.08639,
-            "alignedWord": "COOKING",
-            "start": 798.6873,
-            "line_idx": 40,
-            "speaker": "Narrator",
-            "word": "cooking"
-        },
-        {
-            "end": 799.17619,
-            "alignedWord": "FOR",
-            "start": 799.08639,
-            "line_idx": 40,
-            "speaker": "Narrator",
-            "word": "for"
-        },
-        {
-            "end": 799.26599,
-            "alignedWord": "THEM",
-            "start": 799.17619,
-            "line_idx": 40,
-            "speaker": "Narrator",
-            "word": "them"
-        },
-        {
-            "end": 799.54535,
-            "alignedWord": "AND",
-            "start": 799.26599,
-            "line_idx": 40,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 798.600,
+            "start": 798.100,
             "word": "and"
-        },
-        {
-            "end": 799.61519,
-            "alignedWord": "YOU",
-            "start": 799.54535,
-            "line_idx": 41,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 799.100,
+            "start": 798.700,
+            "word": "cooking"
+          }, {
+            "confidence": 0.91283858,
+            "end": 799.200,
+            "start": 799.100,
+            "word": "for"
+          }, {
+            "confidence": 0.91283858,
+            "end": 799.700,
+            "start": 799.200,
+            "word": "them"
+          }, {
+            "confidence": 0.91283858,
+            "end": 800.100,
+            "start": 799.700,
+            "word": "and,"
+          }, {
+            "confidence": 0.91283858,
+            "end": 801.400,
+            "start": 801.300,
             "word": "you"
-        },
-        {
-            "end": 799.67506,
-            "alignedWord": "KNOW",
-            "start": 799.61519,
-            "line_idx": 41,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 801.700,
+            "start": 801.400,
             "word": "know,"
-        },
-        {
-            "end": 801.6805,
-            "alignedWord": "HOPEFULLY",
-            "start": 799.67506,
-            "line_idx": 41,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 803.300,
+            "start": 802.600,
             "word": "hopefully"
-        },
-        {
-            "start": 801.6805,
-            "end": 802.6483,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 803.5263,
-            "alignedWord": "TASTE",
-            "start": 802.6483,
-            "line_idx": 41,
-            "speaker": "Narrator",
-            "word": "taste"
-        },
-        {
-            "end": 803.7059,
-            "alignedWord": "GOOD",
-            "start": 803.5263,
-            "line_idx": 41,
-            "speaker": "Narrator",
-            "word": "good"
-        },
-        {
-            "start": 803.7059,
-            "end": 803.77574,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 804.22472,
-            "alignedWord": "BUT",
-            "start": 803.77574,
-            "line_idx": 41,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.7572453,
+            "end": 803.800,
+            "start": 803.400,
+            "word": "face"
+          }, {
+            "confidence": 0.91283858,
+            "end": 804.100,
+            "start": 803.800,
+            "word": "good,"
+          }, {
+            "confidence": 0.80965596,
+            "end": 804.500,
+            "start": 804.100,
             "word": "but"
-        },
-        {
-            "end": 805.07279,
-            "alignedWord": "I",
-            "start": 804.22472,
-            "line_idx": 41,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 804.600,
+            "start": 804.500,
             "word": "I"
-        },
-        {
-            "start": 805.07279,
-            "end": 805.19252,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 805.35215,
-            "alignedWord": "ENJOY",
-            "start": 805.19252,
-            "line_idx": 41,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.87544888,
+            "end": 804.900,
+            "start": 804.600,
             "word": "enjoy"
-        },
-        {
-            "end": 805.43197,
-            "alignedWord": "IT",
-            "start": 805.35215,
-            "line_idx": 41,
-            "speaker": "Narrator",
-            "word": "it"
-        },
-        {
-            "end": 806.13039,
-            "alignedWord": "SO",
-            "start": 805.43197,
-            "line_idx": 41,
-            "speaker": "Narrator",
-            "word": "so"
-        },
+          }, {
+            "confidence": 0.8306734,
+            "end": 805.100,
+            "start": 804.900,
+            "word": "it."
+          }, {
+            "confidence": 0.7834897,
+            "end": 805.500,
+            "start": 805.100,
+            "word": "So,"
+          },
         {
             "start": 806.13039,
             "end": 806.33991,
@@ -14763,495 +13488,263 @@
             "word": "person."
         },
         {
-            "end": 829.66689,
-            "alignedWord": "I",
-            "start": 829.37755,
-            "line_idx": 44,
-            "speaker": "Narrator",
+            "confidence": 0.80095929,
+            "end": 829.800,
+            "start": 829.400,
             "word": "I"
-        },
-        {
-            "start": 829.66689,
-            "end": 829.85646,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 830.13583,
-            "alignedWord": "LIKE",
-            "start": 829.85646,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.75818837,
+            "end": 830.100,
+            "start": 829.800,
             "word": "like"
-        },
-        {
-            "end": 830.19569,
-            "alignedWord": "TO",
-            "start": 830.13583,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 830.200,
+            "start": 830.100,
             "word": "to"
-        },
-        {
-            "end": 830.28549,
-            "alignedWord": "BE",
-            "start": 830.19569,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 830.300,
+            "start": 830.200,
             "word": "be"
-        },
-        {
-            "end": 830.92404,
-            "alignedWord": "INDEPENDENT",
-            "start": 830.28549,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.80524099,
+            "end": 830.900,
+            "start": 830.300,
             "word": "independent"
-        },
-        {
-            "end": 831.01383,
-            "alignedWord": "AND",
-            "start": 830.92404,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 831,
+            "start": 830.900,
             "word": "and"
-        },
-        {
-            "end": 831.12358,
-            "alignedWord": "I",
-            "start": 831.01383,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 831.100,
+            "start": 831,
             "word": "I"
-        },
-        {
-            "end": 831.2932,
-            "alignedWord": "WANT",
-            "start": 831.12358,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 831.200,
+            "start": 831.100,
             "word": "want"
-        },
-        {
-            "end": 831.40295,
-            "alignedWord": "TO",
-            "start": 831.2932,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.82034564,
+            "end": 831.300,
+            "start": 831.200,
             "word": "to"
-        },
-        {
-            "end": 831.46281,
-            "alignedWord": "DO",
-            "start": 831.40295,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 831.500,
+            "start": 831.300,
             "word": "do"
-        },
-        {
-            "end": 831.70227,
-            "alignedWord": "THINGS",
-            "start": 831.46281,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.89349455,
+            "end": 831.700,
+            "start": 831.500,
             "word": "things"
-        },
-        {
-            "end": 831.79206,
-            "alignedWord": "THAT",
-            "start": 831.70227,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 831.800,
+            "start": 831.700,
             "word": "that"
-        },
-        {
-            "end": 832.16122,
-            "alignedWord": "EVERYBODY",
-            "start": 831.79206,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 832.200,
+            "start": 831.800,
             "word": "everybody"
-        },
-        {
-            "end": 832.38073,
-            "alignedWord": "ELSE",
-            "start": 832.16122,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.83279753,
+            "end": 832.400,
+            "start": 832.200,
             "word": "else"
-        },
-        {
-            "start": 832.38073,
-            "end": 832.41066,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 832.58027,
-            "alignedWord": "DOES",
-            "start": 832.41066,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 832.600,
+            "start": 832.400,
             "word": "does"
-        },
-        {
-            "end": 832.67007,
-            "alignedWord": "AND",
-            "start": 832.58027,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.79329538,
+            "end": 832.700,
+            "start": 832.600,
             "word": "and"
-        },
-        {
-            "end": 832.73991,
-            "alignedWord": "I",
-            "start": 832.67007,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 832.700,
+            "start": 832.700,
             "word": "I"
-        },
-        {
-            "end": 832.95941,
-            "alignedWord": "DON'T",
-            "start": 832.73991,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.90995997,
+            "end": 832.900,
+            "start": 832.700,
             "word": "don't"
-        },
-        {
-            "end": 833.20884,
-            "alignedWord": "THINK",
-            "start": 832.95941,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.77567351,
+            "end": 833.400,
+            "start": 832.900,
             "word": "think"
-        },
-        {
-            "start": 833.20884,
-            "end": 833.86735,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 834.06689,
-            "alignedWord": "THERE'S",
-            "start": 833.86735,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 834.100,
+            "start": 833.900,
             "word": "there's"
-        },
-        {
-            "end": 834.29637,
-            "alignedWord": "ANY",
-            "start": 834.06689,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 834.300,
+            "start": 834.100,
             "word": "any"
-        },
-        {
-            "end": 834.5458,
-            "alignedWord": "REASON",
-            "start": 834.29637,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.85326183,
+            "end": 834.600,
+            "start": 834.300,
             "word": "reason"
-        },
-        {
-            "end": 834.83515,
-            "alignedWord": "WHY",
-            "start": 834.5458,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.90918571,
+            "end": 834.900,
+            "start": 834.600,
             "word": "why"
-        },
-        {
-            "end": 834.98481,
-            "alignedWord": "I",
-            "start": 834.83515,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.90918583,
+            "end": 835,
+            "start": 834.900,
             "word": "I"
-        },
-        {
-            "end": 835.42381,
-            "alignedWord": "SHOULDN'T",
-            "start": 834.98481,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.91283858,
+            "end": 835.400,
+            "start": 835,
             "word": "shouldn't"
-        },
-        {
-            "end": 835.65329,
-            "alignedWord": "BE",
-            "start": 835.42381,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.84533638,
+            "end": 835.600,
+            "start": 835.400,
             "word": "be"
-        },
-        {
-            "end": 835.89274,
-            "alignedWord": "ABLE",
-            "start": 835.65329,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.78498912,
+            "end": 835.900,
+            "start": 835.600,
             "word": "able"
-        },
-        {
-            "end": 836.09229,
-            "alignedWord": "TO",
-            "start": 835.89274,
-            "line_idx": 44,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.77055734,
+            "end": 836.200,
+            "start": 835.900,
             "word": "to"
-        },
+          },
         {
-            "start": 836.09229,
-            "end": 844.46327,
+            "start": 836.200,
+            "end": 846.400,
             "word": "{p}",
             "alignedWord": "sp"
         },
         {
-            "end": 844.60295,
-            "alignedWord": "SO",
-            "start": 844.46327,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "so"
-        },
-        {
-            "end": 844.73265,
-            "alignedWord": "YOU",
-            "start": 844.60295,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "you"
-        },
-        {
-            "start": 844.73265,
-            "end": 845.21156,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 845.9898,
-            "alignedWord": "KNOW",
-            "start": 845.21156,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "know"
-        },
-        {
-            "end": 846.76803,
-            "alignedWord": "HOW",
-            "start": 845.9898,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "how"
-        },
-        {
-            "end": 847.19705,
-            "alignedWord": "SMELL",
-            "start": 846.76803,
-            "line_idx": 45,
-            "speaker": "Narrator",
+            "confidence": 0.90419,
+            "end": 846.700,
+            "start": 846.400,
+            "word": "I'll"
+          }, {
+            "confidence": 0.88961619,
+            "end": 847.200,
+            "start": 846.700,
             "word": "smell"
-        },
-        {
-            "end": 847.47642,
-            "alignedWord": "IT",
-            "start": 847.19705,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "it"
-        },
-        {
-            "start": 847.47642,
-            "end": 847.7059,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 847.9254,
-            "alignedWord": "MAKES",
-            "start": 847.7059,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "makes"
-        },
-        {
-            "end": 848.20476,
-            "alignedWord": "SURE",
-            "start": 847.9254,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "sure"
-        },
-        {
-            "start": 848.20476,
-            "end": 848.2746,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 848.46417,
-            "alignedWord": "THAT",
-            "start": 848.2746,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "that"
-        },
-        {
-            "end": 848.61383,
-            "alignedWord": "IT",
-            "start": 848.46417,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "it"
-        },
-        {
-            "end": 849.08277,
-            "alignedWord": "SMELLS",
-            "start": 848.61383,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "smells"
-        },
-        {
-            "start": 849.08277,
-            "end": 849.10272,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 849.18254,
-            "alignedWord": "THE",
-            "start": 849.10272,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "the"
-        },
-        {
-            "end": 849.40204,
-            "alignedWord": "WAY",
-            "start": 849.18254,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "way"
-        },
-        {
-            "end": 849.54172,
-            "alignedWord": "THAT",
-            "start": 849.40204,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "that"
-        },
-        {
-            "end": 849.73129,
-            "alignedWord": "IT'S",
-            "start": 849.54172,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "it's"
-        },
-        {
-            "end": 850.28005,
-            "alignedWord": "SUPPOSED",
-            "start": 849.73129,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "supposed"
-        },
-        {
-            "end": 850.34989,
-            "alignedWord": "TO",
-            "start": 850.28005,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "to."
-        },
-        {
-            "end": 850.6093,
-            "alignedWord": "IT'S",
-            "start": 850.34989,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "It's"
-        },
-        {
-            "start": 850.6093,
-            "end": 850.77891,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 850.91859,
-            "alignedWord": "KIND",
-            "start": 850.77891,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "kind"
-        },
-        {
-            "end": 850.98844,
-            "alignedWord": "OF",
-            "start": 850.91859,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "of"
-        },
-        {
-            "start": 850.98844,
-            "end": 851.20794,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 851.60703,
-            "alignedWord": "HOW",
-            "start": 851.20794,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "how"
-        },
-        {
-            "end": 851.75669,
-            "alignedWord": "I",
-            "start": 851.60703,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "I"
-        },
-        {
-            "end": 851.9263,
-            "alignedWord": "GO",
-            "start": 851.75669,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "go"
-        },
-        {
-            "end": 852.39524,
-            "alignedWord": "ABOUT",
-            "start": 851.9263,
-            "line_idx": 45,
-            "speaker": "Narrator",
-            "word": "about"
-        },
-        {
-            "start": 852.39524,
-            "end": 852.53492,
-            "word": "{p}",
-            "alignedWord": "sp"
-        },
-        {
-            "end": 852.63469,
-            "alignedWord": "IT",
-            "start": 852.53492,
-            "line_idx": 45,
-            "speaker": "Narrator",
+          }, {
+            "confidence": 0.78709316,
+            "end": 847.700,
+            "start": 847.200,
             "word": "it."
-        },
+          }, {
+            "confidence": 0.91283858,
+            "end": 848,
+            "start": 847.700,
+            "word": "Make"
+          }, {
+            "confidence": 0.91283858,
+            "end": 848.200,
+            "start": 848,
+            "word": "sure"
+          }, {
+            "confidence": 0.7710675,
+            "end": 848.500,
+            "start": 848.200,
+            "word": "that"
+          }, {
+            "confidence": 0.90408248,
+            "end": 848.700,
+            "start": 848.500,
+            "word": "it"
+          }, {
+            "confidence": 0.91283858,
+            "end": 849.100,
+            "start": 848.700,
+            "word": "smells"
+          }, {
+            "confidence": 0.851228,
+            "end": 849.200,
+            "start": 849.100,
+            "word": "the"
+          }, {
+            "confidence": 0.91283858,
+            "end": 849.300,
+            "start": 849.200,
+            "word": "way"
+          }, {
+            "confidence": 0.82890379,
+            "end": 849.500,
+            "start": 849.300,
+            "word": "that"
+          }, {
+            "confidence": 0.91283858,
+            "end": 849.700,
+            "start": 849.500,
+            "word": "it's"
+          }, {
+            "confidence": 0.91105813,
+            "end": 850.300,
+            "start": 849.700,
+            "word": "supposed"
+          }, {
+            "confidence": 0.77106738,
+            "end": 850.700,
+            "start": 850.300,
+            "word": "to."
+          }, {
+            "confidence": 0.91283858,
+            "end": 851.200,
+            "start": 851.100,
+            "word": "It's"
+          }, {
+            "confidence": 0.91283858,
+            "end": 851.400,
+            "start": 851.200,
+            "word": "kind"
+          }, {
+            "confidence": 0.79511285,
+            "end": 851.500,
+            "start": 851.400,
+            "word": "of"
+          }, {
+            "confidence": 0.91283858,
+            "end": 851.600,
+            "start": 851.500,
+            "word": "how"
+          }, {
+            "confidence": 0.91283858,
+            "end": 851.700,
+            "start": 851.600,
+            "word": "I"
+          }, {
+            "confidence": 0.91283858,
+            "end": 851.900,
+            "start": 851.700,
+            "word": "go"
+          }, {
+            "confidence": 0.75693607,
+            "end": 852.200,
+            "start": 851.900,
+            "word": "about"
+          }, {
+            "confidence": 0.81047302,
+            "end": 852.400,
+            "start": 852.200,
+            "word": "it."
+          },
         {
             "start": 852.63469,
             "end": 854.19116,
@@ -15486,20 +13979,33 @@
         },
         {
             "start": 876.59025,
-            "end": 880.03243,
+            "end": 880,
             "word": "{p}",
             "alignedWord": "sp"
         },
         {
-            "end": 880.83061,
-            "alignedWord": "ONE",
-            "start": 880.03243,
-            "line_idx": 52,
-            "speaker": "Narrator",
-            "word": "One"
-        },
+            "confidence": 0.60125828,
+            "end": 880.200,
+            "start": 880,
+            "word": "Little"
+          }, {
+            "confidence": 0.58516979,
+            "end": 880.400,
+            "start": 880.200,
+            "word": "bit"
+          }, {
+            "confidence": 0.91283858,
+            "end": 880.600,
+            "start": 880.400,
+            "word": "too"
+          }, {
+            "confidence": 0.66777956,
+            "end": 881.200,
+            "start": 880.600,
+            "word": "much."
+          },
         {
-            "start": 880.83061,
+            "start": 881.200,
             "end": 909.82472,
             "word": "{p}",
             "alignedWord": "sp"

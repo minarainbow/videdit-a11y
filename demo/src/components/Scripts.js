@@ -13,6 +13,7 @@ import {
   Modifier,
 } from "draft-js";
 import stt2Draft from "../packages/stt2draft";
+import gcpSttToDraft from "../packages/google-stt2draft";
 import createEntityMap from "../packages/createEntityMap";
 
 // DraftJs decorator to recognize which entity is which
