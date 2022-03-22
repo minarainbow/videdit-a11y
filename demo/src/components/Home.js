@@ -100,17 +100,15 @@ class Home extends Component {
     // We only want to update time slider if we are not currently seeking
     this.setState(state);
     const currTime = this.state.playedSeconds;
-    if (this.state.currSpan && !this.state.isJumping) {
+    if (this.state.currSpan) {
       // console.log(this.state.currWordEnd);
       // console.log(currTime);
+      console.log("diff: ", this.state.currWordEnd - currTime);
       if (
         this.state.currWordEnd - 0.2 <= currTime &&
         currTime <= this.state.currWordEnd
       ) {
-        console.log("here");
-        console.log(this.state.currWordEnd);
-        console.log(currTime);
-        this.setState({ isJumping: true });
+        console.log("skip");
         // console.log(this.state.currSpan.nextSibling.nextSibling);
         var nextSpan;
         if (this.state.currSpan.nextSibling.hasAttribute("data-satrt")) {
@@ -118,24 +116,33 @@ class Home extends Component {
         } else {
           nextSpan = this.state.currSpan.nextSibling.nextSibling;
         }
-        const nextStart = parseFloat(nextSpan.getAttribute("data-start"));
-        const nextEnd = parseFloat(nextSpan.getAttribute("data-end"));
-        console.log("next: ", nextStart);
-        this.setState(
-          {
-            currSpan: nextSpan,
-            currWordStart: nextStart,
-            currWordEnd: nextEnd,
-            playing: true,
-            isJumping: false,
-          },
-          () => this.jumpVideo(nextStart, true)
+
+        const nextIndex = parseInt(nextSpan.getAttribute("data-index"));
+        const currIndex = parseInt(
+          this.state.currSpan.getAttribute("data-index")
         );
+
+        console.log("curr", currIndex);
+        console.log("next", nextIndex);
+
+        if (nextIndex > currIndex + 1) {
+          const nextStart = parseFloat(nextSpan.getAttribute("data-start"));
+          const nextEnd = parseFloat(nextSpan.getAttribute("data-end"));
+          console.log("next: ", nextStart);
+          this.setState(
+            {
+              currSpan: nextSpan,
+              currWordStart: nextStart,
+              currWordEnd: nextEnd,
+              playing: true,
+            },
+            () => this.jumpVideo(nextStart, true)
+          );
+        }
       } else if (
         this.state.currWordEnd < currTime ||
         currTime < this.state.currWordStart
       ) {
-        this.setState({ isJumping: true });
         const children = document.querySelectorAll("span.Word");
         // console.log(children);
         var i = 0;
@@ -150,7 +157,6 @@ class Home extends Component {
             currWordEnd: parseFloat(
               theFirstWordElement.getAttribute("data-end")
             ),
-            isJumping: false,
           });
         } else {
           for (i = 0; i < children.length - 1; i++) {
@@ -164,7 +170,6 @@ class Home extends Component {
               this.setState({
                 currSpan: children[i],
                 currWordEnd: newEnd,
-                isJumping: false,
               });
               break;
             }
@@ -181,10 +186,6 @@ class Home extends Component {
         }
       }
     }
-  };
-
-  updateIsJumping = () => {
-    this.setState({ isJumping: false });
   };
 
   updateCurrWordEnd = (time) => {
