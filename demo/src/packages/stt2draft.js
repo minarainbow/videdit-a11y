@@ -40,6 +40,7 @@ const groupWordsInParagraphs = (scriptData) => {
 };
 
 const stt2Draft = (autoEdit2Json) => {
+  console.log(autoEdit2Json);
   const results = [];
   const tmpWords = autoEdit2Json
   const wordsByParagraphs = groupWordsInParagraphs(tmpWords);
@@ -48,7 +49,7 @@ const stt2Draft = (autoEdit2Json) => {
       text: paragraph.text.join(" "),
       type: "paragraph",
       data: {
-        speaker: `TBC ${i}`,
+        heading: `TBC ${i}`,
         words: paragraph.words,
         start: paragraph.words[0].start,
       },

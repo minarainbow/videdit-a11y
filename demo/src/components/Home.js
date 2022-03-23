@@ -60,6 +60,7 @@ class Home extends Component {
       currWordStart: 0,
       currWordEnd: 0,
       isJumping: false,
+      timecodeOffset: 0,
     };
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
     this.handleDrawerClose = this.handleDrawerClose.bind(this);

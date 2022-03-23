@@ -3,6 +3,7 @@ import { Button } from "semantic-ui-react";
 import scriptData from "./../scripts/ZaQtx54N6iU-aligned-sents.jsx";
 import Words from "./Words.js";
 import Word from "./Word.js";
+import WrapperBlock from "./WrapperBlock.js";
 import {
   Editor,
   EditorState,
@@ -162,6 +163,22 @@ class Scripts extends React.Component {
     return "not-handled";
   };
 
+  renderBlockWithTimecodes = () => {
+    return {
+      component: WrapperBlock,
+      editable: true,
+      props: {
+        showHeadings: true,
+        showTimecodes: true,
+        timecodeOffset: this.props.timecodeOffset,
+        editorState: this.props.editorState,
+        setEditorNewContentStateSpeakersUpdate: this.props.setEditorNewContentStateSpeakersUpdate,
+        onWordClick: this.handleWordClick,
+        isEditable: true,
+      }
+    };
+  };
+
   // change to getcurrentsentence
   getCurrentWord = () => {
     const currentWord = {
@@ -264,6 +281,7 @@ class Scripts extends React.Component {
           editorState={this.state.editorState}
           onChange={this.onChange}
           handleKeyCommand={this.handleKeyCommand}
+          blockRendererFn={this.renderBlockWithTimecodes}
           keyBindingFn={this.customKeyBindingFn}
         />
       </section>
