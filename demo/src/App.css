@@ -243,49 +243,44 @@
   user-select: none;
 }
 
-/* Desktop size */
-@media (min-width: 768px) {
 
-  .markers {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-  }
+.markers {
+  display: flex;
+  gap: 10px;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
 
-  .WrapperBlock {
-    margin-bottom: 1em;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: [col-speaker] minmax(200px, 18%) [col-text] minmax(
-      50%,
-      81%
-    );
-    grid-column-gap: 1%;
-    justify-content: center;
-    align-content: center;
-  }
+.WrapperBlock {
+  margin-bottom: 5em;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
 
-  .speaker {
-    color: grey;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    justify-self: start;
-    max-width: 100%;
-    text-align: left;
-  }
+.heading {
+  font-weight: 500;
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  justify-self: start;
+  max-width: 100%;
+  text-align: left;
+}
 
-  .text {
-    font-size: 1em;
-    float: right;
-    clear: right;
-  }
+.text {
+  font-size: 1em;
+  float: right;
+  clear: right;
 }
 
 
+
 .time {
-  font-weight: lighter;
+  font-weight: 500;
   cursor: pointer;
   justify-self: start;
 }
@@ -296,11 +291,11 @@
   /* color: blue; */
 }
 
-.speakerEditable {
+.headingEditable {
   cursor: pointer;
 }
 
-.speakerNotEditable {
+.headingNotEditable {
   cursor: no-drop;
 }
 
@@ -308,42 +303,3 @@
   margin-right: 0.5em;
 }
 
-
-/* Mobile devices */
-@media (max-width: 768px) {
-
-  .markers {
-    width: 100%;
-    font-size: 0.8em;
-    line-height: 1.2em;
-    margin-bottom: 0.5em;
-  }
-
-  .WrapperBlock {
-    width: 100%;
-    margin-bottom: 1em;
-    line-height: 1.2em;
-    overflow: hidden;
-  }
-
-  .speaker {
-    padding-right: 2em;
-    vertical-align: middle;
-    color: grey;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-align: right;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    text-align: left;
-  }
-
-  .text {
-    width: 100%;
-    font-size: 1em;
-    float: left;
-
-    /* clear: right; */
-  }
-}

@@ -172,16 +172,16 @@ class WrapperBlock extends React.Component {
     }
 
     const headingElement = (
-        <span className={ this.props.isEditable? ["speaker", "speakerEditable"].join(' '):  ["speaker", "speakerNotEditable"].join(' ')}
+        <span className={ this.props.isEditable? ["heading", "headingEditable"].join(' '):  ["heading", "headingNotEditable"].join(' ')}
         title={ this.state.heading }
         onClick={ this.props.isEditable? this.handleOnClickEdit: null } >
-        {this.state.heading }
+        { "<" + this.state.heading + ">"}
       </span>
     );
 
     const timecodeElement = (
       <span className={ "time" } onClick={ this.handleTimecodeClick }>
-        {startTimecode}
+        {formatTime(startTimecode)}
       </span>
     );
 

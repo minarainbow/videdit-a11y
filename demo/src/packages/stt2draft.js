@@ -49,7 +49,7 @@ const stt2Draft = (autoEdit2Json) => {
       text: paragraph.text.join(" "),
       type: "paragraph",
       data: {
-        heading: `TBC ${i}`,
+        heading: `Heading ${i}`,
         words: paragraph.words,
         start: paragraph.words[0].start,
       },
