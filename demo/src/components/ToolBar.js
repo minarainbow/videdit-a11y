@@ -2,6 +2,7 @@ import React from "react";
 import _ from 'lodash'
 // import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
 import { Search, Grid, Header, Segment } from 'semantic-ui-react'
+import { Dropdown, Menu, Icon } from 'semantic-ui-react'
 import IconButton from '@mui/material/IconButton';
 import SpeedIcon from '@mui/icons-material/Speed';
 import ContentCutIcon from '@mui/icons-material/ContentCut';
@@ -29,6 +30,7 @@ class ToolBar extends React.Component {
       loading: false,
       results: [],
       value: "",
+      activeItem: null,
     };
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.timeoutRef = React.createRef();
@@ -92,6 +94,10 @@ class ToolBar extends React.Component {
     }, 300);
   };
 
+  handleItemClick = (e, { name }) => {
+    this.setState({ activeItem: name });
+  }
+
   handleAddComment = () => {
 
   }
@@ -113,15 +119,35 @@ class ToolBar extends React.Component {
     );
     return (
       <div className="tool-bar">
-        <IconButton aria-label="Add Comment" onClick={this.handleAddComment}>
-            <AddCommentIcon style={{ fontSize: "30px" }} />
-        </IconButton>
-        <IconButton aria-label="Change Speed" onClick={this.handleChangeSpeed}>
-          <SpeedIcon style={{ fontSize: "30px" }} />
-        </IconButton>
-        <IconButton aria-label="Trim" onClick={this.handleTrim}>
+        <Menu icon='labeled' className="tool-icon">
+        <Menu.Item
+          name='comment'
+          onClick={this.handleItemClick}>
+          <AddCommentIcon style={{ fontSize: "30px" }} />
+          Comment
+        </Menu.Item>
+        <Dropdown icon={null} trigger={<Menu.Item name='speed' onClick={this.handleItemClick}>
+            <SpeedIcon style={{ fontSize: "30px" }} />
+            Speed
+            </Menu.Item>}>
+          <Dropdown.Menu vertical>
+            <Dropdown.Item text='x 0.5' />
+            <Dropdown.Item text='x 1.0' />
+            <Dropdown.Item text='x 1.5' />
+            <Dropdown.Item text='x 2.0' />
+          </Dropdown.Menu>
+        </Dropdown>
+        <Dropdown icon={null} trigger={<Menu.Item name='trim' onClick={this.handleItemClick}>
             <ContentCutIcon style={{ fontSize: "30px" }} />
-        </IconButton>
+            Trim
+            </Menu.Item>}>
+          <Dropdown.Menu vertical>
+            <Dropdown.Item text='Keep Start' />
+            <Dropdown.Item text='Keep Middle ' />
+            <Dropdown.Item text='Keep End' />
+          </Dropdown.Menu>
+        </Dropdown>
+      </Menu>
         {/* <Search
           fluid
           icon="search"
