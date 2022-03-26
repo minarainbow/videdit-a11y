@@ -2,6 +2,10 @@ import React from "react";
 import _ from 'lodash'
 // import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
 import { Search, Grid, Header, Segment } from 'semantic-ui-react'
+import IconButton from '@mui/material/IconButton';
+import SpeedIcon from '@mui/icons-material/Speed';
+import ContentCutIcon from '@mui/icons-material/ContentCut';
+import AddCommentIcon from '@mui/icons-material/AddComment';
 
 const results = [
   {
@@ -18,7 +22,7 @@ const results = [
   },
 ];
 
-class SearchBar extends React.Component {
+class ToolBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -88,6 +92,18 @@ class SearchBar extends React.Component {
     }, 300);
   };
 
+  handleAddComment = () => {
+
+  }
+
+  handleTrim = () => {
+    
+  }
+
+  handleChangeSpeed = () => {
+    
+  }
+
   render() {
     const { loading, results, value } = this.state;
     const resRender = ({ type, keyword }) => (
@@ -96,8 +112,17 @@ class SearchBar extends React.Component {
       </span>
     );
     return (
-      <div className="search-bar">
-        <Search
+      <div className="tool-bar">
+        <IconButton aria-label="Add Comment" onClick={this.handleAddComment}>
+            <AddCommentIcon style={{ fontSize: "30px" }} />
+        </IconButton>
+        <IconButton aria-label="Change Speed" onClick={this.handleChangeSpeed}>
+          <SpeedIcon style={{ fontSize: "30px" }} />
+        </IconButton>
+        <IconButton aria-label="Trim" onClick={this.handleTrim}>
+            <ContentCutIcon style={{ fontSize: "30px" }} />
+        </IconButton>
+        {/* <Search
           fluid
           icon="search"
           placeholder="Search..."
@@ -111,9 +136,9 @@ class SearchBar extends React.Component {
             })
           }
           value={value}
-        />
+        /> */}
       </div>
     );
   }
 }
-export default SearchBar;
+export default ToolBar;

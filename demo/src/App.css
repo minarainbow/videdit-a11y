@@ -80,15 +80,20 @@
 
 .script-page {
   width: 50vw;
-  height: 80vh;
+  height: 85vh;
+  overflow:visible;
   font-size: 1.3rem;
   line-height: 2rem;
   align-items: center;
+  border: lightslategray;
+  border-style: double;
+  padding: 2%;
 }
 
 .script {
+  
   padding-right: 2vw;
-  height: 80vh;
+  height: 70vh;
   overflow-x: hidden;
   overflow-y: auto;
   display: block;
@@ -162,11 +167,14 @@
   margin: 0px 5px 0px 5px;
 }
 
-.search-bar {
-  padding-right: 3%;
-  width: 100%;
-  display: inline-block;
-  text-align: right;
+.tool-bar {
+  display: flex;
+  gap: 3%;
+  font-size: 30px;
+  margin-bottom: 10px;
+  border: lightslategray;
+  border-style: double;
+  padding: 2%;
 }
 
 .segments-container {

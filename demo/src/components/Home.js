@@ -17,7 +17,7 @@ import Divider from "@material-ui/core/Divider";
 import { clips } from "../scripts";
 import KeyboardEventHandler from "react-keyboard-event-handler";
 import Speech from "speak-tts";
-import SearchBar from "./SearchBar";
+import ToolBar from "./ToolBar";
 import Scripts from "./Scripts";
 import scriptData from "./../scripts/ZaQtx54N6iU-aligned-sents.jsx";
 import { convertToRaw } from "draft-js";
@@ -549,7 +549,7 @@ class Home extends Component {
         </div>
         <Container className="main-page">
           <Container className="script-page">
-            <SearchBar></SearchBar>
+            <ToolBar></ToolBar>
             <Scripts
               playVideo={this.playVideo}
               jumpVideo={this.jumpVideo}
