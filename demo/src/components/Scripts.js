@@ -51,6 +51,7 @@ class Scripts extends React.Component {
       deleted_index: []
     };
     this.onChange = (editorState) => {
+      console.log("here changed editor state")
       this.setState({ editorState });
     };
   }
@@ -76,6 +77,17 @@ class Scripts extends React.Component {
     const contentState = convertFromRaw(blocks);
     const editorState = EditorState.createWithContent(contentState, decorator);
     this.setState({ editorState: editorState});
+  }
+
+  updateVideoScript(deleted_element) {
+    var video_script = this.state.video_script;
+    const deleted_script_element = video_script.filter(
+        function(data){ return data.index == deleted_element.index}
+    )[0];
+    const deleted_index = video_script.indexOf(deleted_script_element);
+    console.log(deleted_element, deleted_index);
+    video_script.splice(deleted_index, 1);
+    return video_script;
   }
 
   /**
@@ -120,7 +132,6 @@ class Scripts extends React.Component {
   };
 
   handleKeyCommand = (command) => {
-    console.log(this.state.editorState)
     if (command === "play/pause") {
       this.props.playVideo();
     } 
@@ -138,23 +149,21 @@ class Scripts extends React.Component {
       }
     }
     else if (command === "delete-sentence") {
-      const current_index = this.getCurrentWord().index;
-      console.log(this.state.video_script, current_index)
-      const video_script = this.state.video_script;
-      video_script.splice(current_index, 1);
-      console.log(this.state.video_script, current_index)
+      const deleted_element = this.getCurrentWord();
+      var video_script = this.updateVideoScript(deleted_element);
+
       const blocks = this.sttJsonAdapter(video_script);
       const contentState = convertFromRaw(blocks);
       const editorState = EditorState.createWithContent(contentState, decorator);
 
       this.setState(prevState => ({
-        deleted_index: [...prevState.deleted_index, current_index],
+        deleted_index: [...prevState.deleted_index, deleted_element.index],
         video_script: video_script,
         editorState: editorState,
       }))
       
-      const currentSentenceEnd = this.getCurrentWord().end;
-      this.props.jumpVideo(currentSentenceEnd, true);
+      const newWordStart = this.getCurrentWord().end;
+      this.props.jumpVideo(newWordStart, true);
     }
 
     if (command === "keyboard-shortcuts") {
@@ -167,6 +176,7 @@ class Scripts extends React.Component {
     return {
       component: WrapperBlock,
       editable: true,
+      // blockProps
       props: {
         showHeadings: true,
         showTimecodes: true,

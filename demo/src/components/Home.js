@@ -104,7 +104,6 @@ class Home extends Component {
     if (this.state.currSpan) {
       // console.log(this.state.currWordEnd);
       // console.log(currTime);
-      console.log("diff: ", this.state.currWordEnd - currTime);
       if (
         this.state.currWordEnd - 0.5 <= currTime &&
         currTime <= this.state.currWordEnd
@@ -169,7 +168,6 @@ class Home extends Component {
               parseFloat(children[i].getAttribute("data-start")) < currTime &&
               currTime < parseFloat(children[i + 1].getAttribute("data-start"))
             ) {
-              console.log("found in the middle");
               const newEnd = parseFloat(children[i].getAttribute("data-end"));
               console.log(newEnd);
               this.setState({
