@@ -108,8 +108,10 @@ class Home extends Component {
     this.setState(state);
     const currTime = this.state.playedSeconds;
     if (this.state.currSpan) {
-      // console.log(this.state.currWordEnd);
-      // console.log(currTime);
+      const currRate = parseFloat(
+        this.state.currSpan.getAttribute("data-playback")
+      );
+      this.setState({ playbackRate: currRate });
       if (
         this.state.currWordEnd - 0.5 <= currTime &&
         currTime <= this.state.currWordEnd
@@ -147,7 +149,7 @@ class Home extends Component {
                 currWordStart: nextStart,
                 currWordEnd: nextEnd,
                 playing: true,
-                playbackRate: nextPlayback,
+                // playbackRate: nextPlayback,
               },
               () => this.jumpVideo(nextStart, true)
             );
@@ -197,7 +199,7 @@ class Home extends Component {
                   children[i].getAttribute("data-start")
                 ),
                 currWordEnd: newEnd,
-                playbackRate: nextPlayback,
+                // playbackRate: nextPlayback,
               });
               break;
             }
@@ -212,7 +214,7 @@ class Home extends Component {
               currSpan: children[i],
               currWordStart: parseFloat(children[i].getAttribute("data-start")),
               currWordEnd: newEnd,
-              playbackRate: nextPlayback,
+              // playbackRate: nextPlayback,
             });
           }
         }
