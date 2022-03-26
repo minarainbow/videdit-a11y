@@ -169,12 +169,16 @@
 
 .tool-bar {
   display: flex;
+  height: 100px;
   gap: 3%;
-  font-size: 30px;
   margin-bottom: 10px;
   border: lightslategray;
   border-style: double;
   padding: 2%;
+}
+
+.tool-icon {
+  height: 100%;
 }
 
 .segments-container {

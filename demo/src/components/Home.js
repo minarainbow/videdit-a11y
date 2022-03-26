@@ -103,6 +103,7 @@ class Home extends Component {
   };
 
   handleProgress = (state) => {
+    console.log(this.state.currWordStart);
     // We only want to update time slider if we are not currently seeking
     this.setState(state);
     const currTime = this.state.playedSeconds;
@@ -136,6 +137,9 @@ class Home extends Component {
           if (nextIndex > currIndex + 1) {
             const nextStart = parseFloat(nextSpan.getAttribute("data-start"));
             const nextEnd = parseFloat(nextSpan.getAttribute("data-end"));
+            const nextPlayback = parseFloat(
+              nextSpan.getAttribute("data-playback")
+            );
             console.log("next: ", nextStart);
             this.setState(
               {
@@ -143,9 +147,15 @@ class Home extends Component {
                 currWordStart: nextStart,
                 currWordEnd: nextEnd,
                 playing: true,
+                playbackRate: nextPlayback,
               },
               () => this.jumpVideo(nextStart, true)
             );
+            const rate = parseFloat(
+              this.state.currSpan.getAttribute("data-playback")
+            );
+            this.updatePlaybackRate(rate);
+          } else {
           }
         }
       } else if (
@@ -163,6 +173,9 @@ class Home extends Component {
         ) {
           this.setState({
             currSpan: theFirstWordElement,
+            currWordStart: parseFloat(
+              theFirstWordElement.getAttribute("data-start")
+            ),
             currWordEnd: parseFloat(
               theFirstWordElement.getAttribute("data-end")
             ),
@@ -174,10 +187,17 @@ class Home extends Component {
               currTime < parseFloat(children[i + 1].getAttribute("data-start"))
             ) {
               const newEnd = parseFloat(children[i].getAttribute("data-end"));
-              console.log(newEnd);
+              const nextPlayback = parseFloat(
+                children[i].getAttribute("data-playback")
+              );
+              // console.log(newEnd);
               this.setState({
                 currSpan: children[i],
+                currWordStart: parseFloat(
+                  children[i].getAttribute("data-start")
+                ),
                 currWordEnd: newEnd,
+                playbackRate: nextPlayback,
               });
               break;
             }
@@ -185,10 +205,14 @@ class Home extends Component {
           if (i === children.length - 1) {
             console.log("the end?");
             const newEnd = parseFloat(children[i].getAttribute("data-end"));
+            const nextPlayback = parseFloat(
+              children[i].getAttribute("data-playback")
+            );
             this.setState({
               currSpan: children[i],
               currWordStart: parseFloat(children[i].getAttribute("data-start")),
               currWordEnd: newEnd,
+              playbackRate: nextPlayback,
             });
           }
         }
@@ -278,7 +302,7 @@ class Home extends Component {
     var i = 0;
     for (i = 0; i < children.length - 1; i++) {
       if (
-        parseFloat(children[i].getAttribute("data-start")) <
+        parseFloat(children[i].getAttribute("data-start")) <=
           this.state.playedSeconds &&
         this.state.playedSeconds <
           parseFloat(children[i + 1].getAttribute("data-start"))
@@ -554,7 +578,11 @@ class Home extends Component {
         </div>
         <Container className="main-page">
           <Container className="script-page">
-            <ToolBar updatePlaybackRate={this.updatePlaybackRate}></ToolBar>
+            <ToolBar
+              updatePlaybackRate={this.updatePlaybackRate}
+              currSpan={this.state.currSpan}
+              currWordStart={this.state.currWordStart}
+            ></ToolBar>
             <Scripts
               playVideo={this.playVideo}
               jumpVideo={this.jumpVideo}
