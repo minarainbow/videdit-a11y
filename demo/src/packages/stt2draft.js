@@ -19,28 +19,28 @@ const groupWordsInParagraphs = (scriptData) => {
       start: word.start,
       end: word.end,
       index: word.index,
+      heading: word.new_heading,
     };
-    //  if word contains punctuation
-    // if (/[.?!]/.test(word.sent)) {
-    //   paragraph.words.push(tmpWord);
-    //   paragraph.text.push(word.sent);
-    //   results.push(paragraph);
-    //   // reset paragraph
-    //   paragraph = { words: [], text: [] };
-    // } else {
-    //   paragraph.words.push(tmpWord);
-    //   paragraph.text.push(word.sent);
-    // }
-    paragraph.words.push(tmpWord);
-    paragraph.text.push(word.sent);
+    if (word.new_heading) {
+      results.push(paragraph);
+      // reset paragraph
+      paragraph = { words: [], text: [] };
+      paragraph.words.push(tmpWord);
+      paragraph.text.push(word.sent);
+    } else {
+      paragraph.words.push(tmpWord);
+      paragraph.text.push(word.sent);
+    }
   });
-  results.push(paragraph);
+  if (paragraph.words.length) {
+    results.push(paragraph);
+  }
+  
 
   return results;
 };
 
 const stt2Draft = (autoEdit2Json) => {
-  console.log(autoEdit2Json);
   const results = [];
   const tmpWords = autoEdit2Json
   const wordsByParagraphs = groupWordsInParagraphs(tmpWords);
@@ -49,7 +49,7 @@ const stt2Draft = (autoEdit2Json) => {
       text: paragraph.text.join(" "),
       type: "paragraph",
       data: {
-        heading: `Heading ${i}`,
+        heading: `Heading ${i+1}: ` + paragraph.words[0].heading,
         words: paragraph.words,
         start: paragraph.words[0].start,
       },

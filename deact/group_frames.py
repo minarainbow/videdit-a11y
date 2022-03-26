@@ -64,4 +64,4 @@ def sliding_window(frames, window_size):
 
 with open(videoID + '/detection_results.json', "r") as json_file:
     frames = json.load(json_file)
-    print(sliding_window(frames[:300], window_size))
+    print(sliding_window(frames, window_size))

@@ -80,7 +80,6 @@ class WrapperBlock extends React.Component {
     }
 
     if(nextProps.block.getData().get('heading') !== this.state.heading){
-      console.log('shouldComponentUpdate wrapper heading', nextProps.block.getData().get('heading') , this.state.heading )
       return true;
     }
     return false;
@@ -89,7 +88,6 @@ class WrapperBlock extends React.Component {
   componentDidUpdate  = (prevProps, prevState) =>{
 
     if(prevProps.block.getData().get('heading') !== prevState.heading){
-        console.log('componentDidUpdate wrapper heading', prevProps.block.getData().get('heading') , prevState.heading );
         
         this.setState({
             heading: prevProps.block.getData().get('heading')

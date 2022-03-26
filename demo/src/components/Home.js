@@ -113,8 +113,8 @@ class Home extends Component {
       );
       this.setState({ playbackRate: currRate });
       if (
-        this.state.currWordEnd - 0.5 <= currTime &&
-        currTime <= this.state.currWordEnd
+        (this.state.currWordEnd - 0.5 <= currTime &&
+        currTime <= this.state.currWordEnd)
       ) {
         console.log(this.state.currWordEnd);
         console.log(currTime);
@@ -126,6 +126,7 @@ class Home extends Component {
         } else if (this.state.currSpan.nextSibling.nextSibling) {
           nextSpan = this.state.currSpan.nextSibling.nextSibling;
         }
+        console.log("here next span", nextSpan);
 
         if (nextSpan) {
           const nextIndex = parseInt(nextSpan.getAttribute("data-index"));
@@ -165,7 +166,7 @@ class Home extends Component {
         currTime < this.state.currWordStart
       ) {
         const children = document.querySelectorAll("span.Word");
-        // console.log(children);
+        console.log(this.state.currWordEnd);
         var i = 0;
         const theFirstWordElement = document.querySelector(
           `span.Word[data-start="0"]`
@@ -189,10 +190,6 @@ class Home extends Component {
               currTime < parseFloat(children[i + 1].getAttribute("data-start"))
             ) {
               const newEnd = parseFloat(children[i].getAttribute("data-end"));
-              const nextPlayback = parseFloat(
-                children[i].getAttribute("data-playback")
-              );
-              // console.log(newEnd);
               this.setState({
                 currSpan: children[i],
                 currWordStart: parseFloat(
@@ -338,18 +335,6 @@ class Home extends Component {
     console.log(sessionStorage.getItem("sessionID"));
   };
 
-  _onEnded = () => {
-    // pick the next span's data-index and set it as snippetIndex
-    const nextSpan = this.state.currSpan.nextSibling.nextSibling;
-    console.log(nextSpan);
-    const nextIndex = parseInt(nextSpan.getAttribute("data-index"));
-    this.setState(
-      { snippetIndex: nextIndex, currSpan: nextSpan, playing: true },
-      function () {
-        console.log(this.state.snippetIndex);
-      }
-    );
-  };
 
   handleKey = (key) => {
     const [current_idx, current_mid_idx] = this.align_segment();
@@ -598,24 +583,6 @@ class Home extends Component {
           </Container>
           <Container className="right-page">
             <Container className="video-container">
-              {/* <ReactPlayer
-                ref={this.ref}
-                playing={this.state.playing}
-                playbackRate={playbackRate}
-                id="video"
-                width="100%"
-                height="100%"
-                controls={false}
-                url={`videos/mov_${snippetIndex}.mp4`}
-                onPause={this._onPause}
-                onPlay={this._onPlay}
-                onReady={this._onReady}
-                onProgress={this.handleProgress}
-                onDuration={this.handleDuration}
-                onSeek={this._onSeek}
-                onEnded={this._onEnded}
-                progressInterval={100}
-              ></ReactPlayer> */}
               <ReactPlayer
                 ref={this.ref}
                 playing={this.state.playing}
