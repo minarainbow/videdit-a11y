@@ -73,6 +73,7 @@ class Home extends Component {
     this.handleKey = this.handleKey.bind(this);
     this.inspectFrame = this.inspectFrame.bind(this);
     this.updateCurrWordEnd = this.updateCurrWordEnd.bind(this);
+    this.updatePlaybackRate = this.updatePlaybackRate.bind(this);
   }
 
   componentDidMount() {
@@ -96,6 +97,10 @@ class Home extends Component {
     });
     this.handleSubmit("ZaQtx54N6iU");
   }
+
+  updatePlaybackRate = (rate) => {
+    this.setState({ playbackRate: rate });
+  };
 
   handleProgress = (state) => {
     // We only want to update time slider if we are not currently seeking
@@ -549,7 +554,7 @@ class Home extends Component {
         </div>
         <Container className="main-page">
           <Container className="script-page">
-            <ToolBar></ToolBar>
+            <ToolBar updatePlaybackRate={this.updatePlaybackRate}></ToolBar>
             <Scripts
               playVideo={this.playVideo}
               jumpVideo={this.jumpVideo}

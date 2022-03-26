@@ -1,11 +1,11 @@
 import React from "react";
-import _ from 'lodash'
+import _ from "lodash";
 // import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
-import { Search, Grid, Header, Segment } from 'semantic-ui-react'
-import IconButton from '@mui/material/IconButton';
-import SpeedIcon from '@mui/icons-material/Speed';
-import ContentCutIcon from '@mui/icons-material/ContentCut';
-import AddCommentIcon from '@mui/icons-material/AddComment';
+import { Search, Grid, Header, Segment } from "semantic-ui-react";
+import IconButton from "@mui/material/IconButton";
+import SpeedIcon from "@mui/icons-material/Speed";
+import ContentCutIcon from "@mui/icons-material/ContentCut";
+import AddCommentIcon from "@mui/icons-material/AddComment";
 
 const results = [
   {
@@ -92,17 +92,14 @@ class ToolBar extends React.Component {
     }, 300);
   };
 
-  handleAddComment = () => {
+  handleAddComment = () => {};
 
-  }
-
-  handleTrim = () => {
-    
-  }
+  handleTrim = () => {};
 
   handleChangeSpeed = () => {
-    
-  }
+    const rate = 1.0;
+    this.props.updatePlaybackRate(rate);
+  };
 
   render() {
     const { loading, results, value } = this.state;
@@ -114,13 +111,13 @@ class ToolBar extends React.Component {
     return (
       <div className="tool-bar">
         <IconButton aria-label="Add Comment" onClick={this.handleAddComment}>
-            <AddCommentIcon style={{ fontSize: "30px" }} />
+          <AddCommentIcon style={{ fontSize: "30px" }} />
         </IconButton>
         <IconButton aria-label="Change Speed" onClick={this.handleChangeSpeed}>
           <SpeedIcon style={{ fontSize: "30px" }} />
         </IconButton>
         <IconButton aria-label="Trim" onClick={this.handleTrim}>
-            <ContentCutIcon style={{ fontSize: "30px" }} />
+          <ContentCutIcon style={{ fontSize: "30px" }} />
         </IconButton>
         {/* <Search
           fluid
