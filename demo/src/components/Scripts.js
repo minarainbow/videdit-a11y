@@ -51,7 +51,6 @@ class Scripts extends React.Component {
       deleted_index: []
     };
     this.onChange = (editorState) => {
-      console.log("here changed editor state")
       this.setState({ editorState });
     };
   }
@@ -84,8 +83,12 @@ class Scripts extends React.Component {
     const deleted_script_element = video_script.filter(
         function(data){ return data.index == deleted_element.index}
     )[0];
+    console.log("updateVideoScript", deleted_element, deleted_script_element);
     const deleted_index = video_script.indexOf(deleted_script_element);
-    console.log(deleted_element, deleted_index);
+    // when deleted_element is heading 
+    if (deleted_script_element.new_heading && deleted_index < video_script.length -1 && !video_script[deleted_index+1].new_heading){
+      video_script[deleted_index+1].new_heading = deleted_script_element.new_heading
+    }
     video_script.splice(deleted_index, 1);
     return video_script;
   }

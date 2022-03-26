@@ -4,7 +4,7 @@ export const scriptData = {
       "end": 2.36712,
       "index": 0,
       "moving": false,
-      "new_heading": 0,
+      "new_heading": "Person",
       "sent": "{Hello, everybody.}",
       "start": 0,
       "type": "narration"

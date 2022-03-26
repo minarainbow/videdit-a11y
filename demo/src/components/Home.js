@@ -80,7 +80,7 @@ class Home extends Component {
     const speech = new Speech();
     if (speech.hasBrowserSupport()) {
       // returns a boolean
-      console.log("speech synthesis supported");
+      // console.log("speech synthesis supported");
     }
     speech.init({
       volume: 1,
@@ -103,7 +103,6 @@ class Home extends Component {
   };
 
   handleProgress = (state) => {
-    console.log(this.state.currWordStart);
     // We only want to update time slider if we are not currently seeking
     this.setState(state);
     const currTime = this.state.playedSeconds;
@@ -116,12 +115,12 @@ class Home extends Component {
         (this.state.currWordEnd - 0.5 <= currTime &&
         currTime <= this.state.currWordEnd)
       ) {
-        console.log(this.state.currWordEnd);
-        console.log(currTime);
         this.setState({ isJumping: true });
-        // console.log(this.state.currSpan.nextSibling.nextSibling);
         var nextSpan;
-        if (this.state.currSpan.nextSibling.hasAttribute("data-start")) {
+        if (!this.state.currSpan.nextSibling) {
+          nextSpan = this.state.currSpan.parentElement.parentElement.parentElement.parentElement.firstChild.lastChild.firstChild.firstChild;
+        }
+        else if (this.state.currSpan.nextSibling.hasAttribute("data-start")) {
           nextSpan = this.state.currSpan.nextSibling;
         } else if (this.state.currSpan.nextSibling.nextSibling) {
           nextSpan = this.state.currSpan.nextSibling.nextSibling;
@@ -166,11 +165,8 @@ class Home extends Component {
         currTime < this.state.currWordStart
       ) {
         const children = document.querySelectorAll("span.Word");
-        console.log(this.state.currWordEnd);
         var i = 0;
-        const theFirstWordElement = document.querySelector(
-          `span.Word[data-start="0"]`
-        );
+        const theFirstWordElement = children[0]
         if (
           currTime < parseFloat(theFirstWordElement.getAttribute("data-end"))
         ) {
@@ -240,12 +236,10 @@ class Home extends Component {
 
   handleSubmit(videoID) {
     this.setState({ start: 0, videoID: videoID, playing: false });
-    console.log("changed the video", videoID);
     this.handleDrawerClose();
   }
 
   playVideo = () => {
-    console.log("play video", this.state.playing);
     if (!this.state.playing) {
       this.onClickPlay();
     } else {
@@ -254,8 +248,6 @@ class Home extends Component {
   };
 
   jumpVideo(time, abs = false) {
-    console.log("jump");
-    console.log(time);
     if (abs) {
       this.player.seekTo(time);
     } else {

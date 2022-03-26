@@ -21,7 +21,7 @@ const groupWordsInParagraphs = (scriptData) => {
       index: word.index,
       heading: word.new_heading,
     };
-    if (word.new_heading) {
+    if (word.new_heading && paragraph.words.length) {
       results.push(paragraph);
       // reset paragraph
       paragraph = { words: [], text: [] };
