@@ -83,7 +83,6 @@ class Scripts extends React.Component {
     const deleted_script_element = video_script.filter(
         function(data){ return data.index == deleted_element.index}
     )[0];
-    console.log("updateVideoScript", deleted_element, deleted_script_element);
     const deleted_index = video_script.indexOf(deleted_script_element);
     // when deleted_element is heading 
     if (deleted_script_element.new_heading && deleted_index < video_script.length -1 && !video_script[deleted_index+1].new_heading){
@@ -286,6 +285,8 @@ class Scripts extends React.Component {
           {`span.Word[data-prev-times~="${Math.floor(
             time
           )}"] { color: ${unplayedColor} }`}
+
+          {`span.Word[data-review="true"] { background-color: lightsalmon; color: black;}}`}
           {`span.Word[data-prev-times~="${time}"] { color: ${unplayedColor} }`}
           {`span.Word[data-confidence="low"] { border-bottom: ${correctionBorder} }`}
           {`span.Word[data-index="${currentWord.index}"]`}

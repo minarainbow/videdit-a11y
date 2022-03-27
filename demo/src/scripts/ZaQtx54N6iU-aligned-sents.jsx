@@ -4,7 +4,7 @@ export const scriptData = {
       "end": 2.36712,
       "index": 0,
       "moving": false,
-      "new_heading": "Person",
+      "new_heading": false,
       "sent": "{Hello, everybody.}",
       "start": 0,
       "type": "narration"
@@ -1199,7 +1199,7 @@ export const scriptData = {
     },
     {
       "end": 482.5,
-      "index": 132,
+      "index": 133,
       "moving": false,
       "new_heading": false,
       "sent": "{Again.}",
@@ -1208,7 +1208,7 @@ export const scriptData = {
     },
     {
       "end": 483.5,
-      "index": 133,
+      "index": 134,
       "moving": false,
       "new_heading": false,
       "sent": "{I know where everything is.}",
@@ -1217,7 +1217,7 @@ export const scriptData = {
     },
     {
       "end": 583.8,
-      "index": 134,
+      "index": 135,
       "moving": false,
       "new_heading": false,
       "sent": "{P: 100.3sec}",
@@ -1226,7 +1226,7 @@ export const scriptData = {
     },
     {
       "end": 585,
-      "index": 135,
+      "index": 136,
       "moving": false,
       "new_heading": false,
       "sent": "{Put the egg in here.}",
@@ -1235,7 +1235,7 @@ export const scriptData = {
     },
     {
       "end": 614.9,
-      "index": 136,
+      "index": 137,
       "moving": false,
       "new_heading": false,
       "sent": "{P: 29.9sec}",
@@ -1244,7 +1244,7 @@ export const scriptData = {
     },
     {
       "end": 620.4,
-      "index": 137,
+      "index": 138,
       "moving": false,
       "new_heading": false,
       "sent": "{Okay, so Cut up these onions here.}",
@@ -1253,7 +1253,7 @@ export const scriptData = {
     },
     {
       "end": 621.6,
-      "index": 138,
+      "index": 139,
       "moving": false,
       "new_heading": false,
       "sent": "{Cut it up.}",
@@ -1262,7 +1262,7 @@ export const scriptData = {
     },
     {
       "end": 621.9,
-      "index": 138,
+      "index": 140,
       "moving": false,
       "new_heading": false,
       "sent": "{Small.}",
@@ -1271,7 +1271,7 @@ export const scriptData = {
     },
     {
       "end": 623.2,
-      "index": 139,
+      "index": 141,
       "moving": false,
       "new_heading": false,
       "sent": "{Some kids don't know what's in there.}",
@@ -1280,7 +1280,7 @@ export const scriptData = {
     },
     {
       "end": 629,
-      "index": 140,
+      "index": 142,
       "moving": false,
       "new_heading": false,
       "sent": "{So hopefully they're not listening to me film.}",
@@ -1289,7 +1289,7 @@ export const scriptData = {
     },
     {
       "end": 631.8,
-      "index": 141,
+      "index": 143,
       "moving": false,
       "new_heading": false,
       "sent": "{What?}",
@@ -1298,7 +1298,7 @@ export const scriptData = {
     },
     {
       "end": 634.1,
-      "index": 142,
+      "index": 144,
       "moving": false,
       "new_heading": false,
       "sent": "{Did you hear me?}",
@@ -1307,7 +1307,7 @@ export const scriptData = {
     },
     {
       "end": 635.9,
-      "index": 143,
+      "index": 145,
       "moving": false,
       "new_heading": false,
       "sent": "{My son hurt me.}",
@@ -1316,7 +1316,7 @@ export const scriptData = {
     },
     {
       "end": 640.9,
-      "index": 144,
+      "index": 146,
       "moving": false,
       "new_heading": false,
       "sent": "{So extra small, okay?}",
@@ -1325,7 +1325,7 @@ export const scriptData = {
     },
     {
       "end": 659.1,
-      "index": 145,
+      "index": 147,
       "moving": false,
       "new_heading": false,
       "sent": "{P: 18.39sec}",
@@ -1334,7 +1334,7 @@ export const scriptData = {
     },
     {
       "end": 662.5,
-      "index": 146,
+      "index": 148,
       "moving": false,
       "new_heading": false,
       "sent": "{Make sure of it.}",
@@ -1343,7 +1343,7 @@ export const scriptData = {
     },
     {
       "end": 668.9,
-      "index": 147,
+      "index": 149,
       "moving": false,
       "new_heading": false,
       "sent": "{P: 6.4sec}",
@@ -1352,7 +1352,7 @@ export const scriptData = {
     },
     {
       "end": 670.2,
-      "index": 148,
+      "index": 150,
       "moving": false,
       "new_heading": false,
       "sent": "{Piece over here.}",
@@ -1361,7 +1361,7 @@ export const scriptData = {
     },
     {
       "end": 675,
-      "index": 149,
+      "index": 151,
       "moving": false,
       "new_heading": false,
       "sent": "{So I think a lot of people think that you know,}",
@@ -1370,7 +1370,7 @@ export const scriptData = {
     },
     {
       "end": 678.8,
-      "index": 150,
+      "index": 152,
       "moving": false,
       "new_heading": false,
       "sent": "{just because we can't see that we don't you know,}",
@@ -1379,7 +1379,7 @@ export const scriptData = {
     },
     {
       "end": 698.1,
-      "index": 151,
+      "index": 153,
       "moving": false,
       "new_heading": false,
       "sent": "{like use knives or anything like that and I don't think that that's necessarily true because we have to eat and so having the skills to cook and do all those things are just you know life skills that people need to have.}",
@@ -1388,7 +1388,7 @@ export const scriptData = {
     },
     {
       "end": 700.5,
-      "index": 152,
+      "index": 154,
       "moving": false,
       "new_heading": false,
       "sent": "{And it can be done.}",
@@ -1397,7 +1397,7 @@ export const scriptData = {
     },
     {
       "end": 706.3,
-      "index": 153,
+      "index": 155,
       "moving": false,
       "new_heading": false,
       "sent": "{I mean, obviously, if you use common sense to keep your fingers out of the way and I mean I've cut myself but I think,}",
@@ -1406,7 +1406,7 @@ export const scriptData = {
     },
     {
       "end": 707.4,
-      "index": 154,
+      "index": 156,
       "moving": false,
       "new_heading": false,
       "sent": "{you know, I've cited friends,}",
@@ -1415,7 +1415,7 @@ export const scriptData = {
     },
     {
       "end": 709,
-      "index": 155,
+      "index": 157,
       "moving": false,
       "new_heading": false,
       "sent": "{who have have caught themselves.}",
@@ -1424,7 +1424,7 @@ export const scriptData = {
     },
     {
       "end": 710.6,
-      "index": 156,
+      "index": 158,
       "moving": false,
       "new_heading": false,
       "sent": "{My husband has cut himself.}",
@@ -1433,7 +1433,7 @@ export const scriptData = {
     },
     {
       "end": 713.3,
-      "index": 157,
+      "index": 159,
       "moving": false,
       "new_heading": false,
       "sent": "{So his onions in this bowl here.}",
@@ -1442,7 +1442,7 @@ export const scriptData = {
     },
     {
       "end": 717.1,
-      "index": 158,
+      "index": 160,
       "moving": false,
       "new_heading": false,
       "sent": "{Whoops, just drops on the floor.}",
@@ -1451,7 +1451,7 @@ export const scriptData = {
     },
     {
       "end": 720,
-      "index": 159,
+      "index": 161,
       "moving": false,
       "new_heading": false,
       "sent": "{We will clean up dog here.}",
@@ -1460,7 +1460,7 @@ export const scriptData = {
     },
     {
       "end": 721.5,
-      "index": 160,
+      "index": 162,
       "moving": false,
       "new_heading": false,
       "sent": "{On my feet, our pet dog.}",
@@ -1469,7 +1469,7 @@ export const scriptData = {
     },
     {
       "end": 724.3,
-      "index": 161,
+      "index": 163,
       "moving": false,
       "new_heading": false,
       "sent": "{Is, she always sits right?}",
@@ -1478,7 +1478,7 @@ export const scriptData = {
     },
     {
       "end": 725.1,
-      "index": 162,
+      "index": 164,
       "moving": false,
       "new_heading": false,
       "sent": "{Beside me.}",
@@ -1487,7 +1487,7 @@ export const scriptData = {
     },
     {
       "end": 726.8,
-      "index": 163,
+      "index": 165,
       "moving": false,
       "new_heading": false,
       "sent": "{She knows I drop things.}",
@@ -1496,7 +1496,7 @@ export const scriptData = {
     },
     {
       "end": 742.6,
-      "index": 164,
+      "index": 166,
       "moving": false,
       "new_heading": false,
       "sent": "{P: 15.8sec}",
@@ -1505,7 +1505,7 @@ export const scriptData = {
     },
     {
       "end": 743.2,
-      "index": 164,
+      "index": 167,
       "moving": false,
       "new_heading": false,
       "sent": "{Okay.}",
@@ -1514,7 +1514,7 @@ export const scriptData = {
     },
     {
       "end": 749,
-      "index": 165,
+      "index": 168,
       "moving": false,
       "new_heading": false,
       "sent": "{All this stuff.}",
@@ -1523,7 +1523,7 @@ export const scriptData = {
     },
     {
       "end": 777.5,
-      "index": 166,
+      "index": 169,
       "moving": false,
       "new_heading": false,
       "sent": "{P: 27.87sec}",
@@ -1532,7 +1532,7 @@ export const scriptData = {
     },
     {
       "end": 778.6,
-      "index": 167,
+      "index": 170,
       "moving": false,
       "new_heading": false,
       "sent": "{I don't mind cooking.}",
@@ -1541,7 +1541,7 @@ export const scriptData = {
     },
     {
       "end": 779.2,
-      "index": 168,
+      "index": 171,
       "moving": false,
       "new_heading": false,
       "sent": "{I like it.}",
@@ -1550,7 +1550,7 @@ export const scriptData = {
     },
     {
       "end": 785.5,
-      "index": 169,
+      "index": 172,
       "moving": false,
       "new_heading": false,
       "sent": "{I, you know, I lots of times for Christmas and Easter and Thanksgiving and all those things.}",
@@ -1559,7 +1559,7 @@ export const scriptData = {
     },
     {
       "end": 790.1,
-      "index": 170,
+      "index": 173,
       "moving": false,
       "new_heading": false,
       "sent": "{I cook the meals and for,}",
@@ -1568,7 +1568,7 @@ export const scriptData = {
     },
     {
       "end": 794.7,
-      "index": 171,
+      "index": 174,
       "moving": false,
       "new_heading": false,
       "sent": "{you know, the whole families who had both sides of the family and I enjoy it.}",
@@ -1577,7 +1577,7 @@ export const scriptData = {
     },
     {
       "end": 796.5,
-      "index": 172,
+      "index": 175,
       "moving": false,
       "new_heading": false,
       "sent": "{I think, you know,}",
@@ -1586,7 +1586,7 @@ export const scriptData = {
     },
     {
       "end": 800.1,
-      "index": 173,
+      "index": 176,
       "moving": false,
       "new_heading": false,
       "sent": "{I like having people over and cooking for them and,}",
@@ -1595,7 +1595,7 @@ export const scriptData = {
     },
     {
       "end": 804.1,
-      "index": 174,
+      "index": 177,
       "moving": false,
       "new_heading": false,
       "sent": "{you know, hopefully face good,}",
@@ -1604,7 +1604,7 @@ export const scriptData = {
     },
     {
       "end": 805.1,
-      "index": 175,
+      "index": 178,
       "moving": false,
       "new_heading": false,
       "sent": "{but I enjoy it.}",
@@ -1613,7 +1613,7 @@ export const scriptData = {
     },
     {
       "end": 812.4161,
-      "index": 176,
+      "index": 179,
       "moving": false,
       "new_heading": false,
       "sent": "{So, I don't mind I don't mind doing it and I'm glad that I'm able to do it.}",
@@ -1622,7 +1622,7 @@ export const scriptData = {
     },
     {
       "end": 829.37755,
-      "index": 177,
+      "index": 180,
       "moving": false,
       "new_heading": false,
       "sent": "{You know I wouldn't would not like if I had to rely on my husband to do all the cooking I don't think that that's fair to him and I don't I wouldn't like that I'm not that type of person.}",
@@ -1631,7 +1631,7 @@ export const scriptData = {
     },
     {
       "end": 846.4,
-      "index": 178,
+      "index": 181,
       "moving": false,
       "new_heading": false,
       "sent": "{I like to be independent and I want to do things that everybody else does and I don't think there's any reason why I shouldn't be able to }",
@@ -1640,7 +1640,7 @@ export const scriptData = {
     },
     {
       "end": 846.4,
-      "index": 179,
+      "index": 182,
       "moving": false,
       "new_heading": false,
       "sent": "{P: 10.2sec}",
@@ -1649,7 +1649,7 @@ export const scriptData = {
     },
     {
       "end": 847.7,
-      "index": 180,
+      "index": 183,
       "moving": false,
       "new_heading": false,
       "sent": "{I'll smell it.}",
@@ -1658,7 +1658,7 @@ export const scriptData = {
     },
     {
       "end": 850.7,
-      "index": 181,
+      "index": 184,
       "moving": false,
       "new_heading": false,
       "sent": "{Make sure that it smells the way that it's supposed to.}",
@@ -1667,7 +1667,7 @@ export const scriptData = {
     },
     {
       "end": 852.4,
-      "index": 182,
+      "index": 185,
       "moving": false,
       "new_heading": false,
       "sent": "{It's kind of how I go about it.}",
@@ -1676,7 +1676,7 @@ export const scriptData = {
     },
     {
       "end": 854.66009,
-      "index": 183,
+      "index": 186,
       "moving": false,
       "new_heading": false,
       "sent": "{Okay.}",
@@ -1685,7 +1685,7 @@ export const scriptData = {
     },
     {
       "end": 861.54444,
-      "index": 184,
+      "index": 187,
       "moving": false,
       "new_heading": false,
       "sent": "{Oh, I forgot to take my rings off.}",
@@ -1694,7 +1694,7 @@ export const scriptData = {
     },
     {
       "end": 866.08413,
-      "index": 185,
+      "index": 188,
       "moving": false,
       "new_heading": false,
       "sent": "{P: 4.54sec}",
@@ -1703,7 +1703,7 @@ export const scriptData = {
     },
     {
       "end": 871.74127,
-      "index": 186,
+      "index": 189,
       "moving": false,
       "new_heading": false,
       "sent": "{Can bowling }",
@@ -1712,7 +1712,7 @@ export const scriptData = {
     },
     {
       "end": 871.74127,
-      "index": 187,
+      "index": 190,
       "moving": false,
       "new_heading": false,
       "sent": "{P: 4.13sec}",
@@ -1721,7 +1721,7 @@ export const scriptData = {
     },
     {
       "end": 876.59025,
-      "index": 188,
+      "index": 191,
       "moving": false,
       "new_heading": false,
       "sent": "{make many open little ones because it cooks faster.}",
@@ -1730,7 +1730,7 @@ export const scriptData = {
     },
     {
       "end": 880,
-      "index": 189,
+      "index": 192,
       "moving": false,
       "new_heading": false,
       "sent": "{P: 3.41sec}",
@@ -1739,7 +1739,7 @@ export const scriptData = {
     },
     {
       "end": 881.2,
-      "index": 190,
+      "index": 193,
       "moving": false,
       "new_heading": false,
       "sent": "{Little bit too much.}",
@@ -1748,7 +1748,7 @@ export const scriptData = {
     },
     {
       "end": 909.82472,
-      "index": 191,
+      "index": 194,
       "moving": false,
       "new_heading": false,
       "sent": "{P: 28.62sec}",
@@ -1757,7 +1757,7 @@ export const scriptData = {
     },
     {
       "end": 911.07188,
-      "index": 192,
+      "index": 195,
       "moving": false,
       "new_heading": false,
       "sent": "{more so is.}",
@@ -1766,7 +1766,7 @@ export const scriptData = {
     },
     {
       "end": 918.64467,
-      "index": 193,
+      "index": 196,
       "moving": false,
       "new_heading": false,
       "sent": "{So these up here I'm just gonna grab some potatoes.}",
@@ -1775,7 +1775,7 @@ export const scriptData = {
     },
     {
       "end": 930.50771,
-      "index": 194,
+      "index": 197,
       "moving": false,
       "new_heading": false,
       "sent": "{So after I've cleaned up my mess from dropping a bag of potatoes from the garden with dirt everywhere I'm just going to peel up my potatoes,}",
@@ -1784,7 +1784,7 @@ export const scriptData = {
     },
     {
       "end": 932.46327,
-      "index": 195,
+      "index": 198,
       "moving": false,
       "new_heading": false,
       "sent": "{cut them up in pots,}",
@@ -1793,7 +1793,7 @@ export const scriptData = {
     },
     {
       "end": 933.9,
-      "index": 196,
+      "index": 199,
       "moving": false,
       "new_heading": false,
       "sent": "{yes, again,}",
@@ -1802,7 +1802,7 @@ export const scriptData = {
     },
     {
       "end": 934.91769,
-      "index": 197,
+      "index": 200,
       "moving": false,
       "new_heading": false,
       "sent": "{I can feel potatoes,}",
@@ -1811,7 +1811,7 @@ export const scriptData = {
     },
     {
       "end": 944.82517,
-      "index": 198,
+      "index": 201,
       "moving": false,
       "new_heading": false,
       "sent": "{I like to just put your towel here and then my public pot over here and then I can just kind of pick this up with all of the potato peels really not a blind thing.}",
@@ -1820,7 +1820,7 @@ export const scriptData = {
     },
     {
       "end": 948.31723,
-      "index": 199,
+      "index": 202,
       "moving": false,
       "new_heading": false,
       "sent": "{It's just a clean free thing.}",
@@ -1829,7 +1829,7 @@ export const scriptData = {
     },
     {
       "end": 970.43696,
-      "index": 200,
+      "index": 203,
       "moving": false,
       "new_heading": false,
       "sent": "{So penalized potatoes just like everybody else I just feel for the skin and where it is keep my hand out of the way and if I take more potatoes I shared with the appeal then whatever happens not big deal.}",
@@ -1838,7 +1838,7 @@ export const scriptData = {
     },
     {
       "end": 981.35215,
-      "index": 201,
+      "index": 204,
       "moving": false,
       "new_heading": false,
       "sent": "{Just peel these all up here }",
@@ -1847,7 +1847,7 @@ export const scriptData = {
     },
     {
       "end": 981.35215,
-      "index": 202,
+      "index": 205,
       "moving": false,
       "new_heading": false,
       "sent": "{P: 7.03sec}",
@@ -1856,7 +1856,7 @@ export const scriptData = {
     },
     {
       "end": 986.64014,
-      "index": 203,
+      "index": 206,
       "moving": false,
       "new_heading": false,
       "sent": "{I prefer to use a knife I just find it faster than a potato peeler.}",
@@ -1865,7 +1865,7 @@ export const scriptData = {
     },
     {
       "end": 990.02245,
-      "index": 204,
+      "index": 207,
       "moving": false,
       "new_heading": false,
       "sent": "{And yeah, so I just find it easier.}",
@@ -1874,7 +1874,7 @@ export const scriptData = {
     },
     {
       "end": 998.38345,
-      "index": 205,
+      "index": 208,
       "moving": false,
       "new_heading": false,
       "sent": "{So make sure we get most of the peel off there's someone there still that's fine.}",
@@ -1883,7 +1883,7 @@ export const scriptData = {
     },
     {
       "end": 999.57075,
-      "index": 206,
+      "index": 209,
       "moving": false,
       "new_heading": false,
       "sent": "{It is what it is.}",
@@ -1892,7 +1892,7 @@ export const scriptData = {
     },
     {
       "end": 1011.24422,
-      "index": 207,
+      "index": 210,
       "moving": false,
       "new_heading": false,
       "sent": "{Okay I have three growing kids so we go through a lot of potatoes so cut these up here Okay,}",
@@ -1901,7 +1901,7 @@ export const scriptData = {
     },
     {
       "end": 1043.32132,
-      "index": 208,
+      "index": 211,
       "moving": false,
       "new_heading": false,
       "sent": "{so I'm just gonna appeal to these potatoes and then I'll be right back.}",
@@ -1910,7 +1910,7 @@ export const scriptData = {
     },
     {
       "end": 1052.69002,
-      "index": 209,
+      "index": 212,
       "moving": false,
       "new_heading": false,
       "sent": "{Okay, so now that I've gotten all the potatoes peeled,}",
@@ -1919,7 +1919,7 @@ export const scriptData = {
     },
     {
       "end": 1087.18163,
-      "index": 210,
+      "index": 213,
       "moving": false,
       "new_heading": false,
       "sent": "{I'm just gonna cut them all been put them in the box here so figure nine here so it's definitely not an exact science.}",
@@ -1928,7 +1928,7 @@ export const scriptData = {
     },
     {
       "end": 1125.20522,
-      "index": 211,
+      "index": 214,
       "moving": false,
       "new_heading": false,
       "sent": "{You're cutting them up for mashed potatoes very exciting stuff.}",
@@ -1937,7 +1937,7 @@ export const scriptData = {
     },
     {
       "end": 1129.92449,
-      "index": 212,
+      "index": 215,
       "moving": false,
       "new_heading": false,
       "sent": "{Watching me cut potatoes.}",
@@ -1946,7 +1946,7 @@ export const scriptData = {
     },
     {
       "end": 1138.42517,
-      "index": 213,
+      "index": 216,
       "moving": false,
       "new_heading": false,
       "sent": "{So I'll finish cutting these potatoes and then I'll be right back.}",
@@ -1955,7 +1955,7 @@ export const scriptData = {
     },
     {
       "end": 1144.53129,
-      "index": 214,
+      "index": 217,
       "moving": false,
       "new_heading": false,
       "sent": "{Okay, so now I've got my potatoes all cut up here.}",
@@ -1964,7 +1964,7 @@ export const scriptData = {
     },
     {
       "end": 1150.03878,
-      "index": 215,
+      "index": 218,
       "moving": false,
       "new_heading": false,
       "sent": "{Just going to fill up the foreign firm stove.}",
@@ -1973,7 +1973,7 @@ export const scriptData = {
     },
     {
       "end": 1158.14036,
-      "index": 216,
+      "index": 219,
       "moving": false,
       "new_heading": false,
       "sent": "{Okay, got the water in there so what I do,}",
@@ -1982,7 +1982,7 @@ export const scriptData = {
     },
     {
       "end": 1162.45057,
-      "index": 217,
+      "index": 220,
       "moving": false,
       "new_heading": false,
       "sent": "{since this is a glass top stove and it's hard to tell where the burners are,}",
@@ -1991,7 +1991,7 @@ export const scriptData = {
     },
     {
       "end": 1164.77528,
-      "index": 218,
+      "index": 221,
       "moving": false,
       "new_heading": false,
       "sent": "{I will turn the burner on.}",
@@ -2000,7 +2000,7 @@ export const scriptData = {
     },
     {
       "end": 1191.10544,
-      "index": 219,
+      "index": 222,
       "moving": false,
       "new_heading": false,
       "sent": "{And then I'll place the pot on are just going to tuck this meatloaf just gonna put this neat little fan so to turn this on to some fun contests and here Okay,}",
@@ -2009,7 +2009,7 @@ export const scriptData = {
     },
     {
       "end": 1195.08639,
-      "index": 220,
+      "index": 223,
       "moving": false,
       "new_heading": false,
       "sent": "{so good do this pot is going to suffer.}",
@@ -2018,7 +2018,7 @@ export const scriptData = {
     },
     {
       "end": 1198.69819,
-      "index": 221,
+      "index": 224,
       "moving": false,
       "new_heading": false,
       "sent": "{Turn it on,}",
@@ -2027,7 +2027,7 @@ export const scriptData = {
     },
     {
       "end": 1207.34853,
-      "index": 222,
+      "index": 225,
       "moving": false,
       "new_heading": false,
       "sent": "{and then when it gets hot I can kind of feel where the burner is and then I'll check around the pot,}",
@@ -2036,7 +2036,7 @@ export const scriptData = {
     },
     {
       "end": 1208.77528,
-      "index": 223,
+      "index": 226,
       "moving": false,
       "new_heading": false,
       "sent": "{make sure that it's on there.}",
@@ -2045,7 +2045,7 @@ export const scriptData = {
     },
     {
       "end": 1211.89819,
-      "index": 224,
+      "index": 227,
       "moving": false,
       "new_heading": false,
       "sent": "{And that's it.}",
@@ -2054,7 +2054,7 @@ export const scriptData = {
     },
     {
       "end": 1219.76032,
-      "index": 225,
+      "index": 228,
       "moving": false,
       "new_heading": false,
       "sent": "{So that's how I could suffer in no respect of not having this will be a 30 minute video.}",
@@ -2063,7 +2063,7 @@ export const scriptData = {
     },
     {
       "end": 1222.91315,
-      "index": 226,
+      "index": 229,
       "moving": false,
       "new_heading": false,
       "sent": "{I'm going to end it here,}",
@@ -2072,7 +2072,7 @@ export const scriptData = {
     },
     {
       "end": 1227.61247,
-      "index": 227,
+      "index": 230,
       "moving": false,
       "new_heading": false,
       "sent": "{but it kind of gives you a little bit of a glimpse into how I cook supper and how I go about it.}",
@@ -2081,7 +2081,7 @@ export const scriptData = {
     },
     {
       "end": 1230.02698,
-      "index": 228,
+      "index": 231,
       "moving": false,
       "new_heading": false,
       "sent": "{And yes, I do cook supper.}",
@@ -2090,7 +2090,7 @@ export const scriptData = {
     },
     {
       "end": 1231.92268,
-      "index": 229,
+      "index": 232,
       "moving": false,
       "new_heading": false,
       "sent": "{So if you have any other questions,}",
@@ -2099,7 +2099,7 @@ export const scriptData = {
     },
     {
       "end": 1234.38707,
-      "index": 230,
+      "index": 233,
       "moving": false,
       "new_heading": false,
       "sent": "{please leave them in the comments below.}",
@@ -2108,7 +2108,7 @@ export const scriptData = {
     },
     {
       "end": 1236.81156,
-      "index": 231,
+      "index": 234,
       "moving": false,
       "new_heading": false,
       "sent": "{And I will try my hardest to answer them.}",
@@ -2117,7 +2117,7 @@ export const scriptData = {
     },
     {
       "end": 1238.42789,
-      "index": 232,
+      "index": 235,
       "moving": false,
       "new_heading": false,
       "sent": "{So thanks for watching.}",

@@ -248,6 +248,10 @@
   background-color: rgba(255, 255, 128, 0.5);
 }
 
+.word-review {
+  background-color: lightsalmon;
+}
+
 .unselectable {
   -moz-user-select: none;
   -webkit-user-select: none;

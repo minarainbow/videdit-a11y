@@ -20,6 +20,7 @@ def group_sentences(json):
             if new_sent:
                 sent = "{"
                 sent_start = word["start"]
+                sent_index = sent_index+1
             sent = sent + word["word"] + "}"
             sent_end = word["end"]
             json_list.append(

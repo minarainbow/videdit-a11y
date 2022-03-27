@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import scriptData from "./../scripts/ZaQtx54N6iU-aligned-sents.jsx";
 
 class Word extends Component {
   shouldComponentUpdate(nextProps) {
@@ -35,6 +36,17 @@ class Word extends Component {
     return prevTimes;
   };
 
+  checkReviewPoints = (data) => {
+    const currData = scriptData["words"][data.index]
+    if (data.index > 120 &&  data.index < 134){
+      console.log(data.index, currData)
+    }
+    if (currData["moving"] || currData["type"] === "pause"){
+      return true
+    }
+    return false
+  };
+
   handleClick = (index) => {
     console.log(index);
   };
@@ -43,7 +55,6 @@ class Word extends Component {
     const data = this.props.entityKey
       ? this.props.contentState.getEntity(this.props.entityKey).getData()
       : {};
-
     return (
       <span
         data-start={data.start}
@@ -53,8 +64,9 @@ class Word extends Component {
         data-prev-times={this.generatePreviousTimes(data)}
         data-entity-key={data.key}
         data-playback={1.0}
+        data-review={this.checkReviewPoints(data)}
         now={"false"}
-        className="Word"
+        className={"Word"}
       >
         {this.props.children}
       </span>
