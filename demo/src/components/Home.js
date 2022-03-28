@@ -59,7 +59,6 @@ class Home extends Component {
       started: false,
       currWordStart: 0,
       currWordEnd: 0,
-      isJumping: false,
       timecodeOffset: 0,
     };
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
@@ -74,6 +73,7 @@ class Home extends Component {
     this.inspectFrame = this.inspectFrame.bind(this);
     this.updateCurrWordEnd = this.updateCurrWordEnd.bind(this);
     this.updatePlaybackRate = this.updatePlaybackRate.bind(this);
+    this.onStartPlay = this.onStartPlay.bind(this);
   }
 
   componentDidMount() {
@@ -102,6 +102,10 @@ class Home extends Component {
     this.setState({ playbackRate: rate });
   };
 
+  onStartPlay = () => {
+    this.setState({ playing: true });
+  };
+
   handleProgress = (state) => {
     // We only want to update time slider if we are not currently seeking
     this.setState(state);
@@ -110,17 +114,28 @@ class Home extends Component {
       const currRate = parseFloat(
         this.state.currSpan.getAttribute("data-playback")
       );
-      this.setState({ playbackRate: currRate });
+      const currWordStart = parseFloat(
+        this.state.currSpan.getAttribute("data-start")
+      );
+      const currWordEnd = parseFloat(
+        this.state.currSpan.getAttribute("data-end")
+      );
+      this.setState({
+        playbackRate: currRate,
+        currWordStart: currWordStart,
+        currWordEnd: currWordEnd,
+      });
+
       if (
-        (this.state.currWordEnd - 0.5 <= currTime &&
-        currTime <= this.state.currWordEnd)
+        this.state.currWordEnd - 0.5 <= currTime &&
+        currTime <= this.state.currWordEnd
       ) {
-        this.setState({ isJumping: true });
         var nextSpan;
         if (!this.state.currSpan.nextSibling) {
-          nextSpan = this.state.currSpan.parentElement.parentElement.parentElement.parentElement.firstChild.lastChild.firstChild.firstChild;
-        }
-        else if (this.state.currSpan.nextSibling.hasAttribute("data-start")) {
+          nextSpan =
+            this.state.currSpan.parentElement.parentElement.parentElement
+              .parentElement.firstChild.lastChild.firstChild.firstChild;
+        } else if (this.state.currSpan.nextSibling.hasAttribute("data-start")) {
           nextSpan = this.state.currSpan.nextSibling;
         } else if (this.state.currSpan.nextSibling.nextSibling) {
           nextSpan = this.state.currSpan.nextSibling.nextSibling;
@@ -132,11 +147,17 @@ class Home extends Component {
           const currIndex = parseInt(
             this.state.currSpan.getAttribute("data-index")
           );
+          const currEndTrim = this.state.currSpan.getAttribute("trim-end");
+          const nextStartTrim = nextSpan.getAttribute("trim-start");
 
           console.log("curr", currIndex);
           console.log("next", nextIndex);
 
-          if (nextIndex > currIndex + 1) {
+          if (
+            nextIndex > currIndex + 1 ||
+            currEndTrim === "true" ||
+            nextStartTrim === "true"
+          ) {
             const nextStart = parseFloat(nextSpan.getAttribute("data-start"));
             const nextEnd = parseFloat(nextSpan.getAttribute("data-end"));
             const nextPlayback = parseFloat(
@@ -157,7 +178,6 @@ class Home extends Component {
               this.state.currSpan.getAttribute("data-playback")
             );
             this.updatePlaybackRate(rate);
-          } else {
           }
         }
       } else if (
@@ -166,7 +186,7 @@ class Home extends Component {
       ) {
         const children = document.querySelectorAll("span.Word");
         var i = 0;
-        const theFirstWordElement = children[0]
+        const theFirstWordElement = children[0];
         if (
           currTime < parseFloat(theFirstWordElement.getAttribute("data-end"))
         ) {
@@ -326,7 +346,6 @@ class Home extends Component {
   _onPause = () => {
     console.log(sessionStorage.getItem("sessionID"));
   };
-
 
   handleKey = (key) => {
     const [current_idx, current_mid_idx] = this.align_segment();
@@ -561,6 +580,8 @@ class Home extends Component {
               updatePlaybackRate={this.updatePlaybackRate}
               currSpan={this.state.currSpan}
               currWordStart={this.state.currWordStart}
+              currWordEnd={this.state.currWordEnd}
+              onStartPlay={this.onStartPlay}
             ></ToolBar>
             <Scripts
               playVideo={this.playVideo}
@@ -582,7 +603,7 @@ class Home extends Component {
                 id="video"
                 width="100%"
                 height="100%"
-                controls
+                controls="false"
                 url={`https://www.youtube.com/watch?v=${videoID}`}
                 onPause={this._onPause}
                 onPlay={this._onPlay}

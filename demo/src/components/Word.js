@@ -37,14 +37,14 @@ class Word extends Component {
   };
 
   checkReviewPoints = (data) => {
-    const currData = scriptData["words"][data.index]
-    if (data.index > 120 &&  data.index < 134){
-      console.log(data.index, currData)
+    const currData = scriptData["words"][data.index];
+    if (data.index > 120 && data.index < 134) {
+      console.log(data.index, currData);
     }
-    if (currData["moving"] || currData["type"] === "pause"){
-      return true
+    if (currData["moving"] || currData["type"] === "pause") {
+      return true;
     }
-    return false
+    return false;
   };
 
   handleClick = (index) => {
@@ -66,6 +66,8 @@ class Word extends Component {
         data-playback={1.0}
         data-review={this.checkReviewPoints(data)}
         now={"false"}
+        trim-start={"false"}
+        trim-end={"false"}
         className={"Word"}
       >
         {this.props.children}

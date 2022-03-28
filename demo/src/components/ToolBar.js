@@ -2,11 +2,13 @@ import React from "react";
 import _ from "lodash";
 // import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
 import { Search, Grid, Header, Segment } from "semantic-ui-react";
-import { Dropdown, Menu, Icon } from "semantic-ui-react";
+import { Dropdown, Menu, Icon, Button } from "semantic-ui-react";
 import IconButton from "@mui/material/IconButton";
 import SpeedIcon from "@mui/icons-material/Speed";
 import ContentCutIcon from "@mui/icons-material/ContentCut";
 import AddCommentIcon from "@mui/icons-material/AddComment";
+import TextField from "@mui/material/TextField";
+import { FormControlUnstyledContext } from "@mui/base";
 
 const results = [
   {
@@ -31,10 +33,14 @@ class ToolBar extends React.Component {
       results: [],
       value: "",
       activeItem: null,
+      rangeClick: false,
+      invalidRange: false,
     };
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.timeoutRef = React.createRef();
     this.dispatch = this.dispatch.bind(this);
+    this.startRef = React.createRef();
+    this.endRef = React.createRef();
   }
 
   initialState = {
@@ -94,13 +100,63 @@ class ToolBar extends React.Component {
     }, 300);
   };
 
+  handleSliderChange = (e) => {};
+
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name });
   };
 
   handleAddComment = () => {};
 
-  handleTrim = () => {};
+  handleTrimClick = () => {
+    this.setState({ rangeClick: !this.state.rangeClick });
+  };
+
+  formatTime(time) {
+    const integer = Math.floor(time);
+    const underSecs = (time - integer).toString().substring(2);
+
+    var minutes = Math.floor(integer / 60),
+      seconds = integer - minutes * 60;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    return minutes + ":" + seconds + ":" + underSecs;
+  }
+
+  calculateTime(time) {
+    const formatTime = time.split(":");
+    const totalSecs =
+      parseInt(formatTime[0]) * 60 +
+      parseInt(formatTime[1]) +
+      parseFloat("0." + formatTime[2]);
+    return totalSecs;
+  }
+
+  onClickTrim = () => {
+    const currSpan = document.querySelector(
+      `span.Word[data-start="${this.props.currWordStart}"]`
+    );
+    if (currSpan) {
+      const oldStartTime = parseFloat(currSpan.getAttribute("data-start"));
+      const oldEndTime = parseFloat(currSpan.getAttribute("data-end"));
+      const startTime = this.calculateTime(this.startRef.current.value);
+      const endTime = this.calculateTime(this.endRef.current.value);
+      if (startTime < oldStartTime || endTime > oldEndTime) {
+        console.log("invalid");
+        this.setState({ invalidRange: true });
+      } else {
+        if (startTime !== oldStartTime) {
+          currSpan.setAttribute("data-start", startTime);
+          currSpan.setAttribute("trim-start", "true");
+        }
+        if (endTime !== oldEndTime) {
+          currSpan.setAttribute("data-end", endTime);
+          currSpan.setAttribute("trim-end", "true");
+        }
+        this.setState({ rangeClick: !this.state.rangeClick });
+        this.props.onStartPlay();
+      }
+    }
+  };
 
   handleChangeSpeed = (rate) => {
     const currSpan = document.querySelector(
@@ -156,19 +212,69 @@ class ToolBar extends React.Component {
           <Dropdown
             icon={null}
             trigger={
-              <Menu.Item name="trim" onClick={this.handleItemClick}>
+              <Menu.Item name="trim" onClick={this.handleTrimClick}>
                 <ContentCutIcon style={{ fontSize: "30px" }} />
                 Trim
               </Menu.Item>
             }
           >
-            <Dropdown.Menu vertical>
+            {/* <Dropdown.Menu vertical>
               <Dropdown.Item text="Keep Start" />
               <Dropdown.Item text="Keep Middle " />
               <Dropdown.Item text="Keep End" />
-            </Dropdown.Menu>
+            </Dropdown.Menu> */}
           </Dropdown>
         </Menu>
+        {this.state.rangeClick ? (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <TextField
+                  id="start-number"
+                  label="Start"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  defaultValue={this.formatTime(this.props.currWordStart)}
+                  size="small"
+                  style={{ width: "100px" }}
+                  inputRef={this.startRef}
+                />
+                <TextField
+                  id="end-number"
+                  label="End"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  defaultValue={this.formatTime(this.props.currWordEnd)}
+                  size="small"
+                  style={{ width: "100px" }}
+                  inputRef={this.endRef}
+                />
+              </div>
+
+              <Button
+                onClick={this.onClickTrim}
+                style={{
+                  width: "60px",
+                  height: "40px",
+                  marginLeft: "10px",
+                }}
+              >
+                OK
+              </Button>
+            </div>
+            {this.state.invalidRange ? (
+              <div style={{ color: "red" }}>Invalid range</div>
+            ) : (
+              <></>
+            )}{" "}
+          </div>
+        ) : (
+          <></>
+        )}
         {/* <Search
           fluid
           icon="search"

@@ -81,7 +81,7 @@
 .script-page {
   width: 50vw;
   height: 85vh;
-  overflow:visible;
+  overflow: visible;
   font-size: 1.3rem;
   line-height: 2rem;
   align-items: center;
@@ -91,7 +91,6 @@
 }
 
 .script {
-  
   padding-right: 2vw;
   height: 70vh;
   overflow-x: hidden;
@@ -259,7 +258,6 @@
   user-select: none;
 }
 
-
 .markers {
   display: flex;
   gap: 10px;
@@ -293,8 +291,6 @@
   clear: right;
 }
 
-
-
 .time {
   font-weight: 500;
   cursor: pointer;
@@ -318,4 +314,3 @@
 .EditLabel {
   margin-right: 0.5em;
 }
-
