@@ -9,7 +9,7 @@ def group_sentences(json):
     sent_start = 0
     sent_end = 0
     sent_index = 0
-    new_sent = False
+    new_sent = True
     grouped_words = []
     splitter = [".", "!", "?"]
     punct_pattern = re.compile("[" + re.escape("".join(splitter)) + "]")

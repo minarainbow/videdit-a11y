@@ -37,12 +37,9 @@ class Word extends Component {
   };
 
   checkReviewPoints = (data) => {
-    const currData = scriptData["words"][data.index];
-    if (data.index > 120 && data.index < 134) {
-      console.log(data.index, currData);
-    }
-    if (currData["moving"] || currData["type"] === "pause") {
-      return true;
+    const currData = scriptData["words"][data.index]
+    if (currData["moving"] || currData["type"] === "pause"){
+      return true
     }
     return false;
   };

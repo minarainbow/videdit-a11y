@@ -106,7 +106,17 @@ class ToolBar extends React.Component {
     this.setState({ activeItem: name });
   };
 
-  handleAddComment = () => {};
+  handleAddComment = () => {
+    const currSpan = document.querySelector(
+      `span.Word[data-start="${this.props.currWordStart}"]`
+    );
+
+    const comment = prompt("Add comments");
+    if (comment !== '' && comment !== null && currSpan){
+      currSpan.setAttribute("data-comment", comment);
+    }
+
+  };
 
   handleTrimClick = () => {
     this.setState({ rangeClick: !this.state.rangeClick });
@@ -177,7 +187,7 @@ class ToolBar extends React.Component {
     return (
       <div className="tool-bar">
         <Menu icon="labeled" className="tool-icon">
-          <Menu.Item name="comment" onClick={this.handleItemClick}>
+          <Menu.Item name="comment" onClick={this.handleAddComment}>
             <AddCommentIcon style={{ fontSize: "30px" }} />
             Comment
           </Menu.Item>
