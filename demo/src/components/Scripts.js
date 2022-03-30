@@ -293,6 +293,7 @@ class Scripts extends React.Component {
           {`span.Word[data-index="${currentWord.index}"]`}
         </style>
         <Editor
+          ref = {this.props.ref}
           editorState={this.state.editorState}
           onChange={this.onChange}
           handleKeyCommand={this.handleKeyCommand}

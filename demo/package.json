@@ -32,6 +32,7 @@
     "react-simple-timefield": "^3.2.5",
     "react-sound": "^1.2.0",
     "react-spinners": "^0.11.0",
+    "reactjs-popup": "^2.0.5",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.1.1",
     "speak-tts": "^2.0.8",

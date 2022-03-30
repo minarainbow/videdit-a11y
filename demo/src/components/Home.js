@@ -19,8 +19,7 @@ import KeyboardEventHandler from "react-keyboard-event-handler";
 import Speech from "speak-tts";
 import ToolBar from "./ToolBar";
 import Scripts from "./Scripts";
-import scriptData from "./../scripts/ZaQtx54N6iU-aligned-sents.jsx";
-import { convertToRaw } from "draft-js";
+import Instruction from  "./Instruction";
 
 function formatTime(time) {
   time = Math.round(time);
@@ -60,6 +59,7 @@ class Home extends Component {
       currWordStart: 0,
       currWordEnd: 0,
       timecodeOffset: 0,
+      modalOpen: true,
     };
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
@@ -74,6 +74,7 @@ class Home extends Component {
     this.updateCurrWordEnd = this.updateCurrWordEnd.bind(this);
     this.updatePlaybackRate = this.updatePlaybackRate.bind(this);
     this.onStartPlay = this.onStartPlay.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount() {
@@ -96,7 +97,13 @@ class Home extends Component {
       },
     });
     this.handleSubmit("ZaQtx54N6iU");
+    this.script.current && this.script.current.focus();
   }
+
+  closeModal(){
+    console.log("here")
+    this.setState({modalOpen: false})
+}
 
   updatePlaybackRate = (rate) => {
     this.setState({ playbackRate: rate });
@@ -246,6 +253,11 @@ class Home extends Component {
   ref = (player) => {
     this.player = player;
   };
+
+
+  focusRef = (script) => {
+    this.script = script;
+  }
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -525,7 +537,7 @@ class Home extends Component {
   }
 
   render() {
-    const { videoID, playing, playbackRate, playedSeconds, snippetIndex } =
+    const { videoID, playing, playbackRate, playedSeconds, modalOpen } =
       this.state;
     return (
       <div className="Home">
@@ -533,7 +545,7 @@ class Home extends Component {
           handleKeys={["space", "tab", "left", "up", "right", "down"]}
           onKeyEvent={(key, e) => this.handleKey(key)}
         ></KeyboardEventHandler>
-        <div className="header-bar">
+        <div  className="header-bar">
           <div className="header-title">
             <Header as="h2">Videdit A11y</Header>
           </div>
@@ -584,6 +596,7 @@ class Home extends Component {
               onStartPlay={this.onStartPlay}
             ></ToolBar>
             <Scripts
+              ref = {this.focusRef}
               playVideo={this.playVideo}
               jumpVideo={this.jumpVideo}
               player={this.player}
@@ -592,7 +605,6 @@ class Home extends Component {
               updateCurrSpan={this.updateCurrSpan}
               updateCurrWordEnd={this.updateCurrWordEnd}
             ></Scripts>
-            {/* <ScriptEditor transcriptData={this.state.transcriptData}></ScriptEditor> */}
           </Container>
           <Container className="right-page">
             <Container className="video-container">
@@ -623,6 +635,7 @@ class Home extends Component {
             ></Timeline>
           </Container>
         </Container>
+        <Instruction open={modalOpen} closeModal={this.closeModal}></Instruction>
       </div>
     );
   }
