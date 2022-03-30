@@ -16,6 +16,7 @@ import {
 import stt2Draft from "../packages/stt2draft";
 import gcpSttToDraft from "../packages/google-stt2draft";
 import createEntityMap from "../packages/createEntityMap";
+import ForumIcon from '@mui/icons-material/Forum';
 
 // DraftJs decorator to recognize which entity is which
 // and know what to apply to what component

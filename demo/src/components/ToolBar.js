@@ -124,10 +124,11 @@ class ToolBar extends React.Component {
 
   formatTime(time) {
     const integer = Math.floor(time);
-    const underSecs = (time - integer).toString().substring(2);
+    const underSecs = (time - integer).toFixed(2).toString().substring(2);
 
     var minutes = Math.floor(integer / 60),
       seconds = integer - minutes * 60;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
     return minutes + ":" + seconds + ":" + underSecs;
   }
@@ -150,6 +151,7 @@ class ToolBar extends React.Component {
       const oldEndTime = parseFloat(currSpan.getAttribute("data-end"));
       const startTime = this.calculateTime(this.startRef.current.value);
       const endTime = this.calculateTime(this.endRef.current.value);
+      console.log(oldStartTime, oldEndTime, startTime, endTime);
       if (startTime < oldStartTime || endTime > oldEndTime) {
         console.log("invalid");
         this.setState({ invalidRange: true });
@@ -228,11 +230,6 @@ class ToolBar extends React.Component {
               </Menu.Item>
             }
           >
-            {/* <Dropdown.Menu vertical>
-              <Dropdown.Item text="Keep Start" />
-              <Dropdown.Item text="Keep Middle " />
-              <Dropdown.Item text="Keep End" />
-            </Dropdown.Menu> */}
           </Dropdown>
         </Menu>
         {this.state.rangeClick ? (

@@ -7,6 +7,9 @@ import {
   convertFromRaw,
   convertToRaw
  } from 'draft-js';
+ import ForumIcon from '@mui/icons-material/Forum';
+ import IconButton from "@material-ui/core/IconButton";
+ import { Dropdown, Menu, Icon, Button } from "semantic-ui-react";
 
 
 
@@ -36,6 +39,7 @@ class WrapperBlock extends React.Component {
     super(props);
 
     this.state = {
+      reviews: [],
       heading: '',
       start: 0,
       timecodeOffset: this.props.blockProps.timecodeOffset
@@ -45,12 +49,13 @@ class WrapperBlock extends React.Component {
   componentDidMount() {
     const { block } = this.props;
     const heading = block.getData().get('heading');
-  
     const start = block.getData().get('start');
+    const reviews = block.getData().get('reviews');
 
     this.setState({
       heading: heading,
-      start: start
+      start: start,
+      reviews: reviews
     });
   }
   // reducing unnecessary re-renders
@@ -168,7 +173,6 @@ class WrapperBlock extends React.Component {
     if (this.props.blockProps.timecodeOffset) {
       startTimecode += this.props.blockProps.timecodeOffset;
     }
-
     const headingElement = (
         <span className={ this.props.blockProps? ["heading", "headingEditable"].join(' '):  ["heading", "headingNotEditable"].join(' ')}
         title={ this.state.heading }
@@ -183,6 +187,31 @@ class WrapperBlock extends React.Component {
       </span>
     );
 
+    const reviewElement = (
+
+      // <IconButton aria-label="Review" onClick={null} size="small">
+            
+      // </IconButton>
+      <Dropdown
+            icon={null}
+            trigger={
+              <Menu.Item name="review" onClick={null}>
+                <ForumIcon style={{ fontSize: "25px", marginTop: "3px", color: "gray" }} />
+                <small><sup style={{color: "gray"}}>{this.state.reviews.length}</sup></small>
+              </Menu.Item>
+            }>
+            <Dropdown.Menu>
+            {this.state.reviews.map((review, index) => (
+              <Dropdown.Item
+              
+              text={formatTime(review.start) + "  " + (review.moving? "moving": "long pause")}
+              onClick={() => this.handleChangeSpeed(1.0)}
+            />
+            ))}
+            </Dropdown.Menu>
+          </Dropdown>
+    );
+
     return (
       <div className={ "WrapperBlock" }>
         <div
@@ -192,6 +221,8 @@ class WrapperBlock extends React.Component {
           {this.props.blockProps.showHeadings ? headingElement : ''}
 
           {this.props.blockProps.showTimecodes ? timecodeElement : ''}
+
+          {this.state.reviews.length ? reviewElement : ''}
         </div>
         <div className={ "text" }>
           <EditorBlock { ...this.props } />

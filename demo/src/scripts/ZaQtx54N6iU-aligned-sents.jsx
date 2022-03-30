@@ -4,7 +4,7 @@ export const scriptData = {
       "end": 2.36712,
       "index": 0,
       "moving": false,
-      "new_heading": "Person",
+      "new_heading": "Commentary",
       "sent": "{Hello, everybody.}",
       "start": 0,
       "type": "narration"
@@ -346,7 +346,7 @@ export const scriptData = {
       "end": 114.86145,
       "index": 38,
       "moving": false,
-      "new_heading": 111,
+      "new_heading": "Dog, Towel",
       "sent": "{It is socks.}",
       "start": 112.82608,
       "type": "narration"
@@ -364,7 +364,7 @@ export const scriptData = {
       "end": 127.33311,
       "index": 40,
       "moving": false,
-      "new_heading": 120,
+      "new_heading": "Commentary",
       "sent": "{And pairing socks, I have a heck of a time with it.}",
       "start": 123.88095,
       "type": "narration"
@@ -544,7 +544,7 @@ export const scriptData = {
       "end": 200.03787,
       "index": 60,
       "moving": false,
-      "new_heading": 198,
+      "new_heading": "Microwave",
       "sent": "{So on my microwave,}",
       "start": 197.63333,
       "type": "narration"
@@ -553,7 +553,7 @@ export const scriptData = {
       "end": 205.35578,
       "index": 61,
       "moving": false,
-      "new_heading": 202,
+      "new_heading": "Microwave, Hand, Ring",
       "sent": "{you can see that I have these orange,}",
       "start": 200.03787,
       "type": "narration"
@@ -688,7 +688,7 @@ export const scriptData = {
       "end": 255.4619,
       "index": 76,
       "moving": false,
-      "new_heading": 248,
+      "new_heading": "Stove, Oven, Microwave, Clock",
       "sent": "{P: 3.12sec}",
       "start": 252.339,
       "type": "pause"
@@ -832,7 +832,7 @@ export const scriptData = {
       "end": 324.69456,
       "index": 92,
       "moving": false,
-      "new_heading": 315,
+      "new_heading": "None",
       "sent": "{it's you know, normal as everything else and in my pantry }",
       "start": 309.63878,
       "type": "narration"
@@ -850,7 +850,7 @@ export const scriptData = {
       "end": 329.32404,
       "index": 94,
       "moving": false,
-      "new_heading": 325,
+      "new_heading": "Box, Hamper",
       "sent": "{first of all, I can't believe that I'm showing people my disorganized mess of the pantry.}",
       "start": 324.69456,
       "type": "narration"
@@ -895,7 +895,7 @@ export const scriptData = {
       "end": 351.19433,
       "index": 99,
       "moving": false,
-      "new_heading": 345,
+      "new_heading": "Person, Hamper, Bin",
       "sent": "{So what that is,}",
       "start": 348.62018,
       "type": "narration"
@@ -922,7 +922,7 @@ export const scriptData = {
       "end": 363.63605,
       "index": 102,
       "moving": false,
-      "new_heading": 358,
+      "new_heading": "Person, Bag",
       "sent": "{So this is the pen friends.}",
       "start": 358.61746,
       "type": "narration"
@@ -1003,7 +1003,7 @@ export const scriptData = {
       "end": 388.87868,
       "index": 111,
       "moving": false,
-      "new_heading": 387,
+      "new_heading": "Commentary",
       "sent": "{Oh, that's kind of one way.}",
       "start": 386.17483,
       "type": "narration"
@@ -1102,7 +1102,7 @@ export const scriptData = {
       "end": 426.80249,
       "index": 122,
       "moving": false,
-      "new_heading": 420,
+      "new_heading": "Person, Microwave, Box, Clock",
       "sent": "{so I am going to make meatloaf for supper tonight meatloaf and potatoes.}",
       "start": 419.59887,
       "type": "narration"

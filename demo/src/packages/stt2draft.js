@@ -8,7 +8,7 @@ import generateEntitiesRanges from "./generateEntitiesRanges";
 
 const groupWordsInParagraphs = (scriptData) => {
   const results = [];
-  let paragraph = { words: [], text: [] };
+  let paragraph = { words: [], text: [], reviews: [] };
 
   scriptData.forEach((word) => {
     // adjusting time reference attributes from
@@ -20,16 +20,22 @@ const groupWordsInParagraphs = (scriptData) => {
       end: word.end,
       index: word.index,
       heading: word.new_heading,
+      moving: word.moving,
+      type: word.type,
     };
     if (word.new_heading && paragraph.words.length) {
       results.push(paragraph);
       // reset paragraph
-      paragraph = { words: [], text: [] };
+      paragraph = { words: [], text: [], reviews: [] };
       paragraph.words.push(tmpWord);
       paragraph.text.push(word.sent);
     } else {
       paragraph.words.push(tmpWord);
       paragraph.text.push(word.sent);
+    }
+
+    if (word.moving || word.type === "pause") {
+      paragraph.reviews.push(tmpWord)
     }
   });
   if (paragraph.words.length) {
@@ -52,6 +58,7 @@ const stt2Draft = (autoEdit2Json) => {
         heading: `Heading ${i+1}: ` + paragraph.words[0].heading,
         words: paragraph.words,
         start: paragraph.words[0].start,
+        reviews: paragraph.reviews,
       },
       // the entities as ranges are each word in the space-joined text,
       // so it needs to be compute for each the offset from the beginning of the paragraph and the length
