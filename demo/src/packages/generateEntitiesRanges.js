@@ -23,6 +23,9 @@ const generateEntitiesRanges = (words, wordAttributeName) => {
       offset: position,
       length: word[wordAttributeName].length,
       key: Math.random().toString(36).substring(6),
+      moving: word.moving,
+      type: word.type,
+      heading: word.heading,
     };
     // increase position counter - to determine word offset in paragraph
     position = position + word[wordAttributeName].length + 1;

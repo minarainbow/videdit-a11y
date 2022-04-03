@@ -16,7 +16,7 @@ import {
 import stt2Draft from "../packages/stt2draft";
 import gcpSttToDraft from "../packages/google-stt2draft";
 import createEntityMap from "../packages/createEntityMap";
-import ForumIcon from '@mui/icons-material/Forum';
+import ForumIcon from "@mui/icons-material/Forum";
 
 // DraftJs decorator to recognize which entity is which
 // and know what to apply to what component
@@ -49,7 +49,7 @@ class Scripts extends React.Component {
       editorState: EditorState.createEmpty(),
       current_heading: 0,
       current_sentence: 0,
-      deleted_index: []
+      deleted_index: [],
     };
     this.onChange = (editorState) => {
       this.setState({ editorState });
@@ -76,18 +76,23 @@ class Scripts extends React.Component {
     const blocks = this.sttJsonAdapter(scriptData["words"]);
     const contentState = convertFromRaw(blocks);
     const editorState = EditorState.createWithContent(contentState, decorator);
-    this.setState({ editorState: editorState});
+    this.setState({ editorState: editorState });
   }
 
   updateVideoScript(deleted_element) {
     var video_script = this.state.video_script;
-    const deleted_script_element = video_script.filter(
-        function(data){ return data.index == deleted_element.index}
-    )[0];
+    const deleted_script_element = video_script.filter(function (data) {
+      return data.index == deleted_element.index;
+    })[0];
     const deleted_index = video_script.indexOf(deleted_script_element);
-    // when deleted_element is heading 
-    if (deleted_script_element.new_heading && deleted_index < video_script.length -1 && !video_script[deleted_index+1].new_heading){
-      video_script[deleted_index+1].new_heading = deleted_script_element.new_heading
+    // when deleted_element is heading
+    if (
+      deleted_script_element.new_heading &&
+      deleted_index < video_script.length - 1 &&
+      !video_script[deleted_index + 1].new_heading
+    ) {
+      video_script[deleted_index + 1].new_heading =
+        deleted_script_element.new_heading;
     }
     video_script.splice(deleted_index, 1);
     return video_script;
@@ -137,12 +142,10 @@ class Scripts extends React.Component {
   handleKeyCommand = (command) => {
     if (command === "play/pause") {
       this.props.playVideo();
-    } 
-    else if (command === "next-sentence") {
+    } else if (command === "next-sentence") {
       const currentSentenceEnd = this.getCurrentWord().end;
       this.props.jumpVideo(currentSentenceEnd, true);
-    } 
-    else if (command === "prev-sentence") {
+    } else if (command === "prev-sentence") {
       const currentSentenceStart = this.getCurrentWord().start;
       if (this.props.videoTime < currentSentenceStart + 2) {
         const prevSentenceStart = this.getCurrentWord().prevStart;
@@ -150,21 +153,23 @@ class Scripts extends React.Component {
       } else {
         this.props.jumpVideo(currentSentenceStart, true);
       }
-    }
-    else if (command === "delete-sentence") {
+    } else if (command === "delete-sentence") {
       const deleted_element = this.getCurrentWord();
       var video_script = this.updateVideoScript(deleted_element);
 
       const blocks = this.sttJsonAdapter(video_script);
       const contentState = convertFromRaw(blocks);
-      const editorState = EditorState.createWithContent(contentState, decorator);
+      const editorState = EditorState.createWithContent(
+        contentState,
+        decorator
+      );
 
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         deleted_index: [...prevState.deleted_index, deleted_element.index],
         video_script: video_script,
         editorState: editorState,
-      }))
-      
+      }));
+
       const newWordStart = this.getCurrentWord().end;
       this.props.jumpVideo(newWordStart, true);
     }
@@ -185,10 +190,11 @@ class Scripts extends React.Component {
         showTimecodes: true,
         timecodeOffset: this.props.timecodeOffset,
         editorState: this.props.editorState,
-        setEditorNewContentStateSpeakersUpdate: this.props.setEditorNewContentStateSpeakersUpdate,
+        setEditorNewContentStateSpeakersUpdate:
+          this.props.setEditorNewContentStateSpeakersUpdate,
         onWordClick: this.handleWordClick,
         isEditable: true,
-      }
+      },
     };
   };
 
@@ -291,9 +297,12 @@ class Scripts extends React.Component {
           {`span.Word[data-prev-times~="${time}"] { color: ${unplayedColor} }`}
           {`span.Word[data-confidence="low"] { border-bottom: ${correctionBorder} }`}
           {`span.Word[data-index="${currentWord.index}"]`}
+          {`span.Word[data-moving="${currentWord.moving}"]`}
+          {`span.Word[data-type="${currentWord.type}"]`}
+          {`span.Word[data-heading="${currentWord.heading}"]`}
         </style>
         <Editor
-          ref = {this.props.ref}
+          ref={this.props.ref}
           editorState={this.state.editorState}
           onChange={this.onChange}
           handleKeyCommand={this.handleKeyCommand}

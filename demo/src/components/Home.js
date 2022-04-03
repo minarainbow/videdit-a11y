@@ -19,7 +19,7 @@ import KeyboardEventHandler from "react-keyboard-event-handler";
 import Speech from "speak-tts";
 import ToolBar from "./ToolBar";
 import Scripts from "./Scripts";
-import Instruction from  "./Instruction";
+import Instruction from "./Instruction";
 
 function formatTime(time) {
   time = Math.round(time);
@@ -60,6 +60,7 @@ class Home extends Component {
       currWordEnd: 0,
       timecodeOffset: 0,
       modalOpen: true,
+      firstEntered: true,
     };
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
@@ -96,14 +97,15 @@ class Home extends Component {
         },
       },
     });
+    this.setState({ speech: speech });
     this.handleSubmit("ZaQtx54N6iU");
     this.script.current && this.script.current.focus();
   }
 
-  closeModal(){
-    console.log("here")
-    this.setState({modalOpen: false})
-}
+  closeModal() {
+    console.log("here");
+    this.setState({ modalOpen: false });
+  }
 
   updatePlaybackRate = (rate) => {
     this.setState({ playbackRate: rate });
@@ -117,6 +119,7 @@ class Home extends Component {
     // We only want to update time slider if we are not currently seeking
     this.setState(state);
     const currTime = this.state.playedSeconds;
+    const speech = this.state.speech;
     if (this.state.currSpan) {
       const currRate = parseFloat(
         this.state.currSpan.getAttribute("data-playback")
@@ -127,10 +130,53 @@ class Home extends Component {
       const currWordEnd = parseFloat(
         this.state.currSpan.getAttribute("data-end")
       );
+      if (this.state.firstEntered) {
+        // console.log(this.state.currSpan);
+        const moving = this.state.currSpan.getAttribute("data-moving");
+        const type = this.state.currSpan.getAttribute("data-type");
+        const heading = this.state.currSpan.getAttribute("data-heading");
+        if (heading !== "false") {
+          speech
+            .speak({
+              text: "New heading, " + heading,
+            })
+            .then(() => {
+              console.log("Success !");
+            })
+            .catch((e) => {
+              console.error("An error occurred :", e);
+            });
+        }
+        if (moving === "true") {
+          speech
+            .speak({
+              text: "There is a moving",
+            })
+            .then(() => {
+              console.log("Success !");
+            })
+            .catch((e) => {
+              console.error("An error occurred :", e);
+            });
+        }
+        if (type === "pause") {
+          speech
+            .speak({
+              text: "There is a long pause",
+            })
+            .then(() => {
+              console.log("Success !");
+            })
+            .catch((e) => {
+              console.error("An error occurred :", e);
+            });
+        }
+      }
       this.setState({
         playbackRate: currRate,
         currWordStart: currWordStart,
         currWordEnd: currWordEnd,
+        firstEntered: false,
       });
 
       if (
@@ -147,7 +193,7 @@ class Home extends Component {
         } else if (this.state.currSpan.nextSibling.nextSibling) {
           nextSpan = this.state.currSpan.nextSibling.nextSibling;
         }
-        console.log("here next span", nextSpan);
+        // console.log("here next span", nextSpan);
 
         if (nextSpan) {
           const nextIndex = parseInt(nextSpan.getAttribute("data-index"));
@@ -157,8 +203,8 @@ class Home extends Component {
           const currEndTrim = this.state.currSpan.getAttribute("trim-end");
           const nextStartTrim = nextSpan.getAttribute("trim-start");
 
-          console.log("curr", currIndex);
-          console.log("next", nextIndex);
+          // console.log("curr", currIndex);
+          // console.log("next", nextIndex);
 
           if (
             nextIndex > currIndex + 1 ||
@@ -177,6 +223,7 @@ class Home extends Component {
                 currWordStart: nextStart,
                 currWordEnd: nextEnd,
                 playing: true,
+                firstEntered: true,
                 // playbackRate: nextPlayback,
               },
               () => this.jumpVideo(nextStart, true)
@@ -219,6 +266,7 @@ class Home extends Component {
                   children[i].getAttribute("data-start")
                 ),
                 currWordEnd: newEnd,
+                firstEntered: true,
                 // playbackRate: nextPlayback,
               });
               break;
@@ -234,6 +282,7 @@ class Home extends Component {
               currSpan: children[i],
               currWordStart: parseFloat(children[i].getAttribute("data-start")),
               currWordEnd: newEnd,
+              firstEntered: true,
               // playbackRate: nextPlayback,
             });
           }
@@ -254,10 +303,9 @@ class Home extends Component {
     this.player = player;
   };
 
-
   focusRef = (script) => {
     this.script = script;
-  }
+  };
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -356,7 +404,7 @@ class Home extends Component {
   };
 
   _onPause = () => {
-    console.log(sessionStorage.getItem("sessionID"));
+    // console.log(sessionStorage.getItem("sessionID"));
   };
 
   handleKey = (key) => {
@@ -439,6 +487,7 @@ class Home extends Component {
         case "right":
           new_idx = current_idx + 1;
           var time = scene_starts[new_idx];
+          console.log("right???");
           speech.cancel();
           speech
             .speak({
@@ -545,7 +594,7 @@ class Home extends Component {
           handleKeys={["space", "tab", "left", "up", "right", "down"]}
           onKeyEvent={(key, e) => this.handleKey(key)}
         ></KeyboardEventHandler>
-        <div  className="header-bar">
+        <div className="header-bar">
           <div className="header-title">
             <Header as="h2">Videdit A11y</Header>
           </div>
@@ -596,7 +645,7 @@ class Home extends Component {
               onStartPlay={this.onStartPlay}
             ></ToolBar>
             <Scripts
-              ref = {this.focusRef}
+              ref={this.focusRef}
               playVideo={this.playVideo}
               jumpVideo={this.jumpVideo}
               player={this.player}
@@ -635,7 +684,10 @@ class Home extends Component {
             ></Timeline>
           </Container>
         </Container>
-        <Instruction open={modalOpen} closeModal={this.closeModal}></Instruction>
+        <Instruction
+          open={modalOpen}
+          closeModal={this.closeModal}
+        ></Instruction>
       </div>
     );
   }

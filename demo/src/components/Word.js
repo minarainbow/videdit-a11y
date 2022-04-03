@@ -37,11 +37,11 @@ class Word extends Component {
   };
 
   checkReviewPoints = (data) => {
-    const currData = scriptData["words"].filter(
-        function(word){ return word.index == data.index}
-    )[0];
-    if (currData["moving"] || currData["type"] === "pause"){
-      return true
+    const currData = scriptData["words"].filter(function (word) {
+      return word.index == data.index;
+    })[0];
+    if (currData["moving"] || currData["type"] === "pause") {
+      return true;
     }
     return false;
   };
@@ -68,6 +68,9 @@ class Word extends Component {
         trim-start={"false"}
         trim-end={"false"}
         className={"Word"}
+        data-moving={data.moving}
+        data-type={data.type}
+        data-heading={data.heading}
       >
         {this.props.children}
       </span>
