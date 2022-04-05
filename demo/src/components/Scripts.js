@@ -7,6 +7,7 @@ import WrapperBlock from "./WrapperBlock.js";
 import {
   Editor,
   EditorState,
+  SelectionState,
   CompositeDecorator,
   convertFromRaw,
   convertToRaw,
@@ -52,7 +53,7 @@ class Scripts extends React.Component {
       deleted_index: [],
     };
     this.onChange = (editorState) => {
-      this.setState({ editorState });
+      this.setState(editorState)
     };
   }
 
@@ -97,6 +98,99 @@ class Scripts extends React.Component {
     video_script.splice(deleted_index, 1);
     return video_script;
   }
+  
+  getBlockAndOffset = (
+    editorState,
+    selection,
+    offset,
+    startFromEnd = false,
+    limitedToSingleBlock = false,
+) => {
+    const noValue = {block: null, newOffset: null};
+    const content = editorState.getCurrentContent();
+    let newOffset;
+    let block;
+
+    if (startFromEnd) {
+        newOffset = selection.getEndOffset() + offset;
+        block = content.getBlockForKey(selection.getEndKey());
+    } else {
+        newOffset = selection.getStartOffset() + offset;
+        block = content.getBlockForKey(selection.getStartKey());
+    }
+
+    if (block == null) {
+        return noValue;
+    }
+
+    if (limitedToSingleBlock === true) {
+        const offsetWithinBlock = startFromEnd === true
+            ? Math.min(newOffset, block.getLength())
+            : Math.max(newOffset, 0);
+
+        return {block: block, newOffset: offsetWithinBlock};
+    }
+
+    while (newOffset < 0) {
+        block = content.getBlockBefore(block.getKey());
+        if (block == null) {
+            return noValue;
+        }
+        newOffset = block.getLength() + newOffset + 1;
+    }
+
+    while (newOffset > block.getLength()) {
+        newOffset = newOffset - block.getLength() - 1;
+        block = content.getBlockAfter(block.getKey());
+        if (block == null) {
+            return noValue;
+        }
+    }
+
+    return {block, newOffset};
+};
+
+
+  changeEditorSelection(editorState, startOffset, endOffset, force) {
+
+
+    
+    const selection = editorState.getSelection();
+    const {block: startBlock, newOffset: newStartOffset} = this.getBlockAndOffset(
+        editorState, selection, startOffset, false);
+    const {block: endBlock, newOffset: newEndOffset} = this.getBlockAndOffset(
+        editorState, selection, endOffset, true);
+    //   console.log(startBlock, endBlock)
+    // if (startBlock == null || endBlock == null) {
+    //     return editorState;
+    // }
+    console.log(selection)
+    const newSelection = selection.merge({
+        anchorOffset: 1,
+        anchorKey: '4nekh',
+        focusOffset: 6,
+        focusKey: '4nekh',
+        isBackward: false,
+    });
+
+    if (force) {
+      
+      const newState = EditorState.forceSelection(this.state.editorState, newSelection)
+      
+      const content = newState.getCurrentContent();
+      const decorator = new CompositeDecorator([
+        {
+          strategy: getEntityStrategy("MUTABLE"),
+          component: Word,
+        },
+      ]);
+      const newEditorState = EditorState.createWithContent(content, decorator);
+      this.setState({ editorState: newEditorState });
+      console.log(newEditorState)
+    }
+
+    return EditorState.acceptSelection(editorState, newSelection);
+}
 
   /**
    * Listen for draftJs custom key bindings
@@ -126,7 +220,12 @@ class Scripts extends React.Component {
     if (e.keyCode === deleteKey) {
       console.log("customKeyBindingFn");
 
-      return "delete-sentence";
+      // return "delete-sentence";
+    }
+    if (e.keyCode === enterKey) {
+      console.log("customKeyBindingFn");
+
+      return "split-paragraph";
     }
 
     // if alt key is pressed in combination with these other keys
@@ -174,6 +273,11 @@ class Scripts extends React.Component {
       this.props.jumpVideo(newWordStart, true);
     }
 
+    else if (command === "split-paragraph") {
+      
+      // this.changeEditorSelection(this.state.editorState, 2, 3, true);
+    }
+
     if (command === "keyboard-shortcuts") {
       return "handled";
     }
@@ -189,9 +293,8 @@ class Scripts extends React.Component {
         showHeadings: true,
         showTimecodes: true,
         timecodeOffset: this.props.timecodeOffset,
-        editorState: this.props.editorState,
-        setEditorNewContentStateSpeakersUpdate:
-          this.props.setEditorNewContentStateSpeakersUpdate,
+        editorState: this.state.editorState,
+        setEditorNewContentStateSpeakersUpdate: this.props.setEditorNewContentStateSpeakersUpdate,
         onWordClick: this.handleWordClick,
         isEditable: true,
       },

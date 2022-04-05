@@ -17,7 +17,7 @@ class App extends Component {
     return (
       <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home/>} />
+        <Route path="/videdit-a11y/" element={<Home/>} />
       </Routes>
     </BrowserRouter>
     );

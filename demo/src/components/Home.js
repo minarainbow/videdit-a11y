@@ -70,8 +70,6 @@ class Home extends Component {
     this.updateCurrSpan = this.updateCurrSpan.bind(this);
     this.onTimeChange = this.onTimeChange.bind(this);
     this.onPause = this._onPause.bind(this);
-    this.handleKey = this.handleKey.bind(this);
-    this.inspectFrame = this.inspectFrame.bind(this);
     this.updateCurrWordEnd = this.updateCurrWordEnd.bind(this);
     this.updatePlaybackRate = this.updatePlaybackRate.bind(this);
     this.onStartPlay = this.onStartPlay.bind(this);
@@ -407,194 +405,14 @@ class Home extends Component {
     // console.log(sessionStorage.getItem("sessionID"));
   };
 
-  handleKey = (key) => {
-    const [current_idx, current_mid_idx] = this.align_segment();
-    this.setState({
-      current_idx: current_idx,
-      current_mid_idx: current_mid_idx,
-    });
-    const {
-      scene_starts,
-      mid_indexes,
-      dynamic,
-      current_level,
-      speech,
-      mid_contents,
-    } = this.state;
-    var time = deformatTime(this.state.time);
-    switch (key) {
-      case "enter":
-        this.jumpVideo(time, true);
-        this.setState({ entered_time: time });
-        break;
-      case "space":
-        this.setState({ playing: !this.state.playing });
-        break;
-      case "tab":
-        this.inspectFrame();
-    }
-    var new_idx;
-    if (current_level === 1) {
-      switch (key) {
-        case "left":
-          new_idx = current_idx <= 0 ? 0 : current_idx - 1;
-          var time = scene_starts[mid_indexes[new_idx]];
-          this.jumpVideo(time, true);
-          break;
-        case "right":
-          new_idx = current_idx === len ? current_idx : current_idx + 1;
-          var len = mid_indexes.length;
-          var time = scene_starts[mid_indexes[new_idx]];
-
-          this.jumpVideo(time, true);
-          break;
-        case "down":
-          this.setState({ current_level: 0 });
-          return;
-      }
-      speech.cancel();
-      speech
-        .speak({
-          text: mid_contents[new_idx].toString(),
-        })
-        .then(() => {
-          console.log("Success !");
-        })
-        .catch((e) => {
-          console.error("An error occurred :", e);
-        });
-    } else {
-      switch (key) {
-        case "left":
-          new_idx = current_idx - 1;
-          var time = scene_starts[new_idx];
-          speech.cancel();
-          speech
-            .speak({
-              text:
-                "Go back" +
-                Math.round(scene_starts[current_idx] - time).toString() +
-                "seconds",
-            })
-            .then(() => {
-              console.log("Success !");
-            })
-            .catch((e) => {
-              console.error("An error occurred :", e);
-            });
-          this.jumpVideo(time, true);
-          break;
-        case "right":
-          new_idx = current_idx + 1;
-          var time = scene_starts[new_idx];
-          console.log("right???");
-          speech.cancel();
-          speech
-            .speak({
-              text:
-                "Skipped" +
-                Math.round(time - scene_starts[current_idx]).toString() +
-                "seconds",
-            })
-            .then(() => {
-              console.log("Success !");
-            })
-            .catch((e) => {
-              console.error("An error occurred :", e);
-            });
-          speech
-            .speak({
-              text: dynamic[new_idx].toString(),
-            })
-            .then(() => {
-              console.log("Success !");
-            })
-            .catch((e) => {
-              console.error("An error occurred :", e);
-            });
-          this.jumpVideo(time, true);
-          break;
-        case "up":
-          this.setState({ current_level: 1 });
-          return;
-      }
-    }
-  };
-
-  inspectFrame() {
-    const { videoID, current_idx, speech } = this.state;
-    var json = require("../" + videoID + ".json");
-    var scene = json[current_idx];
-    var object, label;
-    if (scene["texts"].length) {
-      speech.cancel();
-      console.log(scene["texts"]);
-      speech
-        .speak({
-          text: "Detected text" + scene["texts"].join(", "),
-        })
-        .then(() => {
-          console.log("Success !");
-        })
-        .catch((e) => {
-          console.error("An error occurred :", e);
-        });
-    }
-    if (Object.keys(scene["objects"]).length) {
-      for (var object_key in scene["objects"]) {
-        object = scene["objects"][object_key];
-        speech
-          .speak({
-            text:
-              "Detected" +
-              object_key +
-              "on" +
-              object["pos"] +
-              "size" +
-              object["size"],
-          })
-          .then(() => {
-            console.log("Success !");
-          })
-          .catch((e) => {
-            console.error("An error occurred :", e);
-          });
-      }
-    } else if (Object.keys(scene["labels"]).length) {
-      speech
-        .speak({
-          text: "This frame may contain" + scene["labels"].join(", "),
-        })
-        .then(() => {
-          console.log("Success !");
-        })
-        .catch((e) => {
-          console.error("An error occurred :", e);
-        });
-    } else {
-      speech
-        .speak({
-          text: "Nothing detected",
-        })
-        .then(() => {
-          console.log("Success !");
-        })
-        .catch((e) => {
-          console.error("An error occurred :", e);
-        });
-    }
-  }
+  
 
   render() {
     const { videoID, playing, playbackRate, playedSeconds, modalOpen } =
       this.state;
     return (
       <div className="Home">
-        <KeyboardEventHandler
-          handleKeys={["space", "tab", "left", "up", "right", "down"]}
-          onKeyEvent={(key, e) => this.handleKey(key)}
-        ></KeyboardEventHandler>
-        <div className="header-bar">
+        <div  className="header-bar">
           <div className="header-title">
             <Header as="h2">Videdit A11y</Header>
           </div>

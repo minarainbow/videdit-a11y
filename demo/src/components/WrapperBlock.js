@@ -112,7 +112,7 @@ class WrapperBlock extends React.Component {
       if (this.props.blockProps.handleAnalyticsEvents) {
         this.props.blockProps.handleAnalyticsEvents({
           category: 'WrapperBlock',
-          action: 'handleOnClickEdit',
+          // action: 'handleOnClickEdit',
           name: 'newHeadingName',
           value: newHeadingName
         });
