@@ -18,6 +18,10 @@ import stt2Draft from "../packages/stt2draft";
 import gcpSttToDraft from "../packages/google-stt2draft";
 import createEntityMap from "../packages/createEntityMap";
 import ForumIcon from "@mui/icons-material/Forum";
+import firebase from 'firebase/app';
+import 'firebase/database';
+
+const databaseURL = "https://videdita11y-default-rtdb.firebaseio.com/"
 
 // DraftJs decorator to recognize which entity is which
 // and know what to apply to what component
@@ -46,11 +50,11 @@ class Scripts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      video_script: scriptData["words"],
+      scriptData: scriptData["words"],
       editorState: EditorState.createEmpty(),
       current_heading: 0,
       current_sentence: 0,
-      deleted_index: [],
+      cuts: [],
     };
     this.onChange = (editorState) => {
       this.setState(editorState)
@@ -73,30 +77,57 @@ class Scripts extends React.Component {
     return { blocks, entityMap: createEntityMap(blocks) };
   }
 
+
   loadData() {
-    const blocks = this.sttJsonAdapter(scriptData["words"]);
+    fetch( `${databaseURL+'/scriptdata'}/.json`).then(res => {
+      if (res.status !== 200) {
+          throw new Error(res.statusText);
+      }
+      return res.json();
+    }).then(res => {
+        //console.log(res)
+        this.setState({
+            scriptData: res["words"],
+        })
+    })
+    const blocks = this.sttJsonAdapter(this.state.scriptData);
     const contentState = convertFromRaw(blocks);
     const editorState = EditorState.createWithContent(contentState, decorator);
     this.setState({ editorState: editorState });
   }
 
   updateVideoScript(deleted_element) {
-    var video_script = this.state.video_script;
-    const deleted_script_element = video_script.filter(function (data) {
+    var scriptData = this.state.scriptData;
+    const deleted_script_element = scriptData.filter(function (data) {
       return data.index == deleted_element.index;
     })[0];
-    const deleted_index = video_script.indexOf(deleted_script_element);
+    const deleted_index = scriptData.indexOf(deleted_script_element);
+
     // when deleted_element is heading
     if (
       deleted_script_element.new_heading &&
-      deleted_index < video_script.length - 1 &&
-      !video_script[deleted_index + 1].new_heading
+      deleted_index < scriptData.length - 1 &&
+      !scriptData[deleted_index + 1].new_heading
     ) {
-      video_script[deleted_index + 1].new_heading =
+      scriptData[deleted_index + 1].new_heading =
         deleted_script_element.new_heading;
     }
-    video_script.splice(deleted_index, 1);
-    return video_script;
+    scriptData.splice(deleted_index, 1);
+
+    // update backend
+    fetch(`${databaseURL+'/sessions/'+ sessionStorage.getItem('sessionID') +'/scriptdata/'}/.json`, {
+      method: 'POST',
+      body: JSON.stringify(scriptData)
+  }).then(res => {
+      if (res.status !== 200) {
+          throw new Error(res.statusText);
+      }
+      return res.json();
+  }).then(() => {
+      //console.log("Dummy data succesfully sent!")
+  })
+
+    return scriptData;
   }
   
   getBlockAndOffset = (
@@ -202,8 +233,7 @@ class Scripts extends React.Component {
     const rightArrow = 39;
     const deleteKey = 8;
 
-    if (e.keyCode === spaceKey) {
-      console.log("customKeyBindingFn");
+    if (e.keyCode === spaceKey) {                                                              
 
       return "play/pause";
     }
@@ -220,7 +250,7 @@ class Scripts extends React.Component {
     if (e.keyCode === deleteKey) {
       console.log("customKeyBindingFn");
 
-      // return "delete-sentence";
+      return "delete-sentence";
     }
     if (e.keyCode === enterKey) {
       console.log("customKeyBindingFn");
@@ -242,34 +272,40 @@ class Scripts extends React.Component {
     if (command === "play/pause") {
       this.props.playVideo();
     } else if (command === "next-sentence") {
-      const currentSentenceEnd = this.getCurrentWord().end;
+      const currentSentenceEnd = this.getCurrentSent().end;
       this.props.jumpVideo(currentSentenceEnd, true);
     } else if (command === "prev-sentence") {
-      const currentSentenceStart = this.getCurrentWord().start;
+      const currentSentenceStart = this.getCurrentSent().start;
       if (this.props.videoTime < currentSentenceStart + 2) {
-        const prevSentenceStart = this.getCurrentWord().prevStart;
+        const prevSentenceStart = this.getCurrentSent().prevStart;
         this.props.jumpVideo(prevSentenceStart, true);
       } else {
         this.props.jumpVideo(currentSentenceStart, true);
       }
     } else if (command === "delete-sentence") {
-      const deleted_element = this.getCurrentWord();
-      var video_script = this.updateVideoScript(deleted_element);
-
-      const blocks = this.sttJsonAdapter(video_script);
+      // update UI
+      const deleted_element = this.getCurrentSent();
+      const deleted_index = deleted_element.index;
+      var scriptData = this.updateVideoScript(deleted_element);
+      const blocks = this.sttJsonAdapter(scriptData);
       const contentState = convertFromRaw(blocks);
       const editorState = EditorState.createWithContent(
         contentState,
         decorator
       );
-
       this.setState((prevState) => ({
-        deleted_index: [...prevState.deleted_index, deleted_element.index],
-        video_script: video_script,
+        scriptData: scriptData,
         editorState: editorState,
       }));
-
-      const newWordStart = this.getCurrentWord().end;
+      
+      // if jumpcut
+      const deleted_cut = {index: deleted_index, jump_cut: true}
+      if (this.getNextSent().heading !== deleted_element.heading){
+        deleted_cut.jump_cut = true
+      } 
+      
+      // jump to next 
+      const newWordStart = this.getCurrentSent().end;
       this.props.jumpVideo(newWordStart, true);
     }
 
@@ -302,13 +338,14 @@ class Scripts extends React.Component {
   };
 
   // change to getcurrentsentence
-  getCurrentWord = () => {
-    const currentWord = {
+  getCurrentSent = () => {
+    const currentSent = {
       start: "NA",
       end: "NA",
       index: "NA",
       now: "NA",
       prevStart: "0",
+      heading: "NA"
     };
     if (scriptData) {
       const contentState = this.state.editorState.getCurrentContent();
@@ -321,29 +358,60 @@ class Scripts extends React.Component {
 
         if (word.start <= this.props.videoTime) {
           if (word.end >= this.props.videoTime) {
-            currentWord.start = word.start;
-            currentWord.end = word.end;
-            currentWord.index = word.index;
-            currentWord.now = "true";
+            currentSent.start = word.start;
+            currentSent.end = word.end;
+            currentSent.index = word.index;
+            currentSent.now = "true";
+            currentSent.heading = word.heading;
           } else {
-            currentWord.prevStart = word.start;
+            currentSent.prevStart = word.start;
           }
         }
       }
     }
-    if (currentWord.start !== "NA") {
-      const currentWordElement = document.querySelector(
-        `span.Word[data-start="${currentWord.start}"]`
+    if (currentSent.start !== "NA") {
+      const currentSentElement = document.querySelector(
+        `span.Word[data-start="${currentSent.start}"]`
       );
       if (this.props.isScrollIntoViewOn) {
-        currentWordElement.scrollIntoView({
+        currentSentElement.scrollIntoView({
           block: "nearest",
           inline: "center",
         });
       }
     }
 
-    return currentWord;
+    return currentSent;
+  };
+
+  getNextSent = () => {
+    const nextSent = {
+      start: "NA",
+      end: "NA",
+      index: "NA",
+      heading: "NA",
+    };
+    if (scriptData) {
+      const contentState = this.state.editorState.getCurrentContent();
+      const contentStateConvertEdToRaw = convertToRaw(contentState);
+      const entityMap = contentStateConvertEdToRaw.entityMap;
+
+      for (var entityKey in entityMap) {
+        const entity = entityMap[entityKey];
+        const word = entity.data;
+
+        if (word.start >= this.props.videoTime) {
+          if (word.end >= this.props.videoTime) {
+            nextSent.start = word.start;
+            nextSent.end = word.end;
+            nextSent.index = word.index;
+            nextSent.heading = word.heading;
+            return nextSent
+          } 
+        }
+      }
+    }
+
   };
 
   handleDoubleClick = (event) => {
@@ -382,7 +450,7 @@ class Scripts extends React.Component {
   };
 
   render() {
-    const currentWord = this.getCurrentWord();
+    const currentSent = this.getCurrentSent();
     const highlightColour = "#69e3c2";
     const unplayedColor = "#767676";
     const time = Math.round(this.props.videoTime * 4.0) / 4.0;
@@ -390,8 +458,8 @@ class Scripts extends React.Component {
     return (
       <section onDoubleClick={this.handleDoubleClick} className="script">
         <style scoped>
-          {`span.Word[data-start="${currentWord.start}"] { background-color: ${highlightColour}; text-shadow: 0 0 0.01px black }`}
-          {`span.Word[data-start="${currentWord.start}"]+span { background-color: ${highlightColour} }`}
+          {`span.Word[data-start="${currentSent.start}"] { background-color: ${highlightColour}; text-shadow: 0 0 0.01px black }`}
+          {`span.Word[data-start="${currentSent.start}"]+span { background-color: ${highlightColour} }`}
           {`span.Word[data-prev-times~="${Math.floor(
             time
           )}"] { color: ${unplayedColor} }`}
@@ -399,10 +467,10 @@ class Scripts extends React.Component {
           {`span.Word[data-review="true"] { background-color: lightsalmon; color: black;}}`}
           {`span.Word[data-prev-times~="${time}"] { color: ${unplayedColor} }`}
           {`span.Word[data-confidence="low"] { border-bottom: ${correctionBorder} }`}
-          {`span.Word[data-index="${currentWord.index}"]`}
-          {`span.Word[data-moving="${currentWord.moving}"]`}
-          {`span.Word[data-type="${currentWord.type}"]`}
-          {`span.Word[data-heading="${currentWord.heading}"]`}
+          {`span.Word[data-index="${currentSent.index}"]`}
+          {`span.Word[data-moving="${currentSent.moving}"]`}
+          {`span.Word[data-type="${currentSent.type}"]`}
+          {`span.Word[data-heading="${currentSent.heading}"]`}
         </style>
         <Editor
           ref={this.props.ref}

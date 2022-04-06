@@ -2,20 +2,19 @@ import React from "react";
 import Popup from "reactjs-popup";
 import IconButton from '@material-ui/core/IconButton'
 import { Button, Header, Image, Modal, ModalActions, Input } from 'semantic-ui-react'
+import firebase from 'firebase/app';
+import 'firebase/database';
+import scriptData from "../scripts/ZaQtx54N6iU-aligned-sents";
+
+const databaseURL = "https://videdita11y-default-rtdb.firebaseio.com/"
 
 export default class Instruction extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          open: true,
           first: true,
           feature: false,
-          helperEnd: false,
-          helpeeEnd: false,
-
-          helperName: '',
-          helpeeName: '',
-
+          name: ''
         };
         this.setOpen = this.setOpen.bind(this)
         this.changeMode = this.changeMode.bind(this)
@@ -39,6 +38,43 @@ export default class Instruction extends React.Component {
         this.setState({open: bool})
       } 
 
+      createSessionID(name) {
+        if (sessionStorage.getItem('sessionCreated') === null) {
+          const startTime = new Date();
+          const newSession = {startTime: startTime, sessionName: name};
+          return fetch( `${databaseURL+'/sessions/'}/.json`, {
+              method: 'POST',
+              body: JSON.stringify(newSession)
+          }).then(res => {
+              if (res.status !== 200) {
+                  throw new Error(res.statusText);
+              }
+              return res.json();
+          }).then(res => {
+              //console.log(res.name);
+              //console.log("Session created: ", newSession);
+              sessionStorage.setItem('sessionID', res.name);
+              sessionStorage.setItem('sessionCreated', true);
+              sessionStorage.setItem('sessionName', name);
+          })
+        }
+      }
+
+      setInitialScript() {
+          return fetch(`${databaseURL+'/sessions/'+ sessionStorage.getItem('sessionID') +'/scriptdata/'}/.json`, {
+            method: 'PATCH',
+            body: JSON.stringify(scriptData)
+        }).then(res => {
+            if (res.status !== 200) {
+                throw new Error(res.statusText);
+            }
+            return res.json();
+        }).then(() => {
+            //console.log("Dummy data succesfully sent!")
+        })
+      }
+      
+
       changeMode = (inp) => {
         // First page to second page 
         if (inp === 0) {
@@ -59,10 +95,12 @@ export default class Instruction extends React.Component {
           this.setState({third: false, fourth: true})
         }
         if (inp === 5) {
-        this.setState({fourth: false, third: true})
+          this.setState({fourth: false, third: true})
         }
         if (inp === 6) {
-        this.setState({fourth: false})
+          this.setState({fourth: false})
+          this.createSessionID(this.state.name);
+          this.setInitialScript();
         }
           
       }
@@ -191,6 +229,7 @@ export default class Instruction extends React.Component {
                 icon='arrow left'
                 content='Back'
               />
+              <Input type="text" placeholder="Enter your name here" onChange={(e) => this.setState({name: e.target.value})}/>
               <Button
                 onClick={() => changeMode(6)}
                 labelPosition='right'

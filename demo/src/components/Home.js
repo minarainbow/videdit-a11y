@@ -20,6 +20,13 @@ import Speech from "speak-tts";
 import ToolBar from "./ToolBar";
 import Scripts from "./Scripts";
 import Instruction from "./Instruction";
+import firebase from 'firebase/app';
+import 'firebase/database';
+
+const databaseURL = "https://videdita11y-default-rtdb.firebaseio.com/"
+
+
+
 
 function formatTime(time) {
   time = Math.round(time);
@@ -99,6 +106,8 @@ class Home extends Component {
     this.handleSubmit("ZaQtx54N6iU");
     this.script.current && this.script.current.focus();
   }
+
+  
 
   closeModal() {
     console.log("here");
@@ -373,15 +382,14 @@ class Home extends Component {
       if (
         parseFloat(children[i].getAttribute("data-start")) <=
           this.state.playedSeconds &&
-        this.state.playedSeconds <
+        this.state.playedSeconds <                                  
           parseFloat(children[i + 1].getAttribute("data-start"))
       ) {
-        console.log("set up - in the middle");
         const newEnd = parseFloat(children[i].getAttribute("data-end"));
         this.setState({
-          currSpan: children[i],
+          currSpan: children[i],                                
           currWordStart: parseFloat(children[i].getAttribute("data-start")),
-          currWordEnd: newEnd,
+          currWordEnd: newEnd,            
         });
         break;
       }
