@@ -20,13 +20,10 @@ import Speech from "speak-tts";
 import ToolBar from "./ToolBar";
 import Scripts from "./Scripts";
 import Instruction from "./Instruction";
-import firebase from 'firebase/app';
-import 'firebase/database';
+import firebase from "firebase/app";
+import "firebase/database";
 
-const databaseURL = "https://videdita11y-default-rtdb.firebaseio.com/"
-
-
-
+const databaseURL = "https://videdita11y-default-rtdb.firebaseio.com/";
 
 function formatTime(time) {
   time = Math.round(time);
@@ -107,8 +104,6 @@ class Home extends Component {
     this.script.current && this.script.current.focus();
   }
 
-  
-
   closeModal() {
     console.log("here");
     this.setState({ modalOpen: false });
@@ -128,6 +123,7 @@ class Home extends Component {
     const currTime = this.state.playedSeconds;
     const speech = this.state.speech;
     if (this.state.currSpan) {
+      // get current span's values
       const currRate = parseFloat(
         this.state.currSpan.getAttribute("data-playback")
       );
@@ -138,6 +134,7 @@ class Home extends Component {
         this.state.currSpan.getAttribute("data-end")
       );
       if (this.state.firstEntered) {
+        // run the code below only once after entering a new span
         console.log(this.state.currSpan);
         const moving = this.state.currSpan.getAttribute("data-moving");
         const type = this.state.currSpan.getAttribute("data-type");
@@ -179,6 +176,7 @@ class Home extends Component {
             });
         }
       }
+      // set up current span's values
       this.setState({
         playbackRate: currRate,
         currWordStart: currWordStart,
@@ -186,11 +184,13 @@ class Home extends Component {
         firstEntered: false,
       });
 
+      // when the sentence is about to finish (to determine jump or not)
       if (
         this.state.currWordEnd - 0.5 <= currTime &&
         currTime <= this.state.currWordEnd
       ) {
         var nextSpan;
+        // find the span of the next sentence
         if (!this.state.currSpan.nextSibling) {
           nextSpan =
             this.state.currSpan.parentElement.parentElement.parentElement
@@ -200,7 +200,6 @@ class Home extends Component {
         } else if (this.state.currSpan.nextSibling.nextSibling) {
           nextSpan = this.state.currSpan.nextSibling.nextSibling;
         }
-        console.log("here next span", nextSpan);
 
         if (nextSpan) {
           const nextIndex = parseInt(nextSpan.getAttribute("data-index"));
@@ -210,9 +209,7 @@ class Home extends Component {
           const currEndTrim = this.state.currSpan.getAttribute("trim-end");
           const nextStartTrim = nextSpan.getAttribute("trim-start");
 
-          // console.log("curr", currIndex);
-          // console.log("next", nextIndex);
-
+          // if jump is needed (because a sentence in between was deleted)
           if (
             nextIndex > currIndex + 1 ||
             currEndTrim === "true" ||
@@ -241,6 +238,8 @@ class Home extends Component {
             this.updatePlaybackRate(rate);
           }
         }
+
+        // if jump happend and thus current word information needs to be updated
       } else if (
         this.state.currWordEnd < currTime ||
         currTime < this.state.currWordStart
@@ -248,6 +247,7 @@ class Home extends Component {
         const children = document.querySelectorAll("span.Word");
         var i = 0;
         const theFirstWordElement = children[0];
+        // the first sentence
         if (
           currTime < parseFloat(theFirstWordElement.getAttribute("data-end"))
         ) {
@@ -261,6 +261,7 @@ class Home extends Component {
             ),
           });
         } else {
+          // the second ~ last-1 sentence
           for (i = 0; i < children.length - 1; i++) {
             if (
               parseFloat(children[i].getAttribute("data-start")) < currTime &&
@@ -279,6 +280,7 @@ class Home extends Component {
               break;
             }
           }
+          // the last sentence
           if (i === children.length - 1) {
             console.log("the end?");
             const newEnd = parseFloat(children[i].getAttribute("data-end"));
@@ -337,7 +339,6 @@ class Home extends Component {
   jumpVideo(time, abs = false) {
     if (abs) {
       this.player.seekTo(time);
-
     } else {
       this.player.seekTo(this.state.playedSeconds + time);
     }
@@ -383,14 +384,14 @@ class Home extends Component {
       if (
         parseFloat(children[i].getAttribute("data-start")) <=
           this.state.playedSeconds &&
-        this.state.playedSeconds <                                  
+        this.state.playedSeconds <
           parseFloat(children[i + 1].getAttribute("data-start"))
       ) {
         const newEnd = parseFloat(children[i].getAttribute("data-end"));
         this.setState({
-          currSpan: children[i],                                
+          currSpan: children[i],
           currWordStart: parseFloat(children[i].getAttribute("data-start")),
-          currWordEnd: newEnd,            
+          currWordEnd: newEnd,
         });
         break;
       }
@@ -414,8 +415,6 @@ class Home extends Component {
     // console.log(sessionStorage.getItem("sessionID"));
   };
 
-  
-
   render() {
     const { videoID, playing, playbackRate, playedSeconds, modalOpen } =
       this.state;
@@ -425,7 +424,7 @@ class Home extends Component {
           open={modalOpen}
           closeModal={this.closeModal}
         ></Instruction> */}
-        <div  className="header-bar">
+        <div className="header-bar">
           <div className="header-title">
             <Header as="h2">Videdit A11y</Header>
           </div>
