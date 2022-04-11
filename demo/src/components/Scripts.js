@@ -56,9 +56,7 @@ class Scripts extends React.Component {
       current_sentence: 0,
       cuts: [],
     };
-    this.onChange = (editorState) => {
-      this.setState(editorState)
-    };
+    this.onChange = (editorState) => this.setState({ editorState });
   }
 
   componentDidMount() {
@@ -79,17 +77,17 @@ class Scripts extends React.Component {
 
 
   loadData() {
-    fetch( `${databaseURL+'/scriptdata'}/.json`).then(res => {
-      if (res.status !== 200) {
-          throw new Error(res.statusText);
-      }
-      return res.json();
-    }).then(res => {
-        //console.log(res)
-        this.setState({
-            scriptData: res["words"],
-        })
-    })
+    // fetch( `${databaseURL+'/scriptdata'}/.json`).then(res => {
+    //   if (res.status !== 200) {
+    //       throw new Error(res.statusText);
+    //   }
+    //   return res.json();
+    // }).then(res => {
+    //     //console.log(res)
+    //     this.setState({
+    //         scriptData: res["words"],
+    //     })
+    // })
     const blocks = this.sttJsonAdapter(this.state.scriptData);
     const contentState = convertFromRaw(blocks);
     const editorState = EditorState.createWithContent(contentState, decorator);
@@ -332,21 +330,14 @@ class Scripts extends React.Component {
         editorState: this.state.editorState,
         setEditorNewContentStateSpeakersUpdate: this.props.setEditorNewContentStateSpeakersUpdate,
         onWordClick: this.handleWordClick,
-        isEditable: true,
+        isEditable: false,
       },
     };
   };
 
-  // change to getcurrentsentence
+  
   getCurrentSent = () => {
-    const currentSent = {
-      start: "NA",
-      end: "NA",
-      index: "NA",
-      now: "NA",
-      prevStart: "0",
-      heading: "NA"
-    };
+    var currentSentIndex = 0
     if (scriptData) {
       const contentState = this.state.editorState.getCurrentContent();
       const contentStateConvertEdToRaw = convertToRaw(contentState);
@@ -355,20 +346,14 @@ class Scripts extends React.Component {
       for (var entityKey in entityMap) {
         const entity = entityMap[entityKey];
         const word = entity.data;
-
         if (word.start <= this.props.videoTime) {
           if (word.end >= this.props.videoTime) {
-            currentSent.start = word.start;
-            currentSent.end = word.end;
-            currentSent.index = word.index;
-            currentSent.now = "true";
-            currentSent.heading = word.heading;
-          } else {
-            currentSent.prevStart = word.start;
+            currentSentIndex = word.sent_index
           }
         }
       }
     }
+    const currentSent = this.state.scriptData[currentSentIndex];
     if (currentSent.start !== "NA") {
       const currentSentElement = document.querySelector(
         `span.Word[data-start="${currentSent.start}"]`
@@ -425,7 +410,10 @@ class Scripts extends React.Component {
     if (element.hasAttribute("data-start")) {
       const t = parseFloat(element.getAttribute("data-start"));
       this.props.jumpVideo(t, true);
+
+      console.log(element, t);
     }
+
 
     // while (!element.hasAttribute("data-index") && element.parentElement) {
     //   element = element.parentElement;
@@ -458,14 +446,13 @@ class Scripts extends React.Component {
     return (
       <section onDoubleClick={this.handleDoubleClick} className="script">
         <style scoped>
-          {`span.Word[data-start="${currentSent.start}"] { background-color: ${highlightColour}; text-shadow: 0 0 0.01px black }`}
-          {`span.Word[data-start="${currentSent.start}"]+span { background-color: ${highlightColour} }`}
+          {`span.Word[sent-index="${currentSent.sent_index}"] { background-color: ${highlightColour}; text-shadow: 0 0 0.01px black }`}
+          {`span.Word[sent-index="${currentSent.sent_index}"]+span { background-color: ${highlightColour} }`}
           {`span.Word[data-prev-times~="${Math.floor(
             time
           )}"] { color: ${unplayedColor} }`}
 
-          {`span.Word[data-review="true"] { background-color: lightsalmon; color: black;}}`}
-          {`span.Word[data-prev-times~="${time}"] { color: ${unplayedColor} }`}
+          {`span.Word[data-review="true"] { background-color: #ffc6b3; color: black;}}`}
           {`span.Word[data-confidence="low"] { border-bottom: ${correctionBorder} }`}
           {`span.Word[data-index="${currentSent.index}"]`}
           {`span.Word[data-moving="${currentSent.moving}"]`}
@@ -476,9 +463,9 @@ class Scripts extends React.Component {
           ref={this.props.ref}
           editorState={this.state.editorState}
           onChange={this.onChange}
-          handleKeyCommand={this.handleKeyCommand}
+          // handleKeyCommand={this.handleKeyCommand}
           blockRendererFn={this.renderBlockWithTimecodes}
-          keyBindingFn={this.customKeyBindingFn}
+          // keyBindingFn={this.customKeyBindingFn}
         />
       </section>
     );

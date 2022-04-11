@@ -15,17 +15,18 @@ const generateEntitiesRanges = (words, wordAttributeName) => {
 
   return words.map((word) => {
     const result = {
-      index: word.index,
+      word_index: word.word_index,
+      sent_index: word.sent_index,
       start: word.start,
       end: word.end,
-      confidence: word.confidence,
+      // confidence: word.confidence,
       text: word[wordAttributeName],
       offset: position,
       length: word[wordAttributeName].length,
       key: Math.random().toString(36).substring(6),
-      moving: word.moving,
-      type: word.type,
-      heading: word.heading,
+      // moving: word.moving,
+      // type: word.type,
+      // heading: word.heading,
     };
     // increase position counter - to determine word offset in paragraph
     position = position + word[wordAttributeName].length + 1;

@@ -14,6 +14,7 @@ with open(videoID + '/' + videoID + '-aligned-sents.json', "r") as read_file:
     while s_index < len(sentences):
         s = sentences[s_index]
 
+        # end checking visuals
         if vf_index == len(boundaries):
             s["new_heading"] = False
             s["moving"] = False
@@ -22,7 +23,7 @@ with open(videoID + '/' + videoID + '-aligned-sents.json', "r") as read_file:
             continue
        
         vf = boundaries[vf_index]
-        
+        # new heading
         if next_is_new:
             s["new_heading"] = vf
             s["moving"] = False
@@ -31,10 +32,12 @@ with open(videoID + '/' + videoID + '-aligned-sents.json', "r") as read_file:
             s_index = s_index + 1
             next_is_new = False
             continue
+            
         elif s["start"] < vf and s["end"] > vf:
             if (s["start"]+s["end"])/2 < vf:
                 next_is_new = True
                 s["new_heading"] = False
+                s["heading"] = vf
                 s["moving"] = False
                 json_list.append(s)
                 s_index = s_index + 1
@@ -47,6 +50,7 @@ with open(videoID + '/' + videoID + '-aligned-sents.json', "r") as read_file:
                 s_index = s_index + 1
                 continue
         elif s["start"] > vf and s["end"] > vf:
+            json_list[-2]["sent"] = "Camera moving: " + json_list[-2]["sent"]
             json_list[-2]["moving"] = True
             vf_index = vf_index + 1
             continue
@@ -56,6 +60,8 @@ with open(videoID + '/' + videoID + '-aligned-sents.json', "r") as read_file:
             json_list.append(s)
             s_index = s_index + 1
             continue
+
+json_list[0]["new_heading"] = 0
 
 with open(videoID + '/' + videoID + '-aligned-sents.json', "w") as write_file:
     json.dump(json_list, write_file, indent=2, sort_keys=True)

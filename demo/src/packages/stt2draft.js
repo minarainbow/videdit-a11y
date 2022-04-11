@@ -28,10 +28,10 @@ const groupWordsInParagraphs = (scriptData) => {
       // reset paragraph
       paragraph = { words: [], text: [], reviews: [] };
       paragraph.words.push(tmpWord);
-      paragraph.text.push(word.sent);
+      paragraph.text.push(word.sent + "\n");
     } else {
       paragraph.words.push(tmpWord);
-      paragraph.text.push(word.sent);
+      paragraph.text.push(word.sent+ "\n");
     }
 
     if (word.moving || word.type === "pause") {
@@ -49,20 +49,21 @@ const groupWordsInParagraphs = (scriptData) => {
 const stt2Draft = (autoEdit2Json) => {
   const results = [];
   const tmpWords = autoEdit2Json
-  const wordsByParagraphs = groupWordsInParagraphs(tmpWords);
-  wordsByParagraphs.forEach((paragraph, i) => {
+  // const wordsByParagraphs = groupWordsInParagraphs(tmpWords);
+  const sentences = tmpWords;
+  sentences.forEach((sentence, i) => {
     const draftJsContentBlockParagraph = {
-      text: paragraph.text.join(" "),
-      type: "paragraph",
+      text: sentence.sent,
+      type: "sentence",
       data: {
-        heading: `Heading ${i+1}: ` + paragraph.words[0].heading,
-        words: paragraph.words,
-        start: paragraph.words[0].start,
-        reviews: paragraph.reviews,
+        heading: (sentence.new_heading || !i)? `Scene ${i+1}: ` +  `Frame ` + sentence.new_heading : null,
+        words: sentence.words,
+        start: sentence.start,
+        // reviews: paragraph.reviews,
       },
       // the entities as ranges are each word in the space-joined text,
       // so it needs to be compute for each the offset from the beginning of the paragraph and the length
-      entityRanges: generateEntitiesRanges(paragraph.words, "text"),
+      entityRanges: generateEntitiesRanges(sentence.words, "word"),
     };
     // console.log(JSON.stringify(draftJsContentBlockParagraph,null,2))
     results.push(draftJsContentBlockParagraph);

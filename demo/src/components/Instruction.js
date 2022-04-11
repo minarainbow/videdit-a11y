@@ -116,6 +116,10 @@ export default class Instruction extends React.Component {
           
           <Modal
             open={first}
+            role="dialog"
+            id="dialog1"
+            aria-labelledby="dialog1_label"
+            aria-modal="true"
           >
             <Modal.Header>Introduction</Modal.Header>
             <Modal.Content image>

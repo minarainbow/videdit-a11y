@@ -266,7 +266,7 @@
 }
 
 .WrapperBlock {
-  margin-bottom: 5em;
+  margin-bottom: 1em;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -308,7 +308,7 @@
 }
 
 .headingNotEditable {
-  cursor: no-drop;
+  /* cursor: no-drop; */
 }
 
 .EditLabel {

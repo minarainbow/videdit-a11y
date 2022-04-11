@@ -138,7 +138,7 @@ class Home extends Component {
         this.state.currSpan.getAttribute("data-end")
       );
       if (this.state.firstEntered) {
-        // console.log(this.state.currSpan);
+        console.log(this.state.currSpan);
         const moving = this.state.currSpan.getAttribute("data-moving");
         const type = this.state.currSpan.getAttribute("data-type");
         const heading = this.state.currSpan.getAttribute("data-heading");
@@ -200,7 +200,7 @@ class Home extends Component {
         } else if (this.state.currSpan.nextSibling.nextSibling) {
           nextSpan = this.state.currSpan.nextSibling.nextSibling;
         }
-        // console.log("here next span", nextSpan);
+        console.log("here next span", nextSpan);
 
         if (nextSpan) {
           const nextIndex = parseInt(nextSpan.getAttribute("data-index"));
@@ -337,6 +337,7 @@ class Home extends Component {
   jumpVideo(time, abs = false) {
     if (abs) {
       this.player.seekTo(time);
+
     } else {
       this.player.seekTo(this.state.playedSeconds + time);
     }
@@ -420,6 +421,10 @@ class Home extends Component {
       this.state;
     return (
       <div className="Home">
+        {/* <Instruction
+          open={modalOpen}
+          closeModal={this.closeModal}
+        ></Instruction> */}
         <div  className="header-bar">
           <div className="header-title">
             <Header as="h2">Videdit A11y</Header>
@@ -510,10 +515,6 @@ class Home extends Component {
             ></Timeline>
           </Container>
         </Container>
-        <Instruction
-          open={modalOpen}
-          closeModal={this.closeModal}
-        ></Instruction>
       </div>
     );
   }

@@ -174,56 +174,59 @@ class WrapperBlock extends React.Component {
       startTimecode += this.props.blockProps.timecodeOffset;
     }
     const headingElement = (
-        <span className={ this.props.blockProps? ["heading", "headingEditable"].join(' '):  ["heading", "headingNotEditable"].join(' ')}
+        <h1 className={ this.props.blockProps.isEditable? ["heading", "headingEditable"].join(' '):  ["heading", "headingNotEditable"].join(' ')}
         title={ this.state.heading }
-        onClick={ this.props.blockProps? this.handleOnClickEdit: null } >
-        { this.state.heading }
-      </span>
+        // onClick={ this.props.blockProps? this.handleOnClickEdit: null } 
+        >
+        { "\n" + this.state.heading }
+      </h1>
     );
 
     const timecodeElement = (
-      <span className={ "time" } onClick={ this.handleTimecodeClick }>
+      <span className={ "time" } 
+      // onClick={ this.handleTimecodeClick }
+      >
         {formatTime(startTimecode)}
       </span>
     );
 
-    const reviewElement = (
+    // const reviewElement = (
 
-      // <IconButton aria-label="Review" onClick={null} size="small">
+    //   // <IconButton aria-label="Review" onClick={null} size="small">
             
-      // </IconButton>
-      <Dropdown
-            icon={null}
-            trigger={
-              <Menu.Item name="review" onClick={null}>
-                <ForumIcon style={{ fontSize: "25px", marginTop: "3px", color: "gray" }} />
-                <small><sup style={{color: "gray"}}>{this.state.reviews.length}</sup></small>
-              </Menu.Item>
-            }>
-            <Dropdown.Menu>
-            {this.state.reviews.map((review, index) => (
-              <Dropdown.Item
+    //   // </IconButton>
+    //   <Dropdown
+    //         icon={null}
+    //         trigger={
+    //           <Menu.Item name="review" onClick={null}>
+    //             <ForumIcon style={{ fontSize: "25px", marginTop: "3px", color: "gray" }} />
+    //             <small><sup style={{color: "gray"}}>{this.state.reviews.length}</sup></small>
+    //           </Menu.Item>
+    //         }>
+    //         <Dropdown.Menu>
+    //         {this.state.reviews.map((review, index) => (
+    //           <Dropdown.Item
               
-              text={formatTime(review.start) + "  " + (review.moving? "moving": "long pause")}
-              onClick={() => this.handleChangeSpeed(1.0)}
-            />
-            ))}
-            </Dropdown.Menu>
-          </Dropdown>
-    );
+    //           text={formatTime(review.start) + "  " + (review.moving? "moving": "long pause")}
+    //           onClick={() => this.handleChangeSpeed(1.0)}
+    //         />
+    //         ))}
+    //         </Dropdown.Menu>
+    //     </Dropdown>
+    // );
 
     return (
       <div className={ "WrapperBlock" }>
-        <div
+        {/* <div
           className={ [ "markers", "unselectable" ].join(' ') }
           contentEditable={ false }
-        >
-          {this.props.blockProps.showHeadings ? headingElement : ''}
+        > */}
+          {this.props.blockProps.showHeadings && this.state.heading? headingElement : ''}
 
-          {this.props.blockProps.showTimecodes ? timecodeElement : ''}
+          {/* {this.props.blockProps.showTimecodes ? timecodeElement : ''}
 
-          {this.state.reviews.length ? reviewElement : ''}
-        </div>
+          {this.state.reviews.length ? reviewElement : ''} */}
+        {/* </div> */}
         <div className={ "text" }>
           <EditorBlock { ...this.props } />
         </div>

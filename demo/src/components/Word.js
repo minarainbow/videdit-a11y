@@ -21,16 +21,19 @@ class Word extends Component {
   };
 
   generatePreviousTimes = (data) => {
+    const closest_sent_start = scriptData["words"].filter(function (sent) {
+      return sent.sent_index == data.sent_index;
+    })[0]["start"];
     let prevTimes = "";
 
-    for (let i = 0; i < data.start; i++) {
+    for (let i = 0; i < closest_sent_start; i++) {
       prevTimes += `${i} `;
     }
 
-    if (data.start % 1 > 0) {
+    if (closest_sent_start % 1 > 0) {
       // Find the closest quarter-second to the current time, for more dynamic results
-      const dec = Math.floor((data.start % 1) * 4.0) / 4.0;
-      prevTimes += ` ${Math.floor(data.start) + dec}`;
+      const dec = Math.floor((closest_sent_start % 1) * 4.0) / 4.0;
+      prevTimes += ` ${Math.floor(closest_sent_start) + dec}`;
     }
 
     return prevTimes;
@@ -56,9 +59,10 @@ class Word extends Component {
       : {};
     return (
       <span
+        sent-index={data.sent_index}
+        word-index={data.word_index}
         data-start={data.start}
         data-end={data.end}
-        data-index={data.index}
         data-confidence={this.generateConfidence(data)}
         data-prev-times={this.generatePreviousTimes(data)}
         data-entity-key={data.key}
