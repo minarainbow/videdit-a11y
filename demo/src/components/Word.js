@@ -72,9 +72,7 @@ class Word extends Component {
         trim-start={"false"}
         trim-end={"false"}
         className={"Word"}
-        data-moving={data.moving}
         data-type={data.type}
-        data-heading={data.heading}
       >
         {this.props.children}
       </span>

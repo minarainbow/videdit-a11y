@@ -178,7 +178,7 @@ class WrapperBlock extends React.Component {
         title={ this.state.heading }
         // onClick={ this.props.blockProps? this.handleOnClickEdit: null } 
         >
-        { "\n" + this.state.heading }
+        { this.state.heading }
       </h1>
     );
 
@@ -227,7 +227,7 @@ class WrapperBlock extends React.Component {
 
           {this.state.reviews.length ? reviewElement : ''} */}
         {/* </div> */}
-        <div className={ "text" }>
+        <div className={ "sentence" } data-moving={"this.state.movin"} >
           <EditorBlock { ...this.props } />
         </div>
       </div>

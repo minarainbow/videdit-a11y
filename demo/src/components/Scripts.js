@@ -56,7 +56,9 @@ class Scripts extends React.Component {
       current_sentence: 0,
       cuts: [],
     };
-    this.onChange = (editorState) => this.setState({ editorState });
+    this.onChange = (editorState) => {
+      this.setState({ editorState: editorState });
+    }
   }
 
   componentDidMount() {
@@ -180,46 +182,17 @@ class Scripts extends React.Component {
 };
 
 
-  changeEditorSelection(editorState, startOffset, endOffset, force) {
-
-
-    
-    const selection = editorState.getSelection();
-    const {block: startBlock, newOffset: newStartOffset} = this.getBlockAndOffset(
-        editorState, selection, startOffset, false);
-    const {block: endBlock, newOffset: newEndOffset} = this.getBlockAndOffset(
-        editorState, selection, endOffset, true);
-    //   console.log(startBlock, endBlock)
-    // if (startBlock == null || endBlock == null) {
-    //     return editorState;
-    // }
-    console.log(selection)
-    const newSelection = selection.merge({
-        anchorOffset: 1,
-        anchorKey: '4nekh',
-        focusOffset: 6,
-        focusKey: '4nekh',
-        isBackward: false,
-    });
-
-    if (force) {
-      
-      const newState = EditorState.forceSelection(this.state.editorState, newSelection)
-      
-      const content = newState.getCurrentContent();
-      const decorator = new CompositeDecorator([
-        {
-          strategy: getEntityStrategy("MUTABLE"),
-          component: Word,
-        },
-      ]);
-      const newEditorState = EditorState.createWithContent(content, decorator);
-      this.setState({ editorState: newEditorState });
-      console.log(newEditorState)
-    }
-
-    return EditorState.acceptSelection(editorState, newSelection);
-}
+getSelectedBlockElement = () => {
+  var selection = window.getSelection()
+  if (selection.rangeCount == 0) return null
+  var node = selection.getRangeAt(0).startContainer
+  do {
+    if (node.getAttribute && node.getAttribute('data-block') == 'true')
+      return node
+    node = node.parentNode
+  } while (node != null)
+  return null
+};
 
   /**
    * Listen for draftJs custom key bindings
@@ -235,26 +208,26 @@ class Scripts extends React.Component {
 
       return "play/pause";
     }
-    if (e.keyCode === rightArrow) {
-      console.log("customKeyBindingFn");
+    // if (e.keyCode === rightArrow) {
+    //   console.log("customKeyBindingFn");
 
-      return "next-sentence";
-    }
-    if (e.keyCode === leftArrow) {
-      console.log("customKeyBindingFn");
+    //   return "next-sentence";
+    // }
+    // if (e.keyCode === leftArrow) {
+    //   console.log("customKeyBindingFn");
 
-      return "prev-sentence";
-    }
-    if (e.keyCode === deleteKey) {
-      console.log("customKeyBindingFn");
+    //   return "prev-sentence";
+    // }
+    // if (e.keyCode === deleteKey) {
+    //   console.log("customKeyBindingFn");
 
-      return "delete-sentence";
-    }
-    if (e.keyCode === enterKey) {
-      console.log("customKeyBindingFn");
+    //   return "delete-sentence";
+    // }
+    // if (e.keyCode === enterKey) {
+    //   console.log("customKeyBindingFn");
 
-      return "split-paragraph";
-    }
+    //   return "split-paragraph";
+    // }
 
     // if alt key is pressed in combination with these other keys
     if (e.altKey && (e.keyCode === spaceKey || e.keyCode === spaceKey)) {
@@ -268,7 +241,16 @@ class Scripts extends React.Component {
 
   handleKeyCommand = (command) => {
     if (command === "play/pause") {
-      this.props.playVideo();
+      if (this.props.playing){
+        this.props.playVideo();
+      }
+      else{
+        const cursorBlock = this.getSelectedBlockElement();
+        const BlockStart = cursorBlock.querySelectorAll("span.Word")[0].getAttribute("data-start");
+        this.props.jumpVideo(BlockStart, true);
+        this.props.playVideo();
+      }
+
     } else if (command === "next-sentence") {
       const currentSentenceEnd = this.getCurrentSent().end;
       this.props.jumpVideo(currentSentenceEnd, true);
@@ -410,20 +392,7 @@ class Scripts extends React.Component {
     if (element.hasAttribute("data-start")) {
       const t = parseFloat(element.getAttribute("data-start"));
       this.props.jumpVideo(t, true);
-
-      console.log(element, t);
     }
-
-
-    // while (!element.hasAttribute("data-index") && element.parentElement) {
-    //   element = element.parentElement;
-    // }
-
-    // if (element.hasAttribute("data-index")) {
-    //   const index = parseInt(element.getAttribute("data-index"));
-    //   this.props.updateSnippetIndex(index);
-    //   this.props.updateCurrSpan(element);
-    // }
   };
 
   // Helper function to re-render this component
@@ -463,9 +432,9 @@ class Scripts extends React.Component {
           ref={this.props.ref}
           editorState={this.state.editorState}
           onChange={this.onChange}
-          // handleKeyCommand={this.handleKeyCommand}
+          handleKeyCommand={this.handleKeyCommand}
           blockRendererFn={this.renderBlockWithTimecodes}
-          // keyBindingFn={this.customKeyBindingFn}
+          keyBindingFn={this.customKeyBindingFn}
         />
       </section>
     );

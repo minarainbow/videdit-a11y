@@ -71,10 +71,8 @@ class Home extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.jumpVideo = this.jumpVideo.bind(this);
     this.updateSnippetIndex = this.updateSnippetIndex.bind(this);
-    this.updateCurrSpan = this.updateCurrSpan.bind(this);
     this.onTimeChange = this.onTimeChange.bind(this);
     this.onPause = this._onPause.bind(this);
-    this.updateCurrWordEnd = this.updateCurrWordEnd.bind(this);
     this.updatePlaybackRate = this.updatePlaybackRate.bind(this);
     this.onStartPlay = this.onStartPlay.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -197,14 +195,15 @@ class Home extends Component {
               .parentElement.firstChild.lastChild.firstChild.firstChild;
         } else if (this.state.currSpan.nextSibling.hasAttribute("data-start")) {
           nextSpan = this.state.currSpan.nextSibling;
-        } else if (this.state.currSpan.nextSibling.nextSibling) {
+        } else if (this.state.currSpan.nextSibling.nextSibling) { //next word after space
           nextSpan = this.state.currSpan.nextSibling.nextSibling;
         }
 
         if (nextSpan) {
-          const nextIndex = parseInt(nextSpan.getAttribute("data-index"));
+          console.log(nextSpan)
+          const nextIndex = parseInt(nextSpan.getAttribute("word-index"));
           const currIndex = parseInt(
-            this.state.currSpan.getAttribute("data-index")
+            this.state.currSpan.getAttribute("word-index")
           );
           const currEndTrim = this.state.currSpan.getAttribute("trim-end");
           const nextStartTrim = nextSpan.getAttribute("trim-start");
@@ -300,9 +299,6 @@ class Home extends Component {
     }
   };
 
-  updateCurrWordEnd = (time) => {
-    this.setState({ currWordEnd: time });
-  };
 
   handleDuration = (duration) => {
     this.setState({ duration });
@@ -349,9 +345,6 @@ class Home extends Component {
     this.setState({ snippetIndex: index });
   }
 
-  updateCurrSpan(element) {
-    this.setState({ currSpan: element });
-  }
 
   onTimeChange(event, value) {
     const newTime = value.replace(/-/g, ":");
@@ -362,21 +355,6 @@ class Home extends Component {
 
   onClickPlay = () => {
     this.setState({ playing: true });
-    // if (!this.state.started) {
-    //   const currentWordElement = document.querySelector(
-    //     `span.Word[data-start="0"]`
-    //   );
-    //   const startTime = parseFloat(
-    //     currentWordElement.getAttribute("data-start")
-    //   );
-    //   const endTime = parseFloat(currentWordElement.getAttribute("data-end"));
-    //   this.setState({
-    //     started: true,
-    //     currSpan: currentWordElement,
-    //     currWordStart: startTime,
-    //     currWordEnd: endTime,
-    //   });
-    // }
 
     const children = document.querySelectorAll("span.Word");
     var i = 0;
@@ -481,8 +459,7 @@ class Home extends Component {
               player={this.player}
               videoTime={this.state.playedSeconds}
               updateSnippetIndex={this.updateSnippetIndex}
-              updateCurrSpan={this.updateCurrSpan}
-              updateCurrWordEnd={this.updateCurrWordEnd}
+              playing={this.state.playing}
             ></Scripts>
           </Container>
           <Container className="right-page">
