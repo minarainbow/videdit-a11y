@@ -10,7 +10,8 @@
  * attribute for the word object containing the text. eg word ={ punct:'helo', ... }
  *  or eg word ={ text:'helo', ... }
  */
-const generateEntitiesRanges = (words, wordAttributeName) => {
+const generateEntitiesRanges = (sent, wordAttributeName) => {
+  const words = sent.words;
   let position = 0;
 
   return words.map((word) => {
@@ -24,8 +25,8 @@ const generateEntitiesRanges = (words, wordAttributeName) => {
       offset: position,
       length: word[wordAttributeName].length,
       key: Math.random().toString(36).substring(6),
-      // moving: word.moving,
-      // type: word.type,
+      moving: sent.moving,
+      type: sent.type,
       // heading: word.heading,
     };
     // increase position counter - to determine word offset in paragraph

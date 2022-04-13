@@ -40,10 +40,11 @@ class Word extends Component {
   };
 
   checkReviewPoints = (data) => {
-    const currData = scriptData["words"].filter(function (word) {
-      return word.index == data.index;
+    
+    const currSent = scriptData["words"].filter(function (sent) {
+      return sent.sent_index == data.sent_index;
     })[0];
-    if (currData["moving"] || currData["type"] === "pause") {
+    if (currSent["moving"] || currSent["type"] === "pause") {
       return true;
     }
     return false;

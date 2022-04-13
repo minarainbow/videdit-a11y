@@ -6,65 +6,69 @@ import generateEntitiesRanges from "./generateEntitiesRanges";
  * @param {array} words - array of words objects from aligned transcript
  */
 
-const groupWordsInParagraphs = (scriptData) => {
-  const results = [];
-  let paragraph = { words: [], text: [], reviews: [] };
+// const groupWordsInParagraphs = (scriptData) => {
+//   const results = [];
+//   let paragraph = { words: [], text: [], reviews: [] };
 
-  scriptData.forEach((word) => {
-    // adjusting time reference attributes from
-    // `start` `end` to `start` `end`
-    // for word object
-    const tmpWord = {
-      text: word.sent,
-      start: word.start,
-      end: word.end,
-      index: word.index,
-      heading: word.new_heading,
-      moving: word.moving,
-      type: word.type,
-    };
-    if (word.new_heading && paragraph.words.length) {
-      results.push(paragraph);
-      // reset paragraph
-      paragraph = { words: [], text: [], reviews: [] };
-      paragraph.words.push(tmpWord);
-      paragraph.text.push(word.sent + "\n");
-    } else {
-      paragraph.words.push(tmpWord);
-      paragraph.text.push(word.sent+ "\n");
-    }
+//   scriptData.forEach((word) => {
+//     // adjusting time reference attributes from
+//     // `start` `end` to `start` `end`
+//     // for word object
+//     const tmpWord = {
+//       text: word.sent,
+//       start: word.start,
+//       end: word.end,
+//       index: word.index,
+//       heading: word.new_heading,
+//       moving: word.moving,
+//       type: word.type,
+//     };
+//     if (word.new_heading && paragraph.words.length) {
+//       results.push(paragraph);
+//       // reset paragraph
+//       paragraph = { words: [], text: [], reviews: [] };
+//       paragraph.words.push(tmpWord);
+//       paragraph.text.push(word.sent + "\n");
+//     } else {
+//       paragraph.words.push(tmpWord);
+//       paragraph.text.push(word.sent+ "\n");
+//     }
 
-    if (word.moving || word.type === "pause") {
-      paragraph.reviews.push(tmpWord)
-    }
-  });
-  if (paragraph.words.length) {
-    results.push(paragraph);
-  }
+//     if (word.moving || word.type === "pause") {
+//       paragraph.reviews.push(tmpWord)
+//     }
+//   });
+//   if (paragraph.words.length) {
+//     results.push(paragraph);
+//   }
   
 
-  return results;
-};
+//   return results;
+// };
 
-const stt2Draft = (autoEdit2Json) => {
+const stt2Draft = (scriptData) => {
   const results = [];
-  const tmpWords = autoEdit2Json
+  const tmpWords = scriptData
   // const wordsByParagraphs = groupWordsInParagraphs(tmpWords);
   const sentences = tmpWords;
+  var scene_num = 0;
   sentences.forEach((sentence, i) => {
     const draftJsContentBlockParagraph = {
       text: sentence.sent,
       type: "sentence",
       data: {
-        heading: (sentence.new_heading || !i)? `Scene ${i+1}: ` +  `Frame ` + sentence.new_heading : null,
+        heading: (sentence.new_heading || !i)? `Scene ${scene_num}: ` +  `Frame ` + sentence.new_heading : null,
         words: sentence.words,
         start: sentence.start,
-        // reviews: paragraph.reviews,
+        moving: sentence.moving,
+        type: sentence.type,
       },
       // the entities as ranges are each word in the space-joined text,
       // so it needs to be compute for each the offset from the beginning of the paragraph and the length
-      entityRanges: generateEntitiesRanges(sentence.words, "word"),
+      entityRanges: generateEntitiesRanges(sentence, "word"),
     };
+    if (sentence.new_heading || !i)
+      scene_num = scene_num+1;
     // console.log(JSON.stringify(draftJsContentBlockParagraph,null,2))
     results.push(draftJsContentBlockParagraph);
   });

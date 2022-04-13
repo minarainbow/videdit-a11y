@@ -227,7 +227,7 @@ class WrapperBlock extends React.Component {
 
           {this.state.reviews.length ? reviewElement : ''} */}
         {/* </div> */}
-        <div className={ "sentence" } data-moving={"this.state.movin"} >
+        <div className={ "sentence" }  >
           <EditorBlock { ...this.props } />
         </div>
       </div>

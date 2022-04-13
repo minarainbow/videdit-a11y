@@ -26,7 +26,6 @@ def group_sentences(json):
                 if new_sent:
                     sent = ""
                     sent_start = round(float(word["startTime"][:-1]), 2)
-                    sent_index = sent_index+1
                 word_list.append(
                     {"word_index": word_index, "sent_index": sent_index, "word": word["word"], "start": word_end, "end": round(float(word["endTime"][:-1]), 2)}
                 )
@@ -68,11 +67,18 @@ def group_sentences(json):
                 sent_start = round(float(word["startTime"][:-1]), 2)
                 if sent_start - sent_end > 3:
                     sent_list.append(
-                        {"sent_index": sent_index, "start": sent_end, "end": sent_start, "sent": "Pause: " + str(round(sent_start-sent_end, 2)) + "seconds", "type": "pause", "words": []}
+                        {"sent_index": sent_index, "start": sent_end, "end": sent_start, "sent": "Pause: " + str(round(sent_start-sent_end, 2)) + "seconds", "type": "pause", "words": [{
+                            "end": sent_start,
+                            "sent_index": sent_index,
+                            "start": sent_end,
+                            "word": "Pause: " + str(round(sent_start-sent_end, 2)) + "seconds", 
+                            "word_index": word_index
+                        }]}
                     )
                     sent_index = sent_index+1
                     sent_end = sent_start
                     word_end = sent_start
+                    word_index = word_index+1
                 # else
                 word_list.append(
                     {"word_index": word_index, "sent_index": sent_index, "word": word["word"], "start": word_end, "end": round(float(word["endTime"][:-1]), 2)}

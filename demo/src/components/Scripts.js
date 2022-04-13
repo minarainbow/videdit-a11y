@@ -1,7 +1,6 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
 import scriptData from "./../scripts/ZaQtx54N6iU-aligned-sents.jsx";
-import Words from "./Words.js";
 import Word from "./Word.js";
 import WrapperBlock from "./WrapperBlock.js";
 import {
@@ -329,12 +328,13 @@ getSelectedBlockElement = () => {
         const entity = entityMap[entityKey];
         const word = entity.data;
         if (word.start <= this.props.videoTime) {
-          if (word.end >= this.props.videoTime) {
+          if (word.end > this.props.videoTime) {
             currentSentIndex = word.sent_index
           }
         }
       }
     }
+    
     const currentSent = this.state.scriptData[currentSentIndex];
     if (currentSent.start !== "NA") {
       const currentSentElement = document.querySelector(
@@ -423,6 +423,7 @@ getSelectedBlockElement = () => {
 
           {`span.Word[data-review="true"] { background-color: #ffc6b3; color: black;}}`}
           {`span.Word[data-confidence="low"] { border-bottom: ${correctionBorder} }`}
+          {`span.Word[data-review="true"]+span { background-color: #ffc6b3;}}`}
           {`span.Word[data-index="${currentSent.index}"]`}
           {`span.Word[data-moving="${currentSent.moving}"]`}
           {`span.Word[data-type="${currentSent.type}"]`}

@@ -131,50 +131,48 @@ class Home extends Component {
       const currWordEnd = parseFloat(
         this.state.currSpan.getAttribute("data-end")
       );
-      if (this.state.firstEntered) {
-        // run the code below only once after entering a new span
-        console.log(this.state.currSpan);
-        const moving = this.state.currSpan.getAttribute("data-moving");
-        const type = this.state.currSpan.getAttribute("data-type");
-        const heading = this.state.currSpan.getAttribute("data-heading");
-        if (heading !== "false") {
-          speech
-            .speak({
-              text: "New heading, " + heading,
-            })
-            .then(() => {
-              console.log("Success !");
-            })
-            .catch((e) => {
-              console.error("An error occurred :", e);
-            });
-        }
-        if (moving === "true") {
-          speech
-            .speak({
-              text: "There is a moving",
-            })
-            .then(() => {
-              console.log("Success !");
-            })
-            .catch((e) => {
-              console.error("An error occurred :", e);
-            });
-        }
-        if (type === "pause") {
-          speech
-            .speak({
-              text: "There is a long pause",
-            })
-            .then(() => {
-              console.log("Success !");
-            })
-            .catch((e) => {
-              console.error("An error occurred :", e);
-            });
-        }
-      }
-      // set up current span's values
+      // if (this.state.firstEntered) {
+      //   console.log(this.state.currSpan);
+      //   const moving = this.state.currSpan.getAttribute("data-moving");
+      //   const type = this.state.currSpan.getAttribute("data-type");
+      //   const heading = this.state.currSpan.getAttribute("data-heading");
+      //   if (heading !== "false") {
+      //     speech
+      //       .speak({
+      //         text: "New heading, " + heading,
+      //       })
+      //       .then(() => {
+      //         console.log("Success !");
+      //       })
+      //       .catch((e) => {
+      //         console.error("An error occurred :", e);
+      //       });
+      //   }
+      //   if (moving === "true") {
+      //     speech
+      //       .speak({
+      //         text: "There is a moving",
+      //       })
+      //       .then(() => {
+      //         console.log("Success !");
+      //       })
+      //       .catch((e) => {
+      //         console.error("An error occurred :", e);
+      //       });
+      //   }
+      //   if (type === "pause") {
+      //     speech
+      //       .speak({
+      //         text: "There is a long pause",
+      //       })
+      //       .then(() => {
+      //         console.log("Success !");
+      //       })
+      //       .catch((e) => {
+      //         console.error("An error occurred :", e);
+      //       });
+      //   }
+      // }
       this.setState({
         playbackRate: currRate,
         currWordStart: currWordStart,
@@ -188,19 +186,25 @@ class Home extends Component {
         currTime <= this.state.currWordEnd
       ) {
         var nextSpan;
-        // find the span of the next sentence
-        if (!this.state.currSpan.nextSibling) {
-          nextSpan =
-            this.state.currSpan.parentElement.parentElement.parentElement
-              .parentElement.firstChild.lastChild.firstChild.firstChild;
-        } else if (this.state.currSpan.nextSibling.hasAttribute("data-start")) {
-          nextSpan = this.state.currSpan.nextSibling;
-        } else if (this.state.currSpan.nextSibling.nextSibling) { //next word after space
-          nextSpan = this.state.currSpan.nextSibling.nextSibling;
-        }
+        const children = document.querySelectorAll("span.Word");
+        nextSpan = children[Array.prototype.indexOf.call(children, this.state.currSpan)+1];
+        // if (!this.state.currSpan.nextSibling) { 
+        //   const nextBlock = this.state.currSpan.parentElement.parentElement.parentElement.parentElement.nextSibling.firstElementChild.firstElementChild;
+        //   //end of sentence 
+        //   if (nextBlock.classList.contains("sentence")) 
+        //     nextSpan = nextBlock.firstChild.firstChild;
+        //   //end of heading content
+        //   else{
+        //     nextSpan = nextBlock.nextSibling.firstChild.firstChild;
+        //   }
+        // } else if (this.state.currSpan.nextSibling.hasAttribute("data-start")) { // next word
+        //   nextSpan = this.state.currSpan.nextSibling;
+        // } else if (this.state.currSpan.nextSibling.nextSibling) { //next word after space
+        //   nextSpan = this.state.currSpan.nextSibling.nextSibling;
+        // }
 
         if (nextSpan) {
-          console.log(nextSpan)
+          console.log(nextSpan, this.state.currSpan)
           const nextIndex = parseInt(nextSpan.getAttribute("word-index"));
           const currIndex = parseInt(
             this.state.currSpan.getAttribute("word-index")
