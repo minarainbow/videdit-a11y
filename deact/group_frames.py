@@ -6,6 +6,7 @@ videoID = 'ZaQtx54N6iU'
 
 
 def clean_set(objects):
+    objects = list(objects.keys())
     for i in range(len(objects)):
         objects[i] = objects[i].lower() 
     return set(objects)
@@ -62,6 +63,8 @@ def sliding_window(frames, window_size):
     return boundaries
 
 
-with open(videoID + '/detection_results.json', "r") as json_file:
+with open(videoID + '/detection_results.json', "r+") as json_file:
     frames = json.load(json_file)
+    frames = sorted(frames, key=lambda x : x['frame_id'])
     print(sliding_window(frames, window_size))
+    json.dump(frames, json_file, indent=2)

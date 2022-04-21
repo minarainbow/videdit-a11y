@@ -2,6 +2,9 @@
 *.mp3
 *.wav
 *.jpg
+*.mp4
+*.part
+
 
 
 # Django #

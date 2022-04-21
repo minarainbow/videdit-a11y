@@ -52,9 +52,9 @@ with open(videoID + '/' + videoID + '-aligned-sents.json', "r") as read_file:
         elif s["start"] > vf and s["end"] > vf:
             json_list[-2]["sent"] = "Camera moving: " + json_list[-2]["sent"]
             json_list[-2]["words"].insert(0, {
-            "end": None,
-            "sent_index": 93,
-            "start": None,
+            "end": json_list[-2]["start"],
+            "sent_index": json_list[-2]["sent_index"],
+            "start": json_list[-2]["start"],
             "word": "Camera moving:",
             "word_index": None
             },)

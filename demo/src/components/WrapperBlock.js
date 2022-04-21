@@ -221,6 +221,7 @@ class WrapperBlock extends React.Component {
           className={ [ "markers", "unselectable" ].join(' ') }
           contentEditable={ false }
         > */}
+          
           {this.props.blockProps.showHeadings && this.state.heading? headingElement : ''}
 
           {/* {this.props.blockProps.showTimecodes ? timecodeElement : ''}

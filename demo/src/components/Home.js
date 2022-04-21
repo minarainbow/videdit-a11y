@@ -204,7 +204,6 @@ class Home extends Component {
         // }
 
         if (nextSpan) {
-          console.log(nextSpan, this.state.currSpan)
           const nextIndex = parseInt(nextSpan.getAttribute("word-index"));
           const currIndex = parseInt(
             this.state.currSpan.getAttribute("word-index")

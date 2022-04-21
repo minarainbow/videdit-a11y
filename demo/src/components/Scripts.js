@@ -245,7 +245,7 @@ getSelectedBlockElement = () => {
       }
       else{
         const cursorBlock = this.getSelectedBlockElement();
-        const BlockStart = cursorBlock.querySelectorAll("span.Word")[0].getAttribute("data-start");
+        var BlockStart = cursorBlock.querySelectorAll("span.Word")[0].getAttribute("data-start");
         this.props.jumpVideo(BlockStart, true);
         this.props.playVideo();
       }
@@ -421,13 +421,15 @@ getSelectedBlockElement = () => {
             time
           )}"] { color: ${unplayedColor} }`}
 
-          {`span.Word[data-review="true"] { background-color: #ffc6b3; color: black;}}`}
+          {`span.Word[data-moving="true"]+span { background-color: #ffc6b3;}}`}
           {`span.Word[data-confidence="low"] { border-bottom: ${correctionBorder} }`}
-          {`span.Word[data-review="true"]+span { background-color: #ffc6b3;}}`}
+          {`span.Word[data-moving="true"] { background-color: #ffc6b3; color: black;}}`}
           {`span.Word[data-index="${currentSent.index}"]`}
-          {`span.Word[data-moving="${currentSent.moving}"]`}
           {`span.Word[data-type="${currentSent.type}"]`}
           {`span.Word[data-heading="${currentSent.heading}"]`}
+        </style>
+        <style scoped>
+        {`span.Word[data-type="pause"] { background-color: #cce0ff; color: black;}}`}
         </style>
         <Editor
           ref={this.props.ref}

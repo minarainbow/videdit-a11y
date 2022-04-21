@@ -44,7 +44,7 @@ class Word extends Component {
     const currSent = scriptData["words"].filter(function (sent) {
       return sent.sent_index == data.sent_index;
     })[0];
-    if (currSent["moving"] || currSent["type"] === "pause") {
+    if (currSent["moving"]) {
       return true;
     }
     return false;
@@ -68,7 +68,8 @@ class Word extends Component {
         data-prev-times={this.generatePreviousTimes(data)}
         data-entity-key={data.key}
         data-playback={1.0}
-        data-review={this.checkReviewPoints(data)}
+        data-moving={this.checkReviewPoints(data)}
+        data-type={data.type}
         now={"false"}
         trim-start={"false"}
         trim-end={"false"}

@@ -2,6 +2,8 @@ import json
 import re
 videoID = 'ZaQtx54N6iU'
 
+sub_boundaries = [{485: "Still frame"}, {505: "Person appearance"}, {575: "Still frame"}, {580: "Person, Knife apperance"}]
+
 def group_sentences(json):
     # initialize variables
     sent_list = []
@@ -66,19 +68,49 @@ def group_sentences(json):
                 # add pause
                 sent_start = round(float(word["startTime"][:-1]), 2)
                 if sent_start - sent_end > 3:
-                    sent_list.append(
-                        {"sent_index": sent_index, "start": sent_end, "end": sent_start, "sent": "Pause: " + str(round(sent_start-sent_end, 2)) + "seconds", "type": "pause", "words": [{
-                            "end": sent_start,
-                            "sent_index": sent_index,
-                            "start": sent_end,
-                            "word": "Pause: " + str(round(sent_start-sent_end, 2)) + "seconds", 
-                            "word_index": word_index
-                        }]}
-                    )
-                    sent_index = sent_index+1
-                    sent_end = sent_start
-                    word_end = sent_start
-                    word_index = word_index+1
+                    # check sub-boundaries
+                    pause_words = []
+                    pause_words_added = False
+                    for vf in sub_boundaries:
+                        vf_index = list(vf.keys())[0]
+                        if vf_index >= sent_end and vf_index <= sent_start:
+                            if pause_words:
+                                pause_words[-1]["end"] = vf_index                                
+                            pause_words.append({
+                                "start": vf_index, 
+                                "word": vf[vf_index],
+                                "word_index": word_index,
+                                "sent_index": sent_index
+                            })
+                            if len(pause_words) == 1:
+                                pause_words[0]["start"] = sent_end
+                            word_index += 1
+                            sent_index +=1
+                            pause_words_added = True
+                    if pause_words_added:
+                        pause_words[-1]["end"] = sent_start
+                        for pause_word in pause_words:
+                            pause_word["word"] = "{" + pause_word["word"] + ": " + str(round(pause_word["end"]-pause_word["start"], 2)) + "seconds}"
+                            words2str = pause_word["word"]
+                            sent_list.append(
+                                {"sent_index": pause_word["sent_index"], "start": pause_word["start"], "end": pause_word["end"], "sent": words2str, "type": "pause", "words": [pause_word]})
+                            sent_end = sent_start
+                            word_end = sent_start
+                    else: 
+                        sent_list.append(
+                            {"sent_index": sent_index, "start": sent_end, "end": sent_start, "sent": "Pause: " + str(round(sent_start-sent_end, 2)) + "seconds", "type": "pause", 
+                            "words": [{
+                                "end": sent_start,
+                                "sent_index": sent_index,
+                                "start": sent_end,
+                                "word": "Pause: " + str(round(sent_start-sent_end, 2)) + "seconds", 
+                                "word_index": word_index
+                            }]}
+                        )
+                        sent_index = sent_index+1
+                        sent_end = sent_start
+                        word_end = sent_start
+                        word_index = word_index+1
                 # else
                 word_list.append(
                     {"word_index": word_index, "sent_index": sent_index, "word": word["word"], "start": word_end, "end": round(float(word["endTime"][:-1]), 2)}
