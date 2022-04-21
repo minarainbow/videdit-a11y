@@ -22,6 +22,7 @@ import Scripts from "./Scripts";
 import Instruction from "./Instruction";
 import firebase from "firebase/app";
 import "firebase/database";
+import Navigation from "./Navigation";
 
 const databaseURL = "https://videdita11y-default-rtdb.firebaseio.com/";
 
@@ -447,25 +448,7 @@ class Home extends Component {
           </Drawer>
         </div>
         <Container className="main-page">
-          <Container className="script-page">
-            <ToolBar
-              updatePlaybackRate={this.updatePlaybackRate}
-              currSpan={this.state.currSpan}
-              currWordStart={this.state.currWordStart}
-              currWordEnd={this.state.currWordEnd}
-              onStartPlay={this.onStartPlay}
-            ></ToolBar>
-            <Scripts
-              ref={this.focusRef}
-              playVideo={this.playVideo}
-              jumpVideo={this.jumpVideo}
-              player={this.player}
-              videoTime={this.state.playedSeconds}
-              updateSnippetIndex={this.updateSnippetIndex}
-              playing={this.state.playing}
-            ></Scripts>
-          </Container>
-          <Container className="right-page">
+        <Container className="left-page">
             <Container className="video-container">
               <ReactPlayer
                 ref={this.ref}
@@ -485,14 +468,35 @@ class Home extends Component {
                 progressInterval={100}
               ></ReactPlayer>
             </Container>
-
-            <Button onClick={this.onClickPlay}>play</Button>
-            <Button onClick={this.onClickPause}>pause</Button>
+            {/* <Button onClick={this.onClickPlay}>play</Button>
+            <Button onClick={this.onClickPause}>pause</Button> */}
             <Timeline
               videoTime={this.state.playedSeconds}
               duration={this.state.duration}
             ></Timeline>
+            <Container className="navigation-container">
+                <Navigation />
+            </Container>
           </Container>
+          <Container className="script-page">
+            <ToolBar
+              updatePlaybackRate={this.updatePlaybackRate}
+              currSpan={this.state.currSpan}
+              currWordStart={this.state.currWordStart}
+              currWordEnd={this.state.currWordEnd}
+              onStartPlay={this.onStartPlay}
+            ></ToolBar>
+            <Scripts
+              ref={this.focusRef}
+              playVideo={this.playVideo}
+              jumpVideo={this.jumpVideo}
+              player={this.player}
+              videoTime={this.state.playedSeconds}
+              updateSnippetIndex={this.updateSnippetIndex}
+              playing={this.state.playing}
+            ></Scripts>
+          </Container>
+          
         </Container>
       </div>
     );
