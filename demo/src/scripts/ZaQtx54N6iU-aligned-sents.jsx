@@ -2,6 +2,7 @@ export const scriptData = {
   words: [
     {
       "end": 2.4,
+      "heading": 0,
       "moving": false,
       "new_heading": 0,
       "sent": "Hello everybody.",
@@ -27,6 +28,7 @@ export const scriptData = {
     },
     {
       "end": 5.4,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "So as some of you know,",
@@ -80,6 +82,7 @@ export const scriptData = {
     },
     {
       "end": 6.7,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "my name is Ashley.",
@@ -119,6 +122,7 @@ export const scriptData = {
     },
     {
       "end": 7.8,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "If you're new to the channel,",
@@ -172,6 +176,7 @@ export const scriptData = {
     },
     {
       "end": 9.7,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "thanks for stopping by.",
@@ -211,6 +216,7 @@ export const scriptData = {
     },
     {
       "end": 17.6,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "I got a lot of questions about like just indeed to day life about how I do day-to-day things,",
@@ -355,6 +361,7 @@ export const scriptData = {
     },
     {
       "end": 20.9,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "which I don't think it very exciting.",
@@ -415,6 +422,7 @@ export const scriptData = {
     },
     {
       "end": 22.5,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "It's pretty normal.",
@@ -447,6 +455,7 @@ export const scriptData = {
     },
     {
       "end": 28.7,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "So I just thought that I would kind of take you guys along with me for this for today.",
@@ -591,6 +600,7 @@ export const scriptData = {
     },
     {
       "end": 29.9,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "It's evening now.",
@@ -623,6 +633,7 @@ export const scriptData = {
     },
     {
       "end": 32.0,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "It's about For clock or so.",
@@ -676,6 +687,7 @@ export const scriptData = {
     },
     {
       "end": 35.2,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "So I haven't had it's raining out today and kind of grow.",
@@ -771,6 +783,7 @@ export const scriptData = {
     },
     {
       "end": 41.7,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "So I've just really been listening to audiobooks and I've did some vacuuming and minimal minimal things.",
@@ -901,6 +914,7 @@ export const scriptData = {
     },
     {
       "end": 49.9,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "So anyway, I decided to kind of do a vlog Style video for you and kind of show you how I make supper,",
@@ -1073,6 +1087,7 @@ export const scriptData = {
     },
     {
       "end": 51.6,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "which seems so weird to me,",
@@ -1126,6 +1141,7 @@ export const scriptData = {
     },
     {
       "end": 59.0,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "because my husband even gets a lot of questions about whether he comes home at night and cook supper for us,",
@@ -1284,6 +1300,7 @@ export const scriptData = {
     },
     {
       "end": 60.3,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "and I thought, you know,",
@@ -1330,6 +1347,7 @@ export const scriptData = {
     },
     {
       "end": 63.6,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "I can tell people that I cook supper all I want,",
@@ -1418,6 +1436,7 @@ export const scriptData = {
     },
     {
       "end": 64.9,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "but do people really believe me.",
@@ -1471,6 +1490,7 @@ export const scriptData = {
     },
     {
       "end": 66.0,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "So I thought, you know what?",
@@ -1524,6 +1544,7 @@ export const scriptData = {
     },
     {
       "end": 71.0,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "Let's take you along for the boring journey of me cooking supper and,",
@@ -1626,6 +1647,7 @@ export const scriptData = {
     },
     {
       "end": 72.6,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "you know, show you that I actually do,",
@@ -1693,6 +1715,7 @@ export const scriptData = {
     },
     {
       "end": 74.0,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "do it, you know,",
@@ -1732,6 +1755,7 @@ export const scriptData = {
     },
     {
       "end": 79.6,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "being blind doesn't necessarily mean that I can't cook or clean or do anything and I thought I'd,",
@@ -1869,6 +1893,7 @@ export const scriptData = {
     },
     {
       "end": 85.4,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "you know, give you a little glimpse into my life with three kids and husband and,",
@@ -1992,6 +2017,7 @@ export const scriptData = {
     },
     {
       "end": 87.4,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "you know, being a stay-at-home mom.",
@@ -2045,6 +2071,7 @@ export const scriptData = {
     },
     {
       "end": 92.3,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "So here it is and I will About one dirty little secret.",
@@ -2140,6 +2167,7 @@ export const scriptData = {
     },
     {
       "end": 95.2,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "I was doing laundry today and I thought,",
@@ -2207,6 +2235,7 @@ export const scriptData = {
     },
     {
       "end": 97.4,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "you know, I always say that there's nothing I can't do.",
@@ -2295,6 +2324,7 @@ export const scriptData = {
     },
     {
       "end": 109.0,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "And and I thought there's one thing that I really struggle with when it comes to laundry and I'll show you what it is now.",
@@ -2481,7 +2511,7 @@ export const scriptData = {
     },
     {
       "end": 112.8,
-      "heading": 111,
+      "heading": 0,
       "moving": false,
       "new_heading": false,
       "sent": "Pause: 3.8seconds",
@@ -2500,6 +2530,7 @@ export const scriptData = {
     },
     {
       "end": 114.9,
+      "heading": 111,
       "moving": false,
       "new_heading": 111,
       "sent": "It is socks.",
@@ -2532,7 +2563,7 @@ export const scriptData = {
     },
     {
       "end": 123.1,
-      "heading": 120,
+      "heading": 111,
       "moving": false,
       "new_heading": false,
       "sent": "So my husband gets The Joy of Cooking gets the drive coming home and,",
@@ -2642,6 +2673,7 @@ export const scriptData = {
     },
     {
       "end": 125.0,
+      "heading": 120,
       "moving": false,
       "new_heading": 120,
       "sent": "um, pairing socks.",
@@ -2674,6 +2706,7 @@ export const scriptData = {
     },
     {
       "end": 127.4,
+      "heading": 120,
       "moving": false,
       "new_heading": false,
       "sent": "I have a heck of a time with it.",
@@ -2748,6 +2781,7 @@ export const scriptData = {
     },
     {
       "end": 129.1,
+      "heading": 120,
       "moving": false,
       "new_heading": false,
       "sent": "I know that there's methods,",
@@ -2794,6 +2828,7 @@ export const scriptData = {
     },
     {
       "end": 138.0,
+      "heading": 120,
       "moving": false,
       "new_heading": false,
       "sent": "you know, that I could use such as painting your socks together using all these little round rubber like Clips to pin your socks together,",
@@ -2980,6 +3015,7 @@ export const scriptData = {
     },
     {
       "end": 142.3,
+      "heading": 120,
       "moving": false,
       "new_heading": false,
       "sent": "but I have a hard enough time getting my kids to put their laundry in a laundry hamper.",
@@ -3117,6 +3153,7 @@ export const scriptData = {
     },
     {
       "end": 148.3,
+      "heading": 120,
       "moving": false,
       "new_heading": false,
       "sent": "So I don't think that they're going to pair their socks before they put them into the laundry half.",
@@ -3261,6 +3298,7 @@ export const scriptData = {
     },
     {
       "end": 151.0,
+      "heading": 120,
       "moving": false,
       "new_heading": false,
       "sent": "So he does that for me.",
@@ -3314,6 +3352,7 @@ export const scriptData = {
     },
     {
       "end": 151.7,
+      "heading": 120,
       "moving": false,
       "new_heading": false,
       "sent": "I have done it,",
@@ -3353,6 +3392,7 @@ export const scriptData = {
     },
     {
       "end": 157.2,
+      "heading": 120,
       "moving": false,
       "new_heading": false,
       "sent": "but sometimes he gets one black sock and one white sock because I can't feel the difference in color.",
@@ -3497,6 +3537,7 @@ export const scriptData = {
     },
     {
       "end": 160.7,
+      "heading": 120,
       "moving": false,
       "new_heading": false,
       "sent": "So that is one thing that I either get my husband and my kids to help with.",
@@ -3627,6 +3668,7 @@ export const scriptData = {
     },
     {
       "end": 165.3,
+      "heading": 120,
       "moving": false,
       "new_heading": false,
       "sent": "So, that's one of my dirty little secrets that you don't usually share.",
@@ -3729,6 +3771,7 @@ export const scriptData = {
     },
     {
       "end": 167.4,
+      "heading": 120,
       "moving": false,
       "new_heading": false,
       "sent": "But so, there is some things that obviously,",
@@ -3796,6 +3839,7 @@ export const scriptData = {
     },
     {
       "end": 168.4,
+      "heading": 120,
       "moving": false,
       "new_heading": false,
       "sent": "I need help with.",
@@ -3835,6 +3879,7 @@ export const scriptData = {
     },
     {
       "end": 172.5,
+      "heading": 120,
       "moving": false,
       "new_heading": false,
       "sent": "But so, yeah, I'll take you along for my little evening.",
@@ -3923,6 +3968,7 @@ export const scriptData = {
     },
     {
       "end": 172.9,
+      "heading": 120,
       "moving": false,
       "new_heading": false,
       "sent": "Here.",
@@ -3941,6 +3987,7 @@ export const scriptData = {
     },
     {
       "end": 178.7,
+      "heading": 120,
       "moving": false,
       "new_heading": false,
       "sent": "Okay, so I'm in the kitchen now and I'm just getting stuff set up,",
@@ -4050,6 +4097,7 @@ export const scriptData = {
     },
     {
       "end": 189.9,
+      "heading": 120,
       "moving": false,
       "new_heading": false,
       "sent": "but I thought I'd show you a couple of the things that I have in my kitchen that I use to help me to kind of cook and I guess be successful.",
@@ -4285,6 +4333,7 @@ export const scriptData = {
     },
     {
       "end": 193.0,
+      "heading": 120,
       "moving": false,
       "new_heading": false,
       "sent": "They're not a lot of adoption in my kitchen.",
@@ -4359,6 +4408,7 @@ export const scriptData = {
     },
     {
       "end": 194.0,
+      "heading": 120,
       "moving": false,
       "new_heading": false,
       "sent": "A lot of it is just,",
@@ -4412,6 +4462,7 @@ export const scriptData = {
     },
     {
       "end": 196.3,
+      "heading": 120,
       "moving": false,
       "new_heading": false,
       "sent": "you know, regular old kitchen appliances.",
@@ -4465,6 +4516,7 @@ export const scriptData = {
     },
     {
       "end": 197.1,
+      "heading": 120,
       "moving": false,
       "new_heading": false,
       "sent": "So I'll just show you.",
@@ -4511,6 +4563,7 @@ export const scriptData = {
     },
     {
       "end": 200.2,
+      "heading": 198,
       "moving": false,
       "new_heading": 198,
       "sent": "Okay, so on my microwave.",
@@ -4557,6 +4610,7 @@ export const scriptData = {
     },
     {
       "end": 205.3,
+      "heading": 202,
       "moving": false,
       "new_heading": 202,
       "sent": "You can see that I have these orange.",
@@ -4624,6 +4678,7 @@ export const scriptData = {
     },
     {
       "end": 209.2,
+      "heading": 202,
       "moving": false,
       "new_heading": false,
       "sent": "I think they're orange bump it there on the,",
@@ -4698,6 +4753,7 @@ export const scriptData = {
     },
     {
       "end": 211.4,
+      "heading": 202,
       "moving": false,
       "new_heading": false,
       "sent": "you know, most used button.",
@@ -4744,6 +4800,7 @@ export const scriptData = {
     },
     {
       "end": 213.7,
+      "heading": 202,
       "moving": false,
       "new_heading": false,
       "sent": "So this one is the five.",
@@ -4797,6 +4854,7 @@ export const scriptData = {
     },
     {
       "end": 222.0,
+      "heading": 202,
       "moving": false,
       "new_heading": false,
       "sent": "This is the quick minute and this is the defrost button and then every other number has just a little piece of velcro underneath it.",
@@ -4983,6 +5041,7 @@ export const scriptData = {
     },
     {
       "end": 222.7,
+      "heading": 202,
       "moving": false,
       "new_heading": false,
       "sent": "And then I, you know,",
@@ -5029,6 +5088,7 @@ export const scriptData = {
     },
     {
       "end": 227.3,
+      "heading": 202,
       "moving": false,
       "new_heading": false,
       "sent": "have just memorized that timers to this side and believe it's clock to this.",
@@ -5138,6 +5198,7 @@ export const scriptData = {
     },
     {
       "end": 229.3,
+      "heading": 202,
       "moving": false,
       "new_heading": false,
       "sent": "I don't use it and then obviously,",
@@ -5198,6 +5259,7 @@ export const scriptData = {
     },
     {
       "end": 230.8,
+      "heading": 202,
       "moving": false,
       "new_heading": false,
       "sent": "you know, stop and start.",
@@ -5244,6 +5306,7 @@ export const scriptData = {
     },
     {
       "end": 232.8,
+      "heading": 202,
       "moving": false,
       "new_heading": false,
       "sent": "A lot of it's done by memory,",
@@ -5304,6 +5367,7 @@ export const scriptData = {
     },
     {
       "end": 236.2,
+      "heading": 202,
       "moving": false,
       "new_heading": false,
       "sent": "but I do have like some buttons kind of marked out,",
@@ -5392,6 +5456,7 @@ export const scriptData = {
     },
     {
       "end": 239.4,
+      "heading": 202,
       "moving": false,
       "new_heading": false,
       "sent": "just for ease and that kind of thing because it's flat.",
@@ -5480,6 +5545,7 @@ export const scriptData = {
     },
     {
       "end": 241.6,
+      "heading": 202,
       "moving": false,
       "new_heading": false,
       "sent": "I can't necessarily feel where every number is.",
@@ -5547,6 +5613,7 @@ export const scriptData = {
     },
     {
       "end": 243.2,
+      "heading": 202,
       "moving": false,
       "new_heading": false,
       "sent": "So rather than just guess,",
@@ -5593,7 +5660,7 @@ export const scriptData = {
     },
     {
       "end": 252.6,
-      "heading": 248,
+      "heading": 202,
       "moving": true,
       "new_heading": false,
       "sent": "Camera moving: I just put a little bit of Velcro on there and then take you over to my stove.",
@@ -5738,6 +5805,7 @@ export const scriptData = {
     },
     {
       "end": 256.3,
+      "heading": 248,
       "moving": false,
       "new_heading": 248,
       "sent": "The light here.",
@@ -5770,6 +5838,7 @@ export const scriptData = {
     },
     {
       "end": 258.4,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "I don't have any lights on in my house because they don't help.",
@@ -5872,6 +5941,7 @@ export const scriptData = {
     },
     {
       "end": 260.5,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "So, so on my stove,",
@@ -5918,6 +5988,7 @@ export const scriptData = {
     },
     {
       "end": 261.2,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "there's even less.",
@@ -5950,6 +6021,7 @@ export const scriptData = {
     },
     {
       "end": 266.0,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "So just to give you a bigger view of it on the top,",
@@ -6052,6 +6124,7 @@ export const scriptData = {
     },
     {
       "end": 270.7,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "here is a puff paint line.",
@@ -6105,6 +6178,7 @@ export const scriptData = {
     },
     {
       "end": 276.5,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "So that just tells me that that is the front burner and then on here,",
@@ -6221,6 +6295,7 @@ export const scriptData = {
     },
     {
       "end": 279.5,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "this is baked and then this is cancel.",
@@ -6288,6 +6363,7 @@ export const scriptData = {
     },
     {
       "end": 285.7,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "And then this it means like to turn the temperature up and I just know if I go straight down from the Line and push,",
@@ -6474,6 +6550,7 @@ export const scriptData = {
     },
     {
       "end": 286.7,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "I'll go down.",
@@ -6506,6 +6583,7 @@ export const scriptData = {
     },
     {
       "end": 288.5,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "And obviously, you haven't goes up by 5.",
@@ -6573,6 +6651,7 @@ export const scriptData = {
     },
     {
       "end": 289.8,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "So I have that memorized.",
@@ -6619,6 +6698,7 @@ export const scriptData = {
     },
     {
       "end": 292.2,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "And then on here as well.",
@@ -6672,6 +6752,7 @@ export const scriptData = {
     },
     {
       "end": 296.0,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "There's just puff paint to show the front burner.",
@@ -6746,6 +6827,7 @@ export const scriptData = {
     },
     {
       "end": 298.9,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "The only thing that I struggle with my stove is obviously,",
@@ -6834,6 +6916,7 @@ export const scriptData = {
     },
     {
       "end": 300.0,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "this is glass top,",
@@ -6873,6 +6956,7 @@ export const scriptData = {
     },
     {
       "end": 303.3,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "so it can sometimes be tricky to get the pot lined up.",
@@ -6968,6 +7052,7 @@ export const scriptData = {
     },
     {
       "end": 304.5,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "So but I mean,",
@@ -7007,6 +7092,7 @@ export const scriptData = {
     },
     {
       "end": 305.9,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "I just use my hand and kind of,",
@@ -7074,6 +7160,7 @@ export const scriptData = {
     },
     {
       "end": 308.4,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "you know, check the sides for heat,",
@@ -7134,6 +7221,7 @@ export const scriptData = {
     },
     {
       "end": 309.7,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "but for the most part,",
@@ -7180,6 +7268,7 @@ export const scriptData = {
     },
     {
       "end": 312.9,
+      "heading": 248,
       "moving": false,
       "new_heading": false,
       "sent": "it's, you know, normal as everything else.",
@@ -7240,7 +7329,7 @@ export const scriptData = {
     },
     {
       "end": 316.9,
-      "heading": 315,
+      "heading": 248,
       "moving": true,
       "new_heading": false,
       "sent": "Camera moving: And In my pantry.",
@@ -7287,6 +7376,7 @@ export const scriptData = {
     },
     {
       "end": 325.1,
+      "heading": 315,
       "moving": false,
       "new_heading": 315,
       "sent": "Pause: 8.2seconds",
@@ -7305,6 +7395,7 @@ export const scriptData = {
     },
     {
       "end": 329.4,
+      "heading": 326,
       "moving": false,
       "new_heading": 326,
       "sent": "First of all, I can't believe that I'm showing people my disorganized mess of a pantry,",
@@ -7428,6 +7519,7 @@ export const scriptData = {
     },
     {
       "end": 333.0,
+      "heading": 326,
       "moving": false,
       "new_heading": false,
       "sent": "but I just have things kind of organized.",
@@ -7495,6 +7587,7 @@ export const scriptData = {
     },
     {
       "end": 343.2,
+      "heading": 326,
       "moving": false,
       "new_heading": false,
       "sent": "So like here I have my the kids snacks and have things in different bins and then all of my canned goods,",
@@ -7660,6 +7753,7 @@ export const scriptData = {
     },
     {
       "end": 348.1,
+      "heading": 345,
       "moving": false,
       "new_heading": 345,
       "sent": "have a pen friend label.",
@@ -7706,6 +7800,7 @@ export const scriptData = {
     },
     {
       "end": 348.8,
+      "heading": 345,
       "moving": false,
       "new_heading": false,
       "sent": "Stop.",
@@ -7724,6 +7819,7 @@ export const scriptData = {
     },
     {
       "end": 355.1,
+      "heading": 345,
       "moving": false,
       "new_heading": false,
       "sent": "So what that is is just like a re recordable label that I use,",
@@ -7833,7 +7929,7 @@ export const scriptData = {
     },
     {
       "end": 358.7,
-      "heading": 358,
+      "heading": 345,
       "moving": true,
       "new_heading": false,
       "sent": "Camera moving: so I'll just show it to you here.",
@@ -7908,6 +8004,7 @@ export const scriptData = {
     },
     {
       "end": 363.8,
+      "heading": 358,
       "moving": false,
       "new_heading": 358,
       "sent": "So this is the pen friend.",
@@ -7961,6 +8058,7 @@ export const scriptData = {
     },
     {
       "end": 365.1,
+      "heading": 358,
       "moving": false,
       "new_heading": false,
       "sent": "So if you turn it on.",
@@ -8014,6 +8112,7 @@ export const scriptData = {
     },
     {
       "end": 371.8,
+      "heading": 358,
       "moving": false,
       "new_heading": false,
       "sent": "On, I can I know that that's vegetable soup.",
@@ -8088,6 +8187,7 @@ export const scriptData = {
     },
     {
       "end": 374.4,
+      "heading": 358,
       "moving": false,
       "new_heading": false,
       "sent": "So this real Crow,",
@@ -8127,6 +8227,7 @@ export const scriptData = {
     },
     {
       "end": 376.7,
+      "heading": 358,
       "moving": false,
       "new_heading": false,
       "sent": "I don't know which side the labels on it.",
@@ -8201,6 +8302,7 @@ export const scriptData = {
     },
     {
       "end": 378.6,
+      "heading": 358,
       "moving": false,
       "new_heading": false,
       "sent": "We'll just tell me what these are.",
@@ -8261,6 +8363,7 @@ export const scriptData = {
     },
     {
       "end": 380.5,
+      "heading": 358,
       "moving": false,
       "new_heading": false,
       "sent": "So when I buy them,",
@@ -8307,6 +8410,7 @@ export const scriptData = {
     },
     {
       "end": 382.1,
+      "heading": 358,
       "moving": false,
       "new_heading": false,
       "sent": "I get my husband to tell me what they are before.",
@@ -8395,6 +8499,7 @@ export const scriptData = {
     },
     {
       "end": 386.2,
+      "heading": 358,
       "moving": false,
       "new_heading": false,
       "sent": "I put them away or the kids or even the store clerk.",
@@ -8490,6 +8595,7 @@ export const scriptData = {
     },
     {
       "end": 389.0,
+      "heading": 387,
       "moving": false,
       "new_heading": 387,
       "sent": "Oh, that's kind of one way.",
@@ -8543,6 +8649,7 @@ export const scriptData = {
     },
     {
       "end": 392.7,
+      "heading": 387,
       "moving": false,
       "new_heading": false,
       "sent": "Those are just the few definitions that I have in my kitchen.",
@@ -8638,6 +8745,7 @@ export const scriptData = {
     },
     {
       "end": 396.0,
+      "heading": 387,
       "moving": false,
       "new_heading": false,
       "sent": "I do have a talking thermometer.",
@@ -8691,6 +8799,7 @@ export const scriptData = {
     },
     {
       "end": 396.6,
+      "heading": 387,
       "moving": false,
       "new_heading": false,
       "sent": "I don't.",
@@ -8716,6 +8825,7 @@ export const scriptData = {
     },
     {
       "end": 397.4,
+      "heading": 387,
       "moving": false,
       "new_heading": false,
       "sent": "It very often.",
@@ -8748,6 +8858,7 @@ export const scriptData = {
     },
     {
       "end": 398.5,
+      "heading": 387,
       "moving": false,
       "new_heading": false,
       "sent": "I usually just use time.",
@@ -8794,6 +8905,7 @@ export const scriptData = {
     },
     {
       "end": 403.5,
+      "heading": 387,
       "moving": false,
       "new_heading": false,
       "sent": "So those are the things that I have in my kitchen that are I guess adapted.",
@@ -8917,6 +9029,7 @@ export const scriptData = {
     },
     {
       "end": 404.4,
+      "heading": 387,
       "moving": false,
       "new_heading": false,
       "sent": "To me.",
@@ -8942,6 +9055,7 @@ export const scriptData = {
     },
     {
       "end": 407.1,
+      "heading": 387,
       "moving": false,
       "new_heading": false,
       "sent": "Otherwise, everything just goes back in the exact same spot.",
@@ -9023,6 +9137,7 @@ export const scriptData = {
     },
     {
       "end": 408.4,
+      "heading": 387,
       "moving": false,
       "new_heading": false,
       "sent": "And if it doesn't,",
@@ -9062,6 +9177,7 @@ export const scriptData = {
     },
     {
       "end": 411.8,
+      "heading": 387,
       "moving": false,
       "new_heading": false,
       "sent": "I go searching for the kids and my husband and after that,",
@@ -9157,6 +9273,7 @@ export const scriptData = {
     },
     {
       "end": 412.4,
+      "heading": 387,
       "moving": false,
       "new_heading": false,
       "sent": "they put it.",
@@ -9189,6 +9306,7 @@ export const scriptData = {
     },
     {
       "end": 414.7,
+      "heading": 387,
       "moving": false,
       "new_heading": false,
       "sent": "So that's really the only adoptions.",
@@ -9242,6 +9360,7 @@ export const scriptData = {
     },
     {
       "end": 419.6,
+      "heading": 387,
       "moving": false,
       "new_heading": false,
       "sent": "But so, yeah, so I'm just going to start making supper now and okay,",
@@ -9351,6 +9470,7 @@ export const scriptData = {
     },
     {
       "end": 425.9,
+      "heading": 420,
       "moving": false,
       "new_heading": 420,
       "sent": "so I am going to make meatloaf for supper tonight,",
@@ -9432,6 +9552,7 @@ export const scriptData = {
     },
     {
       "end": 426.6,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "meatloaf and potatoes.",
@@ -9464,6 +9585,7 @@ export const scriptData = {
     },
     {
       "end": 427.0,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Though.",
@@ -9482,6 +9604,7 @@ export const scriptData = {
     },
     {
       "end": 436.4,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So I will just kind of make my supper and you can kind of follow along I guess and see that.",
@@ -9640,6 +9763,7 @@ export const scriptData = {
     },
     {
       "end": 441.4,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Yes, I do cook supper and it does not matter that.",
@@ -9728,6 +9852,7 @@ export const scriptData = {
     },
     {
       "end": 442.4,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I can't see.",
@@ -9760,6 +9885,7 @@ export const scriptData = {
     },
     {
       "end": 445.2,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I'm very capable of cooking supper.",
@@ -9813,6 +9939,7 @@ export const scriptData = {
     },
     {
       "end": 446.6,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So let's get started.",
@@ -9852,6 +9979,7 @@ export const scriptData = {
     },
     {
       "end": 448.5,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Okay.",
@@ -9870,6 +9998,7 @@ export const scriptData = {
     },
     {
       "end": 455.8,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So now that I've turned on the lights and you can probably see a little bit better horrible for leaving the lights off in my house because I always forget that not everybody else's line.",
@@ -10126,6 +10255,7 @@ export const scriptData = {
     },
     {
       "end": 460.1,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Okay, so I'm just going to grab the things that I need and bring them back already,",
@@ -10256,6 +10386,7 @@ export const scriptData = {
     },
     {
       "end": 461.2,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "have the ground beef in here,",
@@ -10309,6 +10440,7 @@ export const scriptData = {
     },
     {
       "end": 461.8,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "thought out.",
@@ -10334,6 +10466,7 @@ export const scriptData = {
     },
     {
       "end": 479.4,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So Onion, bread, crumb,",
@@ -10373,6 +10506,7 @@ export const scriptData = {
     },
     {
       "end": 480.2,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "soup.",
@@ -10391,6 +10525,7 @@ export const scriptData = {
     },
     {
       "end": 482.1,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Mix and I just got those out of the pantry.",
@@ -10472,6 +10607,7 @@ export const scriptData = {
     },
     {
       "end": 482.5,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Again.",
@@ -10490,6 +10626,7 @@ export const scriptData = {
     },
     {
       "end": 483.5,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I know where everything is.",
@@ -10536,6 +10673,7 @@ export const scriptData = {
     },
     {
       "end": 505,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "{Still frame: 21.5seconds}",
@@ -10554,6 +10692,7 @@ export const scriptData = {
     },
     {
       "end": 575,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "{Person appearance: 70seconds}",
@@ -10572,6 +10711,7 @@ export const scriptData = {
     },
     {
       "end": 580,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "{Still frame: 5seconds}",
@@ -10590,6 +10730,7 @@ export const scriptData = {
     },
     {
       "end": 583.8,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "{Person, Knife apperance: 3.8seconds}",
@@ -10608,6 +10749,7 @@ export const scriptData = {
     },
     {
       "end": 585.0,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Put the egg in here.",
@@ -10654,6 +10796,7 @@ export const scriptData = {
     },
     {
       "end": 614.9,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Pause: 29.9seconds",
@@ -10672,6 +10815,7 @@ export const scriptData = {
     },
     {
       "end": 620.4,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Okay, so Cut up these onions here.",
@@ -10732,6 +10876,7 @@ export const scriptData = {
     },
     {
       "end": 621.6,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Cut it up.",
@@ -10764,6 +10909,7 @@ export const scriptData = {
     },
     {
       "end": 621.9,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Small.",
@@ -10782,6 +10928,7 @@ export const scriptData = {
     },
     {
       "end": 623.2,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Some kids don't know what's in there.",
@@ -10842,6 +10989,7 @@ export const scriptData = {
     },
     {
       "end": 626.6,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Pause: 3.4seconds",
@@ -10860,6 +11008,7 @@ export const scriptData = {
     },
     {
       "end": 629.0,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So hopefully they're not listening to me film.",
@@ -10927,6 +11076,7 @@ export const scriptData = {
     },
     {
       "end": 631.8,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "What?",
@@ -10945,6 +11095,7 @@ export const scriptData = {
     },
     {
       "end": 634.1,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Did you hear me?",
@@ -10984,6 +11135,7 @@ export const scriptData = {
     },
     {
       "end": 635.9,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "My son hurt me.",
@@ -11023,6 +11175,7 @@ export const scriptData = {
     },
     {
       "end": 640.9,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So extra small, okay?",
@@ -11062,6 +11215,7 @@ export const scriptData = {
     },
     {
       "end": 659.1,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Pause: 18.2seconds",
@@ -11080,6 +11234,7 @@ export const scriptData = {
     },
     {
       "end": 662.5,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Make sure of it.",
@@ -11119,6 +11274,7 @@ export const scriptData = {
     },
     {
       "end": 668.9,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Pause: 6.4seconds",
@@ -11137,6 +11293,7 @@ export const scriptData = {
     },
     {
       "end": 670.2,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Piece over here.",
@@ -11169,6 +11326,7 @@ export const scriptData = {
     },
     {
       "end": 675.0,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So I think a lot of people think that you know,",
@@ -11257,6 +11415,7 @@ export const scriptData = {
     },
     {
       "end": 678.8,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "just because we can't see that we don't you know,",
@@ -11338,6 +11497,7 @@ export const scriptData = {
     },
     {
       "end": 698.1,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "like use knives or anything like that and I don't think that that's necessarily true because we have to eat and so having the skills to cook and do all those things are just you know life skills that people need to have.",
@@ -11650,6 +11810,7 @@ export const scriptData = {
     },
     {
       "end": 700.5,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "And it can be done.",
@@ -11696,6 +11857,7 @@ export const scriptData = {
     },
     {
       "end": 706.3,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I mean, obviously, if you use common sense to keep your fingers out of the way and I mean I've cut myself but I think,",
@@ -11882,6 +12044,7 @@ export const scriptData = {
     },
     {
       "end": 707.4,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "you know, I've cited friends,",
@@ -11928,6 +12091,7 @@ export const scriptData = {
     },
     {
       "end": 709.0,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "who have have caught themselves.",
@@ -11974,6 +12138,7 @@ export const scriptData = {
     },
     {
       "end": 710.6,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "My husband has cut himself.",
@@ -12020,6 +12185,7 @@ export const scriptData = {
     },
     {
       "end": 713.3,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So his onions in this bowl here.",
@@ -12080,6 +12246,7 @@ export const scriptData = {
     },
     {
       "end": 717.1,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Whoops, just drops on the floor.",
@@ -12133,6 +12300,7 @@ export const scriptData = {
     },
     {
       "end": 720.0,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "We will clean up dog here.",
@@ -12186,6 +12354,7 @@ export const scriptData = {
     },
     {
       "end": 721.5,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "On my feet, our pet dog.",
@@ -12239,6 +12408,7 @@ export const scriptData = {
     },
     {
       "end": 724.3,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Is, she always sits right?",
@@ -12285,6 +12455,7 @@ export const scriptData = {
     },
     {
       "end": 725.1,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Beside me.",
@@ -12310,6 +12481,7 @@ export const scriptData = {
     },
     {
       "end": 726.8,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "She knows I drop things.",
@@ -12356,6 +12528,7 @@ export const scriptData = {
     },
     {
       "end": 743.2,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Okay.",
@@ -12374,6 +12547,7 @@ export const scriptData = {
     },
     {
       "end": 747.6,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Pause: 4.4seconds",
@@ -12392,6 +12566,7 @@ export const scriptData = {
     },
     {
       "end": 749.0,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "All this stuff.",
@@ -12424,6 +12599,7 @@ export const scriptData = {
     },
     {
       "end": 777.5,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Pause: 28.5seconds",
@@ -12442,6 +12618,7 @@ export const scriptData = {
     },
     {
       "end": 778.6,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I don't mind cooking.",
@@ -12481,6 +12658,7 @@ export const scriptData = {
     },
     {
       "end": 779.2,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I like it.",
@@ -12513,6 +12691,7 @@ export const scriptData = {
     },
     {
       "end": 785.5,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I, you know, I lots of times for Christmas and Easter and Thanksgiving and all those things.",
@@ -12643,6 +12822,7 @@ export const scriptData = {
     },
     {
       "end": 790.1,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I cook the meals and for,",
@@ -12696,6 +12876,7 @@ export const scriptData = {
     },
     {
       "end": 794.7,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "you know, the whole families who had both sides of the family and I enjoy it.",
@@ -12819,6 +13000,7 @@ export const scriptData = {
     },
     {
       "end": 796.5,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I think, you know,",
@@ -12858,6 +13040,7 @@ export const scriptData = {
     },
     {
       "end": 800.1,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I like having people over and cooking for them and,",
@@ -12939,6 +13122,7 @@ export const scriptData = {
     },
     {
       "end": 804.1,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "you know, hopefully face good,",
@@ -12985,6 +13169,7 @@ export const scriptData = {
     },
     {
       "end": 805.1,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "but I enjoy it.",
@@ -13024,6 +13209,7 @@ export const scriptData = {
     },
     {
       "end": 812.7,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So, Don't mind, I don't mind doing it and I'm glad that I'm able to do it.",
@@ -13154,6 +13340,7 @@ export const scriptData = {
     },
     {
       "end": 824.9,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "You know, I wouldn't would not like it if I had to rely on my husband to do all the cooking.",
@@ -13312,6 +13499,7 @@ export const scriptData = {
     },
     {
       "end": 826.1,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I don't think that that's fair to him.",
@@ -13379,6 +13567,7 @@ export const scriptData = {
     },
     {
       "end": 828.4,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "And I don't I wouldn't like that.",
@@ -13439,6 +13628,7 @@ export const scriptData = {
     },
     {
       "end": 829.4,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I'm not that type of person.",
@@ -13492,6 +13682,7 @@ export const scriptData = {
     },
     {
       "end": 847.7,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I like to be independent and I want to do things that everybody else does and I don't think there's any reason why I shouldn't be able to I'll smell it.",
@@ -13720,6 +13911,7 @@ export const scriptData = {
     },
     {
       "end": 850.7,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Make sure that it smells the way that it's supposed to.",
@@ -13808,6 +14000,7 @@ export const scriptData = {
     },
     {
       "end": 852.4,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "It's kind of how I go about it.",
@@ -13875,6 +14068,7 @@ export const scriptData = {
     },
     {
       "end": 856.4,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So, okay, wash my whole life rafts,",
@@ -13935,6 +14129,7 @@ export const scriptData = {
     },
     {
       "end": 857.5,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "take my rings off.",
@@ -13974,6 +14169,7 @@ export const scriptData = {
     },
     {
       "end": 859.7,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Okay.",
@@ -13992,6 +14188,7 @@ export const scriptData = {
     },
     {
       "end": 872.7,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Pause: 13.0seconds",
@@ -14010,6 +14207,7 @@ export const scriptData = {
     },
     {
       "end": 876.6,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Make my meatloaf and little ones because it cooks faster.",
@@ -14091,6 +14289,7 @@ export const scriptData = {
     },
     {
       "end": 880.0,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Pause: 3.4seconds",
@@ -14109,6 +14308,7 @@ export const scriptData = {
     },
     {
       "end": 881.2,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Little bit too much.",
@@ -14148,6 +14348,7 @@ export const scriptData = {
     },
     {
       "end": 913.2,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Pause: 32.0seconds",
@@ -14166,6 +14367,7 @@ export const scriptData = {
     },
     {
       "end": 914.7,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So these up here,",
@@ -14205,6 +14407,7 @@ export const scriptData = {
     },
     {
       "end": 918.8,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I'm just gonna grab some potatoes.",
@@ -14258,6 +14461,7 @@ export const scriptData = {
     },
     {
       "end": 927.4,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So after I've cleaned up my Mass from dropping a bag of potatoes from the garden with dirt everywhere.",
@@ -14402,6 +14606,7 @@ export const scriptData = {
     },
     {
       "end": 930.5,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I'm just going to peel up my potatoes,",
@@ -14469,6 +14674,7 @@ export const scriptData = {
     },
     {
       "end": 932.5,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "cut them up in the pot.",
@@ -14522,6 +14728,7 @@ export const scriptData = {
     },
     {
       "end": 935.0,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Yes, again, I can feel potatoes.",
@@ -14575,6 +14782,7 @@ export const scriptData = {
     },
     {
       "end": 943.5,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I like to just put your towel here and then I put my pot over here and then I can just go pick this up with all of the potato peels.",
@@ -14803,6 +15011,7 @@ export const scriptData = {
     },
     {
       "end": 944.8,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Really not a blind thing.",
@@ -14849,6 +15058,7 @@ export const scriptData = {
     },
     {
       "end": 947.6,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "It's just Clean freak thing.",
@@ -14895,6 +15105,7 @@ export const scriptData = {
     },
     {
       "end": 953.3,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So peel my potatoes just like everybody else.",
@@ -14962,6 +15173,7 @@ export const scriptData = {
     },
     {
       "end": 959.5,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I just feel for the skin and where it is,",
@@ -15043,6 +15255,7 @@ export const scriptData = {
     },
     {
       "end": 962.4,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "and keep my hand out of the way,",
@@ -15110,6 +15323,7 @@ export const scriptData = {
     },
     {
       "end": 966.8,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "and if I take more potatoes than I should with the peel,",
@@ -15205,6 +15419,7 @@ export const scriptData = {
     },
     {
       "end": 969.8,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "then whatever happens snuff,",
@@ -15244,6 +15459,7 @@ export const scriptData = {
     },
     {
       "end": 970.5,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "big deal.",
@@ -15269,6 +15485,7 @@ export const scriptData = {
     },
     {
       "end": 974.4,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So just peel these all up here.",
@@ -15329,6 +15546,7 @@ export const scriptData = {
     },
     {
       "end": 981.4,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Pause: 7.0seconds",
@@ -15347,6 +15565,7 @@ export const scriptData = {
     },
     {
       "end": 983.2,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I prefer you the nice.",
@@ -15393,6 +15612,7 @@ export const scriptData = {
     },
     {
       "end": 986.0,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I just find it faster than a potato.",
@@ -15460,6 +15680,7 @@ export const scriptData = {
     },
     {
       "end": 990.0,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Peeler and yeah, so I just find it easier.",
@@ -15534,6 +15755,7 @@ export const scriptData = {
     },
     {
       "end": 993.7,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So make sure I get most of the peel off.",
@@ -15615,6 +15837,7 @@ export const scriptData = {
     },
     {
       "end": 997.2,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "There's someone there still that's fine.",
@@ -15668,6 +15891,7 @@ export const scriptData = {
     },
     {
       "end": 999.5,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "It is what it is.",
@@ -15714,6 +15938,7 @@ export const scriptData = {
     },
     {
       "end": 1007.6,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Okay, I have three growing kids.",
@@ -15767,6 +15992,7 @@ export const scriptData = {
     },
     {
       "end": 1009.4,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So we go through a lot of potatoes.",
@@ -15834,6 +16060,7 @@ export const scriptData = {
     },
     {
       "end": 1011.2,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So cut these up here.",
@@ -15880,6 +16107,7 @@ export const scriptData = {
     },
     {
       "end": 1039.7,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Pause: 28.5seconds",
@@ -15898,6 +16126,7 @@ export const scriptData = {
     },
     {
       "end": 1043.5,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So I'm just going to peel a potato and then I'll be right back.",
@@ -16007,6 +16236,7 @@ export const scriptData = {
     },
     {
       "end": 1047.2,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Okay, so now that I've gone all the potatoes peeled.",
@@ -16088,6 +16318,7 @@ export const scriptData = {
     },
     {
       "end": 1049.9,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I'm just gonna cut them all,",
@@ -16141,6 +16372,7 @@ export const scriptData = {
     },
     {
       "end": 1052.0,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "been put them in the pot here.",
@@ -16201,6 +16433,7 @@ export const scriptData = {
     },
     {
       "end": 1057.8,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So I figure nice here.",
@@ -16247,6 +16480,7 @@ export const scriptData = {
     },
     {
       "end": 1070.0,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Pause: 12.2seconds",
@@ -16265,6 +16499,7 @@ export const scriptData = {
     },
     {
       "end": 1074.2,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "It's definitely not an exact science.",
@@ -16318,6 +16553,7 @@ export const scriptData = {
     },
     {
       "end": 1076.9,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "You cutting them up for mashed potatoes.",
@@ -16378,6 +16614,7 @@ export const scriptData = {
     },
     {
       "end": 1129.3,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Pause: 52.4seconds",
@@ -16396,6 +16633,7 @@ export const scriptData = {
     },
     {
       "end": 1132.9,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Very exciting stuff watching me,",
@@ -16442,6 +16680,7 @@ export const scriptData = {
     },
     {
       "end": 1133.7,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "cut potatoes.",
@@ -16467,6 +16706,7 @@ export const scriptData = {
     },
     {
       "end": 1139.3,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So I'll finish cutting these potatoes and then I'll be right back.",
@@ -16562,6 +16802,7 @@ export const scriptData = {
     },
     {
       "end": 1144.6,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Okay, so now they've got my potatoes all cut up here.",
@@ -16650,6 +16891,7 @@ export const scriptData = {
     },
     {
       "end": 1150.3,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Just going to fill it up with water and purple stove.",
@@ -16738,6 +16980,7 @@ export const scriptData = {
     },
     {
       "end": 1153.0,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "The water in there.",
@@ -16777,6 +17020,7 @@ export const scriptData = {
     },
     {
       "end": 1157.2,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Pause: 4.2seconds",
@@ -16795,6 +17039,7 @@ export const scriptData = {
     },
     {
       "end": 1160.4,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "What I do since this is a glass top stove.",
@@ -16876,6 +17121,7 @@ export const scriptData = {
     },
     {
       "end": 1162.5,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "It is hard to tell where the burners are.",
@@ -16950,6 +17196,7 @@ export const scriptData = {
     },
     {
       "end": 1167.1,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I will turn the burner on and then I'll place the pot on.",
@@ -17052,6 +17299,7 @@ export const scriptData = {
     },
     {
       "end": 1170.6,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "There's gonna fuck this meatloaf just gonna put this meat loaf in.",
@@ -17147,6 +17395,7 @@ export const scriptData = {
     },
     {
       "end": 1172.4,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So turn this on.",
@@ -17186,6 +17435,7 @@ export const scriptData = {
     },
     {
       "end": 1190.7,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Pause: 18.3seconds",
@@ -17204,6 +17454,7 @@ export const scriptData = {
     },
     {
       "end": 1193.0,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Okay, so do this pot,",
@@ -17250,6 +17501,7 @@ export const scriptData = {
     },
     {
       "end": 1200.3,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "just going to turn it on and then when it gets hot,",
@@ -17345,6 +17597,7 @@ export const scriptData = {
     },
     {
       "end": 1204.6,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I can kind of feel where the burners and I'll check.",
@@ -17433,6 +17686,7 @@ export const scriptData = {
     },
     {
       "end": 1208.8,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Around the pot, make sure that it's on there.",
@@ -17507,6 +17761,7 @@ export const scriptData = {
     },
     {
       "end": 1211.9,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "And that's it.",
@@ -17539,6 +17794,7 @@ export const scriptData = {
     },
     {
       "end": 1216.2,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So, that's how I cook supper in,",
@@ -17599,6 +17855,7 @@ export const scriptData = {
     },
     {
       "end": 1218.6,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "you know, respect them to having this.",
@@ -17659,6 +17916,7 @@ export const scriptData = {
     },
     {
       "end": 1219.8,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "Be a 30-minute video.",
@@ -17698,6 +17956,7 @@ export const scriptData = {
     },
     {
       "end": 1223.0,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I'm going to end it here,",
@@ -17751,6 +18010,7 @@ export const scriptData = {
     },
     {
       "end": 1228.8,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "but it kind of gives you a little bit of a glimpse into how I suffer and how I go about it and that yes,",
@@ -17937,6 +18197,7 @@ export const scriptData = {
     },
     {
       "end": 1229.9,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "I do cook supper.",
@@ -17976,6 +18237,7 @@ export const scriptData = {
     },
     {
       "end": 1231.9,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So if you have any other questions,",
@@ -18036,6 +18298,7 @@ export const scriptData = {
     },
     {
       "end": 1236.8,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "please leave them in the comments below and I will try my hardest bathroom.",
@@ -18145,6 +18408,7 @@ export const scriptData = {
     },
     {
       "end": 1238.3,
+      "heading": 420,
       "moving": false,
       "new_heading": false,
       "sent": "So thanks for watching.",
