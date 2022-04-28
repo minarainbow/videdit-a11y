@@ -2,7 +2,7 @@ import json
 
 boundaries = [111, 120, 198, 202, 248, 251, 315, 325, 326, 345, 358, 362, 387, 420]
 videoID = 'ZaQtx54N6iU'
-
+last_new_heading = 0
 
 with open(videoID + '/' + videoID + '-aligned-sents.json', "r") as read_file:
     sentences = json.load(read_file)
@@ -17,6 +17,7 @@ with open(videoID + '/' + videoID + '-aligned-sents.json', "r") as read_file:
         # end checking visuals
         if vf_index == len(boundaries):
             s["new_heading"] = False
+            s["heading"] = last_new_heading
             s["moving"] = False
             json_list.append(s)
             s_index = s_index + 1
@@ -26,6 +27,8 @@ with open(videoID + '/' + videoID + '-aligned-sents.json', "r") as read_file:
         # new heading
         if next_is_new:
             s["new_heading"] = vf
+            last_new_heading = vf
+            s["heading"] = last_new_heading
             s["moving"] = False
             json_list.append(s)
             vf_index = vf_index + 1
@@ -37,13 +40,15 @@ with open(videoID + '/' + videoID + '-aligned-sents.json', "r") as read_file:
             if (s["start"]+s["end"])/2 < vf:
                 next_is_new = True
                 s["new_heading"] = False
-                s["heading"] = vf
+                s["heading"] = last_new_heading
                 s["moving"] = False
                 json_list.append(s)
                 s_index = s_index + 1
                 continue
             else:
                 s["new_heading"] = vf
+                last_new_heading = vf
+                s["heading"] = last_new_heading
                 s["moving"] = False
                 json_list.append(s)
                 vf_index = vf_index + 1
@@ -63,6 +68,7 @@ with open(videoID + '/' + videoID + '-aligned-sents.json', "r") as read_file:
             continue
         else:
             s["new_heading"] = False
+            s["heading"] = last_new_heading
             s["moving"] = False
             json_list.append(s)
             s_index = s_index + 1

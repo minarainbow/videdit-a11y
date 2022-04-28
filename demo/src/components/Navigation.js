@@ -11,7 +11,14 @@ export default class Navigation extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+
         };
+    }
+
+    handleClick = () => {
+        // this.setState({
+            
+        // })
     }
 
    
@@ -22,11 +29,13 @@ export default class Navigation extends React.Component {
             <div role="navigation" aria-label="Outline" tabindex="0">
                 Outline
                 <Divider/>
+                <div>
                 {navigations["navigations"].map((elem, index) => (
-                    <ListItem button id={elem["sent"]} role="menuitem" aria-label={elem["sent"] + " level 1"}>
+                    <ListItem button id={elem["sent"]} role="menuitem"  aria-disabled="false" aria-label={elem["sent"] + " level 1"} >
                     <ListItemText primary={elem["sent"]} />
                     </ListItem>
                 ))}
+                </div>
             </div>
         );
     }};
