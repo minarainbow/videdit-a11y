@@ -67,6 +67,7 @@ class Home extends Component {
       modalOpen: true,
       firstEntered: true,
       currHeading: "",
+      currSentenceIdx: "",
     };
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
@@ -133,11 +134,13 @@ class Home extends Component {
       const currWordEnd = parseFloat(
         this.state.currSpan.getAttribute("data-end")
       );
+      const moving = this.state.currSpan.getAttribute("data-moving");
+      const type = this.state.currSpan.getAttribute("data-type");
+      const heading = this.state.currSpan.getAttribute("data-heading");
+      const sentenceIdx = parseInt(
+        this.state.currSpan.getAttribute("sent-index")
+      );
       if (this.state.firstEntered) {
-        // console.log(this.state.currSpan);
-        const moving = this.state.currSpan.getAttribute("data-moving");
-        const type = this.state.currSpan.getAttribute("data-type");
-        const heading = this.state.currSpan.getAttribute("data-heading");
         if (heading !== this.state.currHeading) {
           this.setState({ currHeading: heading });
           speech
@@ -150,6 +153,9 @@ class Home extends Component {
             .catch((e) => {
               console.error("An error occurred :", e);
             });
+        }
+        if (sentenceIdx !== this.state.sentenceIdx) {
+          this.setState({ sentenceIdx: sentenceIdx });
           if (moving === "true") {
             speech
               .speak({
@@ -162,20 +168,21 @@ class Home extends Component {
                 console.error("An error occurred :", e);
               });
           }
-          if (type === "pause") {
-            speech
-              .speak({
-                text: "There is a long pause",
-              })
-              .then(() => {
-                console.log("Success !");
-              })
-              .catch((e) => {
-                console.error("An error occurred :", e);
-              });
-          }
+        }
+        if (type === "pause") {
+          speech
+            .speak({
+              text: "There is a long pause",
+            })
+            .then(() => {
+              console.log("Success !");
+            })
+            .catch((e) => {
+              console.error("An error occurred :", e);
+            });
         }
       }
+
       this.setState({
         playbackRate: currRate,
         currWordStart: currWordStart,
@@ -225,11 +232,7 @@ class Home extends Component {
           ) {
             const nextStart = parseFloat(nextSpan.getAttribute("data-start"));
             const nextEnd = parseFloat(nextSpan.getAttribute("data-end"));
-            const nextPlayback = parseFloat(
-              nextSpan.getAttribute("data-playback")
-            );
-            console.log("next: ", nextStart);
-            console.log("a");
+            const sentenceIdx = parseInt(nextSpan.getAttribute("sent-index"));
             this.setState(
               {
                 currSpan: nextSpan,
@@ -237,6 +240,7 @@ class Home extends Component {
                 currWordEnd: nextEnd,
                 playing: true,
                 firstEntered: true,
+                currSentenceIdx: sentenceIdx,
                 // playbackRate: nextPlayback,
               },
               () => this.jumpVideo(nextStart, true)
@@ -273,11 +277,13 @@ class Home extends Component {
           // the second ~ last-1 sentence
           for (i = 0; i < children.length - 1; i++) {
             if (
-              parseFloat(children[i].getAttribute("data-start")) < currTime &&
+              parseFloat(children[i].getAttribute("data-start")) <= currTime &&
               currTime < parseFloat(children[i + 1].getAttribute("data-start"))
             ) {
               const newEnd = parseFloat(children[i].getAttribute("data-end"));
-              console.log("b");
+              const sentenceIdx = parseInt(
+                children[i].getAttribute("sent-index")
+              );
               this.setState({
                 currSpan: children[i],
                 currWordStart: parseFloat(
@@ -285,7 +291,7 @@ class Home extends Component {
                 ),
                 currWordEnd: newEnd,
                 firstEntered: true,
-                // playbackRate: nextPlayback,
+                currSentenceIdx: sentenceIdx,
               });
               break;
             }
@@ -294,16 +300,15 @@ class Home extends Component {
           if (i === children.length - 1) {
             console.log("the end?");
             const newEnd = parseFloat(children[i].getAttribute("data-end"));
-            const nextPlayback = parseFloat(
-              children[i].getAttribute("data-playback")
+            const sentenceIdx = parseInt(
+              children[i].getAttribute("sent-index")
             );
-            console.log("c");
             this.setState({
               currSpan: children[i],
               currWordStart: parseFloat(children[i].getAttribute("data-start")),
               currWordEnd: newEnd,
               firstEntered: true,
-              // playbackRate: nextPlayback,
+              currSentenceIdx: sentenceIdx,
             });
           }
         }
@@ -389,7 +394,7 @@ class Home extends Component {
       const newEnd = parseFloat(children[i].getAttribute("data-end"));
       this.setState({
         currSpan: children[i],
-        currWordStart: parseFloat(children[i].getAttribute("data-start")),
+        currWordStart: parseInt(children[i].getAttribute("data-start")),
         currWordEnd: newEnd,
       });
     }
