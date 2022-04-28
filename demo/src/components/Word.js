@@ -40,7 +40,6 @@ class Word extends Component {
   };
 
   checkReviewPoints = (data) => {
-    
     const currSent = scriptData["words"].filter(function (sent) {
       return sent.sent_index == data.sent_index;
     })[0];
@@ -64,17 +63,19 @@ class Word extends Component {
         word-index={data.word_index}
         data-start={data.start}
         data-end={data.end}
+        data-default-start={data.default_start}
+        data-default-end={data.default_end}
         data-confidence={this.generateConfidence(data)}
         data-prev-times={this.generatePreviousTimes(data)}
         data-entity-key={data.key}
         data-playback={1.0}
         data-moving={this.checkReviewPoints(data)}
         data-type={data.type}
+        data-heading={data.heading}
         now={"false"}
         trim-start={"false"}
         trim-end={"false"}
         className={"Word"}
-        data-type={data.type}
       >
         {this.props.children}
       </span>

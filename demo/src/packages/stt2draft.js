@@ -41,14 +41,13 @@ import generateEntitiesRanges from "./generateEntitiesRanges";
 //   if (paragraph.words.length) {
 //     results.push(paragraph);
 //   }
-  
 
 //   return results;
 // };
 
 const stt2Draft = (scriptData) => {
   const results = [];
-  const tmpWords = scriptData
+  const tmpWords = scriptData;
   // const wordsByParagraphs = groupWordsInParagraphs(tmpWords);
   const sentences = tmpWords;
   var scene_num = 0;
@@ -57,7 +56,10 @@ const stt2Draft = (scriptData) => {
       text: sentence.sent,
       type: "sentence",
       data: {
-        heading: (sentence.new_heading || !i)? `Scene ${scene_num}: ` +  `Frame ` + sentence.new_heading : null,
+        heading:
+          sentence.new_heading || !i
+            ? `Scene ${scene_num}: ` + `Frame ` + sentence.new_heading
+            : null,
         words: sentence.words,
         start: sentence.start,
         moving: sentence.moving,
@@ -67,8 +69,7 @@ const stt2Draft = (scriptData) => {
       // so it needs to be compute for each the offset from the beginning of the paragraph and the length
       entityRanges: generateEntitiesRanges(sentence, "word"),
     };
-    if (sentence.new_heading || !i)
-      scene_num = scene_num+1;
+    if (sentence.new_heading || !i) scene_num = scene_num + 1;
     // console.log(JSON.stringify(draftJsContentBlockParagraph,null,2))
     results.push(draftJsContentBlockParagraph);
   });

@@ -112,10 +112,9 @@ class ToolBar extends React.Component {
     );
 
     const comment = prompt("Add comments");
-    if (comment !== '' && comment !== null && currSpan){
+    if (comment !== "" && comment !== null && currSpan) {
       currSpan.setAttribute("data-comment", comment);
     }
-
   };
 
   handleTrimClick = () => {
@@ -142,17 +141,41 @@ class ToolBar extends React.Component {
     return totalSecs;
   }
 
+  onClickReset = () => {
+    const currSpan = document.querySelector(
+      `span.Word[data-start="${this.props.currWordStart}"]`
+    );
+    if (currSpan) {
+      const defaultStartTime = parseFloat(
+        currSpan.getAttribute("data-default-start")
+      );
+      const defaultEndTime = parseFloat(
+        currSpan.getAttribute("data-default-end")
+      );
+      currSpan.setAttribute("data-start", defaultStartTime);
+      currSpan.setAttribute("data-end", defaultEndTime);
+      currSpan.setAttribute("trim-start", "false");
+      currSpan.setAttribute("trim-start", "false");
+    }
+  };
+
   onClickTrim = () => {
     const currSpan = document.querySelector(
       `span.Word[data-start="${this.props.currWordStart}"]`
     );
     if (currSpan) {
+      const defaultStartTime = parseFloat(
+        currSpan.getAttribute("data-default-start")
+      );
+      const defaultEndTime = parseFloat(
+        currSpan.getAttribute("data-default-end")
+      );
       const oldStartTime = parseFloat(currSpan.getAttribute("data-start"));
       const oldEndTime = parseFloat(currSpan.getAttribute("data-end"));
       const startTime = this.calculateTime(this.startRef.current.value);
       const endTime = this.calculateTime(this.endRef.current.value);
       console.log(oldStartTime, oldEndTime, startTime, endTime);
-      if (startTime < oldStartTime || endTime > oldEndTime) {
+      if (startTime < defaultStartTime || endTime > defaultEndTime) {
         console.log("invalid");
         this.setState({ invalidRange: true });
       } else {
@@ -174,6 +197,7 @@ class ToolBar extends React.Component {
     const currSpan = document.querySelector(
       `span.Word[data-start="${this.props.currWordStart}"]`
     );
+    console.log(currSpan);
     if (currSpan) {
       currSpan.setAttribute("data-playback", rate);
     }
@@ -229,8 +253,7 @@ class ToolBar extends React.Component {
                 Trim
               </Menu.Item>
             }
-          >
-          </Dropdown>
+          ></Dropdown>
         </Menu>
         {this.state.rangeClick ? (
           <div style={{ display: "flex", flexDirection: "column" }}>
@@ -271,6 +294,16 @@ class ToolBar extends React.Component {
                 }}
               >
                 OK
+              </Button>
+              <Button
+                onClick={this.onClickReset}
+                style={{
+                  width: "80px",
+                  height: "40px",
+                  marginLeft: "10px",
+                }}
+              >
+                Reset
               </Button>
             </div>
             {this.state.invalidRange ? (

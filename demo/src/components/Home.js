@@ -66,6 +66,7 @@ class Home extends Component {
       timecodeOffset: 0,
       modalOpen: true,
       firstEntered: true,
+      currHeading: "",
     };
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
@@ -132,48 +133,49 @@ class Home extends Component {
       const currWordEnd = parseFloat(
         this.state.currSpan.getAttribute("data-end")
       );
-      // if (this.state.firstEntered) {
-      //   console.log(this.state.currSpan);
-      //   const moving = this.state.currSpan.getAttribute("data-moving");
-      //   const type = this.state.currSpan.getAttribute("data-type");
-      //   const heading = this.state.currSpan.getAttribute("data-heading");
-      //   if (heading !== "false") {
-      //     speech
-      //       .speak({
-      //         text: "New heading, " + heading,
-      //       })
-      //       .then(() => {
-      //         console.log("Success !");
-      //       })
-      //       .catch((e) => {
-      //         console.error("An error occurred :", e);
-      //       });
-      //   }
-      //   if (moving === "true") {
-      //     speech
-      //       .speak({
-      //         text: "There is a moving",
-      //       })
-      //       .then(() => {
-      //         console.log("Success !");
-      //       })
-      //       .catch((e) => {
-      //         console.error("An error occurred :", e);
-      //       });
-      //   }
-      //   if (type === "pause") {
-      //     speech
-      //       .speak({
-      //         text: "There is a long pause",
-      //       })
-      //       .then(() => {
-      //         console.log("Success !");
-      //       })
-      //       .catch((e) => {
-      //         console.error("An error occurred :", e);
-      //       });
-      //   }
-      // }
+      if (this.state.firstEntered) {
+        // console.log(this.state.currSpan);
+        const moving = this.state.currSpan.getAttribute("data-moving");
+        const type = this.state.currSpan.getAttribute("data-type");
+        const heading = this.state.currSpan.getAttribute("data-heading");
+        if (heading !== this.state.currHeading) {
+          this.setState({ currHeading: heading });
+          speech
+            .speak({
+              text: "New heading, " + heading,
+            })
+            .then(() => {
+              console.log("Success !");
+            })
+            .catch((e) => {
+              console.error("An error occurred :", e);
+            });
+          if (moving === "true") {
+            speech
+              .speak({
+                text: "There is a moving",
+              })
+              .then(() => {
+                console.log("Success !");
+              })
+              .catch((e) => {
+                console.error("An error occurred :", e);
+              });
+          }
+          if (type === "pause") {
+            speech
+              .speak({
+                text: "There is a long pause",
+              })
+              .then(() => {
+                console.log("Success !");
+              })
+              .catch((e) => {
+                console.error("An error occurred :", e);
+              });
+          }
+        }
+      }
       this.setState({
         playbackRate: currRate,
         currWordStart: currWordStart,
@@ -188,11 +190,14 @@ class Home extends Component {
       ) {
         var nextSpan;
         const children = document.querySelectorAll("span.Word");
-        nextSpan = children[Array.prototype.indexOf.call(children, this.state.currSpan)+1];
-        // if (!this.state.currSpan.nextSibling) { 
+        nextSpan =
+          children[
+            Array.prototype.indexOf.call(children, this.state.currSpan) + 1
+          ];
+        // if (!this.state.currSpan.nextSibling) {
         //   const nextBlock = this.state.currSpan.parentElement.parentElement.parentElement.parentElement.nextSibling.firstElementChild.firstElementChild;
-        //   //end of sentence 
-        //   if (nextBlock.classList.contains("sentence")) 
+        //   //end of sentence
+        //   if (nextBlock.classList.contains("sentence"))
         //     nextSpan = nextBlock.firstChild.firstChild;
         //   //end of heading content
         //   else{
@@ -224,6 +229,7 @@ class Home extends Component {
               nextSpan.getAttribute("data-playback")
             );
             console.log("next: ", nextStart);
+            console.log("a");
             this.setState(
               {
                 currSpan: nextSpan,
@@ -271,6 +277,7 @@ class Home extends Component {
               currTime < parseFloat(children[i + 1].getAttribute("data-start"))
             ) {
               const newEnd = parseFloat(children[i].getAttribute("data-end"));
+              console.log("b");
               this.setState({
                 currSpan: children[i],
                 currWordStart: parseFloat(
@@ -290,6 +297,7 @@ class Home extends Component {
             const nextPlayback = parseFloat(
               children[i].getAttribute("data-playback")
             );
+            console.log("c");
             this.setState({
               currSpan: children[i],
               currWordStart: parseFloat(children[i].getAttribute("data-start")),
@@ -302,7 +310,6 @@ class Home extends Component {
       }
     }
   };
-
 
   handleDuration = (duration) => {
     this.setState({ duration });
@@ -349,7 +356,6 @@ class Home extends Component {
     this.setState({ snippetIndex: index });
   }
 
-
   onTimeChange(event, value) {
     const newTime = value.replace(/-/g, ":");
     const time = newTime.substr(0, 5);
@@ -395,6 +401,13 @@ class Home extends Component {
 
   _onPause = () => {
     // console.log(sessionStorage.getItem("sessionID"));
+  };
+
+  _onPlay = () => {
+    if (!this.state.started) {
+      this.onClickPlay();
+      this.setState({ started: true });
+    }
   };
 
   render() {
@@ -448,7 +461,7 @@ class Home extends Component {
           </Drawer>
         </div>
         <Container className="main-page">
-        <Container className="left-page">
+          <Container className="left-page">
             <Container className="video-container">
               <ReactPlayer
                 ref={this.ref}
@@ -475,7 +488,7 @@ class Home extends Component {
               duration={this.state.duration}
             ></Timeline>
             <Container className="navigation-container">
-                <Navigation />
+              <Navigation />
             </Container>
           </Container>
           <Container className="script-page">
@@ -496,7 +509,6 @@ class Home extends Component {
               playing={this.state.playing}
             ></Scripts>
           </Container>
-          
         </Container>
       </div>
     );
