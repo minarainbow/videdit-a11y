@@ -5662,18 +5662,11 @@
     "heading": 202,
     "moving": true,
     "new_heading": false,
-    "sent": "Camera moving: Camera moving: I just put a little bit of Velcro on there and then take you over to my stove.",
+    "sent": "Camera moving: I just put a little bit of Velcro on there and then take you over to my stove.",
     "sent_index": 69,
     "start": 243.2,
     "type": "narration",
     "words": [
-      {
-        "end": 243.2,
-        "sent_index": 69,
-        "start": 243.2,
-        "word": "Camera moving:",
-        "word_index": null
-      },
       {
         "end": 243.2,
         "sent_index": 69,
@@ -7338,18 +7331,11 @@
     "heading": 248,
     "moving": true,
     "new_heading": false,
-    "sent": "Camera moving: Camera moving: And In my pantry.",
+    "sent": "Camera moving: And In my pantry.",
     "sent_index": 92,
     "start": 312.9,
     "type": "narration",
     "words": [
-      {
-        "end": 312.9,
-        "sent_index": 92,
-        "start": 312.9,
-        "word": "Camera moving:",
-        "word_index": null
-      },
       {
         "end": 312.9,
         "sent_index": 92,
@@ -7945,18 +7931,11 @@
     "heading": 345,
     "moving": true,
     "new_heading": false,
-    "sent": "Camera moving: Camera moving: so I'll just show it to you here.",
+    "sent": "Camera moving: so I'll just show it to you here.",
     "sent_index": 100,
     "start": 355.1,
     "type": "narration",
     "words": [
-      {
-        "end": 355.1,
-        "sent_index": 100,
-        "start": 355.1,
-        "word": "Camera moving:",
-        "word_index": null
-      },
       {
         "end": 355.1,
         "sent_index": 100,
