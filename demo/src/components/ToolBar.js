@@ -173,7 +173,6 @@ class ToolBar extends React.Component {
   };
 
   onClickTrim = () => {
-    // trimStartTime;
     const [startDiv, endDiv] = this.props.selectedDivs;
     const defaultStartTime = parseFloat(
       startDiv
@@ -242,9 +241,9 @@ class ToolBar extends React.Component {
     return (
       <div
         className="tool-bar"
-        onMouseDown={(event) => {
-          event.preventDefault();
-        }}
+        // onMouseDown={(event) => {
+        //   event.preventDefault();
+        // }}
       >
         <Menu icon="labeled" className="tool-icon">
           <Menu.Item name="comment" onClick={this.handleAddComment}>
