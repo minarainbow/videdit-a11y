@@ -205,13 +205,15 @@ class ToolBar extends React.Component {
 
   render() {
     const { loading, results, value } = this.state;
+    console.log(this.props.selectedDivs)
     const resRender = ({ type, keyword }) => (
       <span key="keyword">
         {type}: {keyword}
       </span>
     );
     return (
-      <div className="tool-bar">
+      <div className="tool-bar" onMouseDown={(event) => {
+        event.preventDefault();}}>
         <Menu icon="labeled" className="tool-icon">
           <Menu.Item name="comment" onClick={this.handleAddComment}>
             <AddCommentIcon style={{ fontSize: "30px" }} />
@@ -220,38 +222,63 @@ class ToolBar extends React.Component {
           <Dropdown
             icon={null}
             trigger={
+              <div onMouseDown={(event) => {
+                event.preventDefault();
+                this.handleItemClick();
+              }}>
               <Menu.Item name="speed" onClick={this.handleItemClick}>
                 <SpeedIcon style={{ fontSize: "30px" }} />
                 Speed
               </Menu.Item>
+              </div>
             }
           >
             <Dropdown.Menu vertical>
-              <Dropdown.Item
-                text="x 0.5"
-                onClick={() => this.handleChangeSpeed(0.5)}
-              />
-              <Dropdown.Item
-                text="x 1.0"
-                onClick={() => this.handleChangeSpeed(1.0)}
-              />
-              <Dropdown.Item
-                text="x 1.5"
-                onClick={() => this.handleChangeSpeed(1.5)}
-              />
-              <Dropdown.Item
-                text="x 2.0"
-                onClick={() => this.handleChangeSpeed(2.0)}
-              />
+              <div onMouseDown={(event) => {
+                event.preventDefault();
+              }}>
+                <Dropdown.Item
+                  text="x 0.5"
+                  onClick={() => this.handleChangeSpeed(0.5)}
+                />
+              </div>
+              <div onMouseDown={(event) => {
+                event.preventDefault();
+              }}>
+                <Dropdown.Item
+                  text="x 1.0"
+                  onClick={() => this.handleChangeSpeed(1.0)}
+                />
+              </div>
+              <div onMouseDown={(event) => {
+                event.preventDefault();
+              }}>
+                <Dropdown.Item
+                  text="x 1.5"
+                  onClick={() => this.handleChangeSpeed(1.5)}
+                />
+              </div>
+              <div onMouseDown={(event) => {
+                event.preventDefault();
+              }}>
+                <Dropdown.Item
+                  text="x 2.0"
+                  onClick={() => this.handleChangeSpeed(2.0)}
+                />
+              </div>
             </Dropdown.Menu>
           </Dropdown>
           <Dropdown
             icon={null}
             trigger={
-              <Menu.Item name="trim" onClick={this.handleTrimClick}>
-                <ContentCutIcon style={{ fontSize: "30px" }} />
-                Trim
-              </Menu.Item>
+              <div onMouseDown={(event) => {
+                event.preventDefault();
+              }}>
+                <Menu.Item name="trim" onClick={this.handleTrimClick}>
+                  <ContentCutIcon style={{ fontSize: "30px" }} />
+                  Trim
+                </Menu.Item>
+              </div>
             }
           ></Dropdown>
         </Menu>

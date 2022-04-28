@@ -79,6 +79,7 @@ class Home extends Component {
     this.updatePlaybackRate = this.updatePlaybackRate.bind(this);
     this.onStartPlay = this.onStartPlay.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.getSelected = this.getSelected.bind(this)
   }
 
   componentDidMount() {
@@ -106,7 +107,6 @@ class Home extends Component {
   }
 
   closeModal() {
-    console.log("here");
     this.setState({ modalOpen: false });
   }
 
@@ -303,6 +303,7 @@ class Home extends Component {
             const sentenceIdx = parseInt(
               children[i].getAttribute("sent-index")
             );
+            console.log("c");
             this.setState({
               currSpan: children[i],
               currWordStart: parseFloat(children[i].getAttribute("data-start")),
@@ -359,6 +360,12 @@ class Home extends Component {
 
   updateSnippetIndex(index) {
     this.setState({ snippetIndex: index });
+  }
+
+  getSelected (divs) {
+    this.setState({
+      selectedDivs: divs
+    })
   }
 
   onTimeChange(event, value) {
@@ -503,6 +510,7 @@ class Home extends Component {
               currWordStart={this.state.currWordStart}
               currWordEnd={this.state.currWordEnd}
               onStartPlay={this.onStartPlay}
+              selectedDivs={this.state.selectedDivs}
             ></ToolBar>
             <Scripts
               ref={this.focusRef}
@@ -512,6 +520,7 @@ class Home extends Component {
               videoTime={this.state.playedSeconds}
               updateSnippetIndex={this.updateSnippetIndex}
               playing={this.state.playing}
+              getSelected={this.getSelected}
             ></Scripts>
           </Container>
         </Container>

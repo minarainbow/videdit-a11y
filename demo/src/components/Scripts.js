@@ -57,6 +57,8 @@ class Scripts extends React.Component {
     };
     this.onChange = (editorState) => {
       this.setState({ editorState: editorState });
+      const divs = this.getSelectedBlockElement();
+      this.props.getSelected(divs);
     }
   }
 
@@ -181,16 +183,49 @@ class Scripts extends React.Component {
 };
 
 
-getSelectedBlockElement = () => {
+getCursorBlockElement = () => {
   var selection = window.getSelection()
   if (selection.rangeCount == 0) return null
   var node = selection.getRangeAt(0).startContainer
   do {
     if (node.getAttribute && node.getAttribute('data-block') == 'true')
       return node
-    node = node.parentNode
+    node = node.parentElement
   } while (node != null)
   return null
+  
+};
+
+getSelectedBlockElement = () => {
+  var selection = window.getSelection()
+  if (selection.rangeCount == 0) return null
+  var node;
+
+  if (selection.type === "Caret") {
+    node = selection.getRangeAt(0).startContainer
+    do {
+      if (node.getAttribute && node.getAttribute('data-block') == 'true')
+        return [node, node]
+      node = node.parentNode
+    } while (node != null)
+    return null
+  }
+  else { // type === Range
+    var startNode = selection.getRangeAt(0).startContainer;
+    do {
+      if (startNode.getAttribute && startNode.getAttribute('data-block') == 'true')
+        break;
+      startNode = startNode.parentNode
+    } while (startNode != null)
+    var endNode = selection.getRangeAt(0).endContainer;
+    do {
+      if (endNode.getAttribute && endNode.getAttribute('data-block') == 'true')
+        break;
+      endNode = endNode.parentNode
+    } while (endNode != null)
+    return [startNode, endNode]
+  }
+  
 };
 
   /**
@@ -244,7 +279,7 @@ getSelectedBlockElement = () => {
         this.props.playVideo();
       }
       else{
-        const cursorBlock = this.getSelectedBlockElement();
+        const cursorBlock = this.getCursorBlockElement();
         var BlockStart = cursorBlock.querySelectorAll("span.Word")[0].getAttribute("data-start");
         this.props.jumpVideo(BlockStart, true);
         this.props.playVideo();
