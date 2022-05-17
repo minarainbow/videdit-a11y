@@ -58,7 +58,7 @@ const stt2Draft = (scriptData) => {
       data: {
         heading:
           sentence.new_heading || !i
-            ? `Scene ${scene_num}: ` + `Frame ` + sentence.new_heading
+            ? `Scene ${scene_num}: ` + sentence.new_heading
             : null,
         words: sentence.words,
         start: sentence.start,

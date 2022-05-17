@@ -467,7 +467,7 @@ getSelectedBlockElement = () => {
         {`span.Word[data-type="pause"] { background-color: #cce0ff; color: black;}}`}
         </style>
         <Editor
-          ref={this.props.ref}
+          ref={this.props.setDomEditorRef}
           editorState={this.state.editorState}
           onChange={this.onChange}
           handleKeyCommand={this.handleKeyCommand}

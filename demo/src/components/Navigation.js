@@ -6,6 +6,17 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import navigations from '../scripts/ZaQtx54N6iU-navigations.jsx'
+import "../App.css";
+import { Typography } from '@mui/material';
+
+function formatTime(time) {
+    time = Math.round(time);
+  
+    var minutes = Math.floor(time / 60),
+        seconds = time - minutes * 60;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    return minutes + ":" + seconds;
+}
 
 export default class Navigation extends React.Component {
     constructor(props) {
@@ -13,29 +24,32 @@ export default class Navigation extends React.Component {
         this.state = {
 
         };
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick = () => {
-        // this.setState({
-            
-        // })
+        this.props.navigateScript();
     }
 
-   
 
 
     render() {
         return (
-            <div role="navigation" aria-label="Outline" tabindex="0">
-                Outline
+            <div role="navigation" aria-label="Outline" tabindex="-1">
+                <Typography variant="h6">OUTLINE</Typography>
                 <Divider/>
-                <div>
                 {navigations["navigations"].map((elem, index) => (
-                    <ListItem button id={elem["sent"]} role="menuitem"  aria-disabled="false" aria-label={elem["sent"] + " level 1"} >
-                    <ListItemText primary={elem["sent"]} />
+                    elem["new_heading"]?
+                    <ListItem button id={elem["new_heading"]} role="menuitem"  tabindex="1" aria-disabled="false" aria-label={elem["new_heading"] + " level 1"}
+                        onClick={() => this.handleClick()} >
+                    <ListItemText primary={<Typography variant="h6">{formatTime(elem["start"]) + " " + elem["new_heading"]}</Typography>} />
+                    </ListItem>
+                    :
+                    <ListItem button id={elem["sent"]} role="menuitem"  tabindex="1" aria-disabled="false" aria-label={elem["sent"] + " level 2"}
+                        onClick={() => this.handleClick()} >
+                    <ListItemText primary={<Typography variant="h6" style={{paddingLeft: '20px', color: "grey"}}>{elem["sent"]}</Typography>} />
                     </ListItem>
                 ))}
-                </div>
             </div>
         );
     }};

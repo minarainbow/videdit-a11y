@@ -69,6 +69,9 @@ class Home extends Component {
       currHeading: "",
       currSentenceIdx: "",
     };
+    this.setDomEditorRef = (ref) => {
+      this.script = ref;
+    };
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -79,7 +82,8 @@ class Home extends Component {
     this.updatePlaybackRate = this.updatePlaybackRate.bind(this);
     this.onStartPlay = this.onStartPlay.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    this.getSelected = this.getSelected.bind(this)
+    this.getSelected = this.getSelected.bind(this);
+    this.navigateScript = this.navigateScript.bind(this);
   }
 
   componentDidMount() {
@@ -103,7 +107,6 @@ class Home extends Component {
     });
     this.setState({ speech: speech });
     this.handleSubmit("ZaQtx54N6iU");
-    this.script.current && this.script.current.focus();
   }
 
   closeModal() {
@@ -117,6 +120,12 @@ class Home extends Component {
   onStartPlay = () => {
     this.setState({ playing: true });
   };
+
+  navigateScript() {
+    console.log("here navigate script", this.script)
+    this.script &&  this.script.focus();
+    
+  }
 
   handleProgress = (state) => {
     // We only want to update time slider if we are not currently seeking
@@ -325,9 +334,7 @@ class Home extends Component {
     this.player = player;
   };
 
-  focusRef = (script) => {
-    this.script = script;
-  };
+
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -500,7 +507,7 @@ class Home extends Component {
               duration={this.state.duration}
             ></Timeline>
             <Container className="navigation-container">
-              <Navigation />
+              <Navigation navigateScript={this.navigateScript}/>
             </Container>
           </Container>
           <Container className="script-page">
@@ -513,7 +520,7 @@ class Home extends Component {
               selectedDivs={this.state.selectedDivs}
             ></ToolBar>
             <Scripts
-              ref={this.focusRef}
+              setDomEditorRef={this.setDomEditorRef}
               playVideo={this.playVideo}
               jumpVideo={this.jumpVideo}
               player={this.player}
