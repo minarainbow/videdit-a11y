@@ -19,6 +19,7 @@ import createEntityMap from "../packages/createEntityMap";
 import ForumIcon from "@mui/icons-material/Forum";
 import firebase from 'firebase/app';
 import 'firebase/database';
+import { ref } from "firebase/database";
 
 const databaseURL = "https://videdita11y-default-rtdb.firebaseio.com/"
 
@@ -52,14 +53,17 @@ class Scripts extends React.Component {
       scriptData: scriptData["words"],
       editorState: EditorState.createEmpty(),
       current_heading: 0,
-      current_sentence: 0,
       cuts: [],
     };
     this.onChange = (editorState) => {
-      this.setState({ editorState: editorState });
+      this.setState({editorState});
       const divs = this.getSelectedBlockElement();
+      console.log(divs)
       this.props.getSelected(divs);
     }
+    this.updateCursor = this.updateCursor.bind(this);
+    this.handleKeyCommand = this.handleKeyCommand.bind(this);
+    this.customKeyBindingFn = this.customKeyBindingFn.bind(this);
   }
 
   componentDidMount() {
@@ -72,6 +76,18 @@ class Scripts extends React.Component {
 
     return false;
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.navigating){
+
+      console.log("should simulate space")
+      var spaceEvnt = new KeyboardEvent('keydown', {'keyCode': "32", 'which': "32"});
+      setTimeout(()=>this.home.dispatchEvent(spaceEvnt), 3000);
+      this.props.navigationComplete();
+      // this.updateCursor();
+    }
+
+}
 
   sttJsonAdapter(scriptData) {
     let blocks = stt2Draft(scriptData);
@@ -238,9 +254,17 @@ getSelectedBlockElement = () => {
     const rightArrow = 39;
     const deleteKey = 8;
 
-    if (e.keyCode === spaceKey) {                                                              
+    if (e.keyCode === spaceKey) { 
+      
+      if (this.props.playing){
 
-      return "play/pause";
+        this.props.playVideo();
+        this.updateCursor();
+      }                                                          
+      else{
+        return "play";
+      }
+      // return "play/pause";
     }
     // if (e.keyCode === rightArrow) {
     //   console.log("customKeyBindingFn");
@@ -274,18 +298,21 @@ getSelectedBlockElement = () => {
   };
 
   handleKeyCommand = (command) => {
-    if (command === "play/pause") {
-      if (this.props.playing){
-        this.props.playVideo();
-      }
-      else{
+    if (command === "play") {
+      if (!this.props.playing){
         const cursorBlock = this.getCursorBlockElement();
         var BlockStart = cursorBlock.querySelectorAll("span.Word")[0].getAttribute("data-start");
         this.props.jumpVideo(BlockStart, true);
         this.props.playVideo();
       }
+      
+      return "handled"
 
-    } else if (command === "next-sentence") {
+    } 
+    else if (command === "pause") {
+      return "handled"
+    }
+    else if (command === "next-sentence") {
       const currentSentenceEnd = this.getCurrentSent().end;
       this.props.jumpVideo(currentSentenceEnd, true);
     } else if (command === "prev-sentence") {
@@ -331,6 +358,7 @@ getSelectedBlockElement = () => {
     if (command === "keyboard-shortcuts") {
       return "handled";
     }
+    console.log("here not handled")
     return "not-handled";
   };
 
@@ -382,7 +410,6 @@ getSelectedBlockElement = () => {
         });
       }
     }
-
     return currentSent;
   };
 
@@ -416,7 +443,40 @@ getSelectedBlockElement = () => {
 
   };
 
+  updateCursor = () => {
+    var currentSentIndex = 0
+    var entity;
+    const contentState = this.state.editorState.getCurrentContent();
+    const contentStateConvertEdToRaw = convertToRaw(contentState);
+    const entityMap = contentStateConvertEdToRaw.entityMap;
+
+    for (var entityKey in entityMap) {
+      entity = entityMap[entityKey];
+      const word = entity.data;
+      if (word.start <= this.props.videoTime) {
+        if (word.end > this.props.videoTime) {
+          currentSentIndex = word.sent_index
+        }
+      }
+    }
+    console.log(currentSentIndex);
+    const selectionState = this.state.editorState.getSelection();
+    const newSelectionState = selectionState.merge({
+      anchorOffset: 0,
+      focusOffset: 0,
+      anchorKey: contentState.getBlocksAsArray()[currentSentIndex].getKey(),
+      focusKey: contentState.getBlocksAsArray()[currentSentIndex].getKey(),
+    });
+    const newEditorState = EditorState.forceSelection(
+      this.state.editorState,
+      newSelectionState
+    );
+    this.onChange(newEditorState);
+    console.log(selectionState, newSelectionState)
+  };
+
   handleDoubleClick = (event) => {
+    console.log(this.state.editorState.getSelection())
     // nativeEvent --> React giving you the DOM event
     let element = event.nativeEvent.target;
     // find the parent in Word that contains span with time-code start attribute
@@ -448,7 +508,7 @@ getSelectedBlockElement = () => {
     const time = Math.round(this.props.videoTime * 4.0) / 4.0;
     const correctionBorder = "1px dotted blue";
     return (
-      <section onDoubleClick={this.handleDoubleClick} className="script">
+      <section onDoubleClick={this.handleDoubleClick} className="script" aria-disabled="true" >
         <style scoped>
           {`span.Word[sent-index="${currentSent.sent_index}"] { background-color: ${highlightColour}; text-shadow: 0 0 0.01px black }`}
           {`span.Word[sent-index="${currentSent.sent_index}"]+span { background-color: ${highlightColour} }`}

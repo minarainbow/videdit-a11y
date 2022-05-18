@@ -159,6 +159,7 @@ class ToolBar extends React.Component {
   };
 
   handleTrimClick = () => {
+    
     const [startDiv, endDiv] = this.props.selectedDivs;
     const startTime = startDiv
       .querySelectorAll("span.Word")[0]
@@ -173,6 +174,7 @@ class ToolBar extends React.Component {
   };
 
   onClickTrim = () => {
+    console.log(this.props.selectedDivs);
     const [startDiv, endDiv] = this.props.selectedDivs;
     const defaultStartTime = parseFloat(
       startDiv
@@ -208,6 +210,8 @@ class ToolBar extends React.Component {
   };
 
   handleChangeSpeed = (rate) => {
+
+    console.log(this.props.selectedDivs);
     const [startDiv, endDiv] = this.props.selectedDivs;
     const startKey = startDiv.getAttribute("data-offset-key");
     const endKey = endDiv.getAttribute("data-offset-key");
@@ -268,9 +272,9 @@ class ToolBar extends React.Component {
           >
             <Dropdown.Menu vertical>
               <div
-              // onMouseDown={(event) => {
-              //   event.preventDefault();
-              // }}
+              onMouseDown={(event) => {
+                event.preventDefault();
+              }}
               >
                 <Dropdown.Item
                   text="x 0.5"
@@ -278,9 +282,9 @@ class ToolBar extends React.Component {
                 />
               </div>
               <div
-              // onMouseDown={(event) => {
-              //   event.preventDefault();
-              // }}
+              onMouseDown={(event) => {
+                event.preventDefault();
+              }}
               >
                 <Dropdown.Item
                   text="x 1.0"
@@ -288,9 +292,9 @@ class ToolBar extends React.Component {
                 />
               </div>
               <div
-              // onMouseDown={(event) => {
-              //   event.preventDefault();
-              // }}
+              onMouseDown={(event) => {
+                event.preventDefault();
+              }}
               >
                 <Dropdown.Item
                   text="x 1.5"

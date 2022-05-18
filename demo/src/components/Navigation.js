@@ -27,26 +27,26 @@ export default class Navigation extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick = () => {
-        this.props.navigateScript();
+    handleClick = (time) => {
+        this.props.navigateScript(time);
     }
 
 
 
     render() {
         return (
-            <div role="navigation" aria-label="Outline" tabindex="-1">
+            <div role="navigation" aria-label="Outline" >
                 <Typography variant="h6">OUTLINE</Typography>
                 <Divider/>
                 {navigations["navigations"].map((elem, index) => (
                     elem["new_heading"]?
-                    <ListItem button id={elem["new_heading"]} role="menuitem"  tabindex="1" aria-disabled="false" aria-label={elem["new_heading"] + " level 1"}
-                        onClick={() => this.handleClick()} >
+                    <ListItem button id={elem["new_heading"]} role="menuitem"   aria-disabled="false" aria-label={elem["new_heading"] + " level 1"}
+                        onClick={() => this.handleClick(elem["start"])} >
                     <ListItemText primary={<Typography variant="h6">{formatTime(elem["start"]) + " " + elem["new_heading"]}</Typography>} />
                     </ListItem>
                     :
-                    <ListItem button id={elem["sent"]} role="menuitem"  tabindex="1" aria-disabled="false" aria-label={elem["sent"] + " level 2"}
-                        onClick={() => this.handleClick()} >
+                    <ListItem button id={elem["sent"]} role="menuitem"  aria-disabled="false" aria-label={elem["sent"] + " level 2"}
+                        onClick={() => this.handleClick(elem["start"])} >
                     <ListItemText primary={<Typography variant="h6" style={{paddingLeft: '20px', color: "grey"}}>{elem["sent"]}</Typography>} />
                     </ListItem>
                 ))}
