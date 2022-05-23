@@ -260,7 +260,7 @@ class ToolBar extends React.Component {
               <div
                 onMouseDown={(event) => {
                   event.preventDefault();
-                  this.handleItemClick();
+                  // this.handleItemClick();
                 }}
               >
                 <Menu.Item name="speed" onClick={this.handleItemClick}>
@@ -271,24 +271,23 @@ class ToolBar extends React.Component {
             }
           >
             <Dropdown.Menu vertical>
-              <div
-              onMouseDown={(event) => {
-                event.preventDefault();
-              }}
-              >
+              <div>
                 <Dropdown.Item
                   text="x 0.5"
                   onClick={() => this.handleChangeSpeed(0.5)}
+                  onMouseDown={(event) => {
+                    event.preventDefault();
+                  }}
                 />
               </div>
               <div
-              onMouseDown={(event) => {
-                event.preventDefault();
-              }}
               >
                 <Dropdown.Item
                   text="x 1.0"
                   onClick={() => this.handleChangeSpeed(1.0)}
+                  onMouseDown={(event) => {
+                    event.preventDefault();
+                  }}    
                 />
               </div>
               <div
@@ -299,16 +298,19 @@ class ToolBar extends React.Component {
                 <Dropdown.Item
                   text="x 1.5"
                   onClick={() => this.handleChangeSpeed(1.5)}
+                  onMouseDown={(event) => {
+                    event.preventDefault();
+                  }}    
                 />
               </div>
               <div
-              // onMouseDown={(event) => {
-              //   event.preventDefault();
-              // }}
               >
                 <Dropdown.Item
                   text="x 2.0"
                   onClick={() => this.handleChangeSpeed(2.0)}
+                  onMouseDown={(event) => {
+                    event.preventDefault();
+                  }}    
                 />
               </div>
             </Dropdown.Menu>

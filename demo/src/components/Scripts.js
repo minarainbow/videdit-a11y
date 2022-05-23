@@ -56,9 +56,8 @@ class Scripts extends React.Component {
       cuts: [],
     };
     this.onChange = (editorState) => {
-      this.setState({editorState});
+      this.setState({editorState})
       const divs = this.getSelectedBlockElement();
-      console.log(divs)
       this.props.getSelected(divs);
     }
     this.updateCursor = this.updateCursor.bind(this);
@@ -77,17 +76,6 @@ class Scripts extends React.Component {
     return false;
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.navigating){
-
-      console.log("should simulate space")
-      var spaceEvnt = new KeyboardEvent('keydown', {'keyCode': "32", 'which': "32"});
-      setTimeout(()=>this.home.dispatchEvent(spaceEvnt), 3000);
-      this.props.navigationComplete();
-      // this.updateCursor();
-    }
-
-}
 
   sttJsonAdapter(scriptData) {
     let blocks = stt2Draft(scriptData);
@@ -257,14 +245,12 @@ getSelectedBlockElement = () => {
     if (e.keyCode === spaceKey) { 
       
       if (this.props.playing){
-
         this.props.playVideo();
-        this.updateCursor();
+        this.updateCursor(this.state.editorState);
       }                                                          
       else{
         return "play";
       }
-      // return "play/pause";
     }
     // if (e.keyCode === rightArrow) {
     //   console.log("customKeyBindingFn");
@@ -287,13 +273,6 @@ getSelectedBlockElement = () => {
     //   return "split-paragraph";
     // }
 
-    // if alt key is pressed in combination with these other keys
-    if (e.altKey && (e.keyCode === spaceKey || e.keyCode === spaceKey)) {
-      e.preventDefault();
-
-      return "keyboard-shortcuts";
-    }
-
     return getDefaultKeyBinding(e);
   };
 
@@ -310,6 +289,7 @@ getSelectedBlockElement = () => {
 
     } 
     else if (command === "pause") {
+
       return "handled"
     }
     else if (command === "next-sentence") {
@@ -358,8 +338,8 @@ getSelectedBlockElement = () => {
     if (command === "keyboard-shortcuts") {
       return "handled";
     }
-    console.log("here not handled")
-    return "not-handled";
+
+    return "handled";
   };
 
   renderBlockWithTimecodes = () => {
@@ -443,23 +423,22 @@ getSelectedBlockElement = () => {
 
   };
 
-  updateCursor = () => {
+  updateCursor = (editorState) => {
     var currentSentIndex = 0
     var entity;
-    const contentState = this.state.editorState.getCurrentContent();
+    const contentState = editorState.getCurrentContent();
     const contentStateConvertEdToRaw = convertToRaw(contentState);
     const entityMap = contentStateConvertEdToRaw.entityMap;
-
     for (var entityKey in entityMap) {
       entity = entityMap[entityKey];
-      const word = entity.data;
+      var word = entity.data;
       if (word.start <= this.props.videoTime) {
         if (word.end > this.props.videoTime) {
           currentSentIndex = word.sent_index
         }
       }
     }
-    console.log(currentSentIndex);
+
     const selectionState = this.state.editorState.getSelection();
     const newSelectionState = selectionState.merge({
       anchorOffset: 0,
@@ -472,7 +451,23 @@ getSelectedBlockElement = () => {
       newSelectionState
     );
     this.onChange(newEditorState);
-    console.log(selectionState, newSelectionState)
+
+    const newSelectionState2 = new SelectionState({
+      anchorOffset: 0,
+      focusOffset: 0,
+      anchorKey: contentState.getBlocksAsArray()[currentSentIndex].getKey(),
+      focusKey: contentState.getBlocksAsArray()[currentSentIndex].getKey(),
+    });
+    const newContentState = Modifier.replaceText(
+      contentState,
+      newSelectionState2,
+      '',
+      null,
+      null,
+    ) 
+    
+    setTimeout(()=>this.onChange(EditorState.push(newEditorState, newContentState, 'delete-character')), 200)
+    
   };
 
   handleDoubleClick = (event) => {
