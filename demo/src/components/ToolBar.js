@@ -159,6 +159,7 @@ class ToolBar extends React.Component {
   };
 
   handleTrimClick = () => {
+    
     const [startDiv, endDiv] = this.props.selectedDivs;
     const startTime = startDiv
       .querySelectorAll("span.Word")[0]
@@ -173,6 +174,7 @@ class ToolBar extends React.Component {
   };
 
   onClickTrim = () => {
+    console.log(this.props.selectedDivs);
     const [startDiv, endDiv] = this.props.selectedDivs;
     const defaultStartTime = parseFloat(
       startDiv
@@ -208,6 +210,8 @@ class ToolBar extends React.Component {
   };
 
   handleChangeSpeed = (rate) => {
+
+    console.log(this.props.selectedDivs);
     const [startDiv, endDiv] = this.props.selectedDivs;
     const startKey = startDiv.getAttribute("data-offset-key");
     const endKey = endDiv.getAttribute("data-offset-key");
@@ -256,7 +260,7 @@ class ToolBar extends React.Component {
               <div
                 onMouseDown={(event) => {
                   event.preventDefault();
-                  this.handleItemClick();
+                  // this.handleItemClick();
                 }}
               >
                 <Menu.Item name="speed" onClick={this.handleItemClick}>
@@ -267,44 +271,46 @@ class ToolBar extends React.Component {
             }
           >
             <Dropdown.Menu vertical>
-              <div
-              // onMouseDown={(event) => {
-              //   event.preventDefault();
-              // }}
-              >
+              <div>
                 <Dropdown.Item
                   text="x 0.5"
                   onClick={() => this.handleChangeSpeed(0.5)}
+                  onMouseDown={(event) => {
+                    event.preventDefault();
+                  }}
                 />
               </div>
               <div
-              // onMouseDown={(event) => {
-              //   event.preventDefault();
-              // }}
               >
                 <Dropdown.Item
                   text="x 1.0"
                   onClick={() => this.handleChangeSpeed(1.0)}
+                  onMouseDown={(event) => {
+                    event.preventDefault();
+                  }}    
                 />
               </div>
               <div
-              // onMouseDown={(event) => {
-              //   event.preventDefault();
-              // }}
+              onMouseDown={(event) => {
+                event.preventDefault();
+              }}
               >
                 <Dropdown.Item
                   text="x 1.5"
                   onClick={() => this.handleChangeSpeed(1.5)}
+                  onMouseDown={(event) => {
+                    event.preventDefault();
+                  }}    
                 />
               </div>
               <div
-              // onMouseDown={(event) => {
-              //   event.preventDefault();
-              // }}
               >
                 <Dropdown.Item
                   text="x 2.0"
                   onClick={() => this.handleChangeSpeed(2.0)}
+                  onMouseDown={(event) => {
+                    event.preventDefault();
+                  }}    
                 />
               </div>
             </Dropdown.Menu>

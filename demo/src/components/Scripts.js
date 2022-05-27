@@ -19,6 +19,7 @@ import createEntityMap from "../packages/createEntityMap";
 import ForumIcon from "@mui/icons-material/Forum";
 import firebase from "firebase/app";
 import "firebase/database";
+import { ref } from "firebase/database";
 
 const databaseURL = "https://videdita11y-default-rtdb.firebaseio.com/";
 
@@ -52,14 +53,16 @@ class Scripts extends React.Component {
       scriptData: scriptData["words"],
       editorState: EditorState.createEmpty(),
       current_heading: 0,
-      current_sentence: 0,
       cuts: [],
     };
     this.onChange = (editorState) => {
-      this.setState({ editorState: editorState });
+      this.setState({ editorState });
       const divs = this.getSelectedBlockElement();
       this.props.getSelected(divs);
     };
+    this.updateCursor = this.updateCursor.bind(this);
+    this.handleKeyCommand = this.handleKeyCommand.bind(this);
+    this.customKeyBindingFn = this.customKeyBindingFn.bind(this);
   }
 
   componentDidMount() {
@@ -252,7 +255,12 @@ class Scripts extends React.Component {
     const deleteKey = 8;
 
     if (e.keyCode === spaceKey) {
-      return "play/pause";
+      if (this.props.playing) {
+        this.props.playVideo();
+        this.updateCursor(this.state.editorState);
+      } else {
+        return "play";
+      }
     }
     // if (e.keyCode === rightArrow) {
     //   console.log("customKeyBindingFn");
@@ -275,21 +283,12 @@ class Scripts extends React.Component {
     //   return "split-paragraph";
     // }
 
-    // if alt key is pressed in combination with these other keys
-    if (e.altKey && (e.keyCode === spaceKey || e.keyCode === spaceKey)) {
-      e.preventDefault();
-
-      return "keyboard-shortcuts";
-    }
-
     return getDefaultKeyBinding(e);
   };
 
   handleKeyCommand = (command) => {
-    if (command === "play/pause") {
-      if (this.props.playing) {
-        this.props.playVideo();
-      } else {
+    if (command === "play") {
+      if (!this.props.playing) {
         const cursorBlock = this.getCursorBlockElement();
         var BlockStart = cursorBlock
           .querySelectorAll("span.Word")[0]
@@ -297,6 +296,10 @@ class Scripts extends React.Component {
         this.props.jumpVideo(BlockStart, true);
         this.props.playVideo();
       }
+
+      return "handled";
+    } else if (command === "pause") {
+      return "handled";
     } else if (command === "next-sentence") {
       const currentSentenceEnd = this.getCurrentSent().end;
       this.props.jumpVideo(currentSentenceEnd, true);
@@ -340,7 +343,8 @@ class Scripts extends React.Component {
     if (command === "keyboard-shortcuts") {
       return "handled";
     }
-    return "not-handled";
+
+    return "handled";
   };
 
   renderBlockWithTimecodes = () => {
@@ -391,7 +395,6 @@ class Scripts extends React.Component {
         });
       }
     }
-
     return currentSent;
   };
 
@@ -424,7 +427,60 @@ class Scripts extends React.Component {
     }
   };
 
+  updateCursor = (editorState) => {
+    var currentSentIndex = 0;
+    var entity;
+    const contentState = editorState.getCurrentContent();
+    const contentStateConvertEdToRaw = convertToRaw(contentState);
+    const entityMap = contentStateConvertEdToRaw.entityMap;
+    for (var entityKey in entityMap) {
+      entity = entityMap[entityKey];
+      var word = entity.data;
+      if (word.start <= this.props.videoTime) {
+        if (word.end > this.props.videoTime) {
+          currentSentIndex = word.sent_index;
+        }
+      }
+    }
+
+    const selectionState = this.state.editorState.getSelection();
+    const newSelectionState = selectionState.merge({
+      anchorOffset: 0,
+      focusOffset: 0,
+      anchorKey: contentState.getBlocksAsArray()[currentSentIndex].getKey(),
+      focusKey: contentState.getBlocksAsArray()[currentSentIndex].getKey(),
+    });
+    const newEditorState = EditorState.forceSelection(
+      this.state.editorState,
+      newSelectionState
+    );
+    this.onChange(newEditorState);
+
+    const newSelectionState2 = new SelectionState({
+      anchorOffset: 0,
+      focusOffset: 0,
+      anchorKey: contentState.getBlocksAsArray()[currentSentIndex].getKey(),
+      focusKey: contentState.getBlocksAsArray()[currentSentIndex].getKey(),
+    });
+    const newContentState = Modifier.replaceText(
+      contentState,
+      newSelectionState2,
+      "",
+      null,
+      null
+    );
+
+    setTimeout(
+      () =>
+        this.onChange(
+          EditorState.push(newEditorState, newContentState, "delete-character")
+        ),
+      200
+    );
+  };
+
   handleDoubleClick = (event) => {
+    console.log(this.state.editorState.getSelection());
     // nativeEvent --> React giving you the DOM event
     let element = event.nativeEvent.target;
     // find the parent in Word that contains span with time-code start attribute
@@ -459,7 +515,7 @@ class Scripts extends React.Component {
       <section
         onDoubleClick={this.handleDoubleClick}
         className="script"
-        id="videoScriptSection"
+        aria-disabled="true"
       >
         <style scoped>
           {`span.Word[sent-index="${currentSent.sent_index}"] { background-color: ${highlightColour}; text-shadow: 0 0 0.01px black }`}
@@ -479,7 +535,7 @@ class Scripts extends React.Component {
           {`span.Word[data-type="pause"] { background-color: #cce0ff; color: black;}}`}
         </style>
         <Editor
-          ref={this.props.ref}
+          ref={this.props.setDomEditorRef}
           editorState={this.state.editorState}
           onChange={this.onChange}
           handleKeyCommand={this.handleKeyCommand}

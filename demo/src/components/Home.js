@@ -53,12 +53,12 @@ class Home extends Component {
       modalOpen: true,
       hover: false,
       message: false,
+      navigating: true,
       videoID: "ZaQtx54N6iU",
       listening: false,
       transcript: "",
       time: "00:00",
       playedSeconds: 0,
-      snippetIndex: 0,
       currSpan: "",
       started: false,
       currWordStart: 0,
@@ -69,11 +69,13 @@ class Home extends Component {
       currHeading: "",
       currSentenceIdx: "",
     };
+    this.setDomEditorRef = (ref) => {
+      this.script = ref;
+    };
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.jumpVideo = this.jumpVideo.bind(this);
-    this.updateSnippetIndex = this.updateSnippetIndex.bind(this);
     this.onTimeChange = this.onTimeChange.bind(this);
     this.onPause = this._onPause.bind(this);
     this.updatePlaybackRate = this.updatePlaybackRate.bind(this);
@@ -81,6 +83,9 @@ class Home extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.getSelected = this.getSelected.bind(this);
     this.downloadVideo = this.downloadVideo.bind(this);
+    this.navigateScript = this.navigateScript.bind(this);
+    this.navigationComplete = this.navigationComplete.bind(this);
+    this.playVideo = this.playVideo.bind(this);
   }
 
   componentDidMount() {
@@ -104,7 +109,6 @@ class Home extends Component {
     });
     this.setState({ speech: speech });
     this.handleSubmit("ZaQtx54N6iU");
-    this.script.current && this.script.current.focus();
   }
 
   closeModal() {
@@ -118,6 +122,18 @@ class Home extends Component {
   onStartPlay = () => {
     this.setState({ playing: true });
   };
+
+  navigateScript(time) {
+    this.setState({ navigating: true });
+    this.script && this.script.focus();
+    this.jumpVideo(time, true);
+    if (!this.state.playing) this.playVideo();
+  }
+
+  navigationComplete() {
+    console.log("here");
+    this.setState({ navigating: false });
+  }
 
   handleProgress = (state) => {
     // We only want to update time slider if we are not currently seeking
@@ -142,8 +158,9 @@ class Home extends Component {
         this.state.currSpan.getAttribute("sent-index")
       );
       if (this.state.firstEntered) {
-        if (heading !== this.state.currHeading) {
+        if (heading !== this.state.currHeading && heading !== "false") {
           this.setState({ currHeading: heading });
+          if (speech.speaking()) speech.cancel();
           speech
             .speak({
               text: "New heading, " + heading,
@@ -158,9 +175,10 @@ class Home extends Component {
         if (sentenceIdx !== this.state.sentenceIdx) {
           this.setState({ sentenceIdx: sentenceIdx });
           if (moving === "true") {
+            if (speech.speaking()) speech.cancel();
             speech
               .speak({
-                text: "There is a moving",
+                text: "Camera moving",
               })
               .then(() => {
                 console.log("Success !");
@@ -171,9 +189,10 @@ class Home extends Component {
           }
         }
         if (type === "pause") {
+          if (speech.speaking()) speech.cancel();
           speech
             .speak({
-              text: "There is a long pause",
+              text: "Long pause",
             })
             .then(() => {
               console.log("Success !");
@@ -329,8 +348,8 @@ class Home extends Component {
     this.player = player;
   };
 
-  focusRef = (script) => {
-    this.script = script;
+  scriptRef = (ref) => {
+    this.scriptRef = ref;
   };
 
   handleDrawerOpen = () => {
@@ -373,10 +392,6 @@ class Home extends Component {
       this.player.seekTo(this.state.playedSeconds + time);
     }
     // this.setState({playing: true});
-  }
-
-  updateSnippetIndex(index) {
-    this.setState({ snippetIndex: index });
   }
 
   getSelected(divs) {
@@ -429,7 +444,7 @@ class Home extends Component {
   };
 
   _onPause = () => {
-    // console.log(sessionStorage.getItem("sessionID"));
+    //update script cursor
   };
 
   _onPlay = () => {
@@ -517,7 +532,7 @@ class Home extends Component {
               duration={this.state.duration}
             ></Timeline>
             <Container className="navigation-container">
-              <Navigation />
+              <Navigation navigateScript={this.navigateScript} />
             </Container>
           </Container>
           <Container className="script-page">
@@ -530,14 +545,15 @@ class Home extends Component {
               selectedDivs={this.state.selectedDivs}
             ></ToolBar>
             <Scripts
-              ref={this.focusRef}
+              setDomEditorRef={this.setDomEditorRef}
               playVideo={this.playVideo}
               jumpVideo={this.jumpVideo}
               player={this.player}
               videoTime={this.state.playedSeconds}
-              updateSnippetIndex={this.updateSnippetIndex}
               playing={this.state.playing}
               getSelected={this.getSelected}
+              navigationComplete={this.navigationComplete}
+              navigating={this.state.navigating}
             ></Scripts>
           </Container>
         </Container>
