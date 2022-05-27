@@ -79,7 +79,8 @@ class Home extends Component {
     this.updatePlaybackRate = this.updatePlaybackRate.bind(this);
     this.onStartPlay = this.onStartPlay.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    this.getSelected = this.getSelected.bind(this)
+    this.getSelected = this.getSelected.bind(this);
+    this.downloadVideo = this.downloadVideo.bind(this);
   }
 
   componentDidMount() {
@@ -195,12 +196,14 @@ class Home extends Component {
         this.state.currWordEnd - 0.5 <= currTime &&
         currTime <= this.state.currWordEnd
       ) {
+        console.log(this.state.currSpan.getAttribute("word-index"));
         var nextSpan;
         const children = document.querySelectorAll("span.Word");
         nextSpan =
           children[
             Array.prototype.indexOf.call(children, this.state.currSpan) + 1
           ];
+
         // if (!this.state.currSpan.nextSibling) {
         //   const nextBlock = this.state.currSpan.parentElement.parentElement.parentElement.parentElement.nextSibling.firstElementChild.firstElementChild;
         //   //end of sentence
@@ -215,7 +218,6 @@ class Home extends Component {
         // } else if (this.state.currSpan.nextSibling.nextSibling) { //next word after space
         //   nextSpan = this.state.currSpan.nextSibling.nextSibling;
         // }
-
         if (nextSpan) {
           const nextIndex = parseInt(nextSpan.getAttribute("word-index"));
           const currIndex = parseInt(
@@ -223,7 +225,10 @@ class Home extends Component {
           );
           const currEndTrim = this.state.currSpan.getAttribute("trim-end");
           const nextStartTrim = nextSpan.getAttribute("trim-start");
-
+          // if (12 <= currIndex && currIndex <= 17) {
+          //   console.log(nextIndex);
+          //   console.log(currIndex);
+          // }
           // if jump is needed (because a sentence in between was deleted)
           if (
             nextIndex > currIndex + 1 ||
@@ -303,7 +308,6 @@ class Home extends Component {
             const sentenceIdx = parseInt(
               children[i].getAttribute("sent-index")
             );
-            console.log("c");
             this.setState({
               currSpan: children[i],
               currWordStart: parseFloat(children[i].getAttribute("data-start")),
@@ -336,6 +340,19 @@ class Home extends Component {
     this.setState({ open: false });
   };
 
+  downloadVideo = (mimeType) => {
+    var elHtml = document.getElementById("videoScriptSection").innerHTML;
+    var link = document.createElement("a");
+    mimeType = mimeType || "text/plain";
+
+    link.setAttribute("download", "video.html");
+    link.setAttribute(
+      "href",
+      "data:" + mimeType + ";charset=utf-8," + encodeURIComponent(elHtml)
+    );
+    link.click();
+  };
+
   handleSubmit(videoID) {
     this.setState({ start: 0, videoID: videoID, playing: false });
     this.handleDrawerClose();
@@ -362,10 +379,10 @@ class Home extends Component {
     this.setState({ snippetIndex: index });
   }
 
-  getSelected (divs) {
+  getSelected(divs) {
     this.setState({
-      selectedDivs: divs
-    })
+      selectedDivs: divs,
+    });
   }
 
   onTimeChange(event, value) {
@@ -524,6 +541,7 @@ class Home extends Component {
             ></Scripts>
           </Container>
         </Container>
+        <Button onClick={this.downloadVideo}>Download the video</Button>
       </div>
     );
   }

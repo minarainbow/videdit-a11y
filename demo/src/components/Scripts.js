@@ -17,10 +17,10 @@ import stt2Draft from "../packages/stt2draft";
 import gcpSttToDraft from "../packages/google-stt2draft";
 import createEntityMap from "../packages/createEntityMap";
 import ForumIcon from "@mui/icons-material/Forum";
-import firebase from 'firebase/app';
-import 'firebase/database';
+import firebase from "firebase/app";
+import "firebase/database";
 
-const databaseURL = "https://videdita11y-default-rtdb.firebaseio.com/"
+const databaseURL = "https://videdita11y-default-rtdb.firebaseio.com/";
 
 // DraftJs decorator to recognize which entity is which
 // and know what to apply to what component
@@ -59,7 +59,7 @@ class Scripts extends React.Component {
       this.setState({ editorState: editorState });
       const divs = this.getSelectedBlockElement();
       this.props.getSelected(divs);
-    }
+    };
   }
 
   componentDidMount() {
@@ -77,7 +77,6 @@ class Scripts extends React.Component {
     let blocks = stt2Draft(scriptData);
     return { blocks, entityMap: createEntityMap(blocks) };
   }
-
 
   loadData() {
     // fetch( `${databaseURL+'/scriptdata'}/.json`).then(res => {
@@ -116,117 +115,131 @@ class Scripts extends React.Component {
     scriptData.splice(deleted_index, 1);
 
     // update backend
-    fetch(`${databaseURL+'/sessions/'+ sessionStorage.getItem('sessionID') +'/scriptdata/'}/.json`, {
-      method: 'POST',
-      body: JSON.stringify(scriptData)
-  }).then(res => {
-      if (res.status !== 200) {
-          throw new Error(res.statusText);
+    fetch(
+      `${
+        databaseURL +
+        "/sessions/" +
+        sessionStorage.getItem("sessionID") +
+        "/scriptdata/"
+      }/.json`,
+      {
+        method: "POST",
+        body: JSON.stringify(scriptData),
       }
-      return res.json();
-  }).then(() => {
-      //console.log("Dummy data succesfully sent!")
-  })
+    )
+      .then((res) => {
+        if (res.status !== 200) {
+          throw new Error(res.statusText);
+        }
+        return res.json();
+      })
+      .then(() => {
+        //console.log("Dummy data succesfully sent!")
+      });
 
     return scriptData;
   }
-  
+
   getBlockAndOffset = (
     editorState,
     selection,
     offset,
     startFromEnd = false,
-    limitedToSingleBlock = false,
-) => {
-    const noValue = {block: null, newOffset: null};
+    limitedToSingleBlock = false
+  ) => {
+    const noValue = { block: null, newOffset: null };
     const content = editorState.getCurrentContent();
     let newOffset;
     let block;
 
     if (startFromEnd) {
-        newOffset = selection.getEndOffset() + offset;
-        block = content.getBlockForKey(selection.getEndKey());
+      newOffset = selection.getEndOffset() + offset;
+      block = content.getBlockForKey(selection.getEndKey());
     } else {
-        newOffset = selection.getStartOffset() + offset;
-        block = content.getBlockForKey(selection.getStartKey());
+      newOffset = selection.getStartOffset() + offset;
+      block = content.getBlockForKey(selection.getStartKey());
     }
 
     if (block == null) {
-        return noValue;
+      return noValue;
     }
 
     if (limitedToSingleBlock === true) {
-        const offsetWithinBlock = startFromEnd === true
-            ? Math.min(newOffset, block.getLength())
-            : Math.max(newOffset, 0);
+      const offsetWithinBlock =
+        startFromEnd === true
+          ? Math.min(newOffset, block.getLength())
+          : Math.max(newOffset, 0);
 
-        return {block: block, newOffset: offsetWithinBlock};
+      return { block: block, newOffset: offsetWithinBlock };
     }
 
     while (newOffset < 0) {
-        block = content.getBlockBefore(block.getKey());
-        if (block == null) {
-            return noValue;
-        }
-        newOffset = block.getLength() + newOffset + 1;
+      block = content.getBlockBefore(block.getKey());
+      if (block == null) {
+        return noValue;
+      }
+      newOffset = block.getLength() + newOffset + 1;
     }
 
     while (newOffset > block.getLength()) {
-        newOffset = newOffset - block.getLength() - 1;
-        block = content.getBlockAfter(block.getKey());
-        if (block == null) {
-            return noValue;
-        }
+      newOffset = newOffset - block.getLength() - 1;
+      block = content.getBlockAfter(block.getKey());
+      if (block == null) {
+        return noValue;
+      }
     }
 
-    return {block, newOffset};
-};
+    return { block, newOffset };
+  };
 
-
-getCursorBlockElement = () => {
-  var selection = window.getSelection()
-  if (selection.rangeCount == 0) return null
-  var node = selection.getRangeAt(0).startContainer
-  do {
-    if (node.getAttribute && node.getAttribute('data-block') == 'true')
-      return node
-    node = node.parentElement
-  } while (node != null)
-  return null
-  
-};
-
-getSelectedBlockElement = () => {
-  var selection = window.getSelection()
-  if (selection.rangeCount == 0) return null
-  var node;
-
-  if (selection.type === "Caret") {
-    node = selection.getRangeAt(0).startContainer
+  getCursorBlockElement = () => {
+    var selection = window.getSelection();
+    if (selection.rangeCount == 0) return null;
+    var node = selection.getRangeAt(0).startContainer;
     do {
-      if (node.getAttribute && node.getAttribute('data-block') == 'true')
-        return [node, node]
-      node = node.parentNode
-    } while (node != null)
-    return null
-  }
-  else { // type === Range
-    var startNode = selection.getRangeAt(0).startContainer;
-    do {
-      if (startNode.getAttribute && startNode.getAttribute('data-block') == 'true')
-        break;
-      startNode = startNode.parentNode
-    } while (startNode != null)
-    var endNode = selection.getRangeAt(0).endContainer;
-    do {
-      if (endNode.getAttribute && endNode.getAttribute('data-block') == 'true')
-        break;
-      endNode = endNode.parentNode
-    } while (endNode != null)
-    return [startNode, endNode]
-  }
-  
-};
+      if (node.getAttribute && node.getAttribute("data-block") == "true")
+        return node;
+      node = node.parentElement;
+    } while (node != null);
+    return null;
+  };
+
+  getSelectedBlockElement = () => {
+    var selection = window.getSelection();
+    if (selection.rangeCount == 0) return null;
+    var node;
+
+    if (selection.type === "Caret") {
+      node = selection.getRangeAt(0).startContainer;
+      do {
+        if (node.getAttribute && node.getAttribute("data-block") == "true")
+          return [node, node];
+        node = node.parentNode;
+      } while (node != null);
+      return null;
+    } else {
+      // type === Range
+      var startNode = selection.getRangeAt(0).startContainer;
+      do {
+        if (
+          startNode.getAttribute &&
+          startNode.getAttribute("data-block") == "true"
+        )
+          break;
+        startNode = startNode.parentNode;
+      } while (startNode != null);
+      var endNode = selection.getRangeAt(0).endContainer;
+      do {
+        if (
+          endNode.getAttribute &&
+          endNode.getAttribute("data-block") == "true"
+        )
+          break;
+        endNode = endNode.parentNode;
+      } while (endNode != null);
+      return [startNode, endNode];
+    }
+  };
 
   /**
    * Listen for draftJs custom key bindings
@@ -238,8 +251,7 @@ getSelectedBlockElement = () => {
     const rightArrow = 39;
     const deleteKey = 8;
 
-    if (e.keyCode === spaceKey) {                                                              
-
+    if (e.keyCode === spaceKey) {
       return "play/pause";
     }
     // if (e.keyCode === rightArrow) {
@@ -275,16 +287,16 @@ getSelectedBlockElement = () => {
 
   handleKeyCommand = (command) => {
     if (command === "play/pause") {
-      if (this.props.playing){
+      if (this.props.playing) {
         this.props.playVideo();
-      }
-      else{
+      } else {
         const cursorBlock = this.getCursorBlockElement();
-        var BlockStart = cursorBlock.querySelectorAll("span.Word")[0].getAttribute("data-start");
+        var BlockStart = cursorBlock
+          .querySelectorAll("span.Word")[0]
+          .getAttribute("data-start");
         this.props.jumpVideo(BlockStart, true);
         this.props.playVideo();
       }
-
     } else if (command === "next-sentence") {
       const currentSentenceEnd = this.getCurrentSent().end;
       this.props.jumpVideo(currentSentenceEnd, true);
@@ -311,20 +323,17 @@ getSelectedBlockElement = () => {
         scriptData: scriptData,
         editorState: editorState,
       }));
-      
+
       // if jumpcut
-      const deleted_cut = {index: deleted_index, jump_cut: true}
-      if (this.getNextSent().heading !== deleted_element.heading){
-        deleted_cut.jump_cut = true
-      } 
-      
-      // jump to next 
+      const deleted_cut = { index: deleted_index, jump_cut: true };
+      if (this.getNextSent().heading !== deleted_element.heading) {
+        deleted_cut.jump_cut = true;
+      }
+
+      // jump to next
       const newWordStart = this.getCurrentSent().end;
       this.props.jumpVideo(newWordStart, true);
-    }
-
-    else if (command === "split-paragraph") {
-      
+    } else if (command === "split-paragraph") {
       // this.changeEditorSelection(this.state.editorState, 2, 3, true);
     }
 
@@ -344,16 +353,16 @@ getSelectedBlockElement = () => {
         showTimecodes: true,
         timecodeOffset: this.props.timecodeOffset,
         editorState: this.state.editorState,
-        setEditorNewContentStateSpeakersUpdate: this.props.setEditorNewContentStateSpeakersUpdate,
+        setEditorNewContentStateSpeakersUpdate:
+          this.props.setEditorNewContentStateSpeakersUpdate,
         onWordClick: this.handleWordClick,
         isEditable: false,
       },
     };
   };
 
-  
   getCurrentSent = () => {
-    var currentSentIndex = 0
+    var currentSentIndex = 0;
     if (scriptData) {
       const contentState = this.state.editorState.getCurrentContent();
       const contentStateConvertEdToRaw = convertToRaw(contentState);
@@ -364,12 +373,12 @@ getSelectedBlockElement = () => {
         const word = entity.data;
         if (word.start <= this.props.videoTime) {
           if (word.end > this.props.videoTime) {
-            currentSentIndex = word.sent_index
+            currentSentIndex = word.sent_index;
           }
         }
       }
     }
-    
+
     const currentSent = this.state.scriptData[currentSentIndex];
     if (currentSent.start !== "NA") {
       const currentSentElement = document.querySelector(
@@ -408,12 +417,11 @@ getSelectedBlockElement = () => {
             nextSent.end = word.end;
             nextSent.index = word.index;
             nextSent.heading = word.heading;
-            return nextSent
-          } 
+            return nextSent;
+          }
         }
       }
     }
-
   };
 
   handleDoubleClick = (event) => {
@@ -448,7 +456,11 @@ getSelectedBlockElement = () => {
     const time = Math.round(this.props.videoTime * 4.0) / 4.0;
     const correctionBorder = "1px dotted blue";
     return (
-      <section onDoubleClick={this.handleDoubleClick} className="script">
+      <section
+        onDoubleClick={this.handleDoubleClick}
+        className="script"
+        id="videoScriptSection"
+      >
         <style scoped>
           {`span.Word[sent-index="${currentSent.sent_index}"] { background-color: ${highlightColour}; text-shadow: 0 0 0.01px black }`}
           {`span.Word[sent-index="${currentSent.sent_index}"]+span { background-color: ${highlightColour} }`}
@@ -464,7 +476,7 @@ getSelectedBlockElement = () => {
           {`span.Word[data-heading="${currentSent.heading}"]`}
         </style>
         <style scoped>
-        {`span.Word[data-type="pause"] { background-color: #cce0ff; color: black;}}`}
+          {`span.Word[data-type="pause"] { background-color: #cce0ff; color: black;}}`}
         </style>
         <Editor
           ref={this.props.ref}
