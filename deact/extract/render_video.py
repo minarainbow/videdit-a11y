@@ -38,7 +38,6 @@ merged_timestamps.append((start, timestamps[-1][1]))
 # Cut and merge videos according to merged_timestamps
 # https://codingdeekshi.com/python-3-moviepy-script-to-split-video-and-merge/
 # loading video dsa gfg intro video
-merged_timestamps = [('0', '20'), ('50', '250')]
 clips = []
 for segment in merged_timestamps:
     clip = original_video.subclip(float(segment[0]), float(segment[1]))
