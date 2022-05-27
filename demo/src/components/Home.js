@@ -53,7 +53,6 @@ class Home extends Component {
       modalOpen: true,
       hover: false,
       message: false,
-      navigating: true,
       videoID: "ZaQtx54N6iU",
       listening: false,
       transcript: "",
@@ -84,7 +83,6 @@ class Home extends Component {
     this.getSelected = this.getSelected.bind(this);
     this.downloadVideo = this.downloadVideo.bind(this);
     this.navigateScript = this.navigateScript.bind(this);
-    this.navigationComplete = this.navigationComplete.bind(this);
     this.playVideo = this.playVideo.bind(this);
   }
 
@@ -115,6 +113,7 @@ class Home extends Component {
     this.setState({ modalOpen: false });
   }
 
+
   updatePlaybackRate = (rate) => {
     this.setState({ playbackRate: rate });
   };
@@ -124,15 +123,13 @@ class Home extends Component {
   };
 
   navigateScript(time) {
-    this.setState({ navigating: true });
-    this.script && this.script.focus();
+    this.script &&  this.script.focus();
     this.jumpVideo(time, true);
     if (!this.state.playing) this.playVideo();
   }
 
-  navigationComplete() {
-    console.log("here");
-    this.setState({ navigating: false });
+  focusScript(){
+
   }
 
   handleProgress = (state) => {
@@ -160,46 +157,49 @@ class Home extends Component {
       if (this.state.firstEntered) {
         if (heading !== this.state.currHeading && heading !== "false") {
           this.setState({ currHeading: heading });
-          if (speech.speaking()) speech.cancel();
-          speech
-            .speak({
-              text: "New heading, " + heading,
-            })
-            .then(() => {
-              console.log("Success !");
-            })
-            .catch((e) => {
-              console.error("An error occurred :", e);
-            });
+          // if (speech.speaking()) 
+          // speech.cancel()
+          // speech
+          //   .speak({
+          //     text: "New heading, " + heading,
+          //   })
+          //   .then(() => {
+          //     console.log("Success !");
+          //   })
+          //   .catch((e) => {
+          //     console.error("An error occurred :", e);
+          //   });
         }
         if (sentenceIdx !== this.state.sentenceIdx) {
           this.setState({ sentenceIdx: sentenceIdx });
           if (moving === "true") {
-            if (speech.speaking()) speech.cancel();
-            speech
-              .speak({
-                text: "Camera moving",
-              })
-              .then(() => {
-                console.log("Success !");
-              })
-              .catch((e) => {
-                console.error("An error occurred :", e);
-              });
+            // if (speech.speaking()) 
+            //   speech.cancel()
+            // speech
+            //   .speak({
+            //     text: "Camera moving",
+            //   })
+            //   .then(() => {
+            //     console.log("Success !");
+            //   })
+            //   .catch((e) => {
+            //     console.error("An error occurred :", e);
+            //   });
           }
         }
         if (type === "pause") {
-          if (speech.speaking()) speech.cancel();
-          speech
-            .speak({
-              text: "Long pause",
-            })
-            .then(() => {
-              console.log("Success !");
-            })
-            .catch((e) => {
-              console.error("An error occurred :", e);
-            });
+          // if (speech.speaking()) 
+          //   speech.cancel()
+          // speech
+          //   .speak({
+          //     text: "Long pause",
+          //   })
+          //   .then(() => {
+          //     console.log("Success !");
+          //   })
+          //   .catch((e) => {
+          //     console.error("An error occurred :", e);
+          //   });
         }
       }
 
@@ -213,7 +213,7 @@ class Home extends Component {
       // when the sentence is about to finish (to determine jump or not)
       if (
         this.state.currWordEnd - 0.5 <= currTime &&
-        currTime <= this.state.currWordEnd
+        currTime <= this.state.currWordEnd + 0.5
       ) {
         console.log(this.state.currSpan.getAttribute("word-index"));
         var nextSpan;
@@ -223,20 +223,6 @@ class Home extends Component {
             Array.prototype.indexOf.call(children, this.state.currSpan) + 1
           ];
 
-        // if (!this.state.currSpan.nextSibling) {
-        //   const nextBlock = this.state.currSpan.parentElement.parentElement.parentElement.parentElement.nextSibling.firstElementChild.firstElementChild;
-        //   //end of sentence
-        //   if (nextBlock.classList.contains("sentence"))
-        //     nextSpan = nextBlock.firstChild.firstChild;
-        //   //end of heading content
-        //   else{
-        //     nextSpan = nextBlock.nextSibling.firstChild.firstChild;
-        //   }
-        // } else if (this.state.currSpan.nextSibling.hasAttribute("data-start")) { // next word
-        //   nextSpan = this.state.currSpan.nextSibling;
-        // } else if (this.state.currSpan.nextSibling.nextSibling) { //next word after space
-        //   nextSpan = this.state.currSpan.nextSibling.nextSibling;
-        // }
         if (nextSpan) {
           const nextIndex = parseInt(nextSpan.getAttribute("word-index"));
           const currIndex = parseInt(
@@ -455,7 +441,7 @@ class Home extends Component {
   };
 
   render() {
-    const { videoID, playing, playbackRate, playedSeconds, modalOpen } =
+    const { videoID, playing, playbackRate, playedSeconds, modalOpen , commentOpen} =
       this.state;
     return (
       <div className="Home">
@@ -522,7 +508,7 @@ class Home extends Component {
                 onProgress={this.handleProgress}
                 onDuration={this.handleDuration}
                 onSeek={this._onSeek}
-                progressInterval={100}
+                progressInterval={50}
               ></ReactPlayer>
             </Container>
             {/* <Button onClick={this.onClickPlay}>play</Button>
@@ -543,6 +529,7 @@ class Home extends Component {
               currWordEnd={this.state.currWordEnd}
               onStartPlay={this.onStartPlay}
               selectedDivs={this.state.selectedDivs}
+              focusScript={this.focusScript}
             ></ToolBar>
             <Scripts
               setDomEditorRef={this.setDomEditorRef}
@@ -552,8 +539,6 @@ class Home extends Component {
               videoTime={this.state.playedSeconds}
               playing={this.state.playing}
               getSelected={this.getSelected}
-              navigationComplete={this.navigationComplete}
-              navigating={this.state.navigating}
             ></Scripts>
           </Container>
         </Container>

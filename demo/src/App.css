@@ -167,7 +167,10 @@
   text-align: center;
 }
 
-
+.comment {
+  margin: 100px;
+  /* position: absolute; */
+}
 
 .tool-bar {
   display: flex;

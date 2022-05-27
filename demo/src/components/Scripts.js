@@ -76,6 +76,8 @@ class Scripts extends React.Component {
     return false;
   };
 
+
+
   sttJsonAdapter(scriptData) {
     let blocks = stt2Draft(scriptData);
     return { blocks, entityMap: createEntityMap(blocks) };
@@ -192,20 +194,23 @@ class Scripts extends React.Component {
       }
     }
 
-    return { block, newOffset };
-  };
+    return {block, newOffset};
+};
 
-  getCursorBlockElement = () => {
-    var selection = window.getSelection();
-    if (selection.rangeCount == 0) return null;
-    var node = selection.getRangeAt(0).startContainer;
-    do {
-      if (node.getAttribute && node.getAttribute("data-block") == "true")
-        return node;
-      node = node.parentElement;
-    } while (node != null);
-    return null;
-  };
+
+getCursorBlockElement = () => {
+  var selection = window.getSelection()
+  if (selection.rangeCount == 0) return null
+  var node = selection.getRangeAt(0).startContainer
+  do {
+    if (node.getAttribute && node.getAttribute('data-block') == 'true')
+      return node
+    node = node.parentElement
+  } while (node != null)
+  return null
+  
+};
+
 
   getSelectedBlockElement = () => {
     var selection = window.getSelection();
@@ -287,6 +292,7 @@ class Scripts extends React.Component {
   };
 
   handleKeyCommand = (command) => {
+    console.log(command)
     if (command === "play") {
       if (!this.props.playing) {
         const cursorBlock = this.getCursorBlockElement();
@@ -344,7 +350,7 @@ class Scripts extends React.Component {
       return "handled";
     }
 
-    return "handled";
+    return "not-handled";
   };
 
   renderBlockWithTimecodes = () => {
@@ -428,27 +434,18 @@ class Scripts extends React.Component {
   };
 
   updateCursor = (editorState) => {
-    var currentSentIndex = 0;
-    var entity;
+    var currentSentIndex = this.getCurrentSent().sent_index;
     const contentState = editorState.getCurrentContent();
-    const contentStateConvertEdToRaw = convertToRaw(contentState);
-    const entityMap = contentStateConvertEdToRaw.entityMap;
-    for (var entityKey in entityMap) {
-      entity = entityMap[entityKey];
-      var word = entity.data;
-      if (word.start <= this.props.videoTime) {
-        if (word.end > this.props.videoTime) {
-          currentSentIndex = word.sent_index;
-        }
-      }
-    }
-
+    const blocksArray = contentState.getBlocksAsArray();
     const selectionState = this.state.editorState.getSelection();
+    const currentBlock = blocksArray.filter(function (block) {
+      return block.getData().get('sent_index') == currentSentIndex;
+    })[0];
     const newSelectionState = selectionState.merge({
       anchorOffset: 0,
       focusOffset: 0,
-      anchorKey: contentState.getBlocksAsArray()[currentSentIndex].getKey(),
-      focusKey: contentState.getBlocksAsArray()[currentSentIndex].getKey(),
+      anchorKey: currentBlock.getKey(),
+      focusKey: currentBlock.getKey(),
     });
     const newEditorState = EditorState.forceSelection(
       this.state.editorState,
@@ -459,8 +456,8 @@ class Scripts extends React.Component {
     const newSelectionState2 = new SelectionState({
       anchorOffset: 0,
       focusOffset: 0,
-      anchorKey: contentState.getBlocksAsArray()[currentSentIndex].getKey(),
-      focusKey: contentState.getBlocksAsArray()[currentSentIndex].getKey(),
+      anchorKey: currentBlock.getKey(),
+      focusKey: currentBlock.getKey(),
     });
     const newContentState = Modifier.replaceText(
       contentState,
@@ -512,11 +509,8 @@ class Scripts extends React.Component {
     const time = Math.round(this.props.videoTime * 4.0) / 4.0;
     const correctionBorder = "1px dotted blue";
     return (
-      <section
-        onDoubleClick={this.handleDoubleClick}
-        className="script"
-        aria-disabled="true"
-      >
+      <section onDoubleClick={this.handleDoubleClick} className="script" aria-disabled="true" >
+        
         <style scoped>
           {`span.Word[sent-index="${currentSent.sent_index}"] { background-color: ${highlightColour}; text-shadow: 0 0 0.01px black }`}
           {`span.Word[sent-index="${currentSent.sent_index}"]+span { background-color: ${highlightColour} }`}

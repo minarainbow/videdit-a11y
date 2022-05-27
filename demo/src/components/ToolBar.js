@@ -9,7 +9,7 @@ import ContentCutIcon from "@mui/icons-material/ContentCut";
 import AddCommentIcon from "@mui/icons-material/AddComment";
 import TextField from "@mui/material/TextField";
 import { FormControlUnstyledContext } from "@mui/base";
-import { child } from "firebase/database";
+import Comment from './Comment';
 
 const results = [
   {
@@ -36,14 +36,18 @@ class ToolBar extends React.Component {
       activeItem: null,
       rangeClick: false,
       invalidRange: false,
+      noneSelected: false,
       trimStartTime: "",
       trimEndTime: "",
+      commentOpen: false,
+      selectedDivs: []
     };
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.timeoutRef = React.createRef();
     this.dispatch = this.dispatch.bind(this);
     this.startRef = React.createRef();
     this.endRef = React.createRef();
+    this.changeCommentState = this.changeCommentState.bind(this);
   }
 
   initialState = {
@@ -52,12 +56,12 @@ class ToolBar extends React.Component {
     value: "",
   };
 
-  // source = _.times(5, () => ({
-  //   title: faker.company.companyName(),
-  //   description: faker.company.catchPhrase(),
-  //   image: faker.internet.avatar(),
-  //   price: faker.finance.amount(0, 100, 2, '$'),
-  // }))
+  changeCommentState() {
+    this.setState({ commentOpen: !this.state.commentOpen})
+
+    setTimeout(()=>this.setState({selectedDivs: this.props.selectedDivs}), 200);
+    setTimeout(()=>console.log(this.state.selectedDivs), 300);
+  }
 
   dispatch(action) {
     console.log("dispatch: ", action);
@@ -106,19 +110,15 @@ class ToolBar extends React.Component {
   handleSliderChange = (e) => {};
 
   handleItemClick = (e, { name }) => {
+    if (!this.props.selectedDivs){
+      this.setState({noneSelected: true})
+      setTimeout(()=>this.setState({ noneSelected: false }), 1500);
+      return
+    }
     this.setState({ activeItem: name });
   };
 
-  handleAddComment = () => {
-    const currSpan = document.querySelector(
-      `span.Word[data-start="${this.props.currWordStart}"]`
-    );
-
-    const comment = prompt("Add comments");
-    if (comment !== "" && comment !== null && currSpan) {
-      currSpan.setAttribute("data-comment", comment);
-    }
-  };
+  
 
   formatTime(time) {
     const integer = Math.floor(time);
@@ -159,7 +159,10 @@ class ToolBar extends React.Component {
   };
 
   handleTrimClick = () => {
-    
+    if (!this.props.selectedDivs){
+      this.setState({noneSelected: true})
+      return
+    }
     const [startDiv, endDiv] = this.props.selectedDivs;
     const startTime = startDiv
       .querySelectorAll("span.Word")[0]
@@ -191,6 +194,7 @@ class ToolBar extends React.Component {
     const endTime = this.calculateTime(this.endRef.current.value);
     if (startTime < defaultStartTime || endTime > defaultEndTime) {
       this.setState({ invalidRange: true });
+      setTimeout(()=>this.setState({ invalidRange: false }), 300)
     } else {
       if (startTime !== oldStartTime) {
         startDiv
@@ -210,7 +214,7 @@ class ToolBar extends React.Component {
   };
 
   handleChangeSpeed = (rate) => {
-
+    
     console.log(this.props.selectedDivs);
     const [startDiv, endDiv] = this.props.selectedDivs;
     const startKey = startDiv.getAttribute("data-offset-key");
@@ -250,10 +254,22 @@ class ToolBar extends React.Component {
         // }}
       >
         <Menu icon="labeled" className="tool-icon">
-          <Menu.Item name="comment" onClick={this.handleAddComment}>
-            <AddCommentIcon style={{ fontSize: "30px" }} />
-            Comment
-          </Menu.Item>
+
+          <Comment
+            commentButton={
+              <div
+                onMouseDown={(event) => {
+                  event.preventDefault();
+                }}>
+            <Menu.Item role="menuitme" tabindex="0" name="comment" onClick={this.changeCommentState}>
+              <AddCommentIcon style={{ fontSize: "30px" }} />
+              Comment
+            </Menu.Item>
+            </div>}
+            isOpen={this.state.commentOpen}
+            changeCommentState={this.changeCommentState}
+            selectedDivs={this.state.selectedDivs}
+          ></Comment>
           <Dropdown
             icon={null}
             trigger={
@@ -391,21 +407,11 @@ class ToolBar extends React.Component {
         ) : (
           <></>
         )}
-        {/* <Search
-          fluid
-          icon="search"
-          placeholder="Search..."
-          results={results}
-          resultRenderer={resRender}
-          onSearchChange={this.handleSearchChange}
-          onResultSelect={(e, data) =>
-            this.dispatch({
-              type: "UPDATE_SELECTION",
-              selection: data.result.keyword,
-            })
-          }
-          value={value}
-        /> */}
+        {this.state.noneSelected ? (
+          <div style={{ color: "red" }}>No range selected</div>
+        ) : (
+          <></>
+        )}{" "}
       </div>
     );
   }
