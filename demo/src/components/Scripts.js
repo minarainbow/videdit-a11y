@@ -59,6 +59,12 @@ class Scripts extends React.Component {
       this.setState({ editorState });
       const divs = this.getSelectedBlockElement();
       this.props.getSelected(divs);
+      const currentContentState = this.state.editorState.getCurrentContent()
+      const newContentState = editorState.getCurrentContent()
+
+      if (currentContentState !== newContentState && ['backspace-character', 'remove-range', 'undo'].includes(editorState.getLastChangeType())) {
+        setTimeout(()=>this.props.updateDuration(), 300);
+      } 
     };
     this.updateCursor = this.updateCursor.bind(this);
     this.handleKeyCommand = this.handleKeyCommand.bind(this);
@@ -292,7 +298,6 @@ getCursorBlockElement = () => {
   };
 
   handleKeyCommand = (command) => {
-    console.log(command)
     if (command === "play") {
       if (!this.props.playing) {
         const cursorBlock = this.getCursorBlockElement();
@@ -317,31 +322,6 @@ getCursorBlockElement = () => {
       } else {
         this.props.jumpVideo(currentSentenceStart, true);
       }
-    } else if (command === "delete-sentence") {
-      // update UI
-      const deleted_element = this.getCurrentSent();
-      const deleted_index = deleted_element.index;
-      var scriptData = this.updateVideoScript(deleted_element);
-      const blocks = this.sttJsonAdapter(scriptData);
-      const contentState = convertFromRaw(blocks);
-      const editorState = EditorState.createWithContent(
-        contentState,
-        decorator
-      );
-      this.setState((prevState) => ({
-        scriptData: scriptData,
-        editorState: editorState,
-      }));
-
-      // if jumpcut
-      const deleted_cut = { index: deleted_index, jump_cut: true };
-      if (this.getNextSent().heading !== deleted_element.heading) {
-        deleted_cut.jump_cut = true;
-      }
-
-      // jump to next
-      const newWordStart = this.getCurrentSent().end;
-      this.props.jumpVideo(newWordStart, true);
     } else if (command === "split-paragraph") {
       // this.changeEditorSelection(this.state.editorState, 2, 3, true);
     }
@@ -509,7 +489,7 @@ getCursorBlockElement = () => {
     const time = Math.round(this.props.videoTime * 4.0) / 4.0;
     const correctionBorder = "1px dotted blue";
     return (
-      <section onDoubleClick={this.handleDoubleClick} className="script" aria-disabled="true" >
+      <section id="videoScriptSection" onDoubleClick={this.handleDoubleClick} className="script" aria-disabled="true" >
         
         <style scoped>
           {`span.Word[sent-index="${currentSent.sent_index}"] { background-color: ${highlightColour}; text-shadow: 0 0 0.01px black }`}

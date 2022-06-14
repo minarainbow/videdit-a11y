@@ -57,6 +57,7 @@ export default class Comment extends React.Component {
     render() {
         const { open, selectRole, isOpen } = this.props;
         const { comment} = this.state;
+
         return (     
           <Popup
             className="comment"

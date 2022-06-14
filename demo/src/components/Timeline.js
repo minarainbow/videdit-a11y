@@ -2,9 +2,7 @@ import React from "react";
 import '../App.css';
 import {Progress} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-import { Clickable } from 'react-clickable';
 import { css } from "@emotion/react";
-import ScaleLoader from "react-spinners/ScaleLoader";
 
 
 function formatTime(time) {
@@ -51,7 +49,7 @@ export default class Timeline extends React.Component {
         return (
             <div className="progressBar-container">
                 <div className="progressBar">
-                    <Progress percent={Math.floor(videoTime/duration*100)}color='light-grey' />
+                    <Progress percent={Math.floor(videoTime/duration*100)}color='grey' />
                     <div className="time-progress">{formatTime(videoTime)}</div>
                 </div>
             </div>

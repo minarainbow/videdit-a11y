@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, createRef, useRef} from "react";
 import ReactPlayer from "react-player";
 import { Header, Button, Image, Message } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
@@ -15,7 +15,6 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import Divider from "@material-ui/core/Divider";
 import { clips } from "../scripts";
-import KeyboardEventHandler from "react-keyboard-event-handler";
 import Speech from "speak-tts";
 import ToolBar from "./ToolBar";
 import Scripts from "./Scripts";
@@ -23,31 +22,21 @@ import Instruction from "./Instruction";
 import firebase from "firebase/app";
 import "firebase/database";
 import Navigation from "./Navigation";
+import VideoComposition from "./MyVideo";
+import { Player, PlayerRef } from "@remotion/player";
+import { getVideoMetadata } from "@remotion/media-utils";
+import IntervalRenderer from 'react-interval-renderer';
 
-const databaseURL = "https://videdita11y-default-rtdb.firebaseio.com/";
 
-function formatTime(time) {
-  time = Math.round(time);
-  var minutes = Math.floor(time / 60),
-    seconds = time - minutes * 60;
-
-  seconds = seconds < 10 ? "0" + seconds : seconds;
-  var time = minutes + ":" + seconds;
-  if (time.length < 5) time = 0 + time;
-  return time;
-}
-
-function deformatTime(string) {
-  const arr = string.split(":");
-  var minutes = parseInt(arr[0]) * 60;
-  var seconds = parseInt(arr[1]);
-  return minutes + seconds;
-}
 
 class Home extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
+      current: null,
+      originalDuration: 1,
+      durationInFrames: 1,
       playing: false,
       playbackRate: 1.0,
       modalOpen: true,
@@ -55,7 +44,6 @@ class Home extends Component {
       message: false,
       videoID: "ZaQtx54N6iU",
       listening: false,
-      transcript: "",
       time: "00:00",
       playedSeconds: 0,
       currSpan: "",
@@ -67,6 +55,7 @@ class Home extends Component {
       firstEntered: true,
       currHeading: "",
       currSentenceIdx: "",
+      children: []
     };
     this.setDomEditorRef = (ref) => {
       this.script = ref;
@@ -75,8 +64,7 @@ class Home extends Component {
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.jumpVideo = this.jumpVideo.bind(this);
-    this.onTimeChange = this.onTimeChange.bind(this);
-    this.onPause = this._onPause.bind(this);
+    // this.onPause = this._onPause.bind(this);
     this.updatePlaybackRate = this.updatePlaybackRate.bind(this);
     this.onStartPlay = this.onStartPlay.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -84,9 +72,45 @@ class Home extends Component {
     this.downloadVideo = this.downloadVideo.bind(this);
     this.navigateScript = this.navigateScript.bind(this);
     this.playVideo = this.playVideo.bind(this);
+    this.updateDuration = this.updateDuration.bind(this);
+    this.playerRef = React.createRef();
+
   }
 
   componentDidMount() {
+
+    getVideoMetadata(
+        "https://storage.googleapis.com/videdita11y/sample.mp4"
+      )
+    .then(({ durationInSeconds }) => {
+        this.setState({durationInFrames: Math.round(durationInSeconds * 30), originalDuration: Math.round(durationInSeconds * 30)});
+    })
+    .catch((err) => {
+        console.log(`Error fetching metadata: ${err}`);
+    });
+    const { current } = this.playerRef;
+    if (!current) {
+      return;
+    }
+
+    // this.setState({current: current});
+
+    // this.playerRef = useRef<PlayerRef>(null);
+
+    const handlePlay = () => {
+      // console.log("play triggered");
+      
+      const children = document.querySelectorAll("span.Word");
+      this.setState({
+        playing: true,
+        children: children
+      })
+    };
+   
+    this.playerRef.current.addEventListener("play", handlePlay);
+    const intervalId = setInterval(() => this.handleProgress(), 100);
+    this.setState({ intervalId })
+
     const speech = new Speech();
     if (speech.hasBrowserSupport()) {
       // returns a boolean
@@ -113,6 +137,28 @@ class Home extends Component {
     this.setState({ modalOpen: false });
   }
 
+  updateDuration = () =>{
+    console.log("here")
+    const children = document.querySelectorAll("span.Word");
+    var currIndex, nextIndex, currSpan, nextSpan, currEnd, nextStart;
+    var durationChange = 0
+    for (var i=0; i < children.length - 1; i++){
+      currSpan = children[i];
+      nextSpan = children[i+1]
+      currIndex = parseInt(currSpan.getAttribute("word-index"));
+      nextIndex = parseInt(nextSpan.getAttribute("word-index"));
+      const currEndTrim = currSpan.getAttribute("trim-end");
+      const nextStartTrim = nextSpan.getAttribute("trim-start");
+      // if jump is needed (because a sentence in between was deleted)
+      if (nextIndex > currIndex + 1 ) {
+          currEnd = parseFloat(currSpan.getAttribute("data-end"));
+          nextStart = parseFloat(nextSpan.getAttribute("data-start"));
+          durationChange += parseInt(nextStart*30) - parseInt(currEnd*30)
+      }
+    }
+    this.setState({ durationInFrames: this.state.originalDuration - durationChange });
+  }
+
 
   updatePlaybackRate = (rate) => {
     this.setState({ playbackRate: rate });
@@ -128,211 +174,17 @@ class Home extends Component {
     if (!this.state.playing) this.playVideo();
   }
 
-  focusScript(){
 
-  }
-
-  handleProgress = (state) => {
+  handleProgress = () => {
+    // const { current } = this.playerRef;
     // We only want to update time slider if we are not currently seeking
-    this.setState(state);
-    const currTime = this.state.playedSeconds;
-    const speech = this.state.speech;
-    if (this.state.currSpan) {
-      // get current span's values
-      const currRate = parseFloat(
-        this.state.currSpan.getAttribute("data-playback")
-      );
-      const currWordStart = parseFloat(
-        this.state.currSpan.getAttribute("data-start")
-      );
-      const currWordEnd = parseFloat(
-        this.state.currSpan.getAttribute("data-end")
-      );
-      const moving = this.state.currSpan.getAttribute("data-moving");
-      const type = this.state.currSpan.getAttribute("data-type");
-      const heading = this.state.currSpan.getAttribute("data-heading");
-      const sentenceIdx = parseInt(
-        this.state.currSpan.getAttribute("sent-index")
-      );
-      if (this.state.firstEntered) {
-        if (heading !== this.state.currHeading && heading !== "false") {
-          this.setState({ currHeading: heading });
-          // if (speech.speaking()) 
-          // speech.cancel()
-          // speech
-          //   .speak({
-          //     text: "New heading, " + heading,
-          //   })
-          //   .then(() => {
-          //     console.log("Success !");
-          //   })
-          //   .catch((e) => {
-          //     console.error("An error occurred :", e);
-          //   });
-        }
-        if (sentenceIdx !== this.state.sentenceIdx) {
-          this.setState({ sentenceIdx: sentenceIdx });
-          if (moving === "true") {
-            // if (speech.speaking()) 
-            //   speech.cancel()
-            // speech
-            //   .speak({
-            //     text: "Camera moving",
-            //   })
-            //   .then(() => {
-            //     console.log("Success !");
-            //   })
-            //   .catch((e) => {
-            //     console.error("An error occurred :", e);
-            //   });
-          }
-        }
-        if (type === "pause") {
-          // if (speech.speaking()) 
-          //   speech.cancel()
-          // speech
-          //   .speak({
-          //     text: "Long pause",
-          //   })
-          //   .then(() => {
-          //     console.log("Success !");
-          //   })
-          //   .catch((e) => {
-          //     console.error("An error occurred :", e);
-          //   });
-        }
-      }
+    const currTime = (this.playerRef.current.getCurrentFrame()/30).toFixed(2);
+    this.setState({playedSeconds: currTime})
 
-      this.setState({
-        playbackRate: currRate,
-        currWordStart: currWordStart,
-        currWordEnd: currWordEnd,
-        firstEntered: false,
-      });
-
-      // when the sentence is about to finish (to determine jump or not)
-      if (
-        this.state.currWordEnd - 0.5 <= currTime &&
-        currTime <= this.state.currWordEnd + 0.5
-      ) {
-        console.log(this.state.currSpan.getAttribute("word-index"));
-        var nextSpan;
-        const children = document.querySelectorAll("span.Word");
-        nextSpan =
-          children[
-            Array.prototype.indexOf.call(children, this.state.currSpan) + 1
-          ];
-
-        if (nextSpan) {
-          const nextIndex = parseInt(nextSpan.getAttribute("word-index"));
-          const currIndex = parseInt(
-            this.state.currSpan.getAttribute("word-index")
-          );
-          const currEndTrim = this.state.currSpan.getAttribute("trim-end");
-          const nextStartTrim = nextSpan.getAttribute("trim-start");
-          // if (12 <= currIndex && currIndex <= 17) {
-          //   console.log(nextIndex);
-          //   console.log(currIndex);
-          // }
-          // if jump is needed (because a sentence in between was deleted)
-          if (
-            nextIndex > currIndex + 1 ||
-            currEndTrim === "true" ||
-            nextStartTrim === "true"
-          ) {
-            const nextStart = parseFloat(nextSpan.getAttribute("data-start"));
-            const nextEnd = parseFloat(nextSpan.getAttribute("data-end"));
-            const sentenceIdx = parseInt(nextSpan.getAttribute("sent-index"));
-            this.setState(
-              {
-                currSpan: nextSpan,
-                currWordStart: nextStart,
-                currWordEnd: nextEnd,
-                playing: true,
-                firstEntered: true,
-                currSentenceIdx: sentenceIdx,
-                // playbackRate: nextPlayback,
-              },
-              () => this.jumpVideo(nextStart, true)
-            );
-            const rate = parseFloat(
-              this.state.currSpan.getAttribute("data-playback")
-            );
-            this.updatePlaybackRate(rate);
-          }
-        }
-
-        // if jump happend and thus current word information needs to be updated
-      } else if (
-        this.state.currWordEnd < currTime ||
-        currTime < this.state.currWordStart
-      ) {
-        const children = document.querySelectorAll("span.Word");
-        var i = 0;
-        const theFirstWordElement = children[0];
-        // the first sentence
-        if (
-          currTime < parseFloat(theFirstWordElement.getAttribute("data-end"))
-        ) {
-          this.setState({
-            currSpan: theFirstWordElement,
-            currWordStart: parseFloat(
-              theFirstWordElement.getAttribute("data-start")
-            ),
-            currWordEnd: parseFloat(
-              theFirstWordElement.getAttribute("data-end")
-            ),
-          });
-        } else {
-          // the second ~ last-1 sentence
-          for (i = 0; i < children.length - 1; i++) {
-            if (
-              parseFloat(children[i].getAttribute("data-start")) <= currTime &&
-              currTime < parseFloat(children[i + 1].getAttribute("data-start"))
-            ) {
-              const newEnd = parseFloat(children[i].getAttribute("data-end"));
-              const sentenceIdx = parseInt(
-                children[i].getAttribute("sent-index")
-              );
-              this.setState({
-                currSpan: children[i],
-                currWordStart: parseFloat(
-                  children[i].getAttribute("data-start")
-                ),
-                currWordEnd: newEnd,
-                firstEntered: true,
-                currSentenceIdx: sentenceIdx,
-              });
-              break;
-            }
-          }
-          // the last sentence
-          if (i === children.length - 1) {
-            console.log("the end?");
-            const newEnd = parseFloat(children[i].getAttribute("data-end"));
-            const sentenceIdx = parseInt(
-              children[i].getAttribute("sent-index")
-            );
-            this.setState({
-              currSpan: children[i],
-              currWordStart: parseFloat(children[i].getAttribute("data-start")),
-              currWordEnd: newEnd,
-              firstEntered: true,
-              currSentenceIdx: sentenceIdx,
-            });
-          }
-        }
-      }
-    }
+    // const speech = this.state.speech;
   };
 
-  handleDuration = (duration) => {
-    this.setState({ duration });
-  };
 
-  ref = (player) => {
-    this.player = player;
-  };
 
   scriptRef = (ref) => {
     this.scriptRef = ref;
@@ -386,14 +238,9 @@ class Home extends Component {
     });
   }
 
-  onTimeChange(event, value) {
-    const newTime = value.replace(/-/g, ":");
-    const time = newTime.substr(0, 5);
-
-    this.setState({ time });
-  }
 
   onClickPlay = () => {
+    console.log("onClickPlay")
     this.setState({ playing: true });
 
     const children = document.querySelectorAll("span.Word");
@@ -425,24 +272,23 @@ class Home extends Component {
     }
   };
 
-  onClickPause = () => {
-    this.setState({ playing: false });
-  };
+  // onClickPause = () => {
+  //   this.setState({ playing: false });
+  // };
 
-  _onPause = () => {
-    //update script cursor
-  };
+  // _onPause = () => {
+  //   //update script cursor
+  // };
 
-  _onPlay = () => {
-    if (!this.state.started) {
-      this.onClickPlay();
-      this.setState({ started: true });
-    }
-  };
+  // _onPlay = () => {
+  //   if (!this.state.started) {
+  //     this.onClickPlay();
+  //     this.setState({ started: true });
+  //   }
+  // };
 
   render() {
-    const { videoID, playing, playbackRate, playedSeconds, modalOpen , commentOpen} =
-      this.state;
+    const { videoID, playing, playbackRate,  modalOpen , commentOpen} = this.state;
     return (
       <div className="Home">
         {/* <Instruction
@@ -493,29 +339,24 @@ class Home extends Component {
         <Container className="main-page">
           <Container className="left-page">
             <Container className="video-container">
-              <ReactPlayer
-                ref={this.ref}
-                playing={this.state.playing}
-                playbackRate={playbackRate}
-                id="video"
-                width="100%"
-                height="100%"
-                controls="false"
-                url={`https://www.youtube.com/watch?v=${videoID}`}
-                onPause={this._onPause}
-                onPlay={this._onPlay}
-                onReady={this._onReady}
-                onProgress={this.handleProgress}
-                onDuration={this.handleDuration}
-                onSeek={this._onSeek}
-                progressInterval={50}
-              ></ReactPlayer>
+              <Player
+                ref={this.playerRef}
+                style={{ width: "100%", height: "100%" }}
+                component={VideoComposition}
+                durationInFrames={this.state.durationInFrames}
+                compositionWidth={1920}
+                compositionHeight={1080}
+                fps={30}
+                controls
+                inputProps={{children: this.state.children}}
+                framesPerLambda={4}
+              />
             </Container>
             {/* <Button onClick={this.onClickPlay}>play</Button>
             <Button onClick={this.onClickPause}>pause</Button> */}
             <Timeline
               videoTime={this.state.playedSeconds}
-              duration={this.state.duration}
+              duration={this.state.durationInFrames/30}
             ></Timeline>
             <Container className="navigation-container">
               <Navigation navigateScript={this.navigateScript} />
@@ -535,16 +376,19 @@ class Home extends Component {
               setDomEditorRef={this.setDomEditorRef}
               playVideo={this.playVideo}
               jumpVideo={this.jumpVideo}
-              player={this.player}
               videoTime={this.state.playedSeconds}
               playing={this.state.playing}
               getSelected={this.getSelected}
+              updateDuration={this.updateDuration}
             ></Scripts>
           </Container>
         </Container>
+        <div className="download-button" >
         <Button onClick={this.downloadVideo}>Download the video</Button>
+        </div>
       </div>
     );
   }
 }
+
 export default Home;

@@ -4,7 +4,6 @@
   "private": true,
   "homepage": "https://minarainbow.github.io/videdit-a11y",
   "dependencies": {
-    "@bbc/react-transcript-editor": "^1.4.4",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
@@ -24,14 +23,11 @@
     "firebase": "^9.6.10",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.2",
-    "react-clickable": "^1.1.0",
     "react-dom": "^17.0.2",
-    "react-keyboard-event-handler": "^1.5.4",
     "react-player": "^2.9.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "react-simple-timefield": "^3.2.5",
-    "react-sound": "^1.2.0",
     "react-spinners": "^0.11.0",
     "reactjs-popup": "^2.0.5",
     "semantic-ui-css": "^2.4.1",
@@ -67,6 +63,8 @@
     ]
   },
   "devDependencies": {
-    "@faker-js/faker": "^6.0.0-beta.0"
+    "@faker-js/faker": "^6.0.0-beta.0",
+    "@remotion/cli": "^3.0.12",
+    "remotion": "^3.0.12"
   }
 }

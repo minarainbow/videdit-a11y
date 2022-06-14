@@ -1,6 +1,5 @@
 import React from "react";
 import _ from "lodash";
-// import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
 import { Search, Grid, Header, Segment } from "semantic-ui-react";
 import { Dropdown, Menu, Icon, Button } from "semantic-ui-react";
 import IconButton from "@mui/material/IconButton";
@@ -261,7 +260,7 @@ class ToolBar extends React.Component {
                 onMouseDown={(event) => {
                   event.preventDefault();
                 }}>
-            <Menu.Item role="menuitme" tabindex="0" name="comment" onClick={this.changeCommentState}>
+            <Menu.Item role="menuitme" tabIndex="0" name="comment" onClick={this.changeCommentState}>
               <AddCommentIcon style={{ fontSize: "30px" }} />
               Comment
             </Menu.Item>
@@ -286,7 +285,7 @@ class ToolBar extends React.Component {
               </div>
             }
           >
-            <Dropdown.Menu vertical>
+            <Dropdown.Menu >
               <div>
                 <Dropdown.Item
                   text="x 0.5"

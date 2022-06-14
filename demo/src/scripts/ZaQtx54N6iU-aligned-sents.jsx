@@ -1,215 +1,215 @@
 export const scriptData = {
   words: [
     {
-      "end": 2.4,
+      "end": 2.36712,
       "heading": 0,
       "moving": false,
       "new_heading": "A woman wearing a gray top looking surprised",
-      "sent": "Hello everybody.",
+      "sent": "Hello, everybody.",
       "sent_index": 0,
-      "start": 0,
+      "start": 0.01247,
       "type": "narration",
       "words": [
         {
-          "end": 1.8,
+          "end": 1.79841,
           "sent_index": 0,
-          "start": 0,
-          "word": "Hello",
+          "start": 0.01247,
+          "word": "Hello,",
           "word_index": 0
         },
         {
-          "end": 2.4,
+          "end": 2.36712,
           "sent_index": 0,
-          "start": 1.8,
+          "start": 1.79841,
           "word": "everybody.",
           "word_index": 1
         }
       ]
     },
     {
-      "end": 5.4,
+      "end": 5.36032,
       "heading": 0,
       "moving": false,
       "new_heading": false,
-      "sent": "So as some of you know,",
+      "sent": "So, as some of you know,",
       "sent_index": 1,
-      "start": 2.4,
+      "start": 2.36712,
       "type": "narration",
       "words": [
         {
-          "end": 3.2,
+          "end": 3.06553,
           "sent_index": 1,
-          "start": 2.4,
-          "word": "So",
+          "start": 2.36712,
+          "word": "So,",
           "word_index": 2
         },
         {
-          "end": 4.6,
+          "end": 4.54218,
           "sent_index": 1,
-          "start": 3.2,
+          "start": 3.06553,
           "word": "as",
           "word_index": 3
         },
         {
-          "end": 4.7,
+          "end": 4.73175,
           "sent_index": 1,
-          "start": 4.6,
+          "start": 4.54218,
           "word": "some",
           "word_index": 4
         },
         {
-          "end": 4.8,
+          "end": 4.82154,
           "sent_index": 1,
-          "start": 4.7,
+          "start": 4.73175,
           "word": "of",
           "word_index": 5
         },
         {
-          "end": 5.0,
+          "end": 4.95125,
           "sent_index": 1,
-          "start": 4.8,
+          "start": 4.82154,
           "word": "you",
           "word_index": 6
         },
         {
-          "end": 5.4,
+          "end": 5.36032,
           "sent_index": 1,
-          "start": 5.0,
+          "start": 4.95125,
           "word": "know,",
           "word_index": 7
         }
       ]
     },
     {
-      "end": 6.7,
+      "end": 6.71723,
       "heading": 0,
       "moving": false,
       "new_heading": false,
-      "sent": "my name is Ashley.",
+      "sent": "my name is Ashley,",
       "sent_index": 2,
-      "start": 5.4,
+      "start": 5.36032,
       "type": "narration",
       "words": [
         {
-          "end": 5.8,
+          "end": 5.59977,
           "sent_index": 2,
-          "start": 5.4,
+          "start": 5.36032,
           "word": "my",
           "word_index": 8
         },
         {
-          "end": 5.9,
+          "end": 5.939,
           "sent_index": 2,
-          "start": 5.8,
+          "start": 5.59977,
           "word": "name",
           "word_index": 9
         },
         {
-          "end": 6.1,
+          "end": 6.05873,
           "sent_index": 2,
-          "start": 5.9,
+          "start": 5.939,
           "word": "is",
           "word_index": 10
         },
         {
-          "end": 6.7,
+          "end": 6.71723,
           "sent_index": 2,
-          "start": 6.1,
-          "word": "Ashley.",
+          "start": 6.05873,
+          "word": "Ashley,",
           "word_index": 11
         }
       ]
     },
     {
-      "end": 7.8,
+      "end": 7.88458,
       "heading": 0,
       "moving": false,
       "new_heading": false,
-      "sent": "If you're new to the channel,",
+      "sent": "if you're new to the channel,",
       "sent_index": 3,
-      "start": 6.7,
+      "start": 6.71723,
       "type": "narration",
       "words": [
         {
-          "end": 6.9,
+          "end": 6.91678,
           "sent_index": 3,
-          "start": 6.7,
-          "word": "If",
+          "start": 6.71723,
+          "word": "if",
           "word_index": 12
         },
         {
-          "end": 7.1,
+          "end": 7.06644,
           "sent_index": 3,
-          "start": 6.9,
+          "start": 6.91678,
           "word": "you're",
           "word_index": 13
         },
         {
-          "end": 7.3,
+          "end": 7.27596,
           "sent_index": 3,
-          "start": 7.1,
+          "start": 7.06644,
           "word": "new",
           "word_index": 14
         },
         {
-          "end": 7.4,
+          "end": 7.38571,
           "sent_index": 3,
-          "start": 7.3,
+          "start": 7.27596,
           "word": "to",
           "word_index": 15
         },
         {
-          "end": 7.5,
+          "end": 7.50544,
           "sent_index": 3,
-          "start": 7.4,
+          "start": 7.38571,
           "word": "the",
           "word_index": 16
         },
         {
-          "end": 7.8,
+          "end": 7.88458,
           "sent_index": 3,
-          "start": 7.5,
+          "start": 7.50544,
           "word": "channel,",
           "word_index": 17
         }
       ]
     },
     {
-      "end": 9.7,
+      "end": 9.58073,
       "heading": 0,
       "moving": false,
       "new_heading": false,
-      "sent": "thanks for stopping by.",
+      "sent": "thanks for stopping by,",
       "sent_index": 4,
-      "start": 7.8,
+      "start": 7.88458,
       "type": "narration",
       "words": [
         {
-          "end": 8.2,
+          "end": 8.22381,
           "sent_index": 4,
-          "start": 7.8,
+          "start": 7.88458,
           "word": "thanks",
           "word_index": 18
         },
         {
-          "end": 8.5,
+          "end": 8.4932,
           "sent_index": 4,
-          "start": 8.2,
+          "start": 8.22381,
           "word": "for",
           "word_index": 19
         },
         {
-          "end": 9.2,
+          "end": 9.2415,
           "sent_index": 4,
-          "start": 8.5,
+          "start": 8.4932,
           "word": "stopping",
           "word_index": 20
         },
         {
-          "end": 9.7,
+          "end": 9.58073,
           "sent_index": 4,
-          "start": 9.2,
-          "word": "by.",
+          "start": 9.2415,
+          "word": "by,",
           "word_index": 21
         }
       ]
@@ -9472,7 +9472,7 @@ export const scriptData = {
       "end": 425.9,
       "heading": 420,
       "moving": false,
-      "new_heading": " a woman is holding a bowl on a table in the kitchen",
+      "new_heading": "A woman is holding a bowl on a table in the kitchen",
       "sent": "so I am going to make meatloaf for supper tonight,",
       "sent_index": 124,
       "start": 419.6,
