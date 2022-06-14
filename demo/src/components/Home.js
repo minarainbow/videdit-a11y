@@ -1,4 +1,4 @@
-import React, { Component, createRef, useRef} from "react";
+import React, {Component, createRef, forwardRef, useEffect, useRef} from "react";
 import ReactPlayer from "react-player";
 import { Header, Button, Image, Message } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
@@ -25,6 +25,8 @@ import Navigation from "./Navigation";
 import VideoComposition from "./MyVideo";
 import { Player, PlayerRef } from "@remotion/player";
 import { getVideoMetadata } from "@remotion/media-utils";
+import {connect, useDispatch, useSelector} from "react-redux";
+import {setDuration, setPlayedSeconds} from "../redux/mainScreenReducer";
 
 
 
@@ -35,16 +37,13 @@ class Home extends Component {
     this.state = {
       current: null,
       originalDuration: 1,
-      durationInFrames: 1,
       playing: false,
       playbackRate: 1.0,
-      modalOpen: true,
       hover: false,
       message: false,
       videoID: "ZaQtx54N6iU",
       listening: false,
       time: "00:00",
-      playedSeconds: 0,
       currSpan: "",
       started: false,
       currWordStart: 0,
@@ -72,7 +71,6 @@ class Home extends Component {
     this.navigateScript = this.navigateScript.bind(this);
     this.playVideo = this.playVideo.bind(this);
     this.updateDuration = this.updateDuration.bind(this);
-    this.playerRef = React.createRef();
 
   }
 
@@ -82,33 +80,16 @@ class Home extends Component {
         "https://storage.googleapis.com/videdita11y/sample.mp4"
       )
     .then(({ durationInSeconds }) => {
-        this.setState({durationInFrames: Math.round(durationInSeconds * 30), originalDuration: Math.round(durationInSeconds * 30)});
+      this.props.dispatch(setDuration(Math.round(durationInSeconds * 30)))
+        this.setState({originalDuration: Math.round(durationInSeconds * 30)});
     })
     .catch((err) => {
         console.log(`Error fetching metadata: ${err}`);
     });
-    const { current } = this.playerRef;
-    if (!current) {
-      return;
-    }
 
     // this.setState({current: current});
 
     // this.playerRef = useRef<PlayerRef>(null);
-
-    const handlePlay = () => {
-      // console.log("play triggered");
-      
-      const children = document.querySelectorAll("span.Word");
-      this.setState({
-        playing: true,
-        children: children
-      })
-    };
-   
-    this.playerRef.current.addEventListener("play", handlePlay);
-    const intervalId = setInterval(() => this.handleProgress(), 100);
-    this.setState({ intervalId })
 
     const speech = new Speech();
     if (speech.hasBrowserSupport()) {
@@ -155,7 +136,7 @@ class Home extends Component {
           durationChange += parseInt(nextStart*30) - parseInt(currEnd*30)
       }
     }
-    this.setState({ durationInFrames: this.state.originalDuration - durationChange });
+    this.props.dispatch(setDuration(this.state.originalDuration - durationChange))
   }
 
 
@@ -172,18 +153,6 @@ class Home extends Component {
     this.jumpVideo(time, true);
     if (!this.state.playing) this.playVideo();
   }
-
-
-  handleProgress = () => {
-    // const { current } = this.playerRef;
-    // We only want to update time slider if we are not currently seeking
-    const currTime = (this.playerRef.current.getCurrentFrame()/30).toFixed(2);
-    this.setState({playedSeconds: currTime})
-
-    // const speech = this.state.speech;
-  };
-
-
 
   scriptRef = (ref) => {
     this.scriptRef = ref;
@@ -226,8 +195,9 @@ class Home extends Component {
     if (abs) {
       this.player.seekTo(time);
     } else {
-      this.player.seekTo(this.state.playedSeconds + time);
+      this.player.seekTo(this.props.playedSeconds + time);
     }
+
     // this.setState({playing: true});
   }
 
@@ -247,8 +217,8 @@ class Home extends Component {
     for (i = 0; i < children.length - 1; i++) {
       if (
         parseFloat(children[i].getAttribute("data-start")) <=
-          this.state.playedSeconds &&
-        this.state.playedSeconds <
+          this.props.playedSeconds &&
+        this.props.playedSeconds <
           parseFloat(children[i + 1].getAttribute("data-start"))
       ) {
         const newEnd = parseFloat(children[i].getAttribute("data-end"));
@@ -287,6 +257,9 @@ class Home extends Component {
   // };
 
   render() {
+
+    console.log("Full rerender")
+
     const { videoID, playing, playbackRate,  modalOpen , commentOpen} = this.state;
     return (
       <div className="Home">
@@ -338,25 +311,11 @@ class Home extends Component {
         <Container className="main-page">
           <Container className="left-page">
             <Container className="video-container">
-              <Player
-                ref={this.playerRef}
-                style={{ width: "100%", height: "100%" }}
-                component={VideoComposition}
-                durationInFrames={this.state.durationInFrames}
-                compositionWidth={1920}
-                compositionHeight={1080}
-                fps={30}
-                controls
-                inputProps={{children: this.state.children}}
-                framesPerLambda={4}
-              />
+              <VideoPlayer/>
             </Container>
             {/* <Button onClick={this.onClickPlay}>play</Button>
             <Button onClick={this.onClickPause}>pause</Button> */}
-            <Timeline
-              videoTime={this.state.playedSeconds}
-              duration={this.state.durationInFrames/30}
-            ></Timeline>
+            <Timeline/>
             <Container className="navigation-container">
               <Navigation navigateScript={this.navigateScript} />
             </Container>
@@ -375,7 +334,6 @@ class Home extends Component {
               setDomEditorRef={this.setDomEditorRef}
               playVideo={this.playVideo}
               jumpVideo={this.jumpVideo}
-              videoTime={this.state.playedSeconds}
               playing={this.state.playing}
               getSelected={this.getSelected}
               updateDuration={this.updateDuration}
@@ -390,4 +348,56 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const VideoPlayer = () => {
+
+  const dispatch = useDispatch()
+
+  const playerRef = useRef(null)
+
+  const durationInFrames = useSelector(state => state.durationInFrames)
+
+
+  useEffect(()=>{
+    const handlePlay = () => {
+      // console.log("play triggered");
+/*
+      const children = document.querySelectorAll("span.Word");
+      this.setState({
+        playing: true,
+        children: children
+      })*/
+    };
+
+    playerRef.current?.addEventListener("play", handlePlay);
+
+    const intervalId = setInterval(  () => {
+      // const { current } = this.playerRef;
+      // We only want to update time slider if we are not currently seeking
+      const currTime = (playerRef.current.getCurrentFrame()/30).toFixed(2);
+      dispatch(setPlayedSeconds(currTime));
+
+      // const speech = this.state.speech;
+    }, 1000);
+
+
+    return () => {
+      clearInterval(intervalId)
+      playerRef.current?.removeEventListener("play", handlePlay)
+    }
+  }, [])
+
+  return <Player
+      ref={playerRef}
+      style={{ width: "100%", height: "100%" }}
+      component={VideoComposition}
+      durationInFrames={durationInFrames}
+      compositionWidth={1920}
+      compositionHeight={1080}
+      fps={30}
+      controls
+      inputProps={{children: []}}
+      framesPerLambda={4}
+  />
+}
+
+export default connect()(Home);

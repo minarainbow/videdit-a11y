@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useCallback, useState} from "react";
 import '../App.css';
 import {Progress} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import { css } from "@emotion/react";
+import {useSelector} from "react-redux";
 
 
 function formatTime(time) {
@@ -24,34 +25,21 @@ function formatTime(time) {
 
 
 
-export default class Timeline extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            hoverPreview: false,
-        };
+export default () => {
 
-        this.showPreview = this.showPreview.bind(this);
-    }
+    const videoTime = useSelector(state => state.playedSeconds)
+    const duration = useSelector(state => state.durationInFrames/30)
 
-   
+    const [hoverPreview, setHoverPreview] = useState(false)
 
+    const showPreview = useCallback((index) => {
+        setHoverPreview(index);
+    }, [])
 
-    showPreview = (index) => {
-        this.setState({hoverPreview: index});
-    }
-
-
-
-    render() {
-        const { videoTime, duration} = this.props;
-        const { showPreview } = this;
-        return (
-            <div className="progressBar-container">
+    return <div className="progressBar-container">
                 <div className="progressBar">
                     <Progress percent={Math.floor(videoTime/duration*100)}color='grey' />
                     <div className="time-progress">{formatTime(videoTime)}</div>
                 </div>
-            </div>
-        );
-    }};
+            </div>;
+}

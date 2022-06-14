@@ -20,6 +20,7 @@ import ForumIcon from "@mui/icons-material/Forum";
 import firebase from "firebase/app";
 import "firebase/database";
 import { ref } from "firebase/database";
+import {connect} from "react-redux";
 
 const databaseURL = "https://videdita11y-default-rtdb.firebaseio.com/";
 
@@ -520,4 +521,9 @@ getCursorBlockElement = () => {
     );
   }
 }
-export default Scripts;
+export default connect((reduxState, ownProps)=>{
+  return {
+    ...ownProps,
+    videoTime: reduxState.playedSeconds
+  }
+})(Scripts);
