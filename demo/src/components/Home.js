@@ -25,7 +25,6 @@ import Navigation from "./Navigation";
 import VideoComposition from "./MyVideo";
 import { Player, PlayerRef } from "@remotion/player";
 import { getVideoMetadata } from "@remotion/media-utils";
-import IntervalRenderer from 'react-interval-renderer';
 
 
 
