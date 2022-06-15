@@ -20,6 +20,7 @@ import ForumIcon from "@mui/icons-material/Forum";
 import firebase from "firebase/app";
 import "firebase/database";
 import { ref } from "firebase/database";
+import {connect} from "react-redux";
 
 const databaseURL = "https://videdita11y-default-rtdb.firebaseio.com/";
 
@@ -267,7 +268,7 @@ getCursorBlockElement = () => {
 
     if (e.keyCode === spaceKey) {
       if (this.props.playing) {
-        this.props.playVideo();
+        this.props.playPauseVideo();
         this.updateCursor(this.state.editorState);
       } else {
         return "play";
@@ -305,7 +306,7 @@ getCursorBlockElement = () => {
           .querySelectorAll("span.Word")[0]
           .getAttribute("data-start");
         this.props.jumpVideo(BlockStart, true);
-        this.props.playVideo();
+        this.props.playPauseVideo();
       }
 
       return "handled";
@@ -520,4 +521,10 @@ getCursorBlockElement = () => {
     );
   }
 }
-export default Scripts;
+export default connect((reduxState, ownProps)=>{
+  return {
+    ...ownProps,
+    videoTime: reduxState.playedSeconds
+  }
+})(Scripts);
+
