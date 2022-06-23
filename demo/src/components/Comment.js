@@ -3,7 +3,6 @@ import IconButton from '@material-ui/core/IconButton'
 import { Button, Header, Image, Popup, ModalActions, Input } from 'semantic-ui-react'
 import firebase from 'firebase/app';
 import 'firebase/database';
-import scriptData from "../scripts/ZaQtx54N6iU-aligned-sents";
 
 const databaseURL = "https://videdita11y-default-rtdb.firebaseio.com/"
 

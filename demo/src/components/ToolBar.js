@@ -248,9 +248,9 @@ class ToolBar extends React.Component {
     return (
       <div
         className="tool-bar"
-        // onMouseDown={(event) => {
-        //   event.preventDefault();
-        // }}
+        onMouseDown={(event) => {
+          event.preventDefault();
+        }}
       >
         <Menu icon="labeled" className="tool-icon">
 
@@ -260,7 +260,7 @@ class ToolBar extends React.Component {
                 onMouseDown={(event) => {
                   event.preventDefault();
                 }}>
-            <Menu.Item role="menuitme" tabIndex="0" name="comment" onClick={this.changeCommentState}>
+            <Menu.Item role="menuitem" tabIndex="0" name="comment" onClick={this.changeCommentState}>
               <AddCommentIcon style={{ fontSize: "30px" }} />
               Comment
             </Menu.Item>
@@ -271,6 +271,8 @@ class ToolBar extends React.Component {
           ></Comment>
           <Dropdown
             icon={null}
+            name="speed"
+            aria-label="speed"
             trigger={
               <div
                 onMouseDown={(event) => {
@@ -278,7 +280,7 @@ class ToolBar extends React.Component {
                   // this.handleItemClick();
                 }}
               >
-                <Menu.Item name="speed" onClick={this.handleItemClick}>
+                <Menu.Item onClick={this.handleItemClick}>
                   <SpeedIcon style={{ fontSize: "30px" }} />
                   Speed
                 </Menu.Item>
@@ -331,6 +333,8 @@ class ToolBar extends React.Component {
             </Dropdown.Menu>
           </Dropdown>
           <Dropdown
+            name="trim"
+            aria-label="trim"
             icon={null}
             trigger={
               <div
@@ -338,7 +342,7 @@ class ToolBar extends React.Component {
                   event.preventDefault();
                 }}
               >
-                <Menu.Item name="trim" onClick={this.handleTrimClick}>
+                <Menu.Item onClick={this.handleTrimClick}>
                   <ContentCutIcon style={{ fontSize: "30px" }} />
                   Trim
                 </Menu.Item>

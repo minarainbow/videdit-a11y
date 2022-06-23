@@ -50,9 +50,9 @@ export default (props)=> {
             // nextStartTrim = nextSpan.getAttribute("trim-start");
             // if jump is needed (because a sentence in between was deleted)
             if (nextIndex > currIndex + 1  || currSpeed != nextSpeed) {
-                currEnd = parseFloat(currSpan.getAttribute("data-end"));
-                nextStart = parseFloat(nextSpan.getAttribute("data-start"));
-                nextEnd = parseFloat(nextSpan.getAttribute("data-end"));
+                currEnd = parseFloat(currSpan.getAttribute("data-default-end"));
+                nextStart = parseFloat(nextSpan.getAttribute("data-default-start"));
+                nextEnd = parseFloat(nextSpan.getAttribute("data-default-end"));
                 currDuration = (currEnd - sequences[sequences.length-1][0]) / currSpeed;
                 sequences[sequences.length-1][1] = currEnd;
                 sequences[sequences.length-1][2] = currDuration;

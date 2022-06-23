@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import scriptData from "./../scripts/ZaQtx54N6iU-aligned-sents.jsx";
+import {connect} from "react-redux";
 
 class Word extends Component {
   shouldComponentUpdate(nextProps) {
@@ -21,7 +21,7 @@ class Word extends Component {
   };
 
   generatePreviousTimes = (data) => {
-    const closest_sent_start = scriptData["words"].filter(function (sent) {
+    const closest_sent_start = this.props.scriptData.filter(function (sent) {
       return sent.sent_index == data.sent_index;
     })[0]["start"];
     let prevTimes = "";
@@ -40,7 +40,7 @@ class Word extends Component {
   };
 
   checkReviewPoints = (data) => {
-    const currSent = scriptData["words"].filter(function (sent) {
+    const currSent = this.props.scriptData.filter(function (sent) {
       return sent.sent_index == data.sent_index;
     })[0];
     if (currSent["moving"]) {
@@ -89,4 +89,11 @@ Word.propTypes = {
   children: PropTypes.array,
 };
 
-export default Word;
+
+export default connect((reduxState, ownProps)=>{
+  return {
+    ...ownProps,
+    scriptData: reduxState.scriptData,
+  }
+})(Word);
+

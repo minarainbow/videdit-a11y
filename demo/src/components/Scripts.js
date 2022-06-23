@@ -1,6 +1,4 @@
 import React from "react";
-import { Button } from "semantic-ui-react";
-import scriptData from "./../scripts/ZaQtx54N6iU-aligned-sents.jsx";
 import Word from "./Word.js";
 import WrapperBlock from "./WrapperBlock.js";
 import {
@@ -9,18 +7,17 @@ import {
   SelectionState,
   CompositeDecorator,
   convertFromRaw,
-  convertToRaw,
   getDefaultKeyBinding,
   Modifier,
 } from "draft-js";
 import stt2Draft from "../packages/stt2draft";
-import gcpSttToDraft from "../packages/google-stt2draft";
 import createEntityMap from "../packages/createEntityMap";
-import ForumIcon from "@mui/icons-material/Forum";
 import firebase from "firebase/app";
 import "firebase/database";
-import { ref } from "firebase/database";
 import {connect} from "react-redux";
+import {setScriptData} from "../redux/mainScreenReducer";
+import { current } from "@reduxjs/toolkit";
+import scriptData from "../scripts/ZaQtx54N6iU-aligned-sents.jsx";
 
 const databaseURL = "https://videdita11y-default-rtdb.firebaseio.com/";
 
@@ -51,10 +48,11 @@ class Scripts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      scriptData: scriptData["words"],
       editorState: EditorState.createEmpty(),
       current_heading: 0,
       cuts: [],
+      last_length: 0,
+      last_spans: [],
     };
     this.onChange = (editorState) => {
       this.setState({ editorState });
@@ -74,6 +72,7 @@ class Scripts extends React.Component {
 
   componentDidMount() {
     this.loadData();
+    
   }
   shouldComponentUpdate = (nextProps, nextState) => {
     if (nextProps !== this.props) return true;
@@ -91,65 +90,106 @@ class Scripts extends React.Component {
   }
 
   loadData() {
-    // fetch( `${databaseURL+'/scriptdata'}/.json`).then(res => {
-    //   if (res.status !== 200) {
-    //       throw new Error(res.statusText);
-    //   }
-    //   return res.json();
-    // }).then(res => {
-    //     //console.log(res)
-    //     this.setState({
-    //         scriptData: res["words"],
-    //     })
-    // })
-    const blocks = this.sttJsonAdapter(this.state.scriptData);
+    const blocks = this.sttJsonAdapter(this.props.scriptData);
     const contentState = convertFromRaw(blocks);
     const editorState = EditorState.createWithContent(contentState, decorator);
-    this.setState({ editorState: editorState });
+    this.setState({ editorState: editorState});
+    setTimeout(()=> {
+      const words =  Array.from(document.querySelectorAll("span.Word"));
+      var last_spans = []
+      for (var i=0; i<words.length; i++){
+        last_spans.push(words[i].getAttribute("word-index"))
+      }
+      this.setState({last_spans: last_spans, last_length: words.length})
+    }, 200)
+    
   }
 
-  updateVideoScript(deleted_element) {
-    var scriptData = this.state.scriptData;
-    const deleted_script_element = scriptData.filter(function (data) {
-      return data.index == deleted_element.index;
-    })[0];
-    const deleted_index = scriptData.indexOf(deleted_script_element);
-
-    // when deleted_element is heading
-    if (
-      deleted_script_element.new_heading &&
-      deleted_index < scriptData.length - 1 &&
-      !scriptData[deleted_index + 1].new_heading
-    ) {
-      scriptData[deleted_index + 1].new_heading =
-        deleted_script_element.new_heading;
+  updateVideoScript() {
+    // update span timecodes 1) deleted element/character check 2) calculate how much was deleted 3) update the timecode of later spans
+    var spans_objects = Array.from(document.querySelectorAll("span.Word"))
+    var spans=[];
+    for (var i=0; i<spans_objects.length; i++){
+      spans.push(spans_objects[i].getAttribute("word-index"))
     }
-    scriptData.splice(deleted_index, 1);
-
-    // update backend
-    fetch(
-      `${
-        databaseURL +
-        "/sessions/" +
-        sessionStorage.getItem("sessionID") +
-        "/scriptdata/"
-      }/.json`,
-      {
-        method: "POST",
-        body: JSON.stringify(scriptData),
-      }
-    )
-      .then((res) => {
-        if (res.status !== 200) {
-          throw new Error(res.statusText);
+    const deleted_spans = this.state.last_spans.filter(x=> !spans.includes(x));
+    var deleted_sent_start, deleted_sent_end, deleted_word_start, deleted_word_end, deleted_start, deleted_end;
+    for (var i=0; i<this.props.scriptData.length; i++){
+      for (var j=0; j<this.props.scriptData[i]["words"].length; j++){
+        if (this.props.scriptData[i]["words"][j]["word_index"] == deleted_spans[0]){
+          deleted_sent_start = this.props.scriptData[i]["words"][j]["sent_index"]
+          deleted_word_start = deleted_spans[0];
+          deleted_start = this.props.scriptData[i]["words"][j]["start"]
         }
-        return res.json();
-      })
-      .then(() => {
-        //console.log("Dummy data succesfully sent!")
-      });
+        else if (this.props.scriptData[i]["words"][j]["word_index"] == deleted_spans[deleted_spans.length-1]){
+          deleted_sent_end = this.props.scriptData[i]["words"][j]["sent_index"];
+          deleted_word_end = deleted_spans[deleted_spans.length-1];
+          deleted_end = this.props.scriptData[i]["words"][j]["end"]
+        }
+      }
+    }
+    var deleted_duration = deleted_end - deleted_start;
+    var scriptData = JSON.parse(JSON.stringify(this.props.scriptData));
+    var words;
+    // last sentence
+    if (deleted_sent_start === scriptData.length) return;
+    // for deleted sentences
+    for (var i = deleted_sent_start; i <= deleted_sent_end; i++){
+      var sent_start = -1; var sent_end = -1;
+      for (var j=0; j<scriptData[i]["words"].length; j++){
+        var word = scriptData[i]["words"][j]
+        if (word["word_index"] >= deleted_word_start && word["word_index"] <= deleted_word_end){
+          word["default_start"] = word["start"];
+          word["default_end"] = word["end"];
+          word["start"] = -1;
+          word["end"] = -1;
+        }
+        else{
+          if (word["word_index"] > deleted_word_end){
+            word["default_start"] = word["start"];
+            word["default_end"] = word["end"];
+            word["start"] -= deleted_duration;
+            word["end"] -= deleted_duration;
+          }
+          if (sent_start == -1) sent_start = word["start"];
+          if (word["end"] !== -1) sent_end = word["end"];
+        }
+      }
+      scriptData[i]["default_start"] = scriptData[i]["start"];
+      scriptData[i]["default_end"] = scriptData[i]["end"];
+      scriptData[i]["start"] = sent_start;
+      scriptData[i]["end"] = sent_end;
+    }
 
-    return scriptData;
+    // for later sentences
+    for (i = deleted_sent_end+1; i < scriptData.length; i++){
+      words = scriptData[i]["words"]
+      for (var j=0; j<words.length; j++){
+        if (words[j]["word_index"] > deleted_word_end){
+          words[j]["start"] -= deleted_duration;
+          words[j]["end"] -= deleted_duration;
+        }
+      }
+      scriptData[i]["start"] = words[0]["start"];
+      scriptData[i]["end"] = words[words.length-1]["end"];
+    }
+    
+    this.setState({last_spans: spans, last_length: spans.length});
+    console.log("here")
+    this.props.dispatch(setScriptData(scriptData))
+    // for (var i=0; i < words.length; i++){
+    //   var word = words[i];
+    //   var word_start = parseFloat(word.getAttribute("data-start"));
+    //   var word_end = parseFloat(word.getAttribute("data-end"));
+    //   if (word_end <=  deleted_start){
+    //     continue;
+    //   }
+    //   else if (word_start >= deleted_end){
+    //     word.setAttribute("data-start", word_start-deleted_duration);
+    //     word.setAttribute("data-end", word_end-deleted_duration);
+    //     continue;
+    //   }
+    // }
   }
 
   getBlockAndOffset = (
@@ -274,21 +314,14 @@ getCursorBlockElement = () => {
         return "play";
       }
     }
-    // if (e.keyCode === rightArrow) {
-    //   console.log("customKeyBindingFn");
+    if (e.keyCode === deleteKey) {
 
-    //   return "next-sentence";
-    // }
-    // if (e.keyCode === leftArrow) {
-    //   console.log("customKeyBindingFn");
-
-    //   return "prev-sentence";
-    // }
-    // if (e.keyCode === deleteKey) {
-    //   console.log("customKeyBindingFn");
-
-    //   return "delete-sentence";
-    // }
+      setTimeout(() => {
+        if (document.querySelectorAll("span.Word").length != this.state.last_length){
+          this.updateVideoScript()
+        }
+      }, (300));
+    }
     // if (e.keyCode === enterKey) {
     //   console.log("customKeyBindingFn");
 
@@ -304,31 +337,23 @@ getCursorBlockElement = () => {
         const cursorBlock = this.getCursorBlockElement();
         var BlockStart = cursorBlock
           .querySelectorAll("span.Word")[0]
-          .getAttribute("data-start");
-        this.props.jumpVideo(BlockStart, true);
+          .getAttribute("sent-index");
+        const startTime = this.props.scriptData[BlockStart]["start"];
+        this.props.jumpVideo(startTime, true);
         this.props.playPauseVideo();
       }
 
       return "handled";
     } else if (command === "pause") {
+      this.updateCursor(this.state.editorState);
+      this.props.playPauseVideo();
       return "handled";
-    } else if (command === "next-sentence") {
-      const currentSentenceEnd = this.getCurrentSent().end;
-      this.props.jumpVideo(currentSentenceEnd, true);
-    } else if (command === "prev-sentence") {
-      const currentSentenceStart = this.getCurrentSent().start;
-      if (this.props.videoTime < currentSentenceStart + 2) {
-        const prevSentenceStart = this.getCurrentSent().prevStart;
-        this.props.jumpVideo(prevSentenceStart, true);
-      } else {
-        this.props.jumpVideo(currentSentenceStart, true);
-      }
-    } else if (command === "split-paragraph") {
-      // this.changeEditorSelection(this.state.editorState, 2, 3, true);
-    }
-
-    if (command === "keyboard-shortcuts") {
-      return "handled";
+    } else if (command === "delete") {
+      setTimeout(() => {
+        if (document.querySelectorAll("span.Word").length != this.state.last_length){
+          this.updateVideoScript()
+        }
+      }, (300));
     }
 
     return "not-handled";
@@ -354,64 +379,30 @@ getCursorBlockElement = () => {
 
   getCurrentSent = () => {
     var currentSentIndex = 0;
-    if (scriptData) {
-      const contentState = this.state.editorState.getCurrentContent();
-      const contentStateConvertEdToRaw = convertToRaw(contentState);
-      const entityMap = contentStateConvertEdToRaw.entityMap;
-
-      for (var entityKey in entityMap) {
-        const entity = entityMap[entityKey];
-        const word = entity.data;
-        if (word.start <= this.props.videoTime) {
-          if (word.end > this.props.videoTime) {
-            currentSentIndex = word.sent_index;
-          }
+    for (var i=0; i < this.props.scriptData.length; i++){
+      const sent_start = this.props.scriptData[i]["start"];
+      const sent_end = this.props.scriptData[i]["end"]
+      // if (i<10){
+      //   console.log(sent_start, sent_end)
+      // }
+      if (sent_start <= this.props.videoTime){
+        if (sent_end >= this.props.videoTime){
+          currentSentIndex = this.props.scriptData[i]["sent_index"]
+          break;
         }
       }
     }
 
-    const currentSent = this.state.scriptData[currentSentIndex];
-    if (currentSent.start !== "NA") {
-      const currentSentElement = document.querySelector(
-        `span.Word[data-start="${currentSent.start}"]`
-      );
-      if (this.props.isScrollIntoViewOn) {
-        currentSentElement.scrollIntoView({
-          block: "nearest",
-          inline: "center",
-        });
-      }
-    }
-    return currentSent;
-  };
-
-  getNextSent = () => {
-    const nextSent = {
-      start: "NA",
-      end: "NA",
-      index: "NA",
-      heading: "NA",
-    };
-    if (scriptData) {
-      const contentState = this.state.editorState.getCurrentContent();
-      const contentStateConvertEdToRaw = convertToRaw(contentState);
-      const entityMap = contentStateConvertEdToRaw.entityMap;
-
-      for (var entityKey in entityMap) {
-        const entity = entityMap[entityKey];
-        const word = entity.data;
-
-        if (word.start >= this.props.videoTime) {
-          if (word.end >= this.props.videoTime) {
-            nextSent.start = word.start;
-            nextSent.end = word.end;
-            nextSent.index = word.index;
-            nextSent.heading = word.heading;
-            return nextSent;
-          }
-        }
-      }
-    }
+    setTimeout(()=>{const currentSentElement = document.querySelector(
+      `span.Word[sent-index="${currentSentIndex}"]`
+    );
+    if (currentSentElement && this.props.playing && this.props.isScrollIntoViewOn ) {
+      currentSentElement.scrollIntoView({
+        block: "nearest",
+        inline: "center",
+      });
+    }}, 200)
+    return this.props.scriptData[currentSentIndex];
   };
 
   updateCursor = (editorState) => {
@@ -433,7 +424,6 @@ getCursorBlockElement = () => {
       newSelectionState
     );
     this.onChange(newEditorState);
-
     const newSelectionState2 = new SelectionState({
       anchorOffset: 0,
       focusOffset: 0,
@@ -447,18 +437,16 @@ getCursorBlockElement = () => {
       null,
       null
     );
-
     setTimeout(
       () =>
-        this.onChange(
+        {this.onChange(
           EditorState.push(newEditorState, newContentState, "delete-character")
-        ),
+        )},
       200
     );
   };
 
   handleDoubleClick = (event) => {
-    console.log(this.state.editorState.getSelection());
     // nativeEvent --> React giving you the DOM event
     let element = event.nativeEvent.target;
     // find the parent in Word that contains span with time-code start attribute
@@ -472,16 +460,6 @@ getCursorBlockElement = () => {
     }
   };
 
-  // Helper function to re-render this component
-  // used to re-render WrapperBlock on timecode offset change
-  // or when show / hide preferences for speaker labels and timecodes change
-  forceRenderDecorator = () => {
-    const contentState = this.state.editorState.getCurrentContent();
-    const decorator = this.state.editorState.getDecorator();
-    const newState = EditorState.createWithContent(contentState, decorator);
-    const newEditorState = EditorState.push(newState, contentState);
-    this.setState({ editorState: newEditorState });
-  };
 
   render() {
     const currentSent = this.getCurrentSent();
@@ -524,7 +502,9 @@ getCursorBlockElement = () => {
 export default connect((reduxState, ownProps)=>{
   return {
     ...ownProps,
-    videoTime: reduxState.playedSeconds
+    videoTime: reduxState.playedSeconds,
+    playing: reduxState.playing,
+    scriptData: reduxState.scriptData,
   }
 })(Scripts);
 

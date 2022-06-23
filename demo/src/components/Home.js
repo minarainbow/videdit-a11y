@@ -1,14 +1,10 @@
-import React, {Component, createRef, useState, useEffect, useRef} from "react";
-import ReactPlayer from "react-player";
+import React, {Component, createRef, forwardRef, useState, useEffect, useRef} from "react";
 import { Header, Button, Image, Message } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import classNames from "classnames";
 import "../App.css";
-import axios from "axios";
 import Timeline from "./Timeline";
-// import Segments from './Segments';
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
 import IconButton from "@material-ui/core/IconButton";
 import Drawer from "@material-ui/core/Drawer";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -18,15 +14,13 @@ import { clips } from "../scripts";
 import Speech from "speak-tts";
 import ToolBar from "./ToolBar";
 import Scripts from "./Scripts";
-import Instruction from "./Instruction";
-import firebase from "firebase/app";
 import "firebase/database";
 import Navigation from "./Navigation";
 import VideoComposition from "./MyVideo";
 import { Player, PlayerRef } from "@remotion/player";
 import { getVideoMetadata } from "@remotion/media-utils";
 import {connect, useDispatch, useSelector} from "react-redux";
-import {setDuration, setPlayedSeconds} from "../redux/mainScreenReducer";
+import {setDuration, setPlayedSeconds, setPlaying} from "../redux/mainScreenReducer";
 
 
 class Home extends Component {
@@ -67,6 +61,7 @@ class Home extends Component {
     this.navigateScript = this.navigateScript.bind(this);
     this.playPauseVideo = this.playPauseVideo.bind(this);
     this.updateDuration = this.updateDuration.bind(this);
+    this.playerRef = React.createRef();
 
   }
 
@@ -85,8 +80,6 @@ class Home extends Component {
 
     const speech = new Speech();
     if (speech.hasBrowserSupport()) {
-      // returns a boolean
-      // console.log("speech synthesis supported");
     }
     speech.init({
       volume: 1,
@@ -110,7 +103,6 @@ class Home extends Component {
   }
 
   updateDuration = () =>{
-    console.log("here")
     const children = document.querySelectorAll("span.Word");
     var currIndex, nextIndex, currSpan, nextSpan, currEnd, nextStart;
     var durationChange = 0
@@ -123,8 +115,8 @@ class Home extends Component {
       const nextStartTrim = nextSpan.getAttribute("trim-start");
       // if jump is needed (because a sentence in between was deleted)
       if (nextIndex > currIndex + 1 ) {
-          currEnd = parseFloat(currSpan.getAttribute("data-end"));
-          nextStart = parseFloat(nextSpan.getAttribute("data-start"));
+          currEnd = parseFloat(currSpan.getAttribute("data-default-end"));
+          nextStart = parseFloat(nextSpan.getAttribute("data-default-start"));
           durationChange += parseInt(nextStart*30) - parseInt(currEnd*30)
       }
     }
@@ -176,17 +168,18 @@ class Home extends Component {
   playPauseVideo = () => {
     if (!this.playerRef.current.isPlaying()) {
       this.playerRef.current.play();
+      this.props.dispatch(setPlaying(true));
     } else {
       this.playerRef.current.pause();
+      this.props.dispatch(setPlaying(false));
     }
   };
 
   jumpVideo(time, abs = false) {
-    console.log(this.playerRef)
     if (abs) {
-      this.player.seekTo(time);
+      this.playerRef.current.seekTo(parseInt(time*30));
     } else {
-      this.player.seekTo(this.props.playedSeconds + time);
+      this.playerRef.current.seekTo(parseInt((this.props.playedSeconds + time)*30));
     }
   }
 
@@ -248,7 +241,7 @@ class Home extends Component {
         <Container className="main-page">
           <Container className="left-page">
             <Container className="video-container">
-              <VideoPlayer/>
+              <VideoPlayer ref={this.playerRef}/>
             </Container>
             <Timeline/>
             <Container className="navigation-container">
@@ -258,18 +251,14 @@ class Home extends Component {
           <Container className="script-page">
             <ToolBar
               updatePlaybackRate={this.updatePlaybackRate}
-              // currSpan={this.state.currSpan}
-              // currWordStart={this.state.currWordStart}
-              // currWordEnd={this.state.currWordEnd}
               selectedDivs={this.state.selectedDivs}
               focusScript={this.focusScript}
             ></ToolBar>
             <Scripts
+              isScrollIntoViewOn={true}
               setDomEditorRef={this.setDomEditorRef}
               playPauseVideo={this.playPauseVideo}
               jumpVideo={this.jumpVideo}
-              // playing={this.playerRef.current? this.playerRef.current.isPlaying(): null}
-              playing={this.state.playing}
               getSelected={this.getSelected}
               updateDuration={this.updateDuration}
             ></Scripts>
@@ -283,18 +272,15 @@ class Home extends Component {
   }
 }
 
-const VideoPlayer = () => {
+const VideoPlayer = forwardRef((props, playerRef) => {
 
   const dispatch = useDispatch()
-
-  const playerRef = useRef(null)
 
   const durationInFrames = useSelector(state => state.durationInFrames)
   const [children, setChildren] = useState([]);
 
   useEffect(() => {
     const handlePlay = () => {
-      console.log("play triggered");
 
       const children = document.querySelectorAll("span.Word");
       setChildren(children);
@@ -326,10 +312,11 @@ const VideoPlayer = () => {
       compositionWidth={1920}
       compositionHeight={1080}
       fps={30}
-      controls
+      // controls
+      // spaceKeyToPlayOrPause={false}
       inputProps={{children: children}}
       framesPerLambda={4}
   />
-}
+})
 
 export default connect()(Home);

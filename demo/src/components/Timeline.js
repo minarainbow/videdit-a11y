@@ -38,7 +38,8 @@ export default () => {
     return <div className="progressBar-container">
                 <div className="progressBar">
                     <Progress percent={Math.floor(videoTime/duration*100)}color='grey' />
-                    <div className="time-progress">{formatTime(videoTime)}</div>
+                    <div className="time-progress">{formatTime(videoTime)}/{formatTime(duration)}</div>
+                    
                 </div>
             </div>
         }
