@@ -8,6 +8,7 @@ import ListItemText from '@mui/material/ListItemText';
 import navigations from '../scripts/ZaQtx54N6iU-navigations.jsx'
 import "../App.css";
 import { Typography } from '@mui/material';
+import ReactDOM from 'react-dom';
 
 function formatTime(time) {
     time = Math.round(time);
@@ -27,17 +28,13 @@ export default class Navigation extends React.Component {
         };
         this.handleClick = this.handleClick.bind(this);
     }
-
-    componentWillMount() {
-        document.addEventListener("keydown", this.onKeyDown.bind(this));
-        
-    }
     componentDidMount() {
+        ReactDOM.findDOMNode(this).addEventListener("keydown", this.onKeyDown.bind(this));
         this.setState({navigations: Array.from(document.querySelectorAll(".level1"))})
     }
   
     componentWillUnmount() {
-        document.removeEventListener("keydown", this.onKeyDown.bind(this));
+        ReactDOM.findDOMNode(this).removeEventListener("keydown", this.onKeyDown.bind(this));
     }      
     
     onKeyDown(e) {
