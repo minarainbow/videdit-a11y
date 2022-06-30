@@ -7,7 +7,8 @@ const mainScreenSlice = createSlice({
         playedSeconds: 0,
         durationInFrames: 1,
         playing: false,
-        scriptData: scriptData["words"]
+        scriptData: scriptData["words"],
+        currentSent: 0,
     },
 
     reducers: {
@@ -25,7 +26,11 @@ const mainScreenSlice = createSlice({
 
         setScriptData: (state, action) => {
             state.scriptData = action.payload
+        },
+        setCurrentSent: (state, action) => {
+            state.currentSent = action.payload
         }
+        
     }
 })
 
@@ -35,5 +40,6 @@ export const {
     setPlayedSeconds,
     setDuration,
     setPlaying,
-    setScriptData
+    setScriptData,
+    setCurrentSent
 } = mainScreenSlice.actions
