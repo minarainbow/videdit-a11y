@@ -41,7 +41,7 @@ export default (props)=> {
         sequences.push(seq1)
         for (var i=0; i < children.length - 1; i++){
             currSpan = children[i];
-            nextSpan = children[i+1]
+            nextSpan = children[i+1];
             currIndex = parseInt(currSpan.getAttribute("word-index"));
             nextIndex = parseInt(nextSpan.getAttribute("word-index"));
             currSpeed = currSpan.getAttribute("data-playback");

@@ -21,7 +21,8 @@ import { Player, PlayerRef } from "@remotion/player";
 import { getVideoMetadata } from "@remotion/media-utils";
 import {connect, useDispatch, useSelector} from "react-redux";
 import {setDuration, setPlayedSeconds, setPlaying} from "../redux/mainScreenReducer";
-
+import newChapterSound from "../sound/turn_sound.mp3";
+import warningSound from "../sound/noti_sound.mp3";
 
 class Home extends Component {
   
@@ -62,6 +63,7 @@ class Home extends Component {
     this.playPauseVideo = this.playPauseVideo.bind(this);
     this.updateDuration = this.updateDuration.bind(this);
     this.playerRef = React.createRef();
+    this.checkCurrentSentence = this.checkCurrentSentence.bind(this);
 
   }
 
@@ -121,6 +123,29 @@ class Home extends Component {
       }
     }
     this.props.dispatch(setDuration(this.state.originalDuration - durationChange))
+  }
+
+  checkCurrentSentence = (sentenceIndex) => {
+    // if entered to a new sentence
+    if (this.state.currSentenceIdx != sentenceIndex){
+      this.setState({currSentenceIdx: sentenceIndex});
+      const currentSentElement = document.querySelectorAll(`span.Word[sent-index='${sentenceIndex}']`);
+      // check if the heading has changed
+      const heading = currentSentElement[0].getAttribute('data-heading');
+      if (this.state.currHeading != heading){
+        this.setState({currHeading: heading});
+        // play new chapter sound
+        const newChapterAudio = new Audio(newChapterSound);
+        newChapterAudio.play();
+      }
+      // check if the new section contains any warnings
+      const moving = currentSentElement[0].getAttribute('data-moving');
+      if (moving == "true"){
+        // play warning sound
+        const warningAudio= new Audio(warningSound);
+        warningAudio.play();
+      }
+    }
   }
 
 
@@ -261,6 +286,7 @@ class Home extends Component {
               jumpVideo={this.jumpVideo}
               getSelected={this.getSelected}
               updateDuration={this.updateDuration}
+              checkCurrentSentence={this.checkCurrentSentence}
             ></Scripts>
           </Container>
         </Container>

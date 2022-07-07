@@ -393,6 +393,8 @@ getCursorBlockElement = () => {
       }
     }
 
+    this.props.checkCurrentSentence(currentSentIndex);
+
     setTimeout(()=>{const currentSentElement = document.querySelector(
       `span.Word[sent-index="${currentSentIndex}"]`
     );

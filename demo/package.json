@@ -13,6 +13,7 @@
     "@mui/material": "^5.5.2",
     "@popperjs/core": "^2.11.4",
     "@reduxjs/toolkit": "^1.8.2",
+    "@remotion/media-utils": "^3.0.22",
     "@remotion/player": "^3.0.18",
     "@semantic-ui-react/css-patch": "^1.0.0",
     "@testing-library/jest-dom": "^5.16.1",
@@ -65,10 +66,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@faker-js/faker": "^6.0.0-beta.0",
-    "@remotion/cli": "^3.0.12",
-    "remotion": "^3.0.18"
   }
 }
