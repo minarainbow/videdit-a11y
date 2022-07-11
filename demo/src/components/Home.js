@@ -125,26 +125,24 @@ class Home extends Component {
     this.props.dispatch(setDuration(this.state.originalDuration - durationChange))
   }
 
-  checkCurrentSentence = (sentenceIndex) => {
+  checkCurrentSentence = (sentenceIndex, heading, moving) => {
     // if entered to a new sentence
-    if (this.state.currSentenceIdx != sentenceIndex){
+    // console.log(heading, this.state.currHeading)
+    if (this.state.currSentenceIdx !== sentenceIndex){
       this.setState({currSentenceIdx: sentenceIndex});
-      const currentSentElement = document.querySelectorAll(`span.Word[sent-index='${sentenceIndex}']`);
-      // check if the heading has changed
-      const heading = currentSentElement[0].getAttribute('data-heading');
-      if (this.state.currHeading != heading){
-        this.setState({currHeading: heading});
-        // play new chapter sound
-        const newChapterAudio = new Audio(newChapterSound);
-        newChapterAudio.play();
-      }
       // check if the new section contains any warnings
-      const moving = currentSentElement[0].getAttribute('data-moving');
-      if (moving == "true"){
+      if (moving == true){
         // play warning sound
         const warningAudio= new Audio(warningSound);
         warningAudio.play();
       }
+    }
+    // check if the heading has changed
+    if (this.state.currHeading !== heading){
+      this.setState({currHeading: heading});
+      // play new chapter sound
+      const newChapterAudio = new Audio(newChapterSound);
+      newChapterAudio.play();
     }
   }
 

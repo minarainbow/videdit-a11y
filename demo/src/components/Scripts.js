@@ -379,6 +379,8 @@ getCursorBlockElement = () => {
 
   getCurrentSent = () => {
     var currentSentIndex = 0;
+    var currentHeading = "";
+    var currentMoving = "";
     for (var i=0; i < this.props.scriptData.length; i++){
       const sent_start = this.props.scriptData[i]["start"];
       const sent_end = this.props.scriptData[i]["end"]
@@ -388,12 +390,14 @@ getCursorBlockElement = () => {
       if (sent_start <= this.props.videoTime){
         if (sent_end >= this.props.videoTime){
           currentSentIndex = this.props.scriptData[i]["sent_index"]
+          currentHeading = this.props.scriptData[i]["heading"]
+          currentMoving = this.props.scriptData[i]["moving"]
           break;
         }
       }
     }
 
-    this.props.checkCurrentSentence(currentSentIndex);
+    this.props.checkCurrentSentence(currentSentIndex, currentHeading,currentMoving);
 
     setTimeout(()=>{const currentSentElement = document.querySelector(
       `span.Word[sent-index="${currentSentIndex}"]`
