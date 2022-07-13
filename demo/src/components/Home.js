@@ -20,9 +20,9 @@ import VideoComposition from "./MyVideo";
 import { Player, PlayerRef } from "@remotion/player";
 import { getVideoMetadata } from "@remotion/media-utils";
 import {connect, useDispatch, useSelector} from "react-redux";
-import {setDuration, setPlayedSeconds, setPlaying} from "../redux/mainScreenReducer";
-import newChapterSound from "../sound/turn_sound.mp3";
-import warningSound from "../sound/noti_sound.mp3";
+import {setDuration, setPlayedSeconds, setPlaying, setCurrentSent} from "../redux/mainScreenReducer";
+// import newChapterSound from "../sound/turn_sound.mp3";
+// import warningSound from "../sound/noti_sound.mp3";
 
 class Home extends Component {
   
@@ -63,8 +63,7 @@ class Home extends Component {
     this.playPauseVideo = this.playPauseVideo.bind(this);
     this.updateDuration = this.updateDuration.bind(this);
     this.playerRef = React.createRef();
-    this.checkCurrentSentence = this.checkCurrentSentence.bind(this);
-
+    // this.checkCurrentSentence = this.checkCurrentSentence.bind(this);
   }
 
   componentDidMount() {
@@ -278,13 +277,12 @@ class Home extends Component {
               focusScript={this.focusScript}
             ></ToolBar>
             <Scripts
-              isScrollIntoViewOn={true}
               setDomEditorRef={this.setDomEditorRef}
               playPauseVideo={this.playPauseVideo}
               jumpVideo={this.jumpVideo}
               getSelected={this.getSelected}
               updateDuration={this.updateDuration}
-              checkCurrentSentence={this.checkCurrentSentence}
+              // checkCurrentSentence={this.checkCurrentSentence}
             ></Scripts>
           </Container>
         </Container>
@@ -300,7 +298,7 @@ const VideoPlayer = forwardRef((props, playerRef) => {
 
   const dispatch = useDispatch()
 
-  const durationInFrames = useSelector(state => state.durationInFrames)
+  const durationInFrames = useSelector(state => state.durationInFrames);
   const [children, setChildren] = useState([]);
 
   useEffect(() => {
@@ -317,7 +315,6 @@ const VideoPlayer = forwardRef((props, playerRef) => {
       // We only want to update time slider if we are not currently seeking
       const currTime = (playerRef.current.getCurrentFrame()/30).toFixed(2);
       dispatch(setPlayedSeconds(currTime));
-
       // const speech = this.state.speech;
     }, 1000);
 

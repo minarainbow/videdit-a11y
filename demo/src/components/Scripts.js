@@ -384,9 +384,6 @@ getCursorBlockElement = () => {
     for (var i=0; i < this.props.scriptData.length; i++){
       const sent_start = this.props.scriptData[i]["start"];
       const sent_end = this.props.scriptData[i]["end"]
-      // if (i<10){
-      //   console.log(sent_start, sent_end)
-      // }
       if (sent_start <= this.props.videoTime){
         if (sent_end >= this.props.videoTime){
           currentSentIndex = this.props.scriptData[i]["sent_index"]
@@ -396,9 +393,13 @@ getCursorBlockElement = () => {
         }
       }
     }
+<<<<<<< HEAD
 
     this.props.checkCurrentSentence(currentSentIndex, currentHeading,currentMoving);
 
+=======
+    // this.props.checkCurrentSentence(currentSentIndex);
+>>>>>>> 08537f7 (commit before pull)
     setTimeout(()=>{const currentSentElement = document.querySelector(
       `span.Word[sent-index="${currentSentIndex}"]`
     );
@@ -469,6 +470,7 @@ getCursorBlockElement = () => {
 
   render() {
     const currentSent = this.getCurrentSent();
+    console.log(this.props.scriptData)
     const highlightColour = "#69e3c2";
     const unplayedColor = "#767676";
     const time = Math.round(this.props.videoTime * 4.0) / 4.0;
@@ -511,6 +513,7 @@ export default connect((reduxState, ownProps)=>{
     videoTime: reduxState.playedSeconds,
     playing: reduxState.playing,
     scriptData: reduxState.scriptData,
+    currentSent: reduxState.currentSent
   }
 })(Scripts);
 
