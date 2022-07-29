@@ -69,7 +69,7 @@ class Home extends Component {
   componentDidMount() {
 
     getVideoMetadata(
-        "https://storage.googleapis.com/videdita11y/sample.mp4"
+        "https://storage.googleapis.com/videdit-a11y/sample.mp4"
       )
     .then(({ durationInSeconds }) => {
       this.props.dispatch(setDuration(Math.round(durationInSeconds * 30)))
