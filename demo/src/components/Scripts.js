@@ -175,21 +175,7 @@ class Scripts extends React.Component {
     }
     
     this.setState({last_spans: spans, last_length: spans.length});
-    console.log("here")
     this.props.dispatch(setScriptData(scriptData))
-    // for (var i=0; i < words.length; i++){
-    //   var word = words[i];
-    //   var word_start = parseFloat(word.getAttribute("data-start"));
-    //   var word_end = parseFloat(word.getAttribute("data-end"));
-    //   if (word_end <=  deleted_start){
-    //     continue;
-    //   }
-    //   else if (word_start >= deleted_end){
-    //     word.setAttribute("data-start", word_start-deleted_duration);
-    //     word.setAttribute("data-end", word_end-deleted_duration);
-    //     continue;
-    //   }
-    // }
   }
 
   getBlockAndOffset = (
@@ -261,13 +247,15 @@ getCursorBlockElement = () => {
 
   getSelectedBlockElement = () => {
     var selection = window.getSelection();
+    console.log(selection)
     if (selection.rangeCount == 0) return null;
     var node;
 
     if (selection.type === "Caret") {
       node = selection.getRangeAt(0).startContainer;
       do {
-        if (node.getAttribute && node.getAttribute("data-block") == "true")
+        
+        if (node.getAttribute && node.getAttribute("word-index"))
           return [node, node];
         node = node.parentNode;
       } while (node != null);
@@ -278,7 +266,7 @@ getCursorBlockElement = () => {
       do {
         if (
           startNode.getAttribute &&
-          startNode.getAttribute("data-block") == "true"
+          startNode.getAttribute("word-index")
         )
           break;
         startNode = startNode.parentNode;
@@ -287,7 +275,7 @@ getCursorBlockElement = () => {
       do {
         if (
           endNode.getAttribute &&
-          endNode.getAttribute("data-block") == "true"
+          endNode.getAttribute("word-index")
         )
           break;
         endNode = endNode.parentNode;
@@ -393,13 +381,9 @@ getCursorBlockElement = () => {
         }
       }
     }
-<<<<<<< HEAD
 
     this.props.checkCurrentSentence(currentSentIndex, currentHeading,currentMoving);
 
-=======
-    // this.props.checkCurrentSentence(currentSentIndex);
->>>>>>> 08537f7 (commit before pull)
     setTimeout(()=>{const currentSentElement = document.querySelector(
       `span.Word[sent-index="${currentSentIndex}"]`
     );
@@ -470,7 +454,7 @@ getCursorBlockElement = () => {
 
   render() {
     const currentSent = this.getCurrentSent();
-    console.log(this.props.scriptData)
+    console.log(currentSent)
     const highlightColour = "#69e3c2";
     const unplayedColor = "#767676";
     const time = Math.round(this.props.videoTime * 4.0) / 4.0;

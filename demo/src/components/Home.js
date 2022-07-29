@@ -21,8 +21,8 @@ import { Player, PlayerRef } from "@remotion/player";
 import { getVideoMetadata } from "@remotion/media-utils";
 import {connect, useDispatch, useSelector} from "react-redux";
 import {setDuration, setPlayedSeconds, setPlaying, setCurrentSent} from "../redux/mainScreenReducer";
-// import newChapterSound from "../sound/turn_sound.mp3";
-// import warningSound from "../sound/noti_sound.mp3";
+import newChapterSound from "../sound/turn_sound.mp3";
+import warningSound from "../sound/noti_sound.mp3";
 
 class Home extends Component {
   
@@ -63,7 +63,7 @@ class Home extends Component {
     this.playPauseVideo = this.playPauseVideo.bind(this);
     this.updateDuration = this.updateDuration.bind(this);
     this.playerRef = React.createRef();
-    // this.checkCurrentSentence = this.checkCurrentSentence.bind(this);
+    this.checkCurrentSentence = this.checkCurrentSentence.bind(this);
   }
 
   componentDidMount() {
@@ -282,7 +282,7 @@ class Home extends Component {
               jumpVideo={this.jumpVideo}
               getSelected={this.getSelected}
               updateDuration={this.updateDuration}
-              // checkCurrentSentence={this.checkCurrentSentence}
+              checkCurrentSentence={this.checkCurrentSentence}
             ></Scripts>
           </Container>
         </Container>

@@ -9,6 +9,8 @@ import AddCommentIcon from "@mui/icons-material/AddComment";
 import TextField from "@mui/material/TextField";
 import { FormControlUnstyledContext } from "@mui/base";
 import Comment from './Comment';
+import { Toolbar } from "@mui/material";
+import {connect, useDispatch, useSelector} from "react-redux";
 
 const results = [
   {
@@ -214,28 +216,10 @@ class ToolBar extends React.Component {
 
   handleChangeSpeed = (rate) => {
     
-    console.log(this.props.selectedDivs);
     const [startDiv, endDiv] = this.props.selectedDivs;
-    const startKey = startDiv.getAttribute("data-offset-key");
-    const endKey = endDiv.getAttribute("data-offset-key");
-    const children = startDiv.parentElement.children;
-    var i = 0;
-    var startIdx;
-    for (i = 0; i < children.length; i++) {
-      if (startKey === children[i].getAttribute("data-offset-key")) {
-        startIdx = i;
-        break;
-      }
-    }
-    for (i = startIdx; i < children.length; i++) {
-      var words = children[i].querySelectorAll("span.Word");
-      for (var j = 0; j < words.length; j++) {
-        words[j].setAttribute("data-playback", rate);
-      }
-      if (endKey === children[i].getAttribute("data-offset-key")) {
-        break;
-      }
-    }
+    const startIdx = startDiv.getAttribute("word-index");
+    const endIdx = endDiv.getAttribute("word-index");
+    console.log(this.props.scriptData)
   };
 
   render() {
@@ -419,4 +403,10 @@ class ToolBar extends React.Component {
     );
   }
 }
-export default ToolBar;
+export default connect((reduxState, ownProps)=>{
+  return {
+    ...ownProps,
+    videoTime: reduxState.playedSeconds,
+    scriptData: reduxState.scriptData,
+  }
+})(ToolBar);

@@ -25,7 +25,7 @@ export default (props)=> {
     useEffect(() => {
         Promise.all([
             resolveRedirect(
-                "https://storage.googleapis.com/videdita11y/sample.mp4"
+                "https://storage.googleapis.com/videdit-a11y/sample.mp4"
             )
         ]).then((vids) => {
             vids.forEach((vid) => preload(vid));
